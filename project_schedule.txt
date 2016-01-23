@@ -1,0 +1,46 @@
+Project Schedule
+
+
+Week Schedule
+
+Week 1 & Week 2 
+Learning and writing user stories
+
+Week 3
+Prototyping UI, finish the ability to show month view of calendar (Main View)
+Prototyping event self allocation algorithm.
+
+Week 4- 5
+Testing the main view.
+Creating new Event: Static Event (can be periodic) and Dynamic Event (Non
+periodic, can locate a time for itself) and updating in database. 
+Opening existing event. Prototyping Database. 
+Prototyping and testing event self allocation algorithm.
+
+Week 6
+Keep working on as well as testing Creating new event mechanism. 
+Integrate show month view with create new event view and create smooth
+transitions in between. 
+Finishing event self allocation algorithm.
+
+Week 7 
+Deleting event and updating deleted events in database. 
+More integration. 
+Updating UI (Material Design). 
+
+Week 8
+Add finished event to finished List
+Testing on basic features such as adding and deleting events 
+
+Week 9  
+Add notification
+Testing on basic features such as adding and deleting events
+Finish product
+
+Week 10 
+Final testing and maintenance.
+User testing
+
+Week 11
+Presentation
+
