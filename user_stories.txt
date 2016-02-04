@@ -17,7 +17,12 @@ list of finished events so I can look back on them or reference them in the
 future.
 
 Show month view of calendar (Main View) - As a student, I want the app to show a
-month view so I can see my events for the whole month to prepare myself.
+month view so I can see my events for the whole month to prepare myself. 
+
+Allow scroll to future and past month view of calendar (Main View) - As a student, 
+besides allowingan app to show month view, the user should be albe to scroll to 
+future months and going back to past months so that I am able to plan for events 
+in the future month.
 
 Opening existing event - As a student, I want the app to be able to open
 existing events so i can overview the event’s details
