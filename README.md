@@ -8,9 +8,12 @@ Library:
 
 Summary
 --------------
-<img src="https://github.com/ucsdCSE110wi16/CSE110W240T9/blob/master/Icons/screenShot1.png?raw=true" align="right" height="256" width="256" >
-<img src="https://github.com/ucsdCSE110wi16/CSE110W240T9/blob/master/Icons/ic_calender_finished.png?raw=true" align="right" height="256" width="256" >
 myCalender is an android calender app used for students to keep track of classes and events.
+
+<img src="https://github.com/ucsdCSE110wi16/CSE110W240T9/blob/master/Icons/ic_calender_finished.png?raw=true" align="center" height="256" width="256" >
+
+<img src="https://github.com/ucsdCSE110wi16/CSE110W240T9/blob/master/Icons/screenShot1.png?raw=true" align="center" height="256" width="256" >
+
 
 
 Features w/User Stories
