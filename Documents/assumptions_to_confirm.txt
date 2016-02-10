@@ -9,3 +9,5 @@ Self assigned priorities take precedence over deadlines.
 Confirmed Assumptions:
 Assignment does not matter, sort all dynamic events according to the deadline. The eariler the deadline, the higher the priority.
 Do not implement self-assigned priority, use deadline as priority.
+
+When dynamic events are full, prompt user, there is no time.
