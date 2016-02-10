@@ -1,5 +1,7 @@
 Assumptions To Confirm:
 
+The calendar event of type assignment is more important than others when deciding their priorities, from which the auto-allocating algorihtm works. 
+
 
 
 
