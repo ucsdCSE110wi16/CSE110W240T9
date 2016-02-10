@@ -37,50 +37,50 @@ Features w/User Stories
 Weekly Project Schedule
 --------------
 __Week 1 & Week 2__
-~~Learning and writing user stories (everyone)~~
+* ~~Learning and writing user stories (everyone)~~
 
 __Week 3__
-~~Learning and Writing user stories (everyone)~~
-~~Prototyping UI (everyone)~~
-~~Look for libraries that can help us out with calender view~~
+* ~~Learning and Writing user stories (everyone)~~
+* ~~Prototyping UI (everyone)~~
+* ~~Look for libraries that can help us out with calender view~~
 
 __Week 4- 5__
-~~Integrated with Material View Calender View Library~~
-~~Finished prototyping UI (everyone)~~
-~~Iterate over user stories to eliminate assumption (everyone)~~
-~~Working the ability to show month view of calendar, which is the main view (Kristine, Fang, Alex, William)~~
-~~Prototyping event self allocation algorithm (Scarlet, Steve)~~
-~~Prototyping Database (Zhiwei)~~
-~~Testing the main view.~~
+* ~~Integrated with Material View Calender View Library~~
+* ~~Finished prototyping UI (everyone)~~
+* ~~Iterate over user stories to eliminate assumption (everyone)~~
+* ~~Working the ability to show month view of calendar, which is the main view (Kristine, Fang, Alex, William)~~
+* ~~Prototyping event self allocation algorithm (Scarlet, Steve)~~
+* ~~Prototyping Database (Zhiwei)~~
+* ~~Testing the main view.~~
 
 __Week 6__
-~~Iterate over user stories to eliminate assumption (everyone)~~
-~~Finished working the ability to show month view of calendar and testing the main view (Kristine, Fang, Alex, William)~~
-~~Finished creating app icon (Alex)~~
-~~Keep working on Database (Zhiwei)~~
-Creating new Event: Static Event (can be periodic) and Dynamic Event (Nonperiodic, can locate a time for itself) and updating in database. (Kristine, Fang, Alex, William, Zhiwei)
-Prototyping and testing event self allocation algorithm. (Scarlet, Steve)
+* ~~Iterate over user stories to eliminate assumption (everyone)~~
+* ~~Finished working the ability to show month view of calendar and testing the main view (Kristine, Fang, Alex, William)~~
+* ~~Finished creating app icon (Alex)~~
+* ~~Keep working on Database (Zhiwei)~~
+* Creating new Event: Static Event (can be periodic) and Dynamic Event (Nonperiodic, can locate a time for itself) and updating in database. (Kristine, Fang, Alex, William, Zhiwei)
+* Prototyping and testing event self allocation algorithm. (Scarlet, Steve)
 
 
 __Week 7__
-Keep working on as well as testing Creating new event mechanism. (Kristine, Fang, Alex, William, Zhiwei)
-Integrate show month view with create new event view and create smooth transitions in between. (Kristine, Fang, Alex, William)
-Finishing event self allocation algorithm. (Scarlet, Steve)
-Deleting event and updating deleted events in database. (Zhiwei)
-Updating UI using Material Design. (Kristine, Fang, Alex, William)
+* Keep working on as well as testing Creating new event mechanism. (Kristine, Fang, Alex, William, Zhiwei)
+* Integrate show month view with create new event view and create smooth transitions in between. (Kristine, Fang, Alex, William)
+* Finishing event self allocation algorithm. (Scarlet, Steve)
+* Deleting event and updating deleted events in database. (Zhiwei)
+* Updating UI using Material Design. (Kristine, Fang, Alex, William)
 
 __Week 8__
-Add finished event to finished List (Kristine, Fang, Alex, William, Zhiwei)
-Testing on basic features such as adding and deleting events. (everyone)
+* Add finished event to finished List (Kristine, Fang, Alex, William, Zhiwei)
+* Testing on basic features such as adding and deleting events. (everyone)
 
 __Week 9__  
-Add notification
-Testing on basic features such as adding and deleting events
-Finish product
+* Add notification
+* Testing on basic features such as adding and deleting events
+* Finish product
 
 __Week 10__ 
-Final testing and maintenance.
-User testing
+* Final testing and maintenance.
+* User testing
 
 __Week 11__
-Presentation
+* Presentation
