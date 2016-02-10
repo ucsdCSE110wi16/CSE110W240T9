@@ -2,7 +2,7 @@
 An android calender app designed for students!
 
 Library:
-* Material Calender View Library
+* Material Calender View Library(Under Apache License)
 
 
 Summary
