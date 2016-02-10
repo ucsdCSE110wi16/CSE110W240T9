@@ -18,23 +18,23 @@ myCalender is an android calender app used for students to keep track of classes
 
 Features w/User Stories
 --------------
-* __Creating new Event: Static Event__ (can be periodic) -  the Static events should help me keep track with my weekly schedule, like my class schedule.
+* __Creating new Event: Static Event__ (can be periodic) - As a student, I want the app to statically schedule my events/activites so that I know when the events will be occur each week.
 
-* __Creating new Event: Dynamic Event__ (Non periodic, can locate a time for itself) - As a student, I want the app to dynamically schedule my events/activities so that I can finish them in a timely fashion
+* __Creating new Event: Dynamic Event__ (Non periodic, can locate a time for itself) - As a student, I want the app to dynamically schedule my events/activities so that the events can change to fit my needs
 
-* __Notification__: As a student, I want my app to have notification to notify me in case I forget to do it, so that I can finish my task or attend the scheduled on time.
+* __Notification__: As a student, I want my app to have notification to notify me so that I can be reminded of when events occur to avoid missing or forgetting them.
 
-* __Add finished event to finished List__ - As a student, I want the app to be keep a list of finished events so I can look back on them or reference them in the future.
+* __Add finished event to finished List__ - As a student, I want the app to be keep a list of finished events so that I can look back on my finished list events to see what I have finished or so that I can reference what I have doe before.
 
-* __Show month view of calendar (Main View)__ - As a student, I want the app to show a month view so I can see my events for the whole month to prepare myself. 
+* __Show month view of calendar (Main View)__ - As a student, I want the app to show a month view so that I can see upcoming events in the month.
 
-* __Allow scroll to future and past month view of calendar (Main View)__ - As a student,  besides allowingan app to show month view, the user should be albe to scroll to future months and going back to past months so that I am able to plan for events in the future month.
+* __Allow scroll to future and past month view of calendar (Main View)__ - As a student, I want the app to be able to swipe left and right to future and past months so that I am able to plan for upcoming events in future montsh or look back and referenece past events in past months.
 
-* __Opening existing event__ - As a student, I want the app to be able to open existing events so i can overview the event’s details
+* __Opening existing event__ - As a student, I want the app to be able to open an existing event so that I can edit the details of the event.
 
-* __Updating existing event__ - As a student, I want the app to be able to update an existing event so I can change details like if location, time, name, etc…. changes
+* __Updating existing event__ - As a student, I want the app to be able to update an existing event so that I can change the details of the event should they chagne.
 
-* __Deleting Event__ - As a student, I want the app to be able to delete events I created before in case I no longer on attending/performing that event/task
+* __Deleting Event__ - As a student, I want the app to be able to delete an event so that I can edit my upcoming schedules in case I can no longer do/attend that event or no longer need/want to do/attend that event.
 
 
 
