@@ -1,5 +1,4 @@
 # myCalender
---------------
 An android calender app designed for students!
 
 
