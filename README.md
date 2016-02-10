@@ -42,8 +42,10 @@ __Week 1 & Week 2__
 __Week 3__
 ~~Learning and Writing user stories (everyone)~~
 ~~Prototyping UI (everyone)~~
+~~Look for libraries that can help us out with calender view~~
 
 __Week 4- 5__
+~~Integrated with Material View Calender View Library~~
 ~~Finished prototyping UI (everyone)~~
 ~~Iterate over user stories to eliminate assumption (everyone)~~
 ~~Working the ability to show month view of calendar, which is the main view (Kristine, Fang, Alex, William)~~
