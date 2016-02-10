@@ -1,17 +1,17 @@
 # myCalender
+--------------
 An android calender app designed for students!
 
 
-SUMMARY
+Summary
 --------------
 myCalender is an android calender app used for students to keep track of classes and events.
 
 ![alt tag](https://github.com/ucsdCSE110wi16/CSE110W240T9/blob/master/Icons/ic_calender_finished.png?raw=true)
 
 
-FEATURES W/USER STORES
+Features w/User Stories
 --------------
-
 * __Creating new Event: Static Event__ (can be periodic) -  the Static events should help me keep track with my weekly schedule, like my class schedule.
 
 * __Creating new Event: Dynamic Event__ (Non periodic, can locate a time for itself) - As a student, I want the app to dynamically schedule my events/activities so that I can finish them in a timely fashion
