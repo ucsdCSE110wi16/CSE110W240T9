@@ -1,0 +1,8 @@
+
+public interface CalendarEvent{
+
+	public abstract String getName();
+	
+}
+
+
