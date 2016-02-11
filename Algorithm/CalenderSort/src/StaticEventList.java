@@ -15,7 +15,7 @@ public class StaticEventList{
 	public void setList(ArrayList<StaticEvent> list) {
 		this.list = list;
 	}
-	
+
 	public void addEvent(StaticEvent event) throws CalendarError {
 		
 		if (event == null)
@@ -24,6 +24,10 @@ public class StaticEventList{
 		this.list.add(event);
 	}
 	
-	public void removeEvent(){}
+	public void removeEvent(StaticEvent event) throws CalendarError{
+		if (event == null)
+			throw new CalendarError("Null Event");
+		list.remove(event);
+	}
 	
 }

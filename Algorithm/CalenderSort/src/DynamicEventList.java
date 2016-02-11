@@ -16,7 +16,10 @@ public class DynamicEventList{
 	public void setList(PriorityQueue<DynamicEvent> list) {
 		this.list = list;
 	}
-
+    
+	public DynamicEvent getDynamicEvent(){
+		return list.poll();
+	}
 	public void addEvent(DynamicEvent event) throws CalendarError {
 
 		if (event == null)
@@ -24,9 +27,11 @@ public class DynamicEventList{
 
 		this.list.add(event);
 	}
-	public void sortEvent(){
 
+	public void removeEvent(DynamicEvent event) throws CalendarError{
+		if (event == null)
+			throw new CalendarError("Null Event");
+		list.remove(event);
 	}
-	public void removeEvent(){}
 	
 }
