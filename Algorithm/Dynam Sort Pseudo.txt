@@ -14,3 +14,8 @@ this queue will split the time into smaller blocks
 
 function compare: pop from top of priority queue(smallest time block from both)
 compare two values and subtract the smaller value from the larger value, put the remainder of the larger value back into the priority queue that the larger value came from. Put the smaller value into a List.
+
+
+StaticEventList: Static Event
+DynamicEventList: Dynamic Event
+FreetimeList: Free Time to Allocate

@@ -1,22 +1,22 @@
-import java.util.PriorityQueue;
+import java.util.ArrayList;
 
-public class CalendarEventList{
+public class StaticEventList{
 
-	private PriorityQueue<CalendarEvent> list;
+	private ArrayList<StaticEvent> list;
 
-	public CalendarEventList() {
-		this.list = new PriorityQueue<CalendarEvent>();
+	public StaticEventList() {
+		this.list = new ArrayList<StaticEvent>();
 	}
 	
-	public PriorityQueue<CalendarEvent> getList() {
+	public ArrayList<StaticEvent> getList() {
 		return list;
 	}
 
-	public void setList(PriorityQueue<CalendarEvent> list) {
+	public void setList(ArrayList<StaticEvent> list) {
 		this.list = list;
 	}
 	
-	public void insertEvent(CalendarEvent event) throws CalendarError {
+	public void addEvent(StaticEvent event) throws CalendarError {
 		
 		if (event == null)
 			throw new CalendarError("Null Event");
@@ -24,7 +24,6 @@ public class CalendarEventList{
 		this.list.add(event);
 	}
 	
-	
-	
+	public void removeEvent(){}
 	
 }

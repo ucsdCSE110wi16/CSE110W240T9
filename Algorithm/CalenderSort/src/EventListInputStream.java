@@ -11,10 +11,10 @@ public class EventListInputStream {
 		this.objIn = new ObjectInputStream(fi);     
 	}
 	
-	public CalendarEventList readList() {
-		CalendarEventList result = null; 
+	public StaticEventList readList() {
+		StaticEventList result = null; 
 		try {
-			result = (CalendarEventList) this.objIn.readObject();
+			result = (StaticEventList) this.objIn.readObject();
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 		}
