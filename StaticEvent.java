@@ -1,9 +1,9 @@
 
-public interface StaticEvent {
+public class StaticEvent {
 
-	abstract Time getDeadline();
-	abstract int getEstimatedLength();
-	abstract void setDeadline(Time deadline);
-	abstract void setEstimatedLength(int estimatedLength);
+	public Time getDeadline();
+	public int getEstimatedLength();
+	public void setDeadline(Time deadline);
+	public void setEstimatedLength(int estimatedLength);
 	
 }
