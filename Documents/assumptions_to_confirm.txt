@@ -5,6 +5,8 @@ Self assigned priorities take precedence over deadlines. (Confirmed)
 
 Do we need to limit the amount of time spent on studying every day? In other words, balance between work and study?
 
+Do we need the user to input sleep data?
+
 
 Confirmed Assumptions:
 Assignment does not matter, sort all dynamic events according to the deadline. The eariler the deadline, the higher the priority.
