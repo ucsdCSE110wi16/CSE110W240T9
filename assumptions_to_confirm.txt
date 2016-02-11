@@ -1,14 +1,21 @@
 Assumptions To Confirm:
 
-The calendar event of type assignment is more important than others when deciding their priorities, from which the auto-allocating algorihtm works. (Confirmed)
+Week 6
+
+The calendar event of type assignment is more important than others when deciding their priorities, from which the auto-allocating algorithm works. (Confirmed)
 Self assigned priorities take precedence over deadlines. (Confirmed)
 
 Do we need to limit the amount of time spent on studying every day? In other words, balance between work and study? Assumption is that we limit the amount of time.
 
 Do we need the user to input sleep data? Assumption is sleep is set as a static event.
 
+
+
 Confirmed Assumptions:
-Assignment does not matter, sort all dynamic events according to the deadline. The eariler the deadline, the higher the priority.
+
+Week 6
+
+Assignment does not matter, sort all dynamic events according to the deadline. The earlier the deadline, the higher the priority.
 Do not implement self-assigned priority, use deadline as priority.
 
 When dynamic events are full, prompt user, there is no time.
