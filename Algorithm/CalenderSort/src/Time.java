@@ -67,7 +67,7 @@ public class Time {
 	}
 	
 	public String StringKey(){
-		return year + "" + month + "" + day + "" + hour + "" + minute + "" + dayofweek;
+		return day + "" + month + "" + year;
 	}
 	
 }
