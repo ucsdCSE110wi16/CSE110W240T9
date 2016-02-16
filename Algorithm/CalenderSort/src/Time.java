@@ -66,6 +66,9 @@ public class Time {
 		this.day = day;
 	}
 	
+	public String StringKey(){
+		return year + "" + month + "" + day + "" + hour + "" + minute + "" + dayofweek;
+	}
 	
 }
 
