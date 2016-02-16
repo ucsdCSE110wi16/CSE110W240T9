@@ -1,4 +1,3 @@
-
 public class Time {
 
 	private int year;
@@ -7,8 +6,8 @@ public class Time {
 	private int day; // 0 to 6
 	private int time;  // 0 to 47
 	
-	public Time(int year, int month, int date, int day, int time) throws CalendarError {
-		
+	public Time(int year, int month, int day, int hour,int minute, int dayofweek) throws CalendarError {
+	
 		setYear(year);
 		setMonth(month);
 		setDate(date);
