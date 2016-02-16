@@ -2,13 +2,12 @@
 public class Slot {
 	
 	private Time startTime;
-	private int end;  //0 to 23
-	private int start; //0 to 23
+	private Time endTime;
 	private int length;
 	
 	public Slot(int year, int month, int weekday, int date, int start, int end) throws CalendarError {
 		
-		this.setStartTime(new Time(year, month, date, weekday, start));
+		this.setStartTime(new Time(year, month, date, weekday, start, end));
 		setEnd(end);
 		
 		if (end - start <= 0)
@@ -39,6 +38,14 @@ public class Slot {
 
 	public void setStartTime(Time startTime) {
 		this.startTime = startTime;
+	}
+
+	public Time getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Time endTime) {
+		this.endTime = endTime;
 	}
 	
 	
