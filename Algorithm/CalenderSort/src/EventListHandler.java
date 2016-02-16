@@ -51,8 +51,10 @@ public class EventListHandler{
 	public void setDynamicList(DynamicEventList dynamicList) {
 		this.dynamicList = dynamicList;
 	}
-	public boolean createStaticEvent(String name, Time time, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError{
-		Slot slot = new Slot();
+	public boolean createStaticEvent(String name, Time startTime,Time endTime, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError{
+		boolean check = true;
+		Slot slot = new Slot(startTime, endTime);
 		StaticEvent staticEvent = new StaticEvent(name, slot, isStatic, isPeriodic, isFinished, comment);
+		return check;
 	}
 }
