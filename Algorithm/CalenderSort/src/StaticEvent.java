@@ -7,6 +7,7 @@ public class StaticEvent implements CalendarEvent, Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private String id;
 	private String name;
 	private Slot slot;
 	private boolean isStatic;
@@ -15,7 +16,7 @@ public class StaticEvent implements CalendarEvent, Serializable{
 	private String comment = "";
 
 	
-public StaticEvent(String name, Slot slot, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError {
+public StaticEvent(String id, String name, Slot slot, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError {
 		
 		if (name == "")
 			throw new CalendarError("Invalid Event Name");
@@ -23,6 +24,7 @@ public StaticEvent(String name, Slot slot, boolean isStatic, boolean isPeriodic,
 			throw new CalendarError("Invalid time");
 		}
 			
+		this.setId(id);
 		this.setName(name);
 		this.setStatic(isStatic);
 		this.setComment(comment);
@@ -31,6 +33,7 @@ public StaticEvent(String name, Slot slot, boolean isStatic, boolean isPeriodic,
 		this.setSlot(slot);
 		
 	}
+
 
 	public String getName() {
 		return name;
@@ -80,5 +83,12 @@ public StaticEvent(String name, Slot slot, boolean isStatic, boolean isPeriodic,
 		this.isFinished = isFinished;
 	}
 
-	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 }
