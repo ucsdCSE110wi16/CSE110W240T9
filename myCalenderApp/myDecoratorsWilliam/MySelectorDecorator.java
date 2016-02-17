@@ -1,3 +1,13 @@
+package com.prolificinteractive.materialcalendarview.sample.decorators;
+
+import android.app.Activity;
+import android.graphics.drawable.Drawable;
+
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.DayViewDecorator;
+import com.prolificinteractive.materialcalendarview.DayViewFacade;
+import com.prolificinteractive.materialcalendarview.sample.R;
+
 public class MySelectorDecorator implements DayViewDecorator {
 
     private final Drawable myDrawable;
