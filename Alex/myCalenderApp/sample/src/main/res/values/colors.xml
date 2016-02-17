@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="navigation_bar_color">#1a957a</color>
+    <color name="selected_date_color">#32b49a</color>
+    <color name="event_color">#FF4646</color>
+    <color name="weekends_color">#b6ddcc</color>
+    <color name="bar_text_color">#ffffff</color>
+</resources>
