@@ -21,4 +21,8 @@ public class EventListInputStream {
 		
 	    return result;
 	}
+	
+	public void close() throws IOException {
+		this.objIn.close();
+	}
 }
