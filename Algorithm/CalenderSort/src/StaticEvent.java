@@ -7,11 +7,12 @@ public class StaticEvent implements CalendarEvent{
 	private Slot slot; //slot class which handles the length of the event, etc.
 	private boolean isStatic; //if the event is static
 	private boolean isPeriodic; //if the event is periodic
-	private boolean isFinished;
+	private boolean isFinished; //if the event is finished
+	private String location = "";
 	private String comment = "";
 
 	
-public StaticEvent(String dateKey, String name, Slot slot, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError {
+public StaticEvent(String dateKey, String name, String location, Slot slot, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError {
 		
 		if (name == "")
 			throw new CalendarError("Invalid Event Name");
@@ -26,6 +27,7 @@ public StaticEvent(String dateKey, String name, Slot slot, boolean isStatic, boo
 		this.setFinished(isFinished);
 		this.setPeriodic(isPeriodic);
 		this.setSlot(slot);
+		this.setLocation(location);
 		
 	}
 
@@ -93,5 +95,14 @@ public StaticEvent(String dateKey, String name, Slot slot, boolean isStatic, boo
 
 	public void setId(String id) {
 		this.Id = id;
+	}
+
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 }

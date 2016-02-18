@@ -54,10 +54,12 @@ public class EventListHandler{
 	}
 	
 	//Create a static event to add to the static event list
-	public boolean createStaticEvent(String dateKey, String name, Time startTime,Time endTime, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError{
+	public boolean createStaticEvent(String dateKey, String name, String location, Time startTime,Time endTime, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError{
+		if (isStatic == false)
+			return false;
 		Slot slot = new Slot(dateKey,startTime, endTime);
 		boolean check = true;
-		StaticEvent staticEvent = new StaticEvent(dateKey, name, slot, isStatic, isPeriodic, isFinished, comment);
+		StaticEvent staticEvent = new StaticEvent(dateKey, name, location, slot, isStatic, isPeriodic, isFinished, comment);
 		staticEvent.setId(dateKey + name + startTime.getHour() + startTime.getMinute());
 		check = staticList.addEvent(staticEvent);
 		return check;

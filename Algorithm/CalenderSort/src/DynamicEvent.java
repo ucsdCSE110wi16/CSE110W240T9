@@ -1,8 +1,5 @@
-import java.io.Serializable;
 
-public class DynamicEvent implements CalendarEvent,Serializable{
-
-	private static final long serialVersionUID = 1L;
+public class DynamicEvent implements CalendarEvent{
 
 	private Time deadline;
 	private int estimatedLength;
