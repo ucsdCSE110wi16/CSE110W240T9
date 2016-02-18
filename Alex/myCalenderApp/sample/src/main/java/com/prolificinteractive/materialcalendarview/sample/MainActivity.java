@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements OnDateSelectedLis
     private final OneDayDecorator oneDayDecorator = new OneDayDecorator();
     private static final DateFormat FORMATTER = SimpleDateFormat.getDateInstance();
 
+    private Button addEvent;
+
+
     @Bind(R.id.calendarView)
     MaterialCalendarView widget;
 
@@ -82,6 +85,18 @@ public class MainActivity extends AppCompatActivity implements OnDateSelectedLis
 //        widget.addDecorators(new HighlightWeekendsDecorator());
 
         new ApiSimulator().executeOnExecutor(Executors.newSingleThreadExecutor());
+
+        /* This is the add event button */
+        addEvent = (Button) findViewById(R.id.btnAddEvent);
+//        addEvent.setText("Add Event");
+        addEvent.setBackgroundResource(R.drawable.ic_add_event);
+        addEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AddEventFormActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -122,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements OnDateSelectedLis
         protected void onPostExecute(@NonNull List<CalendarDay> calendarDays) {
             super.onPostExecute(calendarDays);
 
-            if (isFinishing())  return;
+            if (isFinishing()) return;
             // Decorate the date event dots with color #FF4646
             widget.addDecorator(new EventDecorator(Color.parseColor("#FF4646"), calendarDays));
         }
