@@ -62,9 +62,9 @@ public class EventListHandler{
 		return check;
 	}
 	
-	public boolean removeStaticEvent(String Id) throws CalendarError{
+	public boolean removeEventById(String Id) throws CalendarError{
 		boolean check = true;
-		check = staticList.removeEventList(Id);
+		check = staticList.removeEventById(Id);
 		return check;
 	};
 	
@@ -84,19 +84,16 @@ public class EventListHandler{
 	}
 }
 /*
-string key = "12 Feb 2016"
+string key = "12 Feb 2016"  ...DONE
 
-ArrayList<StaticEvent>() events = EventListHandler.getStaticEventsByDateKey(string dateKey);
+ArrayList<StaticEvent>() events = EventListHandler.getStaticEventsByDateKey(string dateKey); ...DONE
 ArrayList<DynamicEvent>() events = EventListHandler.getDynamicEventsByDateKey(string key);
 
 
-DateKey is now DDMMYYY
+DateKey is now DDMMYYY ...DONE
 Id is now DateKey + Name + startTime
 
 StaticEvent se;
-
 string id = se.getID();
-
-EventHandler.removeEventByID(id);
-
+EventHandler.removeEventById(id); ...DONE
 */

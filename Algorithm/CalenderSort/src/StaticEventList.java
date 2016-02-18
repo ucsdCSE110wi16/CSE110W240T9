@@ -56,14 +56,16 @@ public class StaticEventList{
 		return events;
 	}
     
-    public ArrayList<StaticEvent> removeEventList(String key) throws CalendarError {
+    public boolean removeEventById(String key) throws CalendarError {
+    	boolean check = false;
 		if (key == null)
 			throw new CalendarError("Null Event");
-		for (StaticEvent eventToRemove : events){
+		for (StaticEvent eventToRemove : list){
 			  if (eventToRemove.getId().contains(key)){
 			    events.remove(eventToRemove);
+			    check = true;
 			  }
 		}
-		return events;
+		return check;
 	}
 }
