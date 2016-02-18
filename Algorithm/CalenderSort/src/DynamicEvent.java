@@ -1,6 +1,7 @@
 
 public class DynamicEvent implements CalendarEvent{
 
+	private String Id;
 	private Time deadline;
 	private int estimatedLength;
 	private String name;
@@ -84,5 +85,13 @@ public class DynamicEvent implements CalendarEvent{
 	@Override
 	public void setFinished(boolean isFinished) {
 		this.isFinished = isFinished;
+	}
+
+	public String getId() {
+		return Id;
+	}
+
+	public void setId(String id) {
+		this.Id = id;
 	}
 }

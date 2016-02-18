@@ -89,6 +89,7 @@ public class EventListHandler{
 	public ArrayList<DynamicEvent> getDynamicEventsByKey(String key){
 		return null;
 	}
+	
 }
 /*
 ArrayList<StaticEvent>() events = EventListHandler.getStaticEventsByDateKey(string dateKey); ...DONE
