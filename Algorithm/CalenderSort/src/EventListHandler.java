@@ -1,6 +1,7 @@
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 
 public class EventListHandler{
 
@@ -10,7 +11,7 @@ public class EventListHandler{
 
 	public void EventListInputStream(String filename) throws IOException {
 		FileInputStream fi = new FileInputStream(filename);
-		this.objIn = new ObjectInputStream(fi);     
+		this.objIn = new ObjectInputStream(fi);
 	}
 	
 	public StaticEventList readStaticEventList() {
@@ -53,17 +54,49 @@ public class EventListHandler{
 	}
 	
 	//Create a static event to add to the static event list
-	public void createStaticEvent(String id,String name, Time startTime,Time endTime, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError{
+	public boolean createStaticEvent(String id,String name, Time startTime,Time endTime, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError{
 		Slot slot = new Slot(id,startTime, endTime);
+		boolean check = true;
 		StaticEvent staticEvent = new StaticEvent(id, name, slot, isStatic, isPeriodic, isFinished, comment);
-		staticList.addEvent(staticEvent);
+		check = staticList.addEvent(staticEvent);
+		return check;
 	}
 	
-	public void removeStaticEvent(String id){};
+	public boolean removeStaticEvent(String Id) throws CalendarError{
+		boolean check = true;
+		check = staticList.removeEventList(Id);
+		return check;
+	};
 	
 	//Create a dynamic event to add to the dynamic event list
 	public void createDynamicEvent(){}
 	
 	//Dynamic sort algorithm
 	public void dynamicSort(){}
+	
+	//key is date
+	public ArrayList<StaticEvent> getStaticEventsByKey(String key) throws CalendarError{
+		return staticList.addEventList(key);
+	}
+	
+	public ArrayList<DynamicEvent> getDynamicEventsByKey(String key){
+		return null;
+	}
 }
+/*
+string key = "12 Feb 2016"
+
+ArrayList<StaticEvent>() events = EventListHandler.getStaticEventsByDateKey(string dateKey);
+ArrayList<DynamicEvent>() events = EventListHandler.getDynamicEventsByDateKey(string key);
+
+
+DateKey is now DDMMYYY
+Id is now DateKey + Name + startTime
+
+StaticEvent se;
+
+string id = se.getID();
+
+EventHandler.removeEventByID(id);
+
+*/

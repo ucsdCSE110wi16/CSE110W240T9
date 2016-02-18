@@ -3,10 +3,10 @@ public class Slot {
 	
 	private Time startTime;//start and end must be in the same day
 	private Time endTime;
-	private String id; //id will be the start time of the Id
+	private String dateKey; //dateKey will be the start time of the event
 	private int length;//in format of minutes
 	
-	public Slot(String id, Time startTime, Time endTime) throws CalendarError {
+	public Slot(String dateKey, Time startTime, Time endTime) throws CalendarError {
 		
 		if (startTime.getYear() != endTime.getYear() || startTime.getMonth() != endTime.getMonth() || 
 				startTime.getDay() != endTime.getDay() ||
@@ -14,7 +14,7 @@ public class Slot {
 			throw new CalendarError("Invalid Time Slot");
 		
 		setLength((endTime.getHour() - startTime.getHour())*60 + endTime.getMinute() - startTime.getMinute());
-		setId(startTime.StringKey());
+		setDateKey(startTime.StringKey());
 	}
 	
 	
@@ -43,13 +43,12 @@ public class Slot {
 	}
 
 
-	public String getId() {
-		return id;
+	public String getDateKey() {
+		return dateKey;
 	}
 
-
-	public void setId(String id) {
-		this.id = id;
+	public void setDateKey(String dateKey) {
+		this.dateKey = dateKey;
 	}
 	
 }

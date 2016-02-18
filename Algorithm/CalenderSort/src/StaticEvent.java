@@ -91,4 +91,5 @@ public StaticEvent(String id, String name, Slot slot, boolean isStatic, boolean 
 		this.id = id;
 	}
 
+
 }
