@@ -1,22 +1,17 @@
-import java.io.Serializable;
 
+public class StaticEvent implements CalendarEvent{
 
-public class StaticEvent implements CalendarEvent, Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private String id;
-	private String name;
-	private Slot slot;
-	private boolean isStatic;
-	private boolean isPeriodic;
+	private String Id; //Id is in the format of DateKey + Name + startTime such as 18022016CSE1102359
+	private String dateKey; //dateKey is the date of the event 12 Feb 2016
+	private String name;  //name of the event
+	private Slot slot; //slot class which handles the length of the event, etc.
+	private boolean isStatic; //if the event is static
+	private boolean isPeriodic; //if the event is periodic
 	private boolean isFinished;
 	private String comment = "";
 
 	
-public StaticEvent(String id, String name, Slot slot, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError {
+public StaticEvent(String dateKey, String name, Slot slot, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError {
 		
 		if (name == "")
 			throw new CalendarError("Invalid Event Name");
@@ -24,7 +19,7 @@ public StaticEvent(String id, String name, Slot slot, boolean isStatic, boolean 
 			throw new CalendarError("Invalid time");
 		}
 			
-		this.setId(id);
+		this.setDateKey(dateKey);
 		this.setName(name);
 		this.setStatic(isStatic);
 		this.setComment(comment);
@@ -83,13 +78,20 @@ public StaticEvent(String id, String name, Slot slot, boolean isStatic, boolean 
 		this.isFinished = isFinished;
 	}
 
+	public String getDateKey() {
+		return dateKey;
+	}
+
+	public void setDateKey(String dateKey) {
+		this.dateKey = dateKey;
+	}
+
+
 	public String getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(String id) {
-		this.id = id;
+		this.Id = id;
 	}
-
-
 }

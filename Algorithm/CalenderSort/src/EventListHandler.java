@@ -54,12 +54,17 @@ public class EventListHandler{
 	}
 	
 	//Create a static event to add to the static event list
-	public boolean createStaticEvent(String id,String name, Time startTime,Time endTime, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError{
-		Slot slot = new Slot(id,startTime, endTime);
+	public boolean createStaticEvent(String dateKey, String name, Time startTime,Time endTime, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError{
+		Slot slot = new Slot(dateKey,startTime, endTime);
 		boolean check = true;
-		StaticEvent staticEvent = new StaticEvent(id, name, slot, isStatic, isPeriodic, isFinished, comment);
+		StaticEvent staticEvent = new StaticEvent(dateKey, name, slot, isStatic, isPeriodic, isFinished, comment);
+		staticEvent.setId(dateKey + name + startTime.getHour() + startTime.getMinute());
 		check = staticList.addEvent(staticEvent);
 		return check;
+	}
+	
+	public void clear(){
+		staticList.clearEvents();
 	}
 	
 	public boolean removeEventById(String Id) throws CalendarError{
@@ -84,16 +89,10 @@ public class EventListHandler{
 	}
 }
 /*
-string key = "12 Feb 2016"  ...DONE
-
 ArrayList<StaticEvent>() events = EventListHandler.getStaticEventsByDateKey(string dateKey); ...DONE
-ArrayList<DynamicEvent>() events = EventListHandler.getDynamicEventsByDateKey(string key);
-
-
-DateKey is now DDMMYYY ...DONE
-Id is now DateKey + Name + startTime
+ArrayList<DynamicEvent>() events = EventListHandler.getDynamicEventsByDateKey(string dateKey);
 
 StaticEvent se;
-string id = se.getID();
+string id = se.getId();
 EventHandler.removeEventById(id); ...DONE
 */

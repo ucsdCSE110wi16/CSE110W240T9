@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class StaticEventList{
 
-	private ArrayList<StaticEvent> list;
-	private ArrayList<StaticEvent> events;
+	private ArrayList<StaticEvent> list; //list of all static events
+	private ArrayList<StaticEvent> events; //list to store all events in one given day
 	
 	public StaticEventList() {
 		this.list = new ArrayList<StaticEvent>();
@@ -11,6 +11,10 @@ public class StaticEventList{
 	
 	public ArrayList<StaticEvent> getList() {
 		return list;
+	}
+	
+	public void clearEvents(){
+		events.clear();
 	}
 
 	public void setList(ArrayList<StaticEvent> list) {
@@ -45,23 +49,23 @@ public class StaticEventList{
 		this.events = events;
 	}
 	
-    public ArrayList<StaticEvent> addEventList(String key) throws CalendarError {
-		if (key == null)
+    public ArrayList<StaticEvent> addEventList(String dateKey) throws CalendarError {
+		if (dateKey == null)
 			throw new CalendarError("Null Event");
 		for (StaticEvent eventToAdd : list){
-			  if (eventToAdd.getId().contains(key)){
+			  if (eventToAdd.getDateKey().contains(dateKey)){
 			    events.add(eventToAdd);
 			  }
 		}
 		return events;
 	}
     
-    public boolean removeEventById(String key) throws CalendarError {
+    public boolean removeEventById(String id) throws CalendarError {
     	boolean check = false;
-		if (key == null)
+		if (id == null)
 			throw new CalendarError("Null Event");
 		for (StaticEvent eventToRemove : list){
-			  if (eventToRemove.getId().contains(key)){
+			  if (eventToRemove.getId().contains(id)){
 			    events.remove(eventToRemove);
 			    check = true;
 			  }
