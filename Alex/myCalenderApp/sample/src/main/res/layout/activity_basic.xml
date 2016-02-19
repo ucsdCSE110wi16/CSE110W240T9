@@ -20,7 +20,6 @@
         android:layout_height="wrap_content"
         android:background="@color/event_color"
         android:id="@+id/button"
-        
         android:text="set Date"
         android:onClick="setDate"
         />
@@ -33,7 +32,7 @@
         android:text="@string/add_event" />
 
 
-<TextView
+    <TextView
 android:id="@+id/textView"
 android:layout_margin="16dp"
 android:layout_width="wrap_content"

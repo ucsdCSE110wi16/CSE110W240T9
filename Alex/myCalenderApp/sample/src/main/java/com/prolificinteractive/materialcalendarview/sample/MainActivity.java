@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements OnDateSelectedLis
     @Bind(R.id.textView)
     TextView textView;
 
+
+    /*the setDate funtion*/
     public void setDate(View view)
     {
         PickerDialogs pickerDialogs = new PickerDialogs();
