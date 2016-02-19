@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:background="@color/event_color"
         android:id="@+id/button"
+        
         android:text="set Date"
         android:onClick="setDate"
         />
