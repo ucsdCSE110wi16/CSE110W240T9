@@ -16,19 +16,29 @@
         />
 
     <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/event_color"
+        android:id="@+id/button"
+        android:text="set Date"
+        android:onClick="setDate"
+        />
+
+    <Button
         android:id="@+id/btnAddEvent"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_gravity="right"
         android:text="@string/add_event" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_margin="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        />
 
-</LinearLayout>
+<TextView
+android:id="@+id/textView"
+android:layout_margin="16dp"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:textAppearance="?android:attr/textAppearanceLarge"
+    />
+
+    </LinearLayout>
