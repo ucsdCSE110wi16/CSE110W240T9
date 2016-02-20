@@ -16,15 +16,6 @@
         />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/event_color"
-        android:id="@+id/button"
-        android:text="set Date"
-        android:onClick="setDate"
-        />
-
-    <Button
         android:id="@+id/btnAddEvent"
         android:layout_width="70dp"
         android:layout_height="70dp"

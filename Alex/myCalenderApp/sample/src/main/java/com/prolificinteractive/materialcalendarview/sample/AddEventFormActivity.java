@@ -21,6 +21,13 @@ public class AddEventFormActivity extends AppCompatActivity {
 
     private Button addEvent;
 
+    /*the setDate funtion*/
+    public void setDate(View view)
+    {
+        PickerDialogs pickerDialogs = new PickerDialogs();
+        pickerDialogs.show(getSupportFragmentManager(),"date_picker");
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -18,9 +18,8 @@
     <EditText
         android:id="@+id/edplaceid"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:layout_weight="1"
         android:hint="Event Name" />
 
     <EditText
@@ -28,22 +27,30 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="5dp"
-        android:layout_weight="1"
+        android:layout_weight="1.63"
         android:hint="Location of Event" />
 
     <Spinner
         android:id="@+id/spinner1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:text="set Date"
+        android:onClick="setDate"
+        android:layout_weight="0.31" />
 
     <EditText
         android:id="@+id/edcountry"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:layout_weight="1"
+        android:layout_weight="0.36"
         android:hint="Notes" />
 
     <Button
