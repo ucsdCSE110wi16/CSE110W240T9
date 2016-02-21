@@ -33,8 +33,8 @@ public class AddEventFormActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_form);
-        Spinner dropdown = (Spinner) findViewById(R.id.spinner1);
-        String[] items = new String[]{"Static", "Periodic"};
+        Spinner dropdown = (Spinner) findViewById(R.id.typeOfEvent);
+        String[] items = new String[]{"Static", "Dynamic"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 
