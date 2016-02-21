@@ -201,8 +201,8 @@ class DayView extends CheckedTextView {
     }
 
     private static Drawable generateCircleDrawable(final int color) {
-//        ShapeDrawable drawable = new ShapeDrawable(new OvalShape());
-        ShapeDrawable drawable = new ShapeDrawable(new RectShape());
+        ShapeDrawable drawable = new ShapeDrawable(new OvalShape());
+//        ShapeDrawable drawable = new ShapeDrawable(new RectShape());
         drawable.setShaderFactory(new ShapeDrawable.ShaderFactory() {
             @Override
             public Shader resize(int width, int height) {
