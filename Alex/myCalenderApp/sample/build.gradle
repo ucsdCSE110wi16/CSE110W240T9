@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 23    //21
+    buildToolsVersion "23.0.2"         //"21.1.2"
 
     defaultConfig {
         applicationId "com.prolificinteractive.materialcalendarview.sample"
-        minSdkVersion 14
-        targetSdkVersion 23
+        minSdkVersion 14    //7
+        targetSdkVersion 23     //18
         versionCode project.ext.versionCodeInt
         versionName version
     }
@@ -19,9 +19,9 @@ dependencies {
     compile project(':library')
     //compile 'com.prolificinteractive:material-calendarview:1.2.0'
 
-    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.android.support:recyclerview-v7:23.1.1'
     compile 'com.android.support:design:23.1.0'
     compile 'com.jakewharton:butterknife:7.0.1'
-
+    //compile "com.android.support:appcompat-v7:18.0.+"
 }

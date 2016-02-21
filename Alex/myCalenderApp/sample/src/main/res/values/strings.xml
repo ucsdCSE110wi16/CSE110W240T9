@@ -4,6 +4,7 @@
     <string name="app_name">myCalender</string>
     <string name="action_settings">Settings</string>
     <string name="add_event"></string>
+    <string name="isPeriodic">Periodic</string>
 
 
     <string-array name="custom_weekdays">
