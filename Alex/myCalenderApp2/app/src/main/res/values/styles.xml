@@ -1,0 +1,37 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+    <style name="AppTheme" parent="android:Theme.Material.Light">
+        <!-- Main theme colors -->
+        <!--   your app branding color for the app bar -->
+        <item name="android:colorPrimary">@color/primary</item>
+        <!--   darker variant for the status bar and contextual app bars -->
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <!--   theme UI controls like checkboxes and text fields -->
+        <item name="android:colorAccent">@color/accent</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:textColorPrimary">@color/background</item>
+    </style>
+
+    <style name="CustomDayTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/mcv_text_date_light</item>
+    </style>
+
+
+</resources>
+
+
+<!--<resources>-->
+<!--&lt;!&ndash; inherit from the material theme &ndash;&gt;-->
+<!--<style name="AppTheme" parent="android:Theme.Material">-->
+    <!--&lt;!&ndash; Main theme colors &ndash;&gt;-->
+    <!--&lt;!&ndash;   your app branding color for the app bar &ndash;&gt;-->
+    <!--<item name="android:colorPrimary">@color/primary</item>-->
+    <!--&lt;!&ndash;   darker variant for the status bar and contextual app bars &ndash;&gt;-->
+    <!--<item name="android:colorPrimaryDark">@color/primary_dark</item>-->
+    <!--&lt;!&ndash;   theme UI controls like checkboxes and text fields &ndash;&gt;-->
+    <!--<item name="android:colorAccent">@color/accent</item>-->
+<!--</style>-->
+<!--</resources>-->
+

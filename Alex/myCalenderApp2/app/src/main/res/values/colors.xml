@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#32b49a</color>
+    <color name="primary_dark">#32b49a</color>
+    <color name="accent">#FF4646</color>
+    <color name="picked_date">#F4F4F4</color>
+    <color name="weekends_color">#b6ddcc</color>
+    <color name="bar_text_color">#ffffff</color>
+    <color name="background">#ffffff</color>
+
+</resources>
