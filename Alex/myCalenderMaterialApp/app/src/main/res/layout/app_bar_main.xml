@@ -15,9 +15,11 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:layout_height="128dp"
+            android:background="@drawable/background_mountain"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
+        <!--android:background="?attr/colorPrimary"-->
+
 
     </android.support.design.widget.AppBarLayout>
 
@@ -32,8 +34,9 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
+        android:layout_gravity="left|top"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginTop="@dimen/fab_margin_top"
         android:tint="@android:color/white"
         android:src="@android:drawable/ic_input_add" />
 

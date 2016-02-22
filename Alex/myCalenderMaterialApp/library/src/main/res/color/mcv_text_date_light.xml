@@ -4,13 +4,14 @@
     android:exitFadeDuration="@android:integer/config_shortAnimTime">
 
     <item android:state_checked="true"
-        android:color="@android:color/white" />
+        android:color="@android:color/white"/>
+
 
     <item android:state_pressed="true"
         android:color="@android:color/white" />
 
     <item android:state_enabled="false"
-        android:color="#cdcdcd" />
+        android:color="@android:color/darker_gray" />
 
     <item android:color="@android:color/white" />
 
