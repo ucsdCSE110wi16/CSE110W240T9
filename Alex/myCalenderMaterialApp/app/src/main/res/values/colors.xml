@@ -10,5 +10,7 @@
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorDivider">#B6B6B6</color>
+    <color name="picked_date">#E7E7E7</color>
+
 
 </resources>

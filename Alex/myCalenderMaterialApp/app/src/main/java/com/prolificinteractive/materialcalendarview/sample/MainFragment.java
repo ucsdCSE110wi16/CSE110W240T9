@@ -1,6 +1,7 @@
 package com.prolificinteractive.materialcalendarview.sample;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -27,15 +28,14 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-        final Button mainButton = (Button) rootView.findViewById(R.id.main_button);
-        mainButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                mainButton.setBackgroundColor(getContext().getResources().getColor(R.color.colorAccent));
-            }
-        });
+//        final Button mainButton = (Button) rootView.findViewById(R.id.main_button);
+//        mainButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                mainButton.setBackgroundColor(getContext().getResources().getColor(R.color.colorAccent));
+//            }
+//        });
         // Inflate the layout for this fragment
         return rootView;
     }

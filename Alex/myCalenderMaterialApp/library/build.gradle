@@ -7,9 +7,9 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 21
         targetSdkVersion 23
-        versionCode project.ext.versionCodeInt
+        versionCode 1
         versionName version
     }
 }
