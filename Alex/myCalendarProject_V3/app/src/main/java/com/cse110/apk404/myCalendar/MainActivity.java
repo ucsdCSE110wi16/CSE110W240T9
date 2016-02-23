@@ -1,6 +1,7 @@
 package com.cse110.apk404.myCalendar;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -103,11 +104,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
 
-//        // Change individual menu item color, Only change the first item "Today" to white
-        MenuItem item = menu.findItem(R.id.action_today);
-        SpannableString spanString = new SpannableString(item.getTitle().toString());
-        spanString.setSpan(new ForegroundColorSpan(Color.WHITE), 0, spanString.length(), 0);
-        item.setTitle(spanString);
+        // Change individual navigationView menu item color, Only change the first item "Today" to pink
+//        MenuItem item = menu.findItem(R.id.nav_calender_view);
+//        SpannableString spanString = new SpannableString(item.getTitle().toString());
+//        spanString.setSpan(new ForegroundColorSpan(Color.WHITE), 0, spanString.length(), 0);
+//        item.setTitle(spanString);
 
         return true;
     }
@@ -146,11 +147,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.nav_finished_event) {
             //Set the fragment initially
-//            PastEventFragment fragment = new PastEventFragment();
-//            android.support.v4.app.FragmentTransaction fragmentTransaction =
-//                    getSupportFragmentManager().beginTransaction();
-//            fragmentTransaction.replace(R.id.fragment_container, fragment);
-//            fragmentTransaction.commit();
+            FinishedEventsFragment fragment = new FinishedEventsFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
 
         } else if (id == R.id.nav_add_event) {
 //            Intent intent = new Intent(this, AddEventActivity.class);
