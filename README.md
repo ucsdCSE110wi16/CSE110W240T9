@@ -1,20 +1,22 @@
-# myCalender
-An android calender app designed for students!
+# myCalendar
+An android calendar app designed for students!
 
 Library:
-* Material Calender View Library (Under Apache License)
+* Material calendar View Library (Under Apache License)
 
 
 
 Summary
 --------------
-myCalender is an android calender app used for students to keep track of classes and events.
+mycalendar is an android calendar app used for students to keep track of classes and events.
 
-<img src="https://github.com/ucsdCSE110wi16/CSE110W240T9/blob/master/Icons/ic_calender_finished.png?raw=true" align="center" height="256" width="256" >
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/Icons/ic_calender_finished.png" align="center" height="256" width="256" >
 
-<img src="https://github.com/ucsdCSE110wi16/CSE110W240T9/blob/master/Icons/screenShot1.png?raw=true" align="center" height="256" width="256" >
+<img src="https://github.com/ucsdCSE110wi16/CSE110W240T9/blob/master/Icons/screenShot1.png" align="center" height="256" width="256" >
 
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/Icons/material_1.png" align="center" height= auto width="256" >
 
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/Icons/material_2.png" align="center" height=auto width="256" >
 
 Features w/User Stories
 --------------
@@ -46,10 +48,10 @@ __Week 1 & Week 2__
 __Week 3__
 * ~~Learning and Writing user stories (everyone)~~
 * ~~Prototyping UI (everyone)~~
-* ~~Look for libraries that can help us out with calender view~~
+* ~~Look for libraries that can help us out with calendar view~~
 
 __Week 4- 5__
-* ~~Integrated with Material View Calender View Library~~
+* ~~Integrated with Material View Calendar View Library~~
 * ~~Finished prototyping UI (everyone)~~
 * ~~Iterate over user stories to eliminate assumption (everyone)~~
 * ~~Working the ability to show month view of calendar, which is the main view (Kristine, Fang, Alex, William)~~
