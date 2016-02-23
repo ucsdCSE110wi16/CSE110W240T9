@@ -2,7 +2,7 @@
 An android calendar app designed for students!
 
 Library:
-* Material calendar View Library (Under Apache License)
+* Android Week View library by alamkanak (Under Apache License)
 
 
 
@@ -10,13 +10,7 @@ Summary
 --------------
 mycalendar is an android calendar app used for students to keep track of classes and events.
 
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/Icons/ic_calender_finished.png" align="center" height="256" width="256" >
-
-<img src="https://github.com/ucsdCSE110wi16/CSE110W240T9/blob/master/Icons/screenShot1.png" align="center" height="256" width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/Icons/material_1.png" align="center" height= auto width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/Icons/material_2.png" align="center" height=auto width="256" >
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/ic_calender_finished.png" align="center" height="256" width="256" >
 
 Features w/User Stories
 --------------
@@ -90,3 +84,24 @@ __Week 10__
 
 __Week 11__
 * Presentation
+
+
+Iteration 1
+--------------
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/screenShot1.png" align="center" height="256" width="256" >
+
+Iteration 2
+--------------
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/material_1.png" align="center" height="auto" width="256" >
+
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/material_2.png" align="center" height= auto width="256" >
+
+Iteration 3
+--------------
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_1.png" align="center" height=auto width="256" >
+
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_2.png" align="center" height=auto width="256" >
+
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_3.png" align="center" height=auto width="256" >
+
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_4.png" align="center" height=auto width="256" >
