@@ -86,16 +86,18 @@ __Week 11__
 * Presentation
 
 
-Screen Shots
+Iteration 1
 --------------
 <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/screenShot1.png" align="center" height="256" width="256" >
 
-Screen Shots
+Iteration 2
 --------------
 <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/material_1.png" align="center" height="auto" width="256" >
 
 <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/material_2.png" align="center" height= auto width="256" >
 
+Iteration 3
+--------------
 <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_1.png" align="center" height=auto width="256" >
 
 <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_2.png" align="center" height=auto width="256" >
