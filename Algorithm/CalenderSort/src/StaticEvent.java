@@ -1,36 +1,41 @@
-import java.io.Serializable;
 
+public class StaticEvent implements CalendarEvent{
 
-public class StaticEvent implements CalendarEvent, Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private String name;
-	private Slot slot;
-	private boolean isStatic;
-	private boolean isPeriodic;
-	private boolean isFinished;
-	private String comment = "";
+	private String Id; //Id is in the format of DateKey + Name + startTime such as 18022016CSE1102359
+	private String dateKey; //dateKey is the date of the event 12 Feb 2016
+	private String name;  //name of the event
+	private Calendar startTime; //startTime as a Calendar object
+	private Calendar endTime; //endTime as a Calendar object
+	private boolean isStatic; //if the event is static
+	private boolean isPeriodic; //if the event is periodic
+	private boolean isFinished; //if the event is finished
+	private String location = ""; //location of event
+	private String description = ""; //description of event
+	private String color = "";
 
 	
-public StaticEvent(String name, Slot slot, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError {
+public StaticEvent(String dateKey, String name, String location, Calendar startTime, Calendar endTime,
+		boolean isStatic, boolean isPeriodic, boolean isFinished, String description, String color) throws CalendarError {
 		
 		if (name == "")
 			throw new CalendarError("Invalid Event Name");
-		if (slot == null){
+		if (startTime == null || endTime == null){
+			
 			throw new CalendarError("Invalid time");
 		}
 			
+		this.setDateKey(dateKey);
 		this.setName(name);
 		this.setStatic(isStatic);
-		this.setComment(comment);
+		this.setDescription(description);
 		this.setFinished(isFinished);
 		this.setPeriodic(isPeriodic);
-		this.setSlot(slot);
+		this.setStartTime(startTime);
+		this.setEndTime(endTime);
+		this.setLocation(location);
 		
 	}
+
 
 	public String getName() {
 		return name;
@@ -40,12 +45,12 @@ public StaticEvent(String name, Slot slot, boolean isStatic, boolean isPeriodic,
 		this.name = name;
 	}
 
-	public Slot getSlot() {
-		return slot;
+	public Calendar getStartTime() {
+		return startTime;
 	}
 
-	public void setSlot(Slot slot) {
-		this.slot = slot;
+	public void setStartTime(Calendar startTime) {
+		this.startTime = startTime;
 	}
 
 	public boolean isStatic() {
@@ -64,14 +69,6 @@ public StaticEvent(String name, Slot slot, boolean isStatic, boolean isPeriodic,
 		this.isPeriodic = isPeriodic;
 	}
 
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-
 	public boolean isFinished() {
 		return isFinished;
 	}
@@ -80,5 +77,59 @@ public StaticEvent(String name, Slot slot, boolean isStatic, boolean isPeriodic,
 		this.isFinished = isFinished;
 	}
 
+	public String getDateKey() {
+		return dateKey;
+	}
+
+	public void setDateKey(String dateKey) {
+		this.dateKey = dateKey;
+	}
+
+
+	public String getId() {
+		return Id;
+	}
+
+	public void setId(String id) {
+		this.Id = id;
+	}
+
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+
+	public Calendar getEndTime() {
+		return endTime;
+	}
+
+
+	public void setEndTime(Calendar endTime) {
+		this.endTime = endTime;
+	}
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	
+	public String getColor() {
+		return color;
+	}
+
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
 }
