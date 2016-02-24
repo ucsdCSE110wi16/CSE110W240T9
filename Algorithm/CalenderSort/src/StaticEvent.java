@@ -11,10 +11,11 @@ public class StaticEvent implements CalendarEvent{
 	private boolean isFinished; //if the event is finished
 	private String location = ""; //location of event
 	private String description = ""; //description of event
+	private String color = "";
 
 	
 public StaticEvent(String dateKey, String name, String location, Calendar startTime, Calendar endtime,
-		boolean isStatic, boolean isPeriodic, boolean isFinished, String description) throws CalendarError {
+		boolean isStatic, boolean isPeriodic, boolean isFinished, String description, String color) throws CalendarError {
 		
 		if (name == "")
 			throw new CalendarError("Invalid Event Name");
@@ -119,6 +120,15 @@ public StaticEvent(String dateKey, String name, String location, Calendar startT
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String getColor() {
+		return color;
+	}
+
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 }
