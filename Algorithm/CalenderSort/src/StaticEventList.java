@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class StaticEventList{
+public class StaticEventList implements CalendarEventList{
 
 	private ArrayList<StaticEvent> list; //list of all static events
 	private ArrayList<StaticEvent> events; //list to store all events in one given day

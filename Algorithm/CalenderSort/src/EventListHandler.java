@@ -1,5 +1,5 @@
-import java.io.FileInputStream;
-import java.io.IOException;
+//import java.io.FileInputStream;
+//import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,32 +10,11 @@ public class EventListHandler{
 	private StaticEventList staticList;
 	private DynamicEventList dynamicList;
 
-	public void EventListInputStream(String filename) throws IOException {
-		FileInputStream fi = new FileInputStream(filename);
-		this.objIn = new ObjectInputStream(fi);
-	}
-	
-	public StaticEventList readStaticEventList() {
-		StaticEventList staticList = null; 
-		try {
-			staticList = (StaticEventList) this.objIn.readObject();
-		} catch (ClassNotFoundException | IOException e) {
-			e.printStackTrace();
-		}
-	    return staticList;
-	}
 
+	public EventListHandler() {}
 	
-	
-	public DynamicEventList readDynamicEventList() {
-		DynamicEventList dynamicList = null; 
-		try {
-			this.setDynamicList((DynamicEventList) this.objIn.readObject());
-		} catch (ClassNotFoundException | IOException e) {
-			e.printStackTrace();
-		}
-		
-	    return dynamicList;
+	public void initStaticList(){
+		staticList = new StaticEventList();
 	}
 
 	public StaticEventList getStaticList() {
@@ -57,7 +36,8 @@ public class EventListHandler{
 	public boolean checkValidTime(Calendar startTime, Calendar endTime){
 		if (startTime.getYear() != endTime.getYear() || startTime.getMonth() != endTime.getMonth() || 
 				startTime.getDay() != endTime.getDay() ||
-				startTime.getHour() - endTime.getHour() <= 0){
+				endTime.getHour() - startTime.getHour() <= 0){
+			//System.out.println(startTime.getHour() - endTime.getHour());
 			return false;
 		}
 		return true;
@@ -67,7 +47,10 @@ public class EventListHandler{
 	public boolean createStaticEvent(String name, String location, Calendar startTime, Calendar endTime,
 			boolean isStatic, boolean isPeriodic, boolean isFinished, String description, String color) throws CalendarError{
 		//check if start and end times are valid
-		boolean checkvalid = checkValidTime(startTime, endTime);
+		if(!checkValidTime(startTime, endTime)){
+			System.out.println("Fail");
+			return false;
+		}
 		//check if event is static
 		if (isStatic == false)
 			return false;
@@ -77,7 +60,9 @@ public class EventListHandler{
 				isPeriodic, isFinished, description, color);
 		staticEvent.setId(dateKey + name + startTime.getHour() + startTime.getMinute());
 		boolean check = staticList.addEvent(staticEvent);
-		return (check && checkvalid);
+		if(!check)
+			System.out.println("Fail");
+		return (check);
 	}
 	
 	public void clear(){
@@ -91,7 +76,9 @@ public class EventListHandler{
 	};
 	
 	//Create a dynamic event to add to the dynamic event list
-	public void createDynamicEvent(){
+	public void createDynamicEvent(String name, int estimatedLength, boolean isStatic,
+			Calendar deadline, boolean isFinished, String description){
+		
 		
 	}
 	

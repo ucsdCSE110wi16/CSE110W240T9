@@ -14,12 +14,13 @@ public class StaticEvent implements CalendarEvent{
 	private String color = "";
 
 	
-public StaticEvent(String dateKey, String name, String location, Calendar startTime, Calendar endtime,
+public StaticEvent(String dateKey, String name, String location, Calendar startTime, Calendar endTime,
 		boolean isStatic, boolean isPeriodic, boolean isFinished, String description, String color) throws CalendarError {
 		
 		if (name == "")
 			throw new CalendarError("Invalid Event Name");
 		if (startTime == null || endTime == null){
+			
 			throw new CalendarError("Invalid time");
 		}
 			
