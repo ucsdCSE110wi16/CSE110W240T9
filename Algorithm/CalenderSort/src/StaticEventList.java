@@ -66,7 +66,7 @@ public class StaticEventList implements CalendarEventList{
 			throw new CalendarError("Null Event");
 		for (StaticEvent eventToRemove : list){
 			  if (eventToRemove.getId().contains(id)){
-			    events.remove(eventToRemove);
+			    list.remove(eventToRemove);
 			    check = true;
 			  }
 		}

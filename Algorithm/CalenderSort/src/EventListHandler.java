@@ -1,12 +1,12 @@
 //import java.io.FileInputStream;
 //import java.io.IOException;
-import java.io.ObjectInputStream;
+//import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class EventListHandler{
 
-	private ObjectInputStream objIn; 
+//	private ObjectInputStream objIn; 
 	private StaticEventList staticList;
 	private DynamicEventList dynamicList;
 

@@ -3,7 +3,7 @@ import java.util.PriorityQueue;
 
 public class DynamicEventList{
 
-	private PriorityQueue<DynamicEvent> list; //a pq to hold all the events
+	private PriorityQueue<DynamicEvent> dynamicList; //a pq to hold all the dynamic events
 	private PriorityQueue<Calendar> timeBlock; // a pq to hold all the free time blocks
 	private ArrayList<DynamicEvent> storage; // an ArrayList to store the dynamic events after they are sorted
 	

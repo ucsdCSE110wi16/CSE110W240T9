@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Tester {
 
 	public static void main(String[] args)  throws CalendarError {
+		String temp = "";
 		Calendar startTime = new Calendar(2016, 12, 31, 22, 59, 6, "Jan");
 		Calendar endTime = new Calendar(2016, 12, 31, 23, 59, 6, "Jan");
 		System.out.println(startTime.DateKey());
@@ -19,6 +20,14 @@ public class Tester {
 		StaticEvent staticEvent;
 		for (int i=0; i<staticArrayList.size(); i++){
 			staticEvent = staticArrayList.get(i);
+			temp = staticEvent.getId();
+			System.out.println(staticEvent.getId());
+		}
+		
+		handler.removeEventById(temp);
+		for (int i=0; i<staticArrayList.size(); i++){
+			staticEvent = staticArrayList.get(i);
+			temp = staticEvent.getId();
 			System.out.println(staticEvent.getId());
 		}
 		
