@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#305269</color>
+    <color name="colorPrimaryDark">#00374a</color>
+    <color name="colorPrimaryLight">#FFCDD2</color>
+    <color name="colorAccent">#24cadf</color>
+    <!--<color name="colorAccent">#24cadf</color>-->
+    <color name="accent">#FF4646</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#727272</color>
+    <color name="colorIcons">#FFFFFF</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGreen">#26A69A</color>
+    <color name="colorGreenDark">#009688</color>
+    <color name="colorDivider">#B6B6B6</color>
+    <color name="colorBackground">#003e50</color>
+    <color name="time_color">#1ba4b5</color>
+    <color name="event_color_01">#59dbe0</color>
+    <color name="event_color_02">#f57f68</color>
+    <color name="event_color_03">#87d288</color>
+    <color name="event_color_04">#f8b552</color>
+    <color name="toolbar">#efefef</color>
+    <color name="toolbar_text">#FFFFFF</color>
+    <color name="toolbar_drawer_text">#212121</color>
+    <!--<color name="accent">#2789e4</color>-->
+</resources>

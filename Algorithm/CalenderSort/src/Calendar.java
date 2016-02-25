@@ -1,3 +1,7 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class Calendar{
 	
@@ -109,6 +113,35 @@ public class Calendar{
 		String monthString = this.convert();
 		int YEAR = this.getYear();
 		return DAY + " " + monthString + " " + YEAR;
+	}
+	
+	public Long time(){
+		int DAY = this.getDay();
+		int MONTH = this.getMonth();
+		int YEAR = this.getYear();
+		int HOUR = this.getHour();
+		int MINUTE = this.getMinute();
+		return Long.parseLong(YEAR + "" + MONTH + "" + DAY + ""+ HOUR + "" + MINUTE);
+	}
+
+	public boolean DateLaterThanCurrentTime(){
+		DateFormat year = new SimpleDateFormat("yyyy");
+		DateFormat month = new SimpleDateFormat("MM");
+		DateFormat day = new SimpleDateFormat("dd");
+		DateFormat hour = new SimpleDateFormat("HH");
+		DateFormat minute = new SimpleDateFormat("mm");
+		Date date = new Date();
+		if (this.getYear() > Integer.parseInt(year.format(date)))
+			return true;
+		if (this.getMonth() > Integer.parseInt(month.format(date)))
+			return true;
+		if (this.getDay() > Integer.parseInt(day.format(date)))
+			return true;
+		if (this.getHour() > Integer.parseInt(hour.format(date)))
+			return true;
+		if (this.getMinute() > Integer.parseInt(minute.format(date)))
+			return true;
+		return false;
 	}
 	
 }

@@ -1,9 +1,10 @@
 
 public class StaticEvent implements CalendarEvent{
 
-	private String Id; //Id is in the format of DateKey + Name + startTime such as 18022016CSE1102359
+	private int Id; //Random Long Number
 	private String dateKey; //dateKey is the date of the event 12 Feb 2016
 	private String name;  //name of the event
+
 	private Calendar startTime; //startTime as a Calendar object
 	private Calendar endTime; //endTime as a Calendar object
 	private boolean isStatic; //if the event is static
@@ -11,14 +12,16 @@ public class StaticEvent implements CalendarEvent{
 	private boolean isFinished; //if the event is finished
 	private String location = ""; //location of event
 	private String description = ""; //description of event
+	private String color = "";
 
 	
-public StaticEvent(String dateKey, String name, String location, Calendar startTime, Calendar endtime,
-		boolean isStatic, boolean isPeriodic, boolean isFinished, String description) throws CalendarError {
-		
+public StaticEvent(String dateKey, String name, String location, Calendar startTime, Calendar endTime,
+		boolean isStatic, boolean isPeriodic, boolean isFinished, String description, String color) throws CalendarError {
+
 		if (name == "")
 			throw new CalendarError("Invalid Event Name");
 		if (startTime == null || endTime == null){
+			
 			throw new CalendarError("Invalid time");
 		}
 			
@@ -28,8 +31,10 @@ public StaticEvent(String dateKey, String name, String location, Calendar startT
 		this.setDescription(description);
 		this.setFinished(isFinished);
 		this.setPeriodic(isPeriodic);
+
 		this.setStartTime(startTime);
 		this.setEndTime(endTime);
+
 		this.setLocation(location);
 		
 	}
@@ -84,11 +89,11 @@ public StaticEvent(String dateKey, String name, String location, Calendar startT
 	}
 
 
-	public String getId() {
+	public int getId() {
 		return Id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.Id = id;
 	}
 
@@ -100,6 +105,7 @@ public StaticEvent(String dateKey, String name, String location, Calendar startT
 	public void setLocation(String location) {
 		this.location = location;
 	}
+
 
 
 	public Calendar getEndTime() {
@@ -120,5 +126,16 @@ public StaticEvent(String dateKey, String name, String location, Calendar startT
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public String getColor() {
+		return color;
+	}
+
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+
 
 }
