@@ -65,7 +65,7 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
         endTime.set(Calendar.HOUR_OF_DAY, 4);
         endTime.set(Calendar.MINUTE, 30);
         endTime.set(Calendar.MONTH, newMonth - 1);
-        event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
+        event = new WeekViewEvent(2, getEventTitle(startTime), startTime, endTime);
         event.setColor(getResources().getColor(R.color.event_color_02));
         events.add(event);
 
@@ -77,7 +77,7 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
         endTime = (Calendar) startTime.clone();
         endTime.set(Calendar.HOUR_OF_DAY, 5);
         endTime.set(Calendar.MINUTE, 0);
-        event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
+        event = new WeekViewEvent(3, getEventTitle(startTime), startTime, endTime);
         event.setColor(getResources().getColor(R.color.event_color_03));
         events.add(event);
 
@@ -89,7 +89,7 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
         endTime = (Calendar) startTime.clone();
         endTime.add(Calendar.HOUR_OF_DAY, 2);
         endTime.set(Calendar.MONTH, newMonth - 1);
-        event = new WeekViewEvent(2, getEventTitle(startTime), startTime, endTime);
+        event = new WeekViewEvent(4, getEventTitle(startTime), startTime, endTime);
         event.setColor(getResources().getColor(R.color.event_color_02));
         events.add(event);
 
@@ -102,7 +102,7 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
         endTime = (Calendar) startTime.clone();
         endTime.add(Calendar.HOUR_OF_DAY, 3);
         endTime.set(Calendar.MONTH, newMonth - 1);
-        event = new WeekViewEvent(3, getEventTitle(startTime), startTime, endTime);
+        event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
         event.setColor(getResources().getColor(R.color.event_color_03));
         events.add(event);
 
@@ -114,7 +114,7 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
         startTime.set(Calendar.YEAR, newYear);
         endTime = (Calendar) startTime.clone();
         endTime.add(Calendar.HOUR_OF_DAY, 3);
-        event = new WeekViewEvent(4, getEventTitle(startTime), startTime, endTime);
+        event = new WeekViewEvent(6, getEventTitle(startTime), startTime, endTime);
         event.setColor(getResources().getColor(R.color.event_color_04));
         events.add(event);
 
@@ -126,7 +126,7 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
         startTime.set(Calendar.YEAR, newYear);
         endTime = (Calendar) startTime.clone();
         endTime.add(Calendar.HOUR_OF_DAY, 3);
-        event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
+        event = new WeekViewEvent(7, getEventTitle(startTime), startTime, endTime);
         event.setColor(getResources().getColor(R.color.event_color_01));
         events.add(event);
 
@@ -138,7 +138,7 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
         startTime.set(Calendar.YEAR, newYear);
         endTime = (Calendar) startTime.clone();
         endTime.add(Calendar.HOUR_OF_DAY, 3);
-        event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
+        event = new WeekViewEvent(8, getEventTitle(startTime), startTime, endTime);
         event.setColor(getResources().getColor(R.color.event_color_02));
         events.add(event);
 
@@ -150,7 +150,7 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
         startTime.set(Calendar.YEAR, newYear);
         endTime = (Calendar) startTime.clone();
         endTime.add(Calendar.HOUR_OF_DAY, 23);
-        event = new WeekViewEvent(7, getEventTitle(startTime), null, startTime, endTime, true);
+        event = new WeekViewEvent(9, getEventTitle(startTime), null, startTime, endTime, true);
         event.setColor(getResources().getColor(R.color.event_color_04));
         events.add(event);
         events.add(event);
@@ -164,7 +164,7 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
         endTime = (Calendar) startTime.clone();
         endTime.set(Calendar.DAY_OF_MONTH, 10);
         endTime.set(Calendar.HOUR_OF_DAY, 23);
-        event = new WeekViewEvent(8, getEventTitle(startTime), null, startTime, endTime, true);
+        event = new WeekViewEvent(10, getEventTitle(startTime), null, startTime, endTime, true);
         event.setColor(getResources().getColor(R.color.event_color_03));
         events.add(event);
 
@@ -179,7 +179,7 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
         startTime.set(Calendar.YEAR, newYear);
         endTime = (Calendar) startTime.clone();
         endTime.set(Calendar.DAY_OF_MONTH, 11);
-        event = new WeekViewEvent(8, getEventTitle(startTime), null, startTime, endTime, true);
+        event = new WeekViewEvent(11, getEventTitle(startTime), null, startTime, endTime, true);
         event.setColor(getResources().getColor(R.color.event_color_01));
         events.add(event);
 

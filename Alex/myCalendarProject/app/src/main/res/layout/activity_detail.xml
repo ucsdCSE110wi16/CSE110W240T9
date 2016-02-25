@@ -1,20 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- activity_detail.xml includes app_bar_detail.xml -->
-
-<android.support.v4.widget.DrawerLayout
-    android:id="@+id/drawer_layout"
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:context=".MainActivity">
 
-    <include
-        layout="@layout/app_bar_detail"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nav_bar_height_short"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+        <!--android:background="?attr/colorPrimary"-->
 
 
-</android.support.v4.widget.DrawerLayout>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_finished_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:src="@drawable/ic_done_black_24dp"
+        android:tint="@color/colorWhite"/>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+        android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+        android:layout_marginTop="@dimen/nav_bar_height_short"
+        android:background="@color/colorWhite"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/event_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+            android:gravity="center"
+            android:text="Event Name"
+            android:textSize="@dimen/text_size_XL"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/event_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+            android:gravity="center"
+            android:text="Event Location"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="italic"/>
+
+        <!--<TextView-->
+        <!--android:id="@+id/username"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_above="@+id/email"-->
+        <!--android:layout_alignLeft="@+id/profile_image"-->
+        <!--android:layout_alignStart="@+id/profile_image"-->
+        <!--android:gravity="left"-->
+        <!--android:paddingBottom="4dp"-->
+        <!--android:text="Comp. Sci. Tutorials"-->
+        <!--android:textColor="#FFF"-->
+        <!--android:textSize="14sp"-->
+        <!--android:textStyle="bold"/>-->
+
+        <TextView
+            android:id="@+id/event_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+            android:gravity="center"
+            android:text="Event Time"
+            android:textSize="@dimen/text_size_large"/>
+
+        <TextView
+            android:id="@+id/event_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+            android:text="This is a description of the event."
+            android:textSize="@dimen/text_size_medium"/>
+
+    </LinearLayout>
+
+
+    <!--<android.support.v4.widget.NestedScrollView-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="fill_vertical"-->
+    <!--android:fillViewport="true"-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/event_description"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:gravity="center_horizontal"-->
+    <!--android:text="hello world"-->
+    <!--android:textSize="@dimen/text_size_large"-->
+    <!--android:textStyle="bold"/>-->
+
+    <!--</android.support.v4.widget.NestedScrollView>-->
+
+
+</android.support.design.widget.CoordinatorLayout>
