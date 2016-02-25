@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_calender_view"
+            android:icon="@android:drawable/ic_menu_day"
+            android:title="Calender View" />
+        <item
+            android:id="@+id/nav_add_event"
+            android:icon="@android:drawable/ic_menu_add"
+            android:title="Add Event" />
+        <item
+            android:id="@+id/nav_finished_event"
+            android:icon="@android:drawable/ic_menu_agenda"
+            android:title="Finished Events" />
+        <item
+            android:id="@+id/nav_sync"
+            android:icon="@android:drawable/ic_menu_rotate"
+            android:title="Sync Calender" />
+    </group>
+
+
+    <item
+        android:checkableBehavior="single"
+        android:title="Tools">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@android:drawable/ic_menu_manage"
+                android:title="Settings" />
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@android:drawable/ic_menu_help"
+                android:title="Help" />
+        </menu>
+    </item>
+
+</menu>
