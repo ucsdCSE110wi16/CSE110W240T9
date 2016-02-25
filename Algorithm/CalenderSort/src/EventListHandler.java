@@ -1,17 +1,50 @@
-//import java.io.FileInputStream;
-//import java.io.IOException;
-import java.io.ObjectInputStream;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 public class EventListHandler{
 
-	private ObjectInputStream objIn; 
 	private StaticEventList staticList;
 	private DynamicEventList dynamicList;
+	private ArrayList<CalendarEvent> events; //list to store all events in one given day
 
 
 	public EventListHandler() {}
+	
+	public void clearEvents(){
+		events.clear();
+	}
+	
+	public ArrayList<CalendarEvent> getEvents() {
+		return events;
+	}
+
+	public void setEvents(ArrayList<CalendarEvent> events) {
+		this.events = events;
+	}
+	
+    public ArrayList<CalendarEvent> getEventsByDate (String dateKey) throws CalendarError {
+		if (dateKey == null)
+			throw new CalendarError("Null Event");
+		
+		events = new ArrayList<CalendarEvent>();
+		ArrayList<StaticEvent> staticArrayList = staticList.getList();
+		if (staticArrayList != null){
+		for(int i=0; i<staticArrayList.size(); i++){
+			if(staticArrayList.get(i).getDateKey().contains(dateKey)){
+				events.add(staticArrayList.get(i));
+			}
+		}}
+		ArrayList<DynamicEvent> dynamicArrayList = dynamicList.getList();
+		if (dynamicArrayList != null){
+		for(int i=0; i<dynamicArrayList.size(); i++){
+			if(dynamicArrayList.get(i).getDateKey().contains(dateKey)){
+				events.add(dynamicArrayList.get(i));
+			}
+		}}
+		
+		return events;
+	}
 	
 	public void initStaticList(){
 		staticList = new StaticEventList();
@@ -47,6 +80,7 @@ public class EventListHandler{
 	public boolean createStaticEvent(String name, String location, Calendar startTime, Calendar endTime,
 			boolean isStatic, boolean isPeriodic, boolean isFinished, String description, String color) throws CalendarError{
 		//check if start and end times are valid
+		boolean check = false;
 		if(!checkValidTime(startTime, endTime)){
 			System.out.println("Fail");
 			return false;
@@ -59,18 +93,20 @@ public class EventListHandler{
 		StaticEvent staticEvent = new StaticEvent(dateKey, name, location, startTime, endTime, isStatic, 
 				isPeriodic, isFinished, description, color);
 		staticEvent.setId(dateKey + name + startTime.getHour() + startTime.getMinute());
-		boolean check = staticList.addEvent(staticEvent);
+		check = staticList.addEvent(staticEvent);
 		if(!check)
 			System.out.println("Fail");
 		return (check);
 	}
 	
-	public void clear(){
-		staticList.clearEvents();
-	}
+
 	
 	public boolean removeEventById(String Id) throws CalendarError{
 		boolean check = true;
+		if (staticList == null){
+			check = false;
+			return check;
+		}
 		check = staticList.removeEventById(Id);
 		return check;
 	};
@@ -78,45 +114,15 @@ public class EventListHandler{
 	//Create a dynamic event to add to the dynamic event list
 	public void createDynamicEvent(String name, int estimatedLength, boolean isStatic,
 			Calendar deadline, boolean isFinished, String description){
-		
-		
 
-	    return dynamicList;
+	    return;
 	}
 
-	public StaticEventList getStaticList() {
-		return staticList;
-	}
-
-	public void setStaticList(StaticEventList staticList) {
-		this.staticList = staticList;
-	}
-
-	public DynamicEventList getDynamicList() {
-		return dynamicList;
-	}
-
-	public void setDynamicList(DynamicEventList dynamicList) {
-		this.dynamicList = dynamicList;
-	}
-	public void createStaticEvent(String name, Time time, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError{
-		Slot slot = new Slot();
-		StaticEvent staticEvent = new StaticEvent(name, slot, isStatic, isPeriodic, isFinished, comment);
-	}
-
-	}
+	
 	
 	//Dynamic sort algorithm
 	public void dynamicSort(){}
 	
-	//key is date
-	public ArrayList<StaticEvent> getStaticEventsByKey(String key) throws CalendarError{
-		return staticList.addEventList(key);
-	}
-	
-	public ArrayList<DynamicEvent> getDynamicEventsByKey(String key){
-		return null;
-	}
 
 }
 
