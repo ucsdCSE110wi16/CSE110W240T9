@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
 public class DynamicEvent implements CalendarEvent{
 
@@ -15,7 +16,18 @@ public class DynamicEvent implements CalendarEvent{
 	private Calendar deadline;
 	private int estimatedLength; // estimated time to complete
 
+=======
+public class DynamicEvent implements CalendarEvent{
 
+	private String Id;
+	private Time deadline;
+	private int estimatedLength;
+	private String name;
+	private Slot slot;
+	private boolean isStatic;
+	private boolean isFinished;
+	private String comment = "";
+>>>>>>> dfa1fce35586f406121b47a9e23909eb089dfbee
 	
 	public DynamicEvent(String Id, String dateKey, String name, boolean isStatic, String location, String description, String color,
 			Calendar deadline) throws CalendarError{
@@ -90,6 +102,7 @@ public class DynamicEvent implements CalendarEvent{
 	public void setId(String id) {
 		this.Id = id;
 	}
+<<<<<<< HEAD
 
 	public String getDateKey() {
 		return dateKey;
@@ -132,5 +145,7 @@ public class DynamicEvent implements CalendarEvent{
 		this.color = color;
 	}
 
-
+	
+=======
+>>>>>>> dfa1fce35586f406121b47a9e23909eb089dfbee
 }
