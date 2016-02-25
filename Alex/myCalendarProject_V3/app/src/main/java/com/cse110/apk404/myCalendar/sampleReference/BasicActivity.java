@@ -1,7 +1,8 @@
-package com.cse110.apk404.myCalendar;
+package com.cse110.apk404.myCalendar.sampleReference;
 
 import com.alamkanak.weekview.WeekViewEvent;
 import com.cse110.apk404.myCalendar.R;
+import com.cse110.apk404.myCalendar.sampleReference.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;

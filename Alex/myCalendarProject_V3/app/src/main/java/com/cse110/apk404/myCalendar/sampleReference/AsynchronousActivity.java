@@ -1,4 +1,4 @@
-package com.cse110.apk404.myCalendar;
+package com.cse110.apk404.myCalendar.sampleReference;
 
 import android.widget.Toast;
 

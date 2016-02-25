@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.cse110.apk404.myCalendar.BaseActivity"
+    tools:context=".sampleReference.BaseActivity"
     android:background="#fff">
 
     <com.alamkanak.weekview.WeekView
