@@ -95,7 +95,9 @@ public class EventListHandler{
 		String dateKey = startTime.DateKey();
 		StaticEvent staticEvent = new StaticEvent(dateKey, name, location, startTime, endTime, isStatic, 
 				isPeriodic, isFinished, description, color);
-		staticEvent.setId(randomno.nextLong());
+		staticEvent.setId(Long.parseLong(staticEvent.getStartTime().getYear() + ""
+				+ staticEvent.getStartTime().getMonth() + staticEvent.getStartTime().getDay() + 
+				"" + Math.abs(randomno.nextInt(999999999))));
 		check = staticList.addEvent(staticEvent);
 		if(!check)
 			System.out.println("Fail");
