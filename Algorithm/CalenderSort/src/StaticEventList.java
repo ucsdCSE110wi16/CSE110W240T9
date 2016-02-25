@@ -32,14 +32,14 @@ public class StaticEventList implements CalendarEventList{
 	
 
     
-    public boolean removeEventById(Long temp) throws CalendarError {
+    public boolean removeEventById(int temp) throws CalendarError {
     	boolean check = false;
-		if (temp == null)
+		if (temp == 0)
 			throw new CalendarError("Null Event");
 		StaticEvent eventToRemove;
 		for (int i = 0; i< staticList.size(); i++){
 			eventToRemove = staticList.get(i);
-			  if (eventToRemove.getId().equals(temp)){
+			  if (eventToRemove.getId() == temp){
 			    staticList.remove(eventToRemove);
 			    check = true;
 			  }

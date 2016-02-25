@@ -95,9 +95,8 @@ public class EventListHandler{
 		String dateKey = startTime.DateKey();
 		StaticEvent staticEvent = new StaticEvent(dateKey, name, location, startTime, endTime, isStatic, 
 				isPeriodic, isFinished, description, color);
-		staticEvent.setId(Long.parseLong(staticEvent.getStartTime().getYear() + ""
-				+ staticEvent.getStartTime().getMonth() + staticEvent.getStartTime().getDay() + 
-				"" + Math.abs(randomno.nextInt(999999999))));
+		staticEvent.setId(Integer.parseInt(staticEvent.getStartTime().getMonth() + staticEvent.getStartTime().getDay() + "" +
+				staticEvent.getStartTime().getHour() + "" + randomno.nextInt(9999)));
 		check = staticList.addEvent(staticEvent);
 		if(!check)
 			System.out.println("Fail");
@@ -106,7 +105,7 @@ public class EventListHandler{
 	
 
 	
-	public boolean removeEventById(Long temp) throws CalendarError{
+	public boolean removeEventById(int temp) throws CalendarError{
 		boolean check = true;
 		if (staticList == null){
 			check = false;
