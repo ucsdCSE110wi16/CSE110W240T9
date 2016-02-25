@@ -145,14 +145,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.commit();
             // Handle the camera action
 
-        } else if (id == R.id.nav_finished_event) {
-            //Set the fragment initially
-            FinishedEventsFragment fragment = new FinishedEventsFragment();
-            android.support.v4.app.FragmentTransaction fragmentTransaction =
-                    getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-            fragmentTransaction.commit();
-
         } else if (id == R.id.nav_add_event) {
 //            Intent intent = new Intent(this, AddEventActivity.class);
 //            this.startActivity(intent);

@@ -43,8 +43,6 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
-        android:layout_marginRight="@dimen/padding_between_text_view_in_details"
         android:layout_gravity="top"
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -67,11 +65,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
                 android:layout_marginTop="@dimen/padding_between_text_view_in_details"
                 android:gravity="center"
                 android:text="Event Name"
                 android:textSize="@dimen/text_size_XL"
                 android:textStyle="bold"/>
+
 
             <TextView
                 android:id="@+id/event_location"
@@ -79,6 +80,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
                 android:gravity="center"
                 android:text="Event Location"
                 android:textSize="@dimen/text_size_large"
@@ -91,6 +94,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
                 android:gravity="center"
                 android:text="Event Time"
                 android:textSize="@dimen/text_size_large"/>
@@ -101,9 +106,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/padding_between_text_view_in_details"
-                android:layout_marginBottom="32dp"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginBottom="@dimen/padding_between_text_view_in_details"
                 android:text="This is a description of the event."
                 android:textSize="@dimen/text_size_medium"/>
+
+            <android.support.v4.widget.Space
+                android:layout_height="@dimen/padding_between_text_view_in_details"
+                android:layout_width="match_parent" />
 
         </LinearLayout>
 

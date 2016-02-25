@@ -19,6 +19,7 @@
     <string name="action_finish_event">Archive Event</string>
     <string name="action_unfinish_event">Set Event Active</string>
     <string name="action_delete_event">Delete Event</string>
+    <string name="action_edit_event">Edit Event</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

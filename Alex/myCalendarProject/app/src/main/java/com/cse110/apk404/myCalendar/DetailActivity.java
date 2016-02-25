@@ -54,7 +54,7 @@ public class DetailActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Event is archived", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                Snackbar.make(view, "Event is marked as finished and archived", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                 fab.hide();
 
@@ -68,7 +68,7 @@ public class DetailActivity extends AppCompatActivity {
                     public void run() {
                         finish();
                     }
-                }, 1200);
+                }, 1500);
             }
         });
 
