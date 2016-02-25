@@ -1,5 +1,6 @@
 package com.cse110.apk404.myCalendar;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,28 +8,18 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.Typeface;
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v7.app.AppCompatActivity;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
+import android.widget.TextView;
+import java.text.DateFormat;
+import java.util.Calendar;
 
-import com.cse110.apk404.myCalendar.R;
-
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 
 /**
  * Created by will.jiang on 2/24/16.
@@ -36,6 +27,12 @@ import android.view.MenuItem;
 public class AddEventActivity extends AppCompatActivity{
 
     private Button done;
+    private Button setStart;
+    private Button setEnd;
+
+    DateFormat fmtTime=DateFormat.getDateTimeInstance();
+//    TextView timeLabel;
+    Calendar time=Calendar.getInstance();
 
     /*the setDate funtion*/
     public void setDate(View view)
@@ -44,8 +41,17 @@ public class AddEventActivity extends AppCompatActivity{
         pickerDialogs.show(getSupportFragmentManager(),"date_picker");
     }
 
+    TimePickerDialog.OnTimeSetListener timePicker =new TimePickerDialog.OnTimeSetListener() {
+        public void onTimeSet(TimePicker view, int hourOfDay,
+                              int minute) {
+            time.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            time.set(Calendar.MINUTE, minute);
+//            timeLabel.setText(fmtTime.format(time.getTime()));
+        }
+    };
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate (Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_form);
@@ -72,6 +78,20 @@ public class AddEventActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+
+        setStart=(Button)findViewById(R.id.startTime);
+
+        setStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new TimePickerDialog(AddEventActivity.this, timePicker,
+                        time.get(Calendar.HOUR_OF_DAY),
+                        time.get(Calendar.MINUTE), true).show();
+            }
+        });
+
+//        timeLabel=(TextView)findViewById(R.id.time);
+//        timeLabel.setText(fmtTime.format(time.getTime()));
 
     }
 }
