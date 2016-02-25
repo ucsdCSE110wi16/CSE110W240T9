@@ -25,6 +25,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 
 /**
@@ -59,14 +60,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         /* Floating action button */
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        Button fab = (Button) findViewById(R.id.fab);
         /* Add Snackbar on click */
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Add Event", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-//                Intent intent = new Intent(MainActivity.this, AddEventActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, AddEventActivity.class);
+                startActivity(intent);
             }
         });
 

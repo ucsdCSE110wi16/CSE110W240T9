@@ -58,19 +58,21 @@ __Week 6__
 * ~~Finished working the ability to show month view of calendar and testing the main view (Kristine, Fang, Alex, William)~~
 * ~~Finished creating app icon (Alex)~~
 * ~~Keep working on Database (Zhiwei)~~
-* Creating new Event: Static Event (can be periodic) and Dynamic Event (Nonperiodic, can locate a time for itself) and updating in database. (Kristine, Fang, Alex, William, Zhiwei)
-* Prototyping and testing event self allocation algorithm. (Scarlet, Steve)
+* ~~Creating new Event: Static Event (can be periodic)~~ 
+* ~~Creating new Event: Dynamic Event (Nonperiodic, can locate a time for itself)~~
+* Updating new Event in database. (Kristine, Fang, Alex, William, Zhiwei)
+* ~~Prototyping and testing event self allocation algorithm. (Scarlet, Steve)~~
 
 
 __Week 7__
 * Keep working on as well as testing Creating new event mechanism. (Kristine, Fang, Alex, William, Zhiwei)
-* Integrate show month view with create new event view and create smooth transitions in between. (Kristine, Fang, Alex, William)
+* ~~Integrate show month view with create new event view and create smooth transitions in between. (Kristine, Fang, Alex, William)~~
 * Finishing event self allocation algorithm. (Scarlet, Steve)
-* Deleting event and updating deleted events in database. (Zhiwei)
-* Updating UI using Material Design. (Kristine, Fang, Alex, William)
+* ~~Deleting event and updating deleted events in database. (Zhiwei)~~
+* ~~Updating UI using Material Design. (Kristine, Fang, Alex, William)~~
 
 __Week 8__
-* Add finished event to finished List (Kristine, Fang, Alex, William, Zhiwei)
+* ~~Add finished event to finished List (Kristine, Fang, Alex, William, Zhiwei)~~
 * Testing on basic features such as adding and deleting events. (everyone)
 
 __Week 9__  
