@@ -7,7 +7,7 @@ import java.util.Date;
 public class Tester {
 
 	public static void main(String[] args)  throws CalendarError {
-		Long temp = 0L;
+		int temp = 0;
 		Calendar startTime = new Calendar(2016, 1, 31, 22, 59, 6, "Jan");
 		Calendar endTime = new Calendar(2016, 1, 31, 23, 59, 6, "Jan");
 		Calendar startTime2 = new Calendar(2016, 1, 31, 21, 59, 6, "Jan");
