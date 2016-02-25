@@ -41,7 +41,7 @@
         android:layout_gravity="right|bottom"
         android:layout_marginBottom="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
-        android:src="@android:drawable/checkbox_on_background"
+        android:src="@drawable/ic_done_black_24dp"
         android:tint="@color/colorWhite"/>
 
 </android.support.design.widget.CoordinatorLayout>

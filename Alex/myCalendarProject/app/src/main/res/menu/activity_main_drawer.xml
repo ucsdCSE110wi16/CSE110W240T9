@@ -4,19 +4,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_calender_view"
-            android:icon="@android:drawable/ic_menu_day"
+            android:icon="@drawable/ic_today_black_24dp"
             android:title="Calender View" />
         <item
             android:id="@+id/nav_add_event"
-            android:icon="@android:drawable/ic_menu_add"
+            android:icon="@drawable/ic_add_black_24dp"
             android:title="Add Event" />
         <item
             android:id="@+id/nav_finished_event"
-            android:icon="@android:drawable/ic_menu_agenda"
+            android:icon="@drawable/ic_event_black_24dp"
             android:title="Finished Events" />
         <item
             android:id="@+id/nav_sync"
-            android:icon="@android:drawable/ic_menu_rotate"
+            android:icon="@drawable/ic_backup_black_24dp"
             android:title="Sync Calender" />
     </group>
 

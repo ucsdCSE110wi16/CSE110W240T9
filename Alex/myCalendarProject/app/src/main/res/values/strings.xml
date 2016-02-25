@@ -16,7 +16,8 @@
     <string name="action_settings">Settings</string>
 
     <string name="app_detail_activity">Event Details</string>
-    <string name="action_finish_event">Set Event As Finished</string>
+    <string name="action_finish_event">Archive Event</string>
+    <string name="action_unfinish_event">Set Event Active</string>
     <string name="action_delete_event">Delete Event</string>
 
     <!-- TODO: Remove or change this placeholder text -->

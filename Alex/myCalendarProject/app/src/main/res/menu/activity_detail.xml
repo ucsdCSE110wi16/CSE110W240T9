@@ -12,4 +12,10 @@
         app:showAsAction="never"
         android:orderInCategory="100"
         android:title="@string/action_finish_event"/>
+
+    <item
+        android:id="@+id/action_unfinish_event"
+        app:showAsAction="never"
+        android:orderInCategory="100"
+        android:title="@string/action_unfinish_event"/>
 </menu>

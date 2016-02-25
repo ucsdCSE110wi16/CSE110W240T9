@@ -9,6 +9,8 @@
     <color name="colorSecondaryText">#727272</color>
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGreen">#26A69A</color>
+    <color name="colorGreenDark">#009688</color>
     <color name="colorDivider">#B6B6B6</color>
     <color name="colorBackground">#003e50</color>
     <color name="time_color">#1ba4b5</color>

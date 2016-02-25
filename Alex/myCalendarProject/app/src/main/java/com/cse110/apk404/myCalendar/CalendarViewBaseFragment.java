@@ -2,6 +2,7 @@ package com.cse110.apk404.myCalendar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,11 +47,13 @@ public abstract class CalendarViewBaseFragment extends Fragment implements WeekV
     private int mWeekViewType = TYPE_THREE_DAY_VIEW;
     private WeekView mWeekView;
 
+    View rootView = null;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_calendar_view, container, false);
+        rootView = inflater.inflate(R.layout.fragment_calendar_view, container, false);
 
         // Get a reference for the week view in the layout.
         mWeekView = (WeekView) rootView.findViewById(R.id.weekView);
@@ -174,7 +177,9 @@ public abstract class CalendarViewBaseFragment extends Fragment implements WeekV
 
     @Override
     public void onEventClick(WeekViewEvent event, RectF eventRect) {
-        Toast.makeText(getActivity(), "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
+        Snackbar.make(rootView, "Clicked " + event.getName(), Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
 
         Intent intent = new Intent(getActivity(), DetailActivity.class);
         startActivity(intent);
@@ -182,12 +187,16 @@ public abstract class CalendarViewBaseFragment extends Fragment implements WeekV
 
     @Override
     public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
-        Toast.makeText(getActivity(), "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
+        Snackbar.make(rootView, "Long pressed event: " + event.getName(), Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
     }
 
     @Override
     public void onEmptyViewLongPress(Calendar time) {
-        Toast.makeText(getActivity(), "Empty view long pressed: " + getEventTitle(time), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), "Empty view long pressed: " + getEventTitle(time), Toast.LENGTH_SHORT).show();
+        Snackbar.make(rootView, "Empty view long pressed: " + getEventTitle(time), Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
     }
 
     public WeekView getWeekView() {

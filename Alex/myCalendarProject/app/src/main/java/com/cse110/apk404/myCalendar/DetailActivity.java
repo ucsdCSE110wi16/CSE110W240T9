@@ -5,7 +5,9 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -34,7 +36,7 @@ import android.view.MenuItem;
 public class DetailActivity extends AppCompatActivity {
 
     Toolbar toolbar = null;
-
+    DetailActivity activity = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,19 +53,29 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         /* Floating action button */
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_finished_event);
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_finished_event);
         /* Add Snackbar on click */
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Event Finished", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-//                Intent intent = new Intent(MainActivity.this, AddEventActivity.class);
-//                startActivity(intent);
+//                Snackbar.make(view, "Event is set finished", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+
+                fab.hide();
+
+                // TODO - set the event to be finished here then resume parent activity
+
+
+                // Wait 2 seconds, then finish and resume parent activity (calendar view)
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        finish();
+                    }
+                }, 400);
             }
         });
     }
-
 
 
     @Override
