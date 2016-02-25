@@ -2,6 +2,8 @@
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.PriorityQueue;
+import java.util.*;
 
 
 public class EventListHandler{
@@ -48,6 +50,10 @@ public class EventListHandler{
 	
 	public void initStaticList(){
 		staticList = new StaticEventList();
+	}
+	
+	public void initDynamicList(){
+		dynamicList = new DynamicEventList();
 	}
 
 	public StaticEventList getStaticList() {
@@ -122,10 +128,50 @@ public class EventListHandler{
 	
 	
 	//Dynamic sort algorithm
-	public void dynamicSort(){}
+	public boolean dynamicSort(){
+		
+		Comparator<CalendarEvent> comparator = new Comparator<CalendarEvent>(){
+
+			@Override
+			public int compare(CalendarEvent o1, CalendarEvent o2) {
+				return Double.compare(o1.getStartTime().time(), o2.getStartTime().time());
+			}
+				
+		};
+				
+		PriorityQueue<DynamicEvent> currDynamicEList = new PriorityQueue<DynamicEvent>(comparator);
+		PriorityQueue<StaticEvent> currStaticEList = new PriorityQueue<StaticEvent>(comparator);
+		ArrayList<StaticEvent> staticArrayList = staticList.getList();
+		ArrayList<DynamicEvent> dynamicArrayList = null;
+		if(dynamicList!=null){
+		dynamicArrayList = dynamicList.getList();}
+		ArrayList<StaticEvent> freeList = new ArrayList<StaticEvent>();
+		if(staticArrayList != null){
+		for(int i=0; i<staticArrayList.size();i++){
+			if(!staticArrayList.get(i).isFinished()){
+				currStaticEList.add(staticArrayList.get(i));
+			}
+		}}
+		if(dynamicArrayList != null){
+		for(int i=0; i<dynamicArrayList.size();i++){
+			if(!dynamicArrayList.get(i).isFinished()){
+				currDynamicEList.add(dynamicArrayList.get(i));
+			}
+		}}
+		while (!currStaticEList.isEmpty()){
+			System.out.println(currStaticEList.poll().getStartTime().time());
+		}
+		return false;
+	}
+	
+	private PriorityQueue<StaticEvent> createStaticQueue(PriorityQueue<StaticEvent> currStaticEList){
+		return null;
+		
+	}
 	
 
 }
+
 
 
 /*
@@ -137,51 +183,4 @@ EventHandler.removeEventById(id); ...DONE
 
 setEventFinished(String Id)
 addColor field to staticEvent.... Done
-=======
-	//Create a static event to add to the static event list
-	public boolean createStaticEvent(String dateKey, String name, String location, Time startTime,Time endTime, boolean isStatic, boolean isPeriodic, boolean isFinished, String comment) throws CalendarError{
-		if (isStatic == false)
-			return false;
-		Slot slot = new Slot(dateKey,startTime, endTime);
-		boolean check = true;
-		StaticEvent staticEvent = new StaticEvent(dateKey, name, location, slot, isStatic, isPeriodic, isFinished, comment);
-		staticEvent.setId(dateKey + name + startTime.getHour() + startTime.getMinute());
-		check = staticList.addEvent(staticEvent);
-		return check;
-	}
-	
-	public void clear(){
-		staticList.clearEvents();
-	}
-	
-	public boolean removeEventById(String Id) throws CalendarError{
-		boolean check = true;
-		check = staticList.removeEventById(Id);
-		return check;
-	};
-	
-	//Create a dynamic event to add to the dynamic event list
-	public void createDynamicEvent(){}
-	
-	//Dynamic sort algorithm
-	public void dynamicSort(){}
-	
-	//key is date
-	public ArrayList<StaticEvent> getStaticEventsByKey(String key) throws CalendarError{
-		return staticList.addEventList(key);
-	}
-	
-	public ArrayList<DynamicEvent> getDynamicEventsByKey(String key){
-		return null;
-	}
-	
-}
-/*
-ArrayList<StaticEvent>() events = EventListHandler.getStaticEventsByDateKey(string dateKey); ...DONE
-ArrayList<DynamicEvent>() events = EventListHandler.getDynamicEventsByDateKey(string dateKey);
-
-StaticEvent se;
-string id = se.getId();
-EventHandler.removeEventById(id); ...DONE
->>>>>>> dfa1fce35586f406121b47a9e23909eb089dfbee
 */
