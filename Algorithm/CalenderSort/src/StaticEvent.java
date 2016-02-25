@@ -1,7 +1,7 @@
 
 public class StaticEvent implements CalendarEvent{
 
-	private String Id; //Id is in the format of DateKey + Name + startTime such as 18022016CSE1102359
+	private Long Id; //Random Long Number
 	private String dateKey; //dateKey is the date of the event 12 Feb 2016
 	private String name;  //name of the event
 
@@ -89,11 +89,11 @@ public StaticEvent(String dateKey, String name, String location, Calendar startT
 	}
 
 
-	public String getId() {
+	public Long getId() {
 		return Id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.Id = id;
 	}
 
@@ -135,5 +135,7 @@ public StaticEvent(String dateKey, String name, String location, Calendar startT
 	public void setColor(String color) {
 		this.color = color;
 	}
+
+
 
 }
