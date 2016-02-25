@@ -1,9 +1,11 @@
 package com.cse110.apk404.myCalendar;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -183,7 +185,9 @@ public abstract class CalendarViewBaseFragment extends Fragment implements WeekV
 
         // pass of the id of the clicked event to DetailActivity for loading event details
         Intent intent = new Intent(getActivity(), DetailActivity.class);
-        intent.putExtra("id",event.getId());
+        int id = (int) event.getId(); // cast the id to int because getId() returns a long
+        intent.putExtra("id", id);
+        Log.d("id", id + "");
         startActivity(intent);
     }
 
