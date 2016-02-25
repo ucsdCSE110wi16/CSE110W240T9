@@ -19,11 +19,11 @@
             android:textSize="25sp"
             android:textStyle="bold|italic" />
 
-        <!--<android.support.design.widget.TextInputLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="8dp"-->
-            <!--android:layout_marginTop="8dp">-->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
 
             <EditText
                 android:id="@+id/nameOfEvent"
@@ -31,13 +31,13 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:hint="Event Name" />
-        <!--</android.support.design.widget.TextInputLayout>-->
+        </android.support.design.widget.TextInputLayout>
 
-        <!--<android.support.design.widget.TextInputLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="8dp"-->
-            <!--android:layout_marginTop="8dp">-->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
 
             <EditText
                 android:id="@+id/locationOfEvent"
@@ -46,7 +46,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1.63"
                 android:hint="Location of Event" />
-        <!--</android.support.design.widget.TextInputLayout>-->
+        </android.support.design.widget.TextInputLayout>
 
         <Spinner
             android:id="@+id/typeOfEvent"
@@ -90,11 +90,11 @@
             android:layout_height="wrap_content"
             android:text="Set End Time" />
 
-        <!--<android.support.design.widget.TextInputLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="8dp"-->
-            <!--android:layout_marginTop="8dp">-->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
 
             <EditText
                 android:id="@+id/notes"
@@ -103,7 +103,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="0.36"
                 android:hint="Notes" />
-        <!--</android.support.design.widget.TextInputLayout>-->
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/btnDoneAddEvent"
