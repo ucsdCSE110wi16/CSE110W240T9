@@ -115,13 +115,13 @@ public class Calendar{
 		return DAY + " " + monthString + " " + YEAR;
 	}
 	
-	public Double time(){
+	public Long time(){
 		int DAY = this.getDay();
 		int MONTH = this.getMonth();
 		int YEAR = this.getYear();
 		int HOUR = this.getHour();
 		int MINUTE = this.getMinute();
-		return Double.parseDouble(YEAR + "" + MONTH + "" + DAY + ""+ HOUR + "" + MINUTE);
+		return Long.parseLong(YEAR + "" + MONTH + "" + DAY + ""+ HOUR + "" + MINUTE);
 	}
 
 	public boolean DateLaterThanCurrentTime(){

@@ -1,8 +1,3 @@
-
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.PriorityQueue;
 import java.util.*;
 
 
@@ -88,6 +83,7 @@ public class EventListHandler{
 			boolean isStatic, boolean isPeriodic, boolean isFinished, String description, String color) throws CalendarError{
 		//check if start and end times are valid
 		boolean check = false;
+		Random randomno = new Random();
 		if(!checkValidTime(startTime, endTime)){
 			System.out.println("Fail");
 			return false;
@@ -99,7 +95,7 @@ public class EventListHandler{
 		String dateKey = startTime.DateKey();
 		StaticEvent staticEvent = new StaticEvent(dateKey, name, location, startTime, endTime, isStatic, 
 				isPeriodic, isFinished, description, color);
-		staticEvent.setId(dateKey + name + startTime.getHour() + startTime.getMinute());
+		staticEvent.setId(randomno.nextLong());
 		check = staticList.addEvent(staticEvent);
 		if(!check)
 			System.out.println("Fail");
@@ -108,20 +104,19 @@ public class EventListHandler{
 	
 
 	
-	public boolean removeEventById(String Id) throws CalendarError{
+	public boolean removeEventById(Long temp) throws CalendarError{
 		boolean check = true;
 		if (staticList == null){
 			check = false;
 			return check;
 		}
-		check = staticList.removeEventById(Id);
+		check = staticList.removeEventById(temp);
 		return check;
 	};
 	
 	//Create a dynamic event to add to the dynamic event list
 	public void createDynamicEvent(String name, int estimatedLength, boolean isStatic,
 			Calendar deadline, boolean isFinished, String description){
-
 	    return;
 	}
 
@@ -134,7 +129,7 @@ public class EventListHandler{
 
 			@Override
 			public int compare(CalendarEvent o1, CalendarEvent o2) {
-				return Double.compare(o1.getStartTime().time(), o2.getStartTime().time());
+				return Long.compare(o1.getStartTime().time(), o2.getStartTime().time());
 			}
 				
 		};
