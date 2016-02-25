@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/res/merged/debug/menu/activity_main_drawer.xml",
+        "source": "/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/src/main/res/menu/activity_main_drawer.xml"
+    }
+]

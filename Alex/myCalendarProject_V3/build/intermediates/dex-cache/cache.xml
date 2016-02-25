@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/will.jiang/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/pre-dexed/debug/butterknife-7.0.1_8e095546a439df9899f0c6dd12b21c53a21caf1d.jar" />
+    </item>
+    <item
+        jar="/Users/will.jiang/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/a681c044244d9fc375198588297a39ba78028423/retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/pre-dexed/debug/retrofit-1.9.0_5b4687a6201d8ed732a2589a961bc6b40872d815.jar" />
+    </item>
+    <item
+        jar="/Applications/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1_886e395964f2e6792b354089c250a058d57c58f3.jar" />
+    </item>
+    <item
+        jar="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.1.1_0e90e729a523fff3cba8c4d057d58c4fdf73487f.jar" />
+    </item>
+    <item
+        jar="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/exploded-aar/com.github.alamkanak/library/1.2.6/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="aa702fcd1d370e1dbbc866514e03737457908c2f">
+        <dex dex="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/pre-dexed/debug/com.github.alamkanak-library-1.2.6_de1ab06d86343dd5a58f5479114d0c20c8466702.jar" />
+    </item>
+    <item
+        jar="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1_0796a735841fc76ea175ace6091fbd103f1f0fe9.jar" />
+    </item>
+    <item
+        jar="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
+        <dex dex="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/pre-dexed/debug/de.hdodenhof-circleimageview-1.3.0_09d7997630c151d5340902fb63a61d6048a160f7.jar" />
+    </item>
+    <item
+        jar="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.1.1_f1796cf8c35be5eadcecd5a43fabee64fcb36653.jar" />
+    </item>
+    <item
+        jar="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.1.1_ed3a1950c5c3a84a572232d66b3069174373d38d.jar" />
+    </item>
+    <item
+        jar="/Users/will.jiang/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/pre-dexed/debug/gson-2.3.1_50d56d5a6a0be325f9d17178b1c6ace3152a3b8f.jar" />
+    </item>
+    <item
+        jar="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/will.jiang/Documents/School/110Project/CSE110W240T9/Alex/myCalendarProject_V3/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.1.1_9758dfd30f1864fbe551284924338279b62932f9.jar" />
+    </item>
+
+</items>
