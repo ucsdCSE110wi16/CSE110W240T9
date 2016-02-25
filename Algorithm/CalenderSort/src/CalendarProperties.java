@@ -1,9 +1,12 @@
+import java.io.Serializable;
 
-public class CalendarProperties {
+public class CalendarProperties implements Serializable {
 	
-	private int length;//in format of minutes
+	private static final long serialVersionUID = 1L;
 	
-	public int length(Calendar startTime, Calendar endTime){
+	private int length; //in format of minutes
+	
+	public int length(CalendarDate startTime, CalendarDate endTime){
 		return length = (endTime.getHour() - startTime.getHour())*60 + 
 				endTime.getMinute() - startTime.getMinute();
 	}

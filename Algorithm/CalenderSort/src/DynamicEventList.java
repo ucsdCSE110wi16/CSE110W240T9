@@ -1,13 +1,12 @@
 import java.util.ArrayList;
 
+public class DynamicEventList implements CalendarObjectList<ArrayList<DynamicEvent>, DynamicEvent> {
 
-public class DynamicEventList{
-
-
+	private static final long serialVersionUID = 1L;
+	
 	private ArrayList<DynamicEvent> dynamicList; // an ArrayList to store the dynamic events after they are sorted
 
 	
-
 	public ArrayList<DynamicEvent> getList() {
 		return dynamicList;
 	}
@@ -15,14 +14,14 @@ public class DynamicEventList{
 	public void setList(ArrayList<DynamicEvent> list) {
 		this.dynamicList = list;
 	}
-    
 
-	public void addEvent(DynamicEvent event) throws CalendarError {
+	public boolean addEvent(DynamicEvent event) throws CalendarError {
 
 		if (event == null)
 			throw new CalendarError("Null Event");
 
 		this.dynamicList.add(event);
+		return true;
 	}
 
     public boolean removeEventById(String id) throws CalendarError {
@@ -40,7 +39,5 @@ public class DynamicEventList{
 		}
 		return check;
 	}
-
-
-
+    
 }

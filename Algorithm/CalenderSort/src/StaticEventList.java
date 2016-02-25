@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 
-public class StaticEventList implements CalendarEventList{
+public class StaticEventList implements CalendarObjectList<ArrayList<StaticEvent>, StaticEvent> {
 
+
+	private static final long serialVersionUID = 1L;
+	
 	private ArrayList<StaticEvent> staticList; //list of all static events
 
 	public StaticEventList() {
@@ -12,7 +15,6 @@ public class StaticEventList implements CalendarEventList{
 		return staticList;
 	}
 	
-
 
 	public void setList(ArrayList<StaticEvent> list) {
 		this.staticList = list;
@@ -28,8 +30,6 @@ public class StaticEventList implements CalendarEventList{
 		this.staticList.add(event);
 		return check;
 	}
-
-	
 
     
     public boolean removeEventById(int temp) throws CalendarError {

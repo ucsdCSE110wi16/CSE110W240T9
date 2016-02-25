@@ -68,7 +68,7 @@ public class EventListHandler{
 	}
 	
 
-	public boolean checkValidTime(Calendar startTime, Calendar endTime){
+	public boolean checkValidTime(CalendarDate startTime, CalendarDate endTime){
 		if (startTime.getYear() != endTime.getYear() || startTime.getMonth() != endTime.getMonth() || 
 				startTime.getDay() != endTime.getDay() ||
 				endTime.getHour() - startTime.getHour() <= 0){
@@ -79,7 +79,7 @@ public class EventListHandler{
 	}
 	
 	//Create a static event to add to the static event list
-	public boolean createStaticEvent(String name, String location, Calendar startTime, Calendar endTime,
+	public boolean createStaticEvent(String name, String location, CalendarDate startTime, CalendarDate endTime,
 			boolean isStatic, boolean isPeriodic, boolean isFinished, String description, String color) throws CalendarError{
 		//check if start and end times are valid
 		boolean check = false;
@@ -117,7 +117,7 @@ public class EventListHandler{
 	
 	//Create a dynamic event to add to the dynamic event list
 	public void createDynamicEvent(String name, int estimatedLength, boolean isStatic,
-			Calendar deadline, boolean isFinished, String description){
+			CalendarDate deadline, boolean isFinished, String description){
 	    return;
 	}
 
@@ -141,7 +141,7 @@ public class EventListHandler{
 		ArrayList<DynamicEvent> dynamicArrayList = null;
 		if(dynamicList!=null){
 		dynamicArrayList = dynamicList.getList();}
-		ArrayList<StaticEvent> freeList = new ArrayList<StaticEvent>();
+		ArrayList<StaticEvent> freeList = new ArrayList<StaticEvent>();  ///////////////////////////////////////////////DEBUG??///////////////
 		if(staticArrayList != null){
 		for(int i=0; i<staticArrayList.size();i++){
 			if(!staticArrayList.get(i).isFinished()){
