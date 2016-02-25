@@ -1,29 +1,13 @@
 package com.cse110.apk404.myCalendar;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.view.View;
 
-import com.cse110.apk404.myCalendar.R;
-
-import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,7 +42,7 @@ public class DetailActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Event is set finished", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                Snackbar.make(view, "Event is archived", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                 fab.hide();
 
@@ -72,9 +56,18 @@ public class DetailActivity extends AppCompatActivity {
                     public void run() {
                         finish();
                     }
-                }, 400);
+                }, 1000);
             }
         });
+
+        // Get the id from intent then get the event detail from the intent
+        Intent mIntent = getIntent();
+        int intValue = mIntent.getIntExtra("id", 0);
+
+        // TODO - get event information details from event list
+
+
+
     }
 
 

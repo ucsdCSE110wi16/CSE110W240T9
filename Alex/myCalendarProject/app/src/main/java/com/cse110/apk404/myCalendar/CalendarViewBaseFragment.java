@@ -181,7 +181,9 @@ public abstract class CalendarViewBaseFragment extends Fragment implements WeekV
         Snackbar.make(rootView, "Clicked " + event.getName(), Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
 
+        // pass of the id of the clicked event to DetailActivity for loading event details
         Intent intent = new Intent(getActivity(), DetailActivity.class);
+        intent.putExtra("id",event.getId());
         startActivity(intent);
     }
 

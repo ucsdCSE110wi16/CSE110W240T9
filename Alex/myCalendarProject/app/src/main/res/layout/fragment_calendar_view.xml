@@ -22,7 +22,7 @@
         app:noOfVisibleDays="3"
         app:hourSeparatorColor="@color/colorWhite"
         app:headerRowBackgroundColor="@color/toolbar"
-        android:layout_marginTop="@dimen/fab_bar_height_short"
+        android:layout_marginTop="@dimen/nav_bar_height_short"
         app:dayBackgroundColor="#05000000"
         app:todayBackgroundColor="#1848adff"
         app:headerColumnBackground="#ffffffff"
