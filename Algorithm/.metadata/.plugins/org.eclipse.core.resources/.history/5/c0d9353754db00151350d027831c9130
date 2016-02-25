@@ -1,8 +1,13 @@
-
+<<<<<<< HEAD
 
 import java.util.ArrayList;
 import java.util.Date;
-
+=======
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+>>>>>>> dfa1fce35586f406121b47a9e23909eb089dfbee
 
 public class EventListHandler{
 
@@ -11,10 +16,19 @@ public class EventListHandler{
 	private DynamicEventList dynamicList;
 	private ArrayList<CalendarEvent> events; //list to store all events in one given day
 
-
+<<<<<<< HEAD
 
 	public EventListHandler() {}
-
+	
+	public void clearEvents(){
+		events.clear();
+=======
+	public void EventListInputStream(String filename) throws IOException {
+		FileInputStream fi = new FileInputStream(filename);
+		this.objIn = new ObjectInputStream(fi);
+>>>>>>> dfa1fce35586f406121b47a9e23909eb089dfbee
+	}
+	
 	public ArrayList<CalendarEvent> getEvents() {
 		return events;
 	}
@@ -66,7 +80,7 @@ public class EventListHandler{
 		this.dynamicList = dynamicList;
 	}
 	
-
+<<<<<<< HEAD
 	public boolean checkValidTime(Calendar startTime, Calendar endTime){
 		if (startTime.getYear() != endTime.getYear() || startTime.getMonth() != endTime.getMonth() || 
 				startTime.getDay() != endTime.getDay() ||

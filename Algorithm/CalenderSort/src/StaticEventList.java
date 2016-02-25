@@ -4,7 +4,6 @@ public class StaticEventList implements CalendarEventList{
 
 	private ArrayList<StaticEvent> staticList; //list of all static events
 
-	
 	public StaticEventList() {
 		this.staticList = new ArrayList<StaticEvent>();
 	}
@@ -25,11 +24,13 @@ public class StaticEventList implements CalendarEventList{
 			check = false;
 			throw new CalendarError("Null Event");
 		}
+
 		this.staticList.add(event);
 		return check;
 	}
 
 	
+
     
     public boolean removeEventById(String id) throws CalendarError {
     	boolean check = false;
@@ -45,4 +46,5 @@ public class StaticEventList implements CalendarEventList{
 		}
 		return check;
 	}
+
 }
