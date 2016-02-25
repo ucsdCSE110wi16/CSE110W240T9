@@ -26,7 +26,6 @@ import android.widget.TextView;
 public class DetailActivity extends AppCompatActivity {
 
     Toolbar toolbar = null;
-    DetailActivity activity = this;
 
     TextView eventNameText;
     TextView eventLocationText;
@@ -100,17 +99,7 @@ public class DetailActivity extends AppCompatActivity {
         eventNameText.setText("Event Name (ID): " + id);
         eventLocationText.setText("Center Hall UCSD");
         eventTimeText.setText("10:30AM - 12:00PM");
-        eventDescriptionText.setText("Lorem ipsum dolor sit amet, " +
-                "consectetur adipiscing elit. Vivamus ut fermentum sem. Fusce ut erat risus. " +
-                "Fusce nulla justo, tempor id massa vitae, tincidunt porttitor purus. Donec vulputate " +
-                "sagittis tellus at pulvinar. Nunc quis ultrices dui. Mauris laoreet finibus nulla at " +
-                "dapibus. Proin dapibus molestie tincidunt. Duis tempor facilisis est quis molestie. " +
-                "Nulla volutpat, arcu ac hendrerit malesuada, nibh odio volutpat dolor, vitae tristique" +
-                " eros nisl eget arcu. Sed porta aliquet dui, in varius odio ultrices eget. Ut a magna " +
-                "nunc. Sed tempus auctor ex, placerat condimentum purus dictum ac.venenatis elit. Ut sit " +
-                "amet congue libero, eu euismod tortor. Praesent nunc metus, ultrices at nunc eget, grav" +
-                "ida maximus odio. Fusce pulvinar purus et hendrerit lacinia. Interdum et malesuada fames" +
-                " ac ante ipsum primis in faucibus.");
+        eventDescriptionText.setText("Info about the event");
     }
 
 
