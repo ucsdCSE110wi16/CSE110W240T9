@@ -2,9 +2,13 @@ import java.util.ArrayList;
 
 public class DynamicEventList{
 
-
+<<<<<<< HEAD
 	private ArrayList<DynamicEvent> dynamicList; // an ArrayList to store the dynamic events after they are sorted
-
+=======
+	private PriorityQueue<DynamicEvent> dynamicList; //a pq to hold all the dynamic events
+	private PriorityQueue<Calendar> timeBlock; // a pq to hold all the free time blocks
+	private ArrayList<DynamicEvent> storage; // an ArrayList to store the dynamic events after they are sorted
+>>>>>>> fb980909a4c58a85c85cad8e53cafa6cf6ea5dbc
 	
 
 	public ArrayList<DynamicEvent> getList() {

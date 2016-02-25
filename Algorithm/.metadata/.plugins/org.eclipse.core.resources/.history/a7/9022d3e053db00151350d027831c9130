@@ -21,9 +21,18 @@ public class Tester {
 		for (int i=0; i<staticArrayList.size(); i++){
 			staticEvent = staticArrayList.get(i);
 			temp = staticEvent.getId();
+<<<<<<< HEAD
+=======
 			System.out.println(staticEvent.getId());
 		}
 		
+		handler.removeEventById(temp);
+		for (int i=0; i<staticArrayList.size(); i++){
+			staticEvent = staticArrayList.get(i);
+			temp = staticEvent.getId();
+>>>>>>> fb980909a4c58a85c85cad8e53cafa6cf6ea5dbc
+			System.out.println(staticEvent.getId());
+		}
 		handler.removeEventById(temp);
 		System.out.println(staticArrayList.size());
 	}

@@ -25,6 +25,12 @@ public class Tester {
 		}
 		
 		handler.removeEventById(temp);
+		for (int i=0; i<staticArrayList.size(); i++){
+			staticEvent = staticArrayList.get(i);
+			temp = staticEvent.getId();
+			System.out.println(staticEvent.getId());
+		}
+		handler.removeEventById(temp);
 		System.out.println(staticArrayList.size());
 	}
 

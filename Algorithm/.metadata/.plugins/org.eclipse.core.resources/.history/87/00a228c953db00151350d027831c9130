@@ -1,10 +1,19 @@
+<<<<<<< HEAD
 
+=======
+//import java.io.FileInputStream;
+//import java.io.IOException;
+//import java.io.ObjectInputStream;
+>>>>>>> fb980909a4c58a85c85cad8e53cafa6cf6ea5dbc
 import java.util.ArrayList;
 import java.util.Date;
 
 public class EventListHandler{
 
-
+<<<<<<< HEAD
+=======
+//	private ObjectInputStream objIn; 
+>>>>>>> fb980909a4c58a85c85cad8e53cafa6cf6ea5dbc
 	private StaticEventList staticList;
 	private DynamicEventList dynamicList;
 	private ArrayList<CalendarEvent> events; //list to store all events in one given day
