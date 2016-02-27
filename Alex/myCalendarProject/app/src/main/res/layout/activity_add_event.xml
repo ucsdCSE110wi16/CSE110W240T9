@@ -110,12 +110,18 @@
                 android:background="@android:drawable/btn_dropdown"
                 android:spinnerMode="dropdown" />
 
-            <Spinner
-                android:id="@+id/colorDropdown"
+            <!--<Spinner-->
+                <!--android:id="@+id/colorDropdown"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="45dp"-->
+                <!--android:background="@android:drawable/btn_dropdown"-->
+                <!--android:spinnerMode="dropdown" />-->
+
+            <Button
+                android:id="@+id/pickColor"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown" />
+                android:layout_height="wrap_content"
+                android:text="Pick Color" />
 
             <Button
                 android:id="@+id/button2"
