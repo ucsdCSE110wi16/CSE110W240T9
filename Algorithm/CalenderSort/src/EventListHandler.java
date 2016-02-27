@@ -1,3 +1,5 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -123,52 +125,93 @@ public class EventListHandler{
 
 	
 	
-	//Dynamic sort algorithm
-	public boolean dynamicSort(){
-		
-		Comparator<CalendarEvent> comparator = new Comparator<CalendarEvent>(){
-
-			@Override
-			public int compare(CalendarEvent o1, CalendarEvent o2) {
-				return Long.compare(o1.getStartTime().time(), o2.getStartTime().time());
-			}
-				
-		};
-				
-		PriorityQueue<DynamicEvent> currDynamicEList = new PriorityQueue<DynamicEvent>(comparator);
-		PriorityQueue<StaticEvent> currStaticEList = new PriorityQueue<StaticEvent>(comparator);
-		ArrayList<StaticEvent> staticArrayList = staticList.getList();
-		ArrayList<DynamicEvent> dynamicArrayList = null;
-		if(dynamicList!=null){
-		dynamicArrayList = dynamicList.getList();}
-		ArrayList<StaticEvent> freeList = new ArrayList<StaticEvent>();  ///////////////////////////////////////////////DEBUG??///////////////
-		if(staticArrayList != null){
-		for(int i=0; i<staticArrayList.size();i++){
-			if(!staticArrayList.get(i).isFinished()){
-				currStaticEList.add(staticArrayList.get(i));
-			}
-		}}
-		if(dynamicArrayList != null){
-		for(int i=0; i<dynamicArrayList.size();i++){
-			if(!dynamicArrayList.get(i).isFinished()){
-				currDynamicEList.add(dynamicArrayList.get(i));
-			}
-		}}
-		while (!currStaticEList.isEmpty()){
-			System.out.println(currStaticEList.poll().getStartTime().time());
-		}
-		return false;
-	}
+//	//Dynamic sort algorithm
+//	public boolean dynamicSort(){
+//		
+//		Comparator<StaticEvent> staticcomparator = new Comparator<StaticEvent>(){
+//
+//			@Override
+//			public int compare(StaticEvent o1, StaticEvent o2) {
+//				return Long.compare(o1.getStartTime().time(), o2.getStartTime().time());
+//			}
+//				
+//		};
+//		
+//		Comparator<DynamicEvent> comparator = new Comparator<DynamicEvent>(){
+//
+//			@Override
+//			public int compare(DynamicEvent o1, DynamicEvent o2) {
+//				return Long.compare(o1.getDeadline().time(), o2.getDeadline().time());
+//			}
+//		};
+//		
+//		Comparator<DynamicEvent> reversecomparator = new Comparator<DynamicEvent>(){
+//
+//			@Override
+//			public int compare(DynamicEvent o1, DynamicEvent o2) {
+//				return Long.compare(o2.getDeadline().time(), o1.getDeadline().time());
+//			}
+//				
+//		};
+//				
+//		PriorityQueue<DynamicEvent> currDynamicEList = new PriorityQueue<DynamicEvent>(comparator);
+//		PriorityQueue<DynamicEvent> reverseDynamicEList = new PriorityQueue<DynamicEvent>(reversecomparator);
+//		PriorityQueue<StaticEvent> currStaticEList = new PriorityQueue<StaticEvent>(staticcomparator);
+//		ArrayList<StaticEvent> staticArrayList = staticList.getList();
+//		ArrayList<DynamicEvent> dynamicArrayList = null;
+//		if(dynamicList!=null){
+//		dynamicArrayList = dynamicList.getList();}
+//		ArrayList<StaticEvent> freeList = new ArrayList<StaticEvent>(); 
+//		if(staticArrayList != null){
+//		for(int i=0; i<staticArrayList.size();i++){
+//			if(!staticArrayList.get(i).isFinished()){
+//				currStaticEList.add(staticArrayList.get(i));
+//			}
+//		}}
+//		if(dynamicArrayList != null){
+//		for(int i=0; i<dynamicArrayList.size();i++){
+//			if(!dynamicArrayList.get(i).isFinished()){
+//				currDynamicEList.add(dynamicArrayList.get(i));
+//			}
+//		}}
+//		while (!currStaticEList.isEmpty()){
+//			System.out.println(currStaticEList.poll().getStartTime().time());
+//		}
+//		return false;
+//	}
 	
-	private PriorityQueue<StaticEvent> createStaticQueue(PriorityQueue<StaticEvent> currStaticEList){
-		return null;
-		
-	}
+//	private PriorityQueue<StaticEvent> checkConflict(PriorityQueue<StaticEvent> currStaticEList){
+//		return null;
+//	}
 	
-
+//	private PriorityQueue<StaticEvent> updateFreeTime(PriorityQueue<StaticEvent> currStaticEList,
+//			PriorityQueue<DynamicEvent> reverseDynamicEvent){
+//		//get deadline from last of currDynamicEvent
+//		DynamicEvent lastdynamicevent = reverseDynamicEvent.peek();
+//		ArrayList<StaticEvent> freeList = new ArrayList<StaticEvent>(); 
+//		int lasteventyear = lastdynamicevent.getDeadline().getYear();
+//		int lasteventmonth = lastdynamicevent.getDeadline().getMonth();
+//		int lasteventday = lastdynamicevent.getDeadline().getDay();
+//		DateFormat year = new SimpleDateFormat("yyyy");
+//		DateFormat month = new SimpleDateFormat("MM");
+//		DateFormat day = new SimpleDateFormat("dd");
+//		DateFormat hour = new SimpleDateFormat("HH");
+//		DateFormat minute = new SimpleDateFormat("mm");
+//		Date date = new Date();
+//		int curryear = Integer.parseInt(year.format(date));
+//		int currmonth = Integer.parseInt(month.format(date));
+//		int currday = Integer.parseInt(day.format(date));
+//		int currhour = Integer.parseInt(hour.format(date));
+//		int currminute = Integer.parseInt(minute.format(date));
+//		if(lasteventyear < curryear || lasteventmonth < currmonth || lasteventday < currday)
+//			return new
+//		PriorityQueue<StaticEvent> freeList = new PriorityQueue<StaticEvent>();
+//		//while(currStatic)
+//				return null;
+//	}
+//	
+//
 }
-
-
 
 /*
 ArrayList<StaticEvent>() events = EventListHandler.getStaticEventsByDateKey(string dateKey); ...DONE

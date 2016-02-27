@@ -3,7 +3,7 @@ public class DynamicEvent implements CalendarEvent {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String Id; //Id is in the format of DateKey + Name + startTime such as 18022016CSE1102359
+	private String Id; 
 	private String dateKey; //dateKey is the date of the event 12 Feb 2016
 	private String name;  //name of the event
 	private CalendarDate startTime; //startTime as a Calendar object
