@@ -3,6 +3,8 @@ package com.cse110.apk404.myCalendar;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -56,6 +58,7 @@ public class DetailActivity extends AppCompatActivity {
                 Snackbar.make(view, "Event is marked as finished and archived", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                 fab.hide();
+//                fab.setRippleColor();
 
                 // TODO - set the event to be finished here then resume parent activity
 
@@ -71,16 +74,38 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        // Replace the home back button with delete button
+        final Drawable closeIcon = getResources().getDrawable(R.drawable.ic_close_white_24dp);
+        closeIcon.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(closeIcon);
+
         // Get the id from intent then get the event detail from the intent
         Intent mIntent = getIntent();
         int id = mIntent.getIntExtra("id", 0);
 
         // TODO - get event from event list use id
 
+
+
+        String event_Color = "#4CAF50";
+        String event_Name = id + " Event Name (ID): This is a really cool event name";
+        String event_location = "Center Hall UCSD";
+        String event_time = "10:30AM - 12:00PM";
+        String event_description ="Info about the event";
+
+        ((TextView) findViewById(R.id.event_details_title)).setText(event_Name);
+        eventLocationText = (TextView) findViewById(R.id.event_location);
+        eventTimeText = (TextView) findViewById(R.id.event_time);
+        eventDescriptionText = (TextView) findViewById(R.id.event_description);
+
+        eventLocationText.setText(event_location);
+        eventTimeText.setText(event_time);
+        eventDescriptionText.setText(event_description);
+
         // If the android version supports, we can also change the tool bar color and fab color to
         // match the color of the event
-        int eventColor = getResources().getColor(R.color.colorGreen); //get color form event
-        int darkerEventColor = Utils.darker(eventColor, 0.7f);
+        int eventColor = Color.parseColor(event_Color);
+        int darkerEventColor = Utils.darker(eventColor, 0.8f);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -88,18 +113,10 @@ public class DetailActivity extends AppCompatActivity {
             window.setStatusBarColor(darkerEventColor);
             toolbar.setBackgroundColor(eventColor);
         }
+//        fab.setBackgroundTintList(ColorStateList.valueOf(eventColor));
         fab.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
         fab.setImageTintList(ColorStateList.valueOf(eventColor));
 
-        eventNameText = (TextView) findViewById(R.id.event_name);
-        eventLocationText = (TextView) findViewById(R.id.event_location);
-        eventTimeText = (TextView) findViewById(R.id.event_time);
-        eventDescriptionText = (TextView) findViewById(R.id.event_description);
-
-        eventNameText.setText("Event Name (ID): " + id);
-        eventLocationText.setText("Center Hall UCSD");
-        eventTimeText.setText("10:30AM - 12:00PM");
-        eventDescriptionText.setText("Info about the event");
     }
 
 

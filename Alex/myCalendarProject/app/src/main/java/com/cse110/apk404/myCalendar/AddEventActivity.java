@@ -4,6 +4,8 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,8 +28,6 @@ import android.widget.TimePicker;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-import yuku.ambilwarna.AmbilWarnaDialog;
-
 
 /**
  * Event detailed description that contains a delete button to delete this event
@@ -37,22 +37,25 @@ public class AddEventActivity extends AppCompatActivity {
 
     Toolbar toolbar = null;
 
-    private Button pickColor;
+
+    private Button done;
     private Button setStart;
     private Button setEnd;
 
 
-    DateFormat fmtTime = DateFormat.getDateTimeInstance();
+
+    DateFormat fmtTime=DateFormat.getDateTimeInstance();
     //    TextView timeLabel;
-    Calendar time = Calendar.getInstance();
+    Calendar time=Calendar.getInstance();
 
     /*the setDate funtion*/
-    public void setDate(View view) {
+    public void setDate(View view)
+    {
         PickerDialogs pickerDialogs = new PickerDialogs();
-        pickerDialogs.show(getSupportFragmentManager(), "date_picker");
+        pickerDialogs.show(getSupportFragmentManager(),"date_picker");
     }
 
-    TimePickerDialog.OnTimeSetListener timePicker = new TimePickerDialog.OnTimeSetListener() {
+    TimePickerDialog.OnTimeSetListener timePicker =new TimePickerDialog.OnTimeSetListener() {
         public void onTimeSet(TimePicker view, int hourOfDay,
                               int minute) {
             time.set(Calendar.HOUR_OF_DAY, hourOfDay);
@@ -99,6 +102,10 @@ public class AddEventActivity extends AppCompatActivity {
             }
         });
 
+        // Replace the home back button with delete button
+        final Drawable closeIcon = getResources().getDrawable(R.drawable.ic_close_white_24dp);
+        closeIcon.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(closeIcon);
 
          /* Creates dropdown for type of event */
         Spinner dropdown = (Spinner) findViewById(R.id.typeOfEvent);
@@ -106,36 +113,14 @@ public class AddEventActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 
-//        /* Dropdown for color */
-//        Spinner colorPicker = (Spinner) findViewById(R.id.colorDropdown);
-//        String[] colors = new String[]{"Red", "Blue", "Green"};
-//        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, colors);
-//        colorPicker.setAdapter(adapter2);
-
-        /* Button for color picker */
-
-        pickColor = (Button) findViewById(R.id.pickColor);
-
-        pickColor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AmbilWarnaDialog dialog = new AmbilWarnaDialog(AddEventActivity.this, 0xff0000ff, new AmbilWarnaDialog.OnAmbilWarnaListener() {
-                    @Override
-                    public void onOk(AmbilWarnaDialog dialog, int color) {
-                        // color is the color selected by the user.
-                    }
-
-                    @Override
-                    public void onCancel(AmbilWarnaDialog dialog) {
-                        // cancel was selected by the user
-                    }
-                });
-                dialog.show();
-            }
-        });
+        /* Dropdown for color */
+        Spinner colorPicker = (Spinner) findViewById(R.id.colorDropdown);
+        String[] colors = new String[]{"Red", "Blue", "Green"};
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, colors);
+        colorPicker.setAdapter(adapter2);
 
 
-        setStart = (Button) findViewById(R.id.startTime);
+        setStart=(Button)findViewById(R.id.startTime);
 
         setStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,7 +131,7 @@ public class AddEventActivity extends AppCompatActivity {
             }
         });
 
-        setEnd = (Button) findViewById(R.id.endTime);
+        setEnd=(Button)findViewById(R.id.endTime);
 
         setEnd.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,7 +1,15 @@
 package com.cse110.apk404.myCalendar.eventListHandler;
 
-public class Calendar{
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
+public class CalendarDate implements CalendarObject {
 	
+	
+	private static final long serialVersionUID = 1L;
 	
 	private int YEAR; //for example 2016
 	private int MONTH; //1 to 12
@@ -11,7 +19,7 @@ public class Calendar{
 	private int DAY_OF_WEEK; //1 to 7
 	private String monthString; //Jan Feb ...
 	
-	public Calendar(int YEAR, 
+	public CalendarDate(int YEAR, 
 			int MONTH, int DAY, int HOUR_OF_DAY, int MINUTE, int DAY_OF_WEEK, String monthString) throws CalendarError {
 			
 			setYear(YEAR);
@@ -110,6 +118,35 @@ public class Calendar{
 		String monthString = this.convert();
 		int YEAR = this.getYear();
 		return DAY + " " + monthString + " " + YEAR;
+	}
+	
+	public Long time(){
+		int DAY = this.getDay();
+		int MONTH = this.getMonth();
+		int YEAR = this.getYear();
+		int HOUR = this.getHour();
+		int MINUTE = this.getMinute();
+		return Long.parseLong(YEAR + "" + MONTH + "" + DAY + ""+ HOUR + "" + MINUTE);
+	}
+
+	public boolean DateLaterThanCurrentTime(){
+		DateFormat year = new SimpleDateFormat("yyyy");
+		DateFormat month = new SimpleDateFormat("MM");
+		DateFormat day = new SimpleDateFormat("dd");
+		DateFormat hour = new SimpleDateFormat("HH");
+		DateFormat minute = new SimpleDateFormat("mm");
+		Date date = new Date();
+		if (this.getYear() > Integer.parseInt(year.format(date)))
+			return true;
+		if (this.getMonth() > Integer.parseInt(month.format(date)))
+			return true;
+		if (this.getDay() > Integer.parseInt(day.format(date)))
+			return true;
+		if (this.getHour() > Integer.parseInt(hour.format(date)))
+			return true;
+		if (this.getMinute() > Integer.parseInt(minute.format(date)))
+			return true;
+		return false;
 	}
 	
 }
