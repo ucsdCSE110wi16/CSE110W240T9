@@ -86,12 +86,11 @@ public class DetailActivity extends AppCompatActivity {
         // TODO - get event from event list use id
 
 
-
         String event_Color = "#4CAF50";
         String event_Name = id + " Event Name (ID): This is a really cool event name";
         String event_location = "Center Hall UCSD";
         String event_time = "10:30AM - 12:00PM";
-        String event_description ="Info about the event";
+        String event_description = "Info about the event";
 
         ((TextView) findViewById(R.id.event_details_title)).setText(event_Name);
         eventLocationText = (TextView) findViewById(R.id.event_location);
@@ -104,19 +103,7 @@ public class DetailActivity extends AppCompatActivity {
 
         // If the android version supports, we can also change the tool bar color and fab color to
         // match the color of the event
-        int eventColor = Color.parseColor(event_Color);
-        int darkerEventColor = Utils.darker(eventColor, 0.8f);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(darkerEventColor);
-            toolbar.setBackgroundColor(eventColor);
-        }
-//        fab.setBackgroundTintList(ColorStateList.valueOf(eventColor));
-        fab.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
-        fab.setImageTintList(ColorStateList.valueOf(eventColor));
-
+        setToolbarStyle(event_Color, fab, toolbar);
     }
 
 
@@ -145,6 +132,32 @@ public class DetailActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    /**
+     * Change navigabtion bar background to event_color and tint the navigation bar text event_color
+     * @param event_Color the color to tint
+     * @param fab floating action button
+     * @param toolbar the tool bar to change
+     * @return true if color changed successfully
+     */
+    public boolean setToolbarStyle(String event_Color, FloatingActionButton fab, Toolbar toolbar) {
+        if (fab == null) return  false;
+
+        int eventColor = Color.parseColor(event_Color);
+        int darkerEventColor = Utils.darker(eventColor, 0.8f);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(darkerEventColor);
+            toolbar.setBackgroundColor(eventColor);
+        }
+//        fab.setBackgroundTintList(ColorStateList.valueOf(eventColor));
+        fab.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+        fab.setImageTintList(ColorStateList.valueOf(eventColor));
+
+        return true;
     }
 
 

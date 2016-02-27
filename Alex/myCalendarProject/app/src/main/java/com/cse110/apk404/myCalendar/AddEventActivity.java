@@ -107,6 +107,9 @@ public class AddEventActivity extends AppCompatActivity {
         closeIcon.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setHomeAsUpIndicator(closeIcon);
 
+        // Change toolbar style at the beginning
+        setToolbarStyle("#8BC34A", fab, toolbar);
+
          /* Creates dropdown for type of event */
         Spinner dropdown = (Spinner) findViewById(R.id.typeOfEvent);
         String[] items = new String[]{"Dynamic", "Static-Not Periodic", "Static-Periodic"};
@@ -172,5 +175,30 @@ public class AddEventActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Change navigabtion bar background to event_color and tint the navigation bar text event_color
+     * @param event_Color the color to tint
+     * @param fab floating action button
+     * @param toolbar the tool bar to change
+     * @return true if color changed successfully
+     */
+    public boolean setToolbarStyle(String event_Color, FloatingActionButton fab, Toolbar toolbar) {
+        if (fab == null) return  false;
+
+        int eventColor = Color.parseColor(event_Color);
+        int darkerEventColor = Utils.darker(eventColor, 0.8f);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(darkerEventColor);
+            toolbar.setBackgroundColor(eventColor);
+        }
+//        fab.setBackgroundTintList(ColorStateList.valueOf(eventColor));
+        fab.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+        fab.setImageTintList(ColorStateList.valueOf(eventColor));
+
+        return true;
+    }
 
 }

@@ -21,17 +21,35 @@
             android:background="@color/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <TextView
-                android:id="@+id/add_event_details_title"
+            <!--<TextView-->
+            <!--android:id="@+id/add_event_details_title"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:ellipsize="end"-->
+            <!--android:gravity="top"-->
+            <!--android:maxLines="3"-->
+            <!--android:text="Add Event"-->
+            <!--android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"-->
+            <!--android:textColor="@android:color/white"-->
+            <!--android:textSize="@dimen/text_size_large"/>-->
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:gravity="top"
                 android:maxLines="3"
-                android:text="Add Event"
-                android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/text_size_large"/>
+                android:theme="@style/TextInputField">
+
+                <EditText
+                    android:id="@+id/nameOfEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Event Name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+                    android:textColor="@color/colorWhite"/>
+
+            </android.support.design.widget.TextInputLayout>
 
 
         </android.support.v7.widget.Toolbar>
@@ -75,38 +93,31 @@
             android:dividerHeight="0dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="0.78"
-                android:gravity="center_horizontal"
-                android:text="ADDING EVENT "
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="25sp"
-                android:textStyle="bold|italic"/>
+
+            <!--<android.support.design.widget.TextInputLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:textColor="@color/colorPrimaryText">-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/nameOfEvent"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:hint="Event Name"-->
+            <!--android:textColor="@color/colorPrimaryText"/>-->
+
+            <!--</android.support.design.widget.TextInputLayout>-->
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/colorPrimaryText">
-
-                <EditText
-                    android:id="@+id/nameOfEvent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:hint="Event Name"
-                    android:textColor="@color/colorPrimaryText"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details">
 
                 <EditText
                     android:id="@+id/locationOfEvent"
@@ -122,6 +133,9 @@
                 android:id="@+id/typeOfEvent"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
                 android:background="@android:drawable/btn_dropdown"
                 android:spinnerMode="dropdown"/>
 
@@ -129,22 +143,31 @@
                 android:id="@+id/colorDropdown"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
                 android:background="@android:drawable/btn_dropdown"
                 android:spinnerMode="dropdown"/>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/startDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.31"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                android:height="20dp"
                 android:onClick="setDate"
                 android:text="Set Start Date"/>
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/endDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.31"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                android:height="20dp"
                 android:onClick="setDate"
                 android:text="Set End Date"/>
 
@@ -152,26 +175,34 @@
                 android:id="@+id/startTime"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                android:height="20dp"
                 android:text="Set Start Time"/>
 
             <Button
                 android:id="@+id/endTime"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                android:height="20dp"
                 android:text="Set End Time"/>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginBottom="@dimen/padding_between_text_view_in_details"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details">
 
                 <EditText
                     android:id="@+id/notes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="0.36"
                     android:hint="Notes"
                     android:textColor="@color/colorPrimaryText"/>
             </android.support.design.widget.TextInputLayout>
