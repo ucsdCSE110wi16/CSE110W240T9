@@ -1,59 +1,45 @@
 package com.cse110.apk404.myCalendar.eventListHandler;
 
 import java.util.ArrayList;
-import java.util.PriorityQueue;
 
-public class DynamicEventList{
+public class DynamicEventList implements CalendarObjectList<ArrayList<DynamicEvent>, DynamicEvent> {
 
-	private PriorityQueue<DynamicEvent> list; //a pq to hold all the events
-	private PriorityQueue<Calendar> timeBlock; // a pq to hold all the free time blocks
-	private ArrayList<DynamicEvent> storage; // an ArrayList to store the dynamic events after they are sorted
+	private static final long serialVersionUID = 1L;
 	
+	private ArrayList<DynamicEvent> dynamicList; // an ArrayList to store the dynamic events after they are sorted
 
-	public PriorityQueue<DynamicEvent> getList() {
-		return list;
+	
+	public ArrayList<DynamicEvent> getList() {
+		return dynamicList;
 	}
 
-	public void setList(PriorityQueue<DynamicEvent> list) {
-		this.list = list;
+	public void setList(ArrayList<DynamicEvent> list) {
+		this.dynamicList = list;
+	}
+
+	public boolean addEvent(DynamicEvent event) throws CalendarError {
+
+		if (event == null)
+			throw new CalendarError("Null Event");
+
+		this.dynamicList.add(event);
+		return true;
+	}
+
+    public boolean removeEventById(String id) throws CalendarError {
+    	boolean check = false;
+		if (id == null)
+			throw new CalendarError("Null Event");
+		DynamicEvent eventToRemove;
+		if(dynamicList == null) return check;
+		for (int i = 0; i< dynamicList.size(); i++){
+			eventToRemove = dynamicList.get(i);
+			  if (eventToRemove.getId().contains(id)){
+			    dynamicList.remove(eventToRemove);
+			    check = true;
+			  }
+		}
+		return check;
 	}
     
-	public DynamicEvent getDynamicEvent(){
-		return list.poll();
-	}
-	public void addEvent(DynamicEvent event) throws CalendarError {
-
-		if (event == null)
-			throw new CalendarError("Null Event");
-
-		this.list.add(event);
-	}
-
-	public void removeEvent(DynamicEvent event) throws CalendarError{
-		if (event == null)
-			throw new CalendarError("Null Event");
-		list.remove(event);
-	}
-
-
-	public PriorityQueue<Calendar> getTimeBlock() {
-		return timeBlock;
-	}
-
-
-	public void setTimeBlock(PriorityQueue<Calendar> timeBlock) {
-		this.timeBlock = timeBlock;
-	}
-	
-	public Calendar getFreeTime(){
-		return timeBlock.poll();
-	}
-
-	public ArrayList<DynamicEvent> getStorage() {
-		return storage;
-	}
-
-	public void setStorage(ArrayList<DynamicEvent> storage) {
-		this.storage = storage;
-	}
 }

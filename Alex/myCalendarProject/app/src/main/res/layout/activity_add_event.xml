@@ -19,9 +19,40 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/nav_bar_height_long"
             android:background="@color/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay"/>
-        <!--android:background="?attr/colorPrimary"-->
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
+            <!--<TextView-->
+            <!--android:id="@+id/add_event_details_title"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:ellipsize="end"-->
+            <!--android:gravity="top"-->
+            <!--android:maxLines="3"-->
+            <!--android:text="Add Event"-->
+            <!--android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"-->
+            <!--android:textColor="@android:color/white"-->
+            <!--android:textSize="@dimen/text_size_large"/>-->
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="top"
+                android:maxLines="3"
+                android:theme="@style/TextInputField">
+
+                <EditText
+                    android:id="@+id/event_name_add_event"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Event Name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+                    android:textColor="@color/colorWhite"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -31,10 +62,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|top"
-        android:layout_marginTop="@dimen/fab_margin_top"
-        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginLeft="@dimen/fab_mini_margin"
+        android:layout_marginTop="@dimen/fab_mini_margin_top"
         android:src="@drawable/ic_done_black_24dp"
-        android:tint="@color/colorWhite"/>
+        android:tint="@color/colorWhite"
+        app:elevation="@dimen/fab_mini_elevation"
+        app:fabSize="mini"/>
 
 
     <android.support.v4.widget.NestedScrollView
@@ -53,118 +86,131 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:layout_marginTop="@dimen/padding_between_text_view_in_details"
             android:layout_marginBottom="@dimen/padding_between_text_view_in_details"
+            android:layout_marginTop="@dimen/padding_between_text_view_in_details"
             android:choiceMode="singleChoice"
             android:divider="@android:color/transparent"
             android:dividerHeight="0dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="0.78"
-                android:gravity="center_horizontal"
-                android:text="ADDING EVENT "
-                android:textSize="25sp"
-                android:textColor="@color/colorPrimaryText"
-                android:textStyle="bold|italic" />
+
+            <!--<android.support.design.widget.TextInputLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:textColor="@color/colorPrimaryText">-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/nameOfEvent"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:hint="Event Name"-->
+            <!--android:textColor="@color/colorPrimaryText"/>-->
+
+            <!--</android.support.design.widget.TextInputLayout>-->
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:textColor="@color/colorPrimaryText"
-                android:layout_marginTop="8dp">
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details">
 
                 <EditText
-                    android:id="@+id/nameOfEvent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/colorPrimaryText"
-                    android:hint="Event Name" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
-
-                <EditText
-                    android:id="@+id/locationOfEvent"
+                    android:id="@+id/event_location_add_event"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1.63"
-                    android:textColor="@color/colorPrimaryText"
-                    android:hint="Location of Event" />
+                    android:hint="Location of Event"
+                    android:textColor="@color/colorPrimaryText"/>
             </android.support.design.widget.TextInputLayout>
 
             <Spinner
-                android:id="@+id/typeOfEvent"
+                android:id="@+id/type_of_event_add_event"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
                 android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown" />
+                android:spinnerMode="dropdown"/>
 
             <Spinner
-                android:id="@+id/colorDropdown"
+                android:id="@+id/color_dropdown_add_event"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
                 android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown" />
+                android:spinnerMode="dropdown"/>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/start_date_add_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.31"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                android:height="20dp"
                 android:onClick="setDate"
-                android:text="Set Start Date" />
+                android:text="Set Start Date"/>
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/end_date_add_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.31"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                android:height="20dp"
                 android:onClick="setDate"
-                android:text="Set End Date" />
+                android:text="Set End Date"/>
 
             <Button
-                android:id="@+id/startTime"
+                android:id="@+id/start_time_add_event"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Set Start Time" />
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                android:height="20dp"
+                android:text="Set Start Time"/>
 
             <Button
-                android:id="@+id/endTime"
+                android:id="@+id/end_time_add_event"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Set End Time" />
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                android:height="20dp"
+                android:text="Set End Time"/>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginBottom="@dimen/padding_between_text_view_in_details"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details">
 
                 <EditText
-                    android:id="@+id/notes"
+                    android:id="@+id/notes_add_event"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="0.36"
-                    android:textColor="@color/colorPrimaryText"
-                    android:hint="Notes" />
+                    android:hint="Notes"
+                    android:textColor="@color/colorPrimaryText"/>
             </android.support.design.widget.TextInputLayout>
 
 
             <android.support.v4.widget.Space
-                android:layout_height="@dimen/padding_between_text_view_in_details"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding_between_text_view_in_details"/>
 
         </LinearLayout>
 

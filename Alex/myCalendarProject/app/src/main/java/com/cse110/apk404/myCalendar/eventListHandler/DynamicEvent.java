@@ -1,25 +1,43 @@
 package com.cse110.apk404.myCalendar.eventListHandler;
 
-public class DynamicEvent{
 
-	private String Id;
-	private Calendar deadline;
-	private int estimatedLength;
-	private String name;
-	private boolean isStatic;
-	private boolean isFinished;
-	private String description = "";
+public class DynamicEvent implements CalendarEvent {
+
+	private static final long serialVersionUID = 1L;
 	
-	public DynamicEvent(String name, int estimatedLength, boolean isStatic, Calendar deadline, boolean isFinished, String description) throws CalendarError{
+	private String Id; 
+	private String dateKey; //dateKey is the date of the event 12 Feb 2016
+	private String name;  //name of the event
+	private CalendarDate startTime; //startTime as a Calendar object
+	private CalendarDate endTime; //endTime as a Calendar object
+	private boolean isStatic; //if the event is static
+	private boolean isFinished; //if the event is finished
+	private String location = ""; //location of event
+	private String description = ""; //description of event
+	private String color = "";
+	private CalendarDate deadline;
+	private int estimatedLength; // estimated time to complete
+
+
+	
+	public DynamicEvent(String Id, String dateKey, String name, boolean isStatic, String location, String description, String color,
+			CalendarDate deadline) throws CalendarError{
+		
+		setId(Id);
+		setDateKey(dateKey);
 		setName(name);
 		setStatic(isStatic);
-		setFinished(isFinished);
+		setStartTime(null);
+		setEndTime(null);
+		setLocation(location);
+		setColor(color);
+		setFinished(false);
 		setDeadline(deadline);
 		setDescription(description);
 		setEstimatedLength(estimatedLength);
 	}
 
-	public Calendar getDeadline() {	
+	public CalendarDate getDeadline() {	
 		return deadline;
 	}
 
@@ -28,7 +46,7 @@ public class DynamicEvent{
 		return estimatedLength;
 	}
 
-	public void setDeadline(Calendar deadline) {
+	public void setDeadline(CalendarDate deadline) {
 		this.deadline = deadline;
 	}
 
@@ -53,7 +71,7 @@ public class DynamicEvent{
 		this.isStatic = isStatic;
 	}
 
-	public String getDescrption() {
+	public String getDescription() {
 		return this.description;
 	}
 
@@ -76,5 +94,47 @@ public class DynamicEvent{
 	public void setId(String id) {
 		this.Id = id;
 	}
-	
+
+	public String getDateKey() {
+		return dateKey;
+	}
+
+	public void setDateKey(String dateKey) {
+		this.dateKey = dateKey;
+	}
+
+	public CalendarDate getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(CalendarDate startTime) {
+		this.startTime = startTime;
+	}
+
+	public CalendarDate getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(CalendarDate endTime) {
+		this.endTime = endTime;
+	}
+
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+
 }
