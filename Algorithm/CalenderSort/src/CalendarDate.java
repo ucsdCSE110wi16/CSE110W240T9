@@ -123,7 +123,8 @@ public class CalendarDate implements CalendarObject {
 		int YEAR = this.getYear();
 		int HOUR = this.getHour();
 		int MINUTE = this.getMinute();
-		return Long.parseLong(YEAR + "" + MONTH + "" + DAY + ""+ HOUR + "" + MINUTE);
+		return Long.parseLong(YEAR + "" + String.format("%02d", MONTH) + "" + String.format("%02d", DAY) + ""+ String.format("%02d", HOUR) + 
+				"" + String.format("%02d", MINUTE));
 	}
 
 	public boolean DateLaterThanCurrentTime(){

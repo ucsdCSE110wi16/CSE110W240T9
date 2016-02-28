@@ -3,7 +3,7 @@ public class StaticEvent implements CalendarEvent {
 
 	private static final long serialVersionUID = 1L;
 	
-	private int Id; //Random Long Number
+	private long Id; //Random Long Number
 	private String dateKey; //dateKey is the date of the event 12 Feb 2016
 	private String name;  //name of the event
 
@@ -92,11 +92,11 @@ public class StaticEvent implements CalendarEvent {
 	}
 
 
-	public int getId() {
+	public long getId() {
 		return Id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.Id = id;
 	}
 
