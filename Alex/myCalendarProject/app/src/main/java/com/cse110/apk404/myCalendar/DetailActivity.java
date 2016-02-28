@@ -92,11 +92,12 @@ public class DetailActivity extends AppCompatActivity {
         String event_time = "10:30AM - 12:00PM";
         String event_description = "Info about the event";
 
-        ((TextView) findViewById(R.id.event_details_title)).setText(event_Name);
+        eventNameText = (TextView) findViewById(R.id.event_details_title); // update name in nav bar
         eventLocationText = (TextView) findViewById(R.id.event_location);
         eventTimeText = (TextView) findViewById(R.id.event_time);
         eventDescriptionText = (TextView) findViewById(R.id.event_description);
 
+        eventNameText.setText(event_Name);
         eventLocationText.setText(event_location);
         eventTimeText.setText(event_time);
         eventDescriptionText.setText(event_description);
@@ -136,13 +137,14 @@ public class DetailActivity extends AppCompatActivity {
 
     /**
      * Change navigabtion bar background to event_color and tint the navigation bar text event_color
+     *
      * @param event_Color the color to tint
-     * @param fab floating action button
-     * @param toolbar the tool bar to change
+     * @param fab         floating action button
+     * @param toolbar     the tool bar to change
      * @return true if color changed successfully
      */
     public boolean setToolbarStyle(String event_Color, FloatingActionButton fab, Toolbar toolbar) {
-        if (fab == null) return  false;
+        if (fab == null) return false;
 
         int eventColor = Color.parseColor(event_Color);
         int darkerEventColor = Utils.darker(eventColor, 0.8f);

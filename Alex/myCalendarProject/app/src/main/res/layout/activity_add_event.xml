@@ -42,7 +42,7 @@
                 android:theme="@style/TextInputField">
 
                 <EditText
-                    android:id="@+id/nameOfEvent"
+                    android:id="@+id/event_name_add_event"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Event Name"
@@ -120,7 +120,7 @@
                 android:layout_marginTop="@dimen/padding_between_text_view_in_details">
 
                 <EditText
-                    android:id="@+id/locationOfEvent"
+                    android:id="@+id/event_location_add_event"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -130,7 +130,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <Spinner
-                android:id="@+id/typeOfEvent"
+                android:id="@+id/type_of_event_add_event"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
@@ -140,7 +140,7 @@
                 android:spinnerMode="dropdown"/>
 
             <Spinner
-                android:id="@+id/colorDropdown"
+                android:id="@+id/color_dropdown_add_event"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
@@ -150,7 +150,7 @@
                 android:spinnerMode="dropdown"/>
 
             <Button
-                android:id="@+id/startDate"
+                android:id="@+id/start_date_add_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
@@ -161,7 +161,7 @@
                 android:text="Set Start Date"/>
 
             <Button
-                android:id="@+id/endDate"
+                android:id="@+id/end_date_add_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
@@ -172,7 +172,7 @@
                 android:text="Set End Date"/>
 
             <Button
-                android:id="@+id/startTime"
+                android:id="@+id/start_time_add_event"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
@@ -182,7 +182,7 @@
                 android:text="Set Start Time"/>
 
             <Button
-                android:id="@+id/endTime"
+                android:id="@+id/end_time_add_event"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
@@ -200,7 +200,7 @@
                 android:layout_marginTop="@dimen/padding_between_text_view_in_details">
 
                 <EditText
-                    android:id="@+id/notes"
+                    android:id="@+id/notes_add_event"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Notes"

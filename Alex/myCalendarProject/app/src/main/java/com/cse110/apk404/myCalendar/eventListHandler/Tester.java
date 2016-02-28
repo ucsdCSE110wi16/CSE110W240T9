@@ -11,16 +11,17 @@ public class Tester {
 
 	public static void main(String[] args)  throws CalendarError, IOException {
 		int temp = 0;
-		CalendarDate startTime = new CalendarDate(2016, 1, 31, 22, 59, 6, "Jan");
-		CalendarDate endTime = new CalendarDate(2016, 1, 31, 23, 59, 6, "Jan");
-		CalendarDate startTime2 = new CalendarDate(2016, 1, 31, 21, 59, 6, "Jan");
-		CalendarDate endTime2 = new CalendarDate(2016, 1, 31, 23, 59, 6, "Jan");
+		// CalendarDate(int YEAR, int MONTH, int DAY, int HOUR_OF_DAY, int MINUTE, int DAY_OF_WEEK, String monthString)
+		CalendarDate startTime = new CalendarDate(2016, 2, 31, 10, 0, 0, "Feb");
+		CalendarDate endTime = new CalendarDate(2016, 2, 31, 12, 0, 0, "Feb");
+		CalendarDate startTime2 = new CalendarDate(2016, 2, 31, 14, 0, 0, "Feb");
+		CalendarDate endTime2 = new CalendarDate(2016, 2, 31, 15, 0, 0, "Feb");
 		EventListHandler handler = new EventListHandler();
 		handler.initStaticList();
-		boolean check = handler.createStaticEvent("testname", "basement", startTime, endTime,
-				true, false, false, "scarlet", "red");
+		boolean check = handler.createStaticEvent("Event Name", "Event Location", startTime, endTime,
+				true, false, false, "Description 1", "red");
 		handler.createStaticEvent("test", "basementsd", startTime2, endTime2,
-				true, false, false, "scar", "blue");
+				true, false, false, "Description 2", "blue");
 		if(check)
 		    System.out.println("success\n");
 		

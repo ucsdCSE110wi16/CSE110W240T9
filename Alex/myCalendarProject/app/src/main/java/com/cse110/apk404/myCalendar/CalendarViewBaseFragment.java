@@ -49,7 +49,7 @@ public abstract class CalendarViewBaseFragment extends Fragment implements WeekV
     private int mWeekViewType = TYPE_THREE_DAY_VIEW;
     private WeekView mWeekView;
 
-    View rootView = null;
+    private View rootView = null;
 
 
     @Override

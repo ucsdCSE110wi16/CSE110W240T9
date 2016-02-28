@@ -3,7 +3,7 @@ package com.cse110.apk404.myCalendar;
 import android.graphics.Color;
 
 /**
- * Those are useful util functions
+ * These are useful util functions
  */
 public class Utils {
 
