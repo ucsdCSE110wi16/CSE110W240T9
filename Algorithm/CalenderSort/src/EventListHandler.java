@@ -153,13 +153,12 @@ public class EventListHandler{
 		PriorityQueue<DynamicEvent> reverseDynamicEList = new PriorityQueue<DynamicEvent>(reversecomparator);
 		PriorityQueue<StaticEvent> currStaticEList = new PriorityQueue<StaticEvent>(staticcomparator);
 		PriorityQueue<StaticEvent> sortedStaticEList = new PriorityQueue<StaticEvent>(staticcomparator);
+		PriorityQueue<StaticEvent> freeList = new PriorityQueue<StaticEvent>(); 
 		ArrayList<StaticEvent> staticArrayList = staticList.getList();
 		ArrayList<DynamicEvent> dynamicArrayList = null;
 		if(dynamicList!=null){
 			dynamicArrayList = dynamicList.getList();
 		}
-		
-		PriorityQueue<StaticEvent> freeList = new PriorityQueue<StaticEvent>(); 
 		
 		if(staticArrayList != null)
 		{
@@ -200,29 +199,46 @@ public class EventListHandler{
 		}
 	}
 
-	private PriorityQueue<StaticEvent> updateFreeTime(PriorityQueue<StaticEvent> currStaticEList,
-			PriorityQueue<DynamicEvent> reverseDynamicEvent){
+	//returns false if no free time, true will write freetime to freeList
+	private boolean updateFreeTime(PriorityQueue<StaticEvent> sortedStaticEList,
+			PriorityQueue<DynamicEvent> reverseDynamicEvent, PriorityQueue<DynamicEvent> freeList){
+		
 		//get deadline from last of currDynamicEvent
 		DynamicEvent lastdynamicevent = reverseDynamicEvent.peek();
-		PriorityQueue<StaticEvent> freeList = new PriorityQueue<StaticEvent>(); 
 		int lasteventyear = lastdynamicevent.getDeadline().getYear();
 		int lasteventmonth = lastdynamicevent.getDeadline().getMonth();
 		int lasteventday = lastdynamicevent.getDeadline().getDay();
+		int lasteventhour = lastdynamicevent.getDeadline().getHour();
 		DateFormat year = new SimpleDateFormat("yyyy");
 		DateFormat month = new SimpleDateFormat("MM");
 		DateFormat day = new SimpleDateFormat("dd");
 		DateFormat hour = new SimpleDateFormat("HH");
-		DateFormat minute = new SimpleDateFormat("mm");
 		Date date = new Date();
 		int curryear = Integer.parseInt(year.format(date));
 		int currmonth = Integer.parseInt(month.format(date));
 		int currday = Integer.parseInt(day.format(date));
 		int currhour = Integer.parseInt(hour.format(date));
-		int currminute = Integer.parseInt(minute.format(date));
-		if(lasteventyear < curryear || lasteventmonth < currmonth || lasteventday < currday)
-			return freeList = new PriorityQueue<StaticEvent>();
-		//while(currStatic)
-			return null;
+		if(lasteventyear < curryear)
+			return false;
+		else if(lasteventyear == curryear && lasteventmonth < currmonth)
+			return false;
+		else if(lasteventyear == curryear && lasteventmonth == currmonth && lasteventday < currday)
+			return false;
+		else if(lasteventyear == curryear && lasteventmonth == currmonth && lasteventday == currday && lasteventhour < currhour)
+			return false;
+		//not enough time to finish
+		else if(lasteventyear == curryear && lasteventmonth == currmonth && lasteventday == currday 
+				&& lasteventhour - currhour < 2)
+			return false;
+		
+		while(!sortedStaticEList.isEmpty())
+		{
+			
+		}
+		
+		
+		
+		return true;
 	}
 
 
