@@ -28,7 +28,7 @@ import android.view.MenuItem;
 
 
 /**
- * The main view on start
+ * The main view on start contains the CalendarViewFragment
  */
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

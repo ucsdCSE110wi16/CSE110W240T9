@@ -9,9 +9,9 @@ import android.support.v4.app.DialogFragment;
 import java.util.Calendar;
 
 /**
- * Created by will.jiang on 2/24/16.
+ * This is the date picker pop up in the add event page
  */
-public class PickerDialogs extends DialogFragment{
+public class PickerDialogs extends DialogFragment {
 
     @NonNull
     @Override
@@ -22,7 +22,7 @@ public class PickerDialogs extends DialogFragment{
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog dialog;
-        dialog = new DatePickerDialog(getActivity(),dateSettings,year,month,day);
+        dialog = new DatePickerDialog(getActivity(), dateSettings, year, month, day);
 
         return dialog;
     }

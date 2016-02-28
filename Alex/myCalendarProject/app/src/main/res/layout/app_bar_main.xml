@@ -39,7 +39,7 @@
         android:layout_gravity="right|bottom"
         android:layout_marginBottom="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
-        android:src="@android:drawable/ic_input_add"
+        android:src="@drawable/ic_add_black_24dp"
         android:tint="@android:color/white"/>
 
 
