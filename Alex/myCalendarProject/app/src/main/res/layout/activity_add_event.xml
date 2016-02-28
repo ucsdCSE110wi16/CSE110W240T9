@@ -157,7 +157,7 @@
                 android:layout_marginRight="@dimen/padding_between_text_view_in_details"
                 android:layout_marginTop="@dimen/padding_between_text_view_in_details"
                 android:height="20dp"
-                android:onClick="setDate"
+                android:onClick="setStartDate"
                 android:text="Set Start Date"/>
 
             <Button
@@ -168,7 +168,7 @@
                 android:layout_marginRight="@dimen/padding_between_text_view_in_details"
                 android:layout_marginTop="@dimen/padding_between_text_view_in_details"
                 android:height="20dp"
-                android:onClick="setDate"
+                android:onClick="setEndDate"
                 android:text="Set End Date"/>
 
             <Button
