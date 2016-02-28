@@ -1,6 +1,7 @@
 package com.cse110.apk404.myCalendar;
 
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -113,7 +114,7 @@ public class AddEventActivity extends AppCompatActivity {
                                   int minute) {
                 time.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 time.set(Calendar.MINUTE, minute);
-//            timeLabel.setText(fmtTime.format(time.getTime()));
+                //timeLabel.setText(fmtTime.format(time.getTime()));
 
             }
         };
@@ -126,6 +127,9 @@ public class AddEventActivity extends AppCompatActivity {
                 new TimePickerDialog(AddEventActivity.this, timePicker,
                         time.get(Calendar.HOUR_OF_DAY),
                         time.get(Calendar.MINUTE), true).show();
+                Context context = getApplicationContext();
+                Toast.makeText(context, "Selected time - " + Calendar.HOUR_OF_DAY + " : " + Calendar.MINUTE, Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -137,6 +141,9 @@ public class AddEventActivity extends AppCompatActivity {
                 new TimePickerDialog(AddEventActivity.this, timePicker,
                         time.get(Calendar.HOUR_OF_DAY),
                         time.get(Calendar.MINUTE), true).show();
+                Context context = getApplicationContext();
+                Toast.makeText(context, "Selected time :" + Calendar.HOUR_OF_DAY + ":" + Calendar.MINUTE, Toast.LENGTH_LONG).show();
+
             }
         });
 
