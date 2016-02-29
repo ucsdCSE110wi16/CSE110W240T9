@@ -1,0 +1,60 @@
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
+public class CalendarDate implements CalendarObject{
+	
+	
+	private static final long serialVersionUID = 1L;
+	
+
+	private Calendar date;
+	private String monthString; //Jan Feb ...
+	
+	public CalendarDate(int YEAR, 
+			int MONTH, int DAY, int HOUR_OF_DAY, int MINUTE) throws CalendarError {
+			date = Calendar.getInstance();
+			date.set(YEAR, MONTH, DAY, HOUR_OF_DAY, MINUTE);
+	}
+	
+	
+	
+	
+	public String DateKey(){
+		DateFormat dateKey = new SimpleDateFormat("dd MM yyyy");
+		return dateKey.format(date);
+	}
+	
+	public Long time(){
+		int DAY = this.getDay();
+		int MONTH = this.getMonth();
+		int YEAR = this.getYear();
+		int HOUR = this.getHour();
+		int MINUTE = this.getMinute();
+		return Long.parseLong(YEAR + "" + String.format("%02d", MONTH) + "" + String.format("%02d", DAY) + ""+ String.format("%02d", HOUR) + 
+				"" + String.format("%02d", MINUTE));
+	}
+
+	public boolean DateLaterThanCurrentTime(){
+		DateFormat year = new SimpleDateFormat("yyyy");
+		DateFormat month = new SimpleDateFormat("MM");
+		DateFormat day = new SimpleDateFormat("dd");
+		DateFormat hour = new SimpleDateFormat("HH");
+		DateFormat minute = new SimpleDateFormat("mm");
+		Date date = new Date();
+		if (this.getYear() > Integer.parseInt(year.format(date)))
+			return true;
+		if (this.getMonth() > Integer.parseInt(month.format(date)))
+			return true;
+		if (this.getDay() > Integer.parseInt(day.format(date)))
+			return true;
+		if (this.getHour() > Integer.parseInt(hour.format(date)))
+			return true;
+		if (this.getMinute() > Integer.parseInt(minute.format(date)))
+			return true;
+		return false;
+	}
+	
+}

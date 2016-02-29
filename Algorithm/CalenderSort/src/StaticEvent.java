@@ -1,14 +1,19 @@
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class StaticEvent implements CalendarEvent {
 
 	private static final long serialVersionUID = 1L;
 	
-	private int Id; //Random Long Number
-	private String dateKey; //dateKey is the date of the event 12 Feb 2016
+	private long Id; //Random Long Number
+	//private String dateKey; //dateKey is the date of the event 12 Feb 2016
 	private String name;  //name of the event
 
-	private CalendarDate startTime; //startTime as a Calendar object
-	private CalendarDate endTime; //endTime as a Calendar object
+	private Calendar startTime; //startTime as a Calendar object
+	private Calendar endTime; //endTime as a Calendar object
 	private boolean isStatic; //if the event is static
 	private boolean isPeriodic; //if the event is periodic
 	private boolean isFinished; //if the event is finished
@@ -17,7 +22,7 @@ public class StaticEvent implements CalendarEvent {
 	private String color = "";
 
 	
-	public StaticEvent(String dateKey, String name, String location, CalendarDate startTime, CalendarDate endTime,
+	public StaticEvent(String name, String location, Calendar startTime, Calendar endTime,
 		boolean isStatic, boolean isPeriodic, boolean isFinished, String description, String color) throws CalendarError {
 
 		if (name == "")
@@ -27,13 +32,12 @@ public class StaticEvent implements CalendarEvent {
 			throw new CalendarError("Invalid time");
 		}
 			
-		this.setDateKey(dateKey);
+
 		this.setName(name);
 		this.setStatic(isStatic);
 		this.setDescription(description);
 		this.setFinished(isFinished);
 		this.setPeriodic(isPeriodic);
-
 		this.setStartTime(startTime);
 		this.setEndTime(endTime);
 
@@ -51,11 +55,11 @@ public class StaticEvent implements CalendarEvent {
 		this.name = name;
 	}
 
-	public CalendarDate getStartTime() {
+	public Calendar getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(CalendarDate startTime) {
+	public void setStartTime(Calendar startTime) {
 		this.startTime = startTime;
 	}
 
@@ -82,7 +86,7 @@ public class StaticEvent implements CalendarEvent {
 	public void setFinished(boolean isFinished) {
 		this.isFinished = isFinished;
 	}
-
+/*
 	public String getDateKey() {
 		return dateKey;
 	}
@@ -90,13 +94,13 @@ public class StaticEvent implements CalendarEvent {
 	public void setDateKey(String dateKey) {
 		this.dateKey = dateKey;
 	}
+*/
 
-
-	public int getId() {
+	public long getId() {
 		return Id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.Id = id;
 	}
 
@@ -111,12 +115,12 @@ public class StaticEvent implements CalendarEvent {
 
 
 
-	public CalendarDate getEndTime() {
+	public Calendar getEndTime() {
 		return endTime;
 	}
 
 
-	public void setEndTime(CalendarDate endTime) {
+	public void setEndTime(Calendar endTime) {
 		this.endTime = endTime;
 	}
 
@@ -138,6 +142,9 @@ public class StaticEvent implements CalendarEvent {
 	public void setColor(String color) {
 		this.color = color;
 	}
+
+
+
 
 
 
