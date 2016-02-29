@@ -1,0 +1,21 @@
+Dynamically allocate events using priority queue
+
+1st priority queue: deadline time, event name, event estimated completion time, location
+Get events and put them in a priority queue
+comparator is the deadline of each event
+queue will sort events from earliest deadline to latest deadline
+
+compare estimated completion time and total free time: if not possible, print message saying time not enough
+
+
+2nd priority queue: free time blocks (12p - 3p) (anything < 1h is not considered as free time)
+comparator will be length of free time
+this queue will split the time into smaller blocks
+
+function compare: pop from top of priority queue(smallest time block from both)
+compare two values and subtract the smaller value from the larger value, put the remainder of the larger value back into the priority queue that the larger value came from. Put the smaller value into a List.
+
+
+StaticEventList: Static Event
+DynamicEventList: Dynamic Event
+FreetimeList: Free Time to Allocate

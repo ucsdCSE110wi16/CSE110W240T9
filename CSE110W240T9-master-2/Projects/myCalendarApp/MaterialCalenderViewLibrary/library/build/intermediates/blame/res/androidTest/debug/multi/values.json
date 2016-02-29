@@ -1,0 +1,176 @@
+[
+    {
+        "outputFile": "/Users/chenxingouyang/AndroidStudioProjects/myCalenderApp/library/build/intermediates/res/merged/androidTest/debug/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 1182,
+                    "endColumn": 38,
+                    "endOffset": 1216
+                },
+                "from": {
+                    "file": "/Users/chenxingouyang/AndroidStudioProjects/myCalenderApp/library/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 1182,
+                        "endColumn": 38,
+                        "endOffset": 1216
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 1221,
+                    "endLine": 7,
+                    "endColumn": 12,
+                    "endOffset": 1466
+                },
+                "from": {
+                    "file": "/Users/chenxingouyang/AndroidStudioProjects/myCalenderApp/library/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 1221,
+                        "endLine": 7,
+                        "endColumn": 12,
+                        "endOffset": 1466
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 1471,
+                    "endLine": 10,
+                    "endColumn": 12,
+                    "endOffset": 1646
+                },
+                "from": {
+                    "file": "/Users/chenxingouyang/AndroidStudioProjects/myCalenderApp/library/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 1471,
+                        "endLine": 10,
+                        "endColumn": 12,
+                        "endOffset": 1646
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 1651,
+                    "endLine": 13,
+                    "endColumn": 12,
+                    "endOffset": 1826
+                },
+                "from": {
+                    "file": "/Users/chenxingouyang/AndroidStudioProjects/myCalenderApp/library/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 1651,
+                        "endLine": 13,
+                        "endColumn": 12,
+                        "endOffset": 1826
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/chenxingouyang/AndroidStudioProjects/material-calendarview-master 2/library/build/intermediates/res/merged/androidTest/debug/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 1182,
+                    "endColumn": 38,
+                    "endOffset": 1216
+                },
+                "from": {
+                    "file": "/Users/chenxingouyang/AndroidStudioProjects/material-calendarview-master 2/library/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 1182,
+                        "endColumn": 38,
+                        "endOffset": 1216
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 1221,
+                    "endLine": 7,
+                    "endColumn": 12,
+                    "endOffset": 1466
+                },
+                "from": {
+                    "file": "/Users/chenxingouyang/AndroidStudioProjects/material-calendarview-master 2/library/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 1221,
+                        "endLine": 7,
+                        "endColumn": 12,
+                        "endOffset": 1466
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 1471,
+                    "endLine": 10,
+                    "endColumn": 12,
+                    "endOffset": 1646
+                },
+                "from": {
+                    "file": "/Users/chenxingouyang/AndroidStudioProjects/material-calendarview-master 2/library/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 1471,
+                        "endLine": 10,
+                        "endColumn": 12,
+                        "endOffset": 1646
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 1651,
+                    "endLine": 13,
+                    "endColumn": 12,
+                    "endOffset": 1826
+                },
+                "from": {
+                    "file": "/Users/chenxingouyang/AndroidStudioProjects/material-calendarview-master 2/library/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 1651,
+                        "endLine": 13,
+                        "endColumn": 12,
+                        "endOffset": 1826
+                    }
+                }
+            }
+        ]
+    }
+]
