@@ -1,0 +1,268 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+
+public class EventListHandler{
+
+
+	private StaticEventList staticList;
+	private DynamicEventList dynamicList;
+	private ArrayList<CalendarEvent> events; //list to store all events in one given day
+
+
+	public EventListHandler() {}
+
+	public ArrayList<CalendarEvent> getEvents() {
+		return events;
+	}
+
+	public void setEvents(ArrayList<CalendarEvent> events) {
+		this.events = events;
+	}
+
+	public ArrayList<CalendarEvent> getEventsByDate (String dateKey) throws CalendarError {
+		if (dateKey == null)
+			throw new CalendarError("Null Event");
+
+		events = new ArrayList<CalendarEvent>();
+		ArrayList<StaticEvent> staticArrayList = staticList.getList();
+		if (staticArrayList != null){
+			for(int i=0; i<staticArrayList.size(); i++){
+				if(staticArrayList.get(i).getDateKey().contains(dateKey)){
+					events.add(staticArrayList.get(i));
+				}
+			}}
+		ArrayList<DynamicEvent> dynamicArrayList = dynamicList.getList();
+		if (dynamicArrayList != null){
+			for(int i=0; i<dynamicArrayList.size(); i++){
+				if(dynamicArrayList.get(i).getDateKey().contains(dateKey)){
+					events.add(dynamicArrayList.get(i));
+				}
+			}}
+
+		return events;
+	}
+
+	public void initStaticList(){
+		staticList = new StaticEventList();
+	}
+
+	public void initDynamicList(){
+		dynamicList = new DynamicEventList();
+	}
+
+	public StaticEventList getStaticList() {
+		return staticList;
+	}
+
+	public void setStaticList(StaticEventList staticList) {
+		this.staticList = staticList;
+	}
+
+	public DynamicEventList getDynamicList() {
+		return dynamicList;
+	}
+
+	public void setDynamicList(DynamicEventList dynamicList) {
+		this.dynamicList = dynamicList;
+	}
+
+
+	public boolean checkValidTime(CalendarDate startTime, CalendarDate endTime){
+		if (startTime.getYear() != endTime.getYear() || startTime.getMonth() != endTime.getMonth() || 
+				startTime.getDay() != endTime.getDay() ||
+				endTime.getHour() - startTime.getHour() <= 0){
+			//System.out.println(startTime.getHour() - endTime.getHour());
+			return false;
+		}
+		return true;
+	}
+
+	//Create a static event to add to the static event list
+	public boolean createStaticEvent(String name, String location, CalendarDate startTime, CalendarDate endTime,
+			boolean isStatic, boolean isPeriodic, boolean isFinished, String description, String color) throws CalendarError{
+		//check if start and end times are valid
+		boolean check = false;
+		if(!checkValidTime(startTime, endTime)){
+			System.out.println("Fail");
+			return false;
+		}
+		//check if event is static
+		if (isStatic == false)
+			return false;
+		//set the DateKey String used for getting all the events in one day
+		String dateKey = startTime.DateKey();
+		StaticEvent staticEvent = new StaticEvent(dateKey, name, location, startTime, endTime, isStatic, 
+				isPeriodic, isFinished, description, color);
+		staticEvent.setId(System.currentTimeMillis());
+		check = staticList.addEvent(staticEvent);
+		if(!check)
+			System.out.println("Fail");
+		return (check);
+	}
+
+
+
+	public boolean removeEventById(int temp) throws CalendarError{
+		boolean check = true;
+		if (staticList == null){
+			check = false;
+			return check;
+		}
+		check = staticList.removeEventById(temp);
+		return check;
+	};
+
+	//Create a dynamic event to add to the dynamic event list
+	public void createDynamicEvent(String name, int estimatedLength, boolean isStatic,
+			CalendarDate deadline, boolean isFinished, String description){
+		return;
+	}
+
+
+
+	//Dynamic sort algorithm
+	public boolean dynamicSort(){
+
+		Comparator<StaticEvent> staticcomparator = new Comparator<StaticEvent>(){
+
+			@Override
+			public int compare(StaticEvent o1, StaticEvent o2) {
+				return Long.compare(o1.getStartTime().time(), o2.getStartTime().time());
+			}
+		};
+
+		Comparator<DynamicEvent> comparator = new Comparator<DynamicEvent>(){
+
+			@Override
+			public int compare(DynamicEvent o1, DynamicEvent o2) {
+				return Long.compare(o1.getDeadline().time(), o2.getDeadline().time());
+			}
+		};
+
+		Comparator<DynamicEvent> reversecomparator = new Comparator<DynamicEvent>(){
+
+			@Override
+			public int compare(DynamicEvent o1, DynamicEvent o2) {
+				return Long.compare(o2.getDeadline().time(), o1.getDeadline().time());
+			}
+		};
+
+		PriorityQueue<DynamicEvent> currDynamicEList = new PriorityQueue<DynamicEvent>(comparator);
+		PriorityQueue<DynamicEvent> reverseDynamicEList = new PriorityQueue<DynamicEvent>(reversecomparator);
+		PriorityQueue<StaticEvent> currStaticEList = new PriorityQueue<StaticEvent>(staticcomparator);
+		PriorityQueue<StaticEvent> sortedStaticEList = new PriorityQueue<StaticEvent>(staticcomparator);
+		PriorityQueue<StaticEvent> freeList = new PriorityQueue<StaticEvent>(); 
+		ArrayList<StaticEvent> staticArrayList = staticList.getList();
+		ArrayList<DynamicEvent> dynamicArrayList = null;
+		if(dynamicList!=null){
+			dynamicArrayList = dynamicList.getList();
+		}
+		
+		if(staticArrayList != null)
+		{
+			for(int i=0; i<staticArrayList.size();i++){
+				if(!staticArrayList.get(i).isFinished()){
+					currStaticEList.add(staticArrayList.get(i));
+				}
+			}}
+		if(dynamicArrayList != null){
+			for(int i=0; i<dynamicArrayList.size();i++){
+				if(!dynamicArrayList.get(i).isFinished()){
+					currDynamicEList.add(dynamicArrayList.get(i));
+				}
+			}}
+		while (!currStaticEList.isEmpty()){
+			System.out.println(currStaticEList.poll().getStartTime().time());
+		}
+		return false;
+	}
+
+	/*checks if there are conflicts in the static time table, if there are conflicts, return the two conflicted
+	events as a single event*/
+	private void checkConflict(PriorityQueue<StaticEvent> currStaticEList, PriorityQueue<StaticEvent> sortedStaticEList) 
+			throws CalendarError{
+		while(!currStaticEList.isEmpty()){
+			StaticEvent firstCheck = currStaticEList.poll();
+			StaticEvent secondCheck = null;
+			if(!currStaticEList.isEmpty()){
+				secondCheck = currStaticEList.peek();
+			}
+			if(firstCheck.getEndTime().time() < secondCheck.getStartTime().time()){
+				StaticEvent newevent = new StaticEvent(firstCheck.getDateKey(), firstCheck.getName(), 
+						firstCheck.getLocation(), firstCheck.getStartTime(), secondCheck.getEndTime(),
+						firstCheck.isStatic(), firstCheck.isPeriodic(), firstCheck.isFinished(),
+						firstCheck.getDescription(), firstCheck.getColor());
+				sortedStaticEList.add(newevent);
+			}	
+		}
+	}
+
+	//returns false if no free time, true will write freetime to freeList
+	private boolean updateFreeTime(PriorityQueue<StaticEvent> sortedStaticEList,
+			PriorityQueue<DynamicEvent> reverseDynamicEvent, PriorityQueue<DynamicEvent> freeList){
+		
+		//get deadline from last of currDynamicEvent
+		DynamicEvent lastdynamicevent = reverseDynamicEvent.peek();
+		int lasteventyear = lastdynamicevent.getDeadline().getYear();
+		int lasteventmonth = lastdynamicevent.getDeadline().getMonth();
+		int lasteventday = lastdynamicevent.getDeadline().getDay();
+		int lasteventhour = lastdynamicevent.getDeadline().getHour();
+		DateFormat year = new SimpleDateFormat("yyyy");
+		DateFormat month = new SimpleDateFormat("MM");
+		DateFormat day = new SimpleDateFormat("dd");
+		DateFormat hour = new SimpleDateFormat("HH");
+		Date date = new Date();
+		int curryear = Integer.parseInt(year.format(date));
+		int currmonth = Integer.parseInt(month.format(date));
+		int currday = Integer.parseInt(day.format(date));
+		int currhour = Integer.parseInt(hour.format(date));
+		
+		//check if there are sufficient time for making free time blocks
+		if(lasteventyear < curryear)
+			return false;
+		else if(lasteventyear == curryear && lasteventmonth < currmonth)
+			return false;
+		else if(lasteventyear == curryear && lasteventmonth == currmonth && lasteventday < currday)
+			return false;
+		//else if(lasteventyear == curryear && lasteventmonth == currmonth && lasteventday == currday && lasteventhour < currhour)
+			//return false;
+		//not enough time to finish
+		else if(lasteventyear == curryear && lasteventmonth == currmonth && lasteventday == currday 
+				&& lasteventhour - currhour < 2)
+			return false;
+		
+		//make freeTime block
+		CalendarDate startTime;
+		CalendarDate endTime;
+		for (int i=0; i<(lasteventday-currday); i++){
+			if (i==0){
+				startTime = new CalendarDate(curryear, currmonth, currday, currhour, 0, );
+				public CalendarDate(int YEAR, 
+						int MONTH, int DAY, int HOUR_OF_DAY, int MINUTE, int DAY_OF_WEEK, String monthString)
+			}
+		}
+		while(!sortedStaticEList.isEmpty())
+		{
+			
+		}
+		
+		
+		
+		return true;
+	}
+
+
+}
+
+/*
+ArrayList<StaticEvent>() events = EventListHandler.getStaticEventsByDateKey(string dateKey); ...DONE
+ArrayList<DynamicEvent>() events = EventListHandler.getDynamicEventsByDateKey(string dateKey);
+StaticEvent se;
+string id = se.getId();
+EventHandler.removeEventById(id); ...DONE
+
+setEventFinished(String Id)
+addColor field to staticEvent.... Done
+ */

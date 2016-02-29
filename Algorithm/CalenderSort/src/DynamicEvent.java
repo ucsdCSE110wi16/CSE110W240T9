@@ -1,3 +1,5 @@
+import java.util.Calendar;
+
 
 public class DynamicEvent implements CalendarEvent {
 
@@ -6,23 +8,22 @@ public class DynamicEvent implements CalendarEvent {
 	private String Id; 
 	private String dateKey; //dateKey is the date of the event 12 Feb 2016
 	private String name;  //name of the event
-	private CalendarDate startTime; //startTime as a Calendar object
-	private CalendarDate endTime; //endTime as a Calendar object
+	private Calendar startTime; //startTime as a Calendar object
+	private Calendar endTime; //endTime as a Calendar object
 	private boolean isStatic; //if the event is static
 	private boolean isFinished; //if the event is finished
 	private String location = ""; //location of event
 	private String description = ""; //description of event
 	private String color = "";
-	private CalendarDate deadline;
+	private Calendar deadline;
 	private int estimatedLength; // estimated time to complete
 
 
 	
-	public DynamicEvent(String Id, String dateKey, String name, boolean isStatic, String location, String description, String color,
-			CalendarDate deadline) throws CalendarError{
+	public DynamicEvent(String Id, String name, boolean isStatic, String location, String description, String color,
+			Calendar deadline) throws CalendarError{
 		
 		setId(Id);
-		setDateKey(dateKey);
 		setName(name);
 		setStatic(isStatic);
 		setStartTime(null);
@@ -35,7 +36,7 @@ public class DynamicEvent implements CalendarEvent {
 		setEstimatedLength(estimatedLength);
 	}
 
-	public CalendarDate getDeadline() {	
+	public Calendar getDeadline() {	
 		return deadline;
 	}
 
@@ -44,7 +45,7 @@ public class DynamicEvent implements CalendarEvent {
 		return estimatedLength;
 	}
 
-	public void setDeadline(CalendarDate deadline) {
+	public void setDeadline(Calendar deadline) {
 		this.deadline = deadline;
 	}
 
@@ -101,19 +102,19 @@ public class DynamicEvent implements CalendarEvent {
 		this.dateKey = dateKey;
 	}
 
-	public CalendarDate getStartTime() {
+	public Calendar getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(CalendarDate startTime) {
+	public void setStartTime(Calendar startTime) {
 		this.startTime = startTime;
 	}
 
-	public CalendarDate getEndTime() {
+	public Calendar getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(CalendarDate endTime) {
+	public void setEndTime(Calendar endTime) {
 		this.endTime = endTime;
 	}
 

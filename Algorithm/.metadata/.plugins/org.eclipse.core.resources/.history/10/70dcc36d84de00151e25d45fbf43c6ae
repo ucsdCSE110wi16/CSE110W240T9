@@ -1,0 +1,49 @@
+import java.util.Calendar;
+import java.util.PriorityQueue;
+
+public class CalendarDateList implements CalendarObjectList<PriorityQueue<Calendar>, Calendar> {
+
+	private static final long serialVersionUID = 1L;
+	
+	private PriorityQueue<Calendar> list;
+
+	public CalendarDateList(){
+		this.list = new PriorityQueue<Calendar>();
+	}
+
+	@Override
+	public PriorityQueue<Calendar> getList() {
+		return list;
+	}
+	
+	public Calendar getCalendarDate(){
+		return list.poll();
+	}
+
+	public void addFreeTime(Calendar calendarDate) throws CalendarError {
+		if (calendarDate == null)
+			throw new CalendarError("Null Free Time");
+
+		this.list.add(calendarDate);
+	}
+	
+	public void removeFreeTime(Calendar calendarDate) throws CalendarError{
+		if (calendarDate == null) 
+			throw new CalendarError("invalid slot");
+		
+		list.remove(calendarDate);
+	}
+
+	@Override
+	public boolean addEvent(Calendar obj) throws CalendarError {
+		addFreeTime(obj);
+		return true;
+	}
+
+	@Override
+	public void setList(PriorityQueue<Calendar> list) throws CalendarError {		
+		this.list = list;	
+	}
+
+}
+

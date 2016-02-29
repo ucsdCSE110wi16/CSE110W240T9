@@ -1,12 +1,14 @@
+import java.util.Calendar;
+
 
 public interface CalendarEvent extends CalendarObject {
 
 	public abstract String getName();
 	public abstract void setName(String name);
-	public abstract CalendarDate getStartTime();
-	public abstract void setStartTime(CalendarDate startTime);
-	public abstract CalendarDate getEndTime();
-	public abstract void setEndTime(CalendarDate endTime);
+	public abstract Calendar getStartTime();
+	public abstract void setStartTime(Calendar startTime);
+	public abstract Calendar getEndTime();
+	public abstract void setEndTime(Calendar endTime);
 	public abstract boolean isStatic();
 	public abstract void setStatic(boolean isStatic);
 	public abstract String getDescription();

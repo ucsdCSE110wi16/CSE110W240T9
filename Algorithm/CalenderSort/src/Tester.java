@@ -1,24 +1,39 @@
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 //import java.text.DateFormat;
 //import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 //import java.util.Date;
+import java.util.Date;
 
 
 public class Tester {
 
 	public static void main(String[] args)  throws CalendarError, IOException {
 		//int temp = 0;
-		CalendarDate startTime = new CalendarDate(2016,  Integer.parseInt(String.format("%02d", 1)), 31, 22, 59, 6, "Jan");
-		CalendarDate endTime = new CalendarDate(2016, 01, 31, 23, 59, 6, "Jan");
-		CalendarDate startTime2 = new CalendarDate(2016, 01, 31, 21, 59, 6, "Jan");
-		CalendarDate endTime2 = new CalendarDate(2016, 01, 31, 23, 59, 6, "Jan");
+		Calendar startTime = Calendar.getInstance();
+		Date startDate = startTime.getTime();
+		Calendar endTime = Calendar.getInstance();
+		endTime.set(2016,1,29,18,01);
+		endTime.add(Calendar.DAY_OF_MONTH, 1);
+		DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date date = endTime.getTime();
+		System.out.println(time.format(startDate));
+		System.out.println(time.format(date));
+		
+		
+		System.out.println((endTime.getTime().getTime() - startTime.getTime().getTime()) / (1000 * 60 * 60 * 24));
+		
+		//Calendar startTime2 = new CalendarDate(2016, 01, 31, 21, 59, 6);
+		//Calendar endTime2 = new CalendarDate(2016, 01, 31, 23, 59, 6);
 		EventListHandler handler = new EventListHandler();
 		handler.initStaticList();
-		boolean check = handler.createStaticEvent("testname", "basement", startTime, endTime,
+		boolean check = handler.createStaticEvent("do homework", "basement", startTime, endTime,
 				true, false, false, "scarlet", "red");
-		handler.createStaticEvent("test", "basementsd", startTime2, endTime2,
-				true, false, false, "scar", "blue");
+		//handler.createStaticEvent("basementsd", startTime2, endTime2,
+				//true, false, false, "scar", "blue");
 		if(check)
 		    System.out.println("success\n");
 		
@@ -31,10 +46,10 @@ public class Tester {
 		for (int i=0; i<staticArrayList.size(); i++){
 			System.out.println("the " + i + "th object:");
 			staticEvent = staticArrayList.get(i);
-			System.out.println(staticEvent.getName()+" "+staticEvent.getColor()+" "+staticEvent.getDateKey() + " "+ staticEvent.getId());
+			System.out.println(staticEvent.getName()+" "+staticEvent.getColor()+" "+ staticEvent.getId());
 		}
 		System.out.println();
-		
+		/*
 		CalendarObjectListOutputStream out = new CalendarObjectListOutputStream("/home/Desktop/Data");
 		System.out.println(out.writeList(staticEventList));
 		out.close();
