@@ -244,10 +244,8 @@ public class EventListHandler{
 
 		while(!sortedStaticEList.isEmpty())
 		{
-			StaticEvent temp = sortedStaticEList.peek();
-			if ((freeList.peek().getStartTime()).compareTo(temp.getEndTime()) <=0){
-				
-			}
+			StaticEvent temp = sortedStaticEList.poll();
+			if ((freeList.poll().getStartTime()).compareTo(secondCheck.getStartTime()) <=0. >= temp.getEndTime()
 		}
 		
 		

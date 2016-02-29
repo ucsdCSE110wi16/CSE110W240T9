@@ -241,13 +241,11 @@ public class EventListHandler{
 			startTime.add(Calendar.DAY_OF_MONTH, 1);
 
 		}
-
+		StaticEvent temp = new StaticEvent()
 		while(!sortedStaticEList.isEmpty())
 		{
-			StaticEvent temp = sortedStaticEList.peek();
-			if ((freeList.peek().getStartTime()).compareTo(temp.getEndTime()) <=0){
-				
-			}
+			sortedStaticEList.poll();
+			if (freeList.poll().getStartTime() >= 
 		}
 		
 		
