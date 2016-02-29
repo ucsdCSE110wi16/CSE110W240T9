@@ -997,6 +997,8 @@ public class WeekView extends View {
                         currentPeriodEvents = mNextPeriodEvents;
                     }
                 }
+
+                // This is where three month's events are loaded three times, change it to 1 time instead
                 if (currentPeriodEvents == null)
                     currentPeriodEvents = mWeekViewLoader.onLoad(periodToFetch);
                 if (previousPeriodEvents == null)

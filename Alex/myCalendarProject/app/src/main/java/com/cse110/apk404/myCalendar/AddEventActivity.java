@@ -27,6 +27,10 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.cse110.apk404.myCalendar.eventListHandler.CalendarDB;
+import com.cse110.apk404.myCalendar.eventListHandler.CalendarDate;
+import com.cse110.apk404.myCalendar.eventListHandler.EventListHandler;
+
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -178,7 +182,7 @@ public class AddEventActivity extends AppCompatActivity {
                 } else if (eventType.equals(items[2])) {
                     // This is dynamic
                 } else {
-                    Log.e("Error", "EventType is none of the options");
+                    Log.e("Error01", "EventType is none of the options");
                 }
                 String color = ((Spinner) findViewById(R.id.color_dropdown_add_event)).getSelectedItem().toString();
                 Calendar startTime = Calendar.getInstance();
@@ -188,14 +192,33 @@ public class AddEventActivity extends AppCompatActivity {
                 String notes = ((TextView) findViewById(R.id.notes_add_event)).getText().toString();
 
                 Log.d("AddEvent", name + "\n" + location + "\n" + eventType + "\n" + color + "\n" + notes);
-                // Wait 2 seconds, then create the event and resume parent activity (calendar view)
+
+                try {
+                    CalendarDate start_time = new CalendarDate(2016, 2, 28, 10, 20, 0, "Feb");
+                    CalendarDate end_time = new CalendarDate(2016, 2, 28, 11, 30, 0, "Feb");
+
+                    boolean check = EventListHandler.createStaticEvent(name, location, start_time, end_time,
+                            isStatic, isPeriodic, isFinished, notes, color);
+
+                    // Test
+                    CalendarDB.updateListLocal(1, EventListHandler.getStaticList()); // Save lists from EventListHandler to database
+
+                } catch (Exception e) {
+                    Log.e("Error02", e.getMessage());
+                }
+
+                // Wait 2 seconds, then resume parent activity (calendar view)
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        finish();
+//                        finish();
+
+                        // pass of the id of the clicked event to DetailActivity for loading event details
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
                     }
-                }, 400);
+                }, 200);
             }
         });
     }

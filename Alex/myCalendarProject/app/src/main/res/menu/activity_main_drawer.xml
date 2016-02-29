@@ -18,6 +18,10 @@
             android:id="@+id/nav_sync"
             android:icon="@drawable/ic_backup_black_24dp"
             android:title="Sync Calender" />
+        <item
+            android:id="@+id/nav_start_new"
+            android:icon="@drawable/ic_mode_edit_black_18dp"
+            android:title="Start New" />
     </group>
 
 

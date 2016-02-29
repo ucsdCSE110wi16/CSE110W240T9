@@ -185,7 +185,7 @@ public abstract class CalendarViewBaseFragment extends Fragment implements WeekV
 
         // pass of the id of the clicked event to DetailActivity for loading event details
         Intent intent = new Intent(getActivity(), DetailActivity.class);
-        int id = (int) event.getId(); // cast the id to int because getId() returns a long
+        long id = event.getId(); // cast the id to int because getId() returns a long
         intent.putExtra("id", id);
         Log.d("id", id + "");
         startActivity(intent);

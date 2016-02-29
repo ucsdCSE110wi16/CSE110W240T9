@@ -1,5 +1,7 @@
 package com.cse110.apk404.myCalendar.eventListHandler;
 
+import android.content.Context;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -7,10 +9,10 @@ import java.util.AbstractCollection;
 
 public class CalendarObjectListInputStream {
 
-	ObjectInputStream objIn; 
+	private ObjectInputStream objIn;
 	
-	public CalendarObjectListInputStream(String filename) throws IOException {
-		FileInputStream fi = new FileInputStream(filename);
+	public CalendarObjectListInputStream(String filename, Context context) throws IOException {
+		FileInputStream fi = context.openFileInput(filename);
 		this.objIn = new ObjectInputStream(fi);     
 	}
 	

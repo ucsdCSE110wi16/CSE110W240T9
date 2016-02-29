@@ -81,7 +81,7 @@ public class DetailActivity extends AppCompatActivity {
 
         // Get the id from intent then get the event detail from the intent
         Intent mIntent = getIntent();
-        int id = mIntent.getIntExtra("id", 0);
+        long id = mIntent.getLongExtra("id", 0);
 
         // TODO - get event from event list use id
 

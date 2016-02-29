@@ -9,9 +9,13 @@ import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 
 import com.cse110.apk404.myCalendar.R;
+import com.cse110.apk404.myCalendar.eventListHandler.CalendarDB;
+import com.cse110.apk404.myCalendar.eventListHandler.CalendarSQLiteDB;
+import com.cse110.apk404.myCalendar.eventListHandler.EventListHandler;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -25,6 +29,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.io.IOException;
 
 
 /**
@@ -40,6 +46,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // This service is used to keep track of when does the application starts and terminates
+        startService(new Intent(getBaseContext(), OnClearFromRecentService.class));
 
 
         /* Set the fragment initially */
@@ -153,6 +162,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.nav_help) {
 
+        } else if (id == R.id.nav_start_new) {
+            Log.d("Restart", "Restart DB");
+
+            EventListHandler.initStaticList(); // Intialize list once at the begining
+            try {
+                CalendarDB.initDBLocal(this);
+            } catch (IOException e) {
+                Log.e("Error", e.getMessage());
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

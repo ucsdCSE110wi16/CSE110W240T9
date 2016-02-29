@@ -1,5 +1,7 @@
 package com.cse110.apk404.myCalendar.eventListHandler;
 
+import android.content.Context;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -7,10 +9,10 @@ import java.util.AbstractCollection;
 
 public class CalendarObjectListOutputStream {
 
-	ObjectOutputStream objOut; 
+	private ObjectOutputStream objOut;
 	
-	public CalendarObjectListOutputStream(String filename) throws IOException {
-		FileOutputStream fo = new FileOutputStream(filename);
+	public CalendarObjectListOutputStream(String filename, Context context) throws IOException {
+		FileOutputStream fo = context.openFileOutput(filename, Context.MODE_PRIVATE);;
 		this.objOut = new ObjectOutputStream(fo);     
 	}
 	
