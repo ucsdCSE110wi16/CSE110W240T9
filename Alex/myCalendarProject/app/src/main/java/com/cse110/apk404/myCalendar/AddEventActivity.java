@@ -1,5 +1,7 @@
 package com.cse110.apk404.myCalendar;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +12,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -23,10 +27,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.cse110.apk404.myCalendar.eventListHandler.CalendarDate;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -40,12 +47,17 @@ import java.util.HashMap;
 public class AddEventActivity extends AppCompatActivity {
 
     private Toolbar toolbar = null;
-    private Button setStart = null;
-    private Button setEnd = null;
+    private Button setStartTime = null;
+    private Button setEndTime = null;
     DateFormat fmtTime = DateFormat.getDateTimeInstance();
-    TextView timeLabel;
     Calendar time = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener datePicker = null;
     TimePickerDialog.OnTimeSetListener timePicker = null;
+
+    //For calculations
+    public int startYear, startMonth, startDay, startHour, startMinute, startDayOfWeek;
+    public int endYear, endMonth, endDay, endHour, endMinute, endDayOfWeek;
+    public String startMonthString, endMonthString;
 
 
     HashMap<String, String> eventColorMap = new HashMap<>();
@@ -62,11 +74,16 @@ public class AddEventActivity extends AppCompatActivity {
     }
 
     /*the setDate funtion*/
-    public void setDate(View view) {
+    public void setStartDate(View view) {
         PickerDialogs pickerDialogs = new PickerDialogs();
         pickerDialogs.show(getSupportFragmentManager(), "date_picker");
     }
 
+    /*the setDate funtion*/
+    public void setEndDate(View view) {
+        PickerDialogs pickerDialogs = new PickerDialogs();
+        pickerDialogs.show(getSupportFragmentManager(), "date_picker");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,21 +124,18 @@ public class AddEventActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, colors);
         colorPicker.setAdapter(adapter2);
 
-
-        // Used to pick date and time
+        /* Used to pick time */
         timePicker = new TimePickerDialog.OnTimeSetListener() {
             public void onTimeSet(TimePicker view, int hourOfDay,
                                   int minute) {
                 time.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 time.set(Calendar.MINUTE, minute);
-                //timeLabel.setText(fmtTime.format(time.getTime()));
-
             }
         };
 
-        setStart = (Button) findViewById(R.id.start_time_add_event);
+        setStartTime = (Button) findViewById(R.id.start_time_add_event);
 
-        setStart.setOnClickListener(new View.OnClickListener() {
+        setStartTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new TimePickerDialog(AddEventActivity.this, timePicker,
@@ -129,13 +143,14 @@ public class AddEventActivity extends AppCompatActivity {
                         time.get(Calendar.MINUTE), true).show();
                 Context context = getApplicationContext();
                 Toast.makeText(context, "Selected time - " + Calendar.HOUR_OF_DAY + " : " + Calendar.MINUTE, Toast.LENGTH_LONG).show();
-
+                startHour = Calendar.HOUR_OF_DAY;
+                startMinute = Calendar.MINUTE;
             }
         });
 
-        setEnd = (Button) findViewById(R.id.end_time_add_event);
+        setEndTime = (Button) findViewById(R.id.end_time_add_event);
 
-        setEnd.setOnClickListener(new View.OnClickListener() {
+        setEndTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new TimePickerDialog(AddEventActivity.this, timePicker,
@@ -143,7 +158,8 @@ public class AddEventActivity extends AppCompatActivity {
                         time.get(Calendar.MINUTE), true).show();
                 Context context = getApplicationContext();
                 Toast.makeText(context, "Selected time :" + Calendar.HOUR_OF_DAY + ":" + Calendar.MINUTE, Toast.LENGTH_LONG).show();
-
+                endHour = Calendar.HOUR_OF_DAY;
+                endMinute = Calendar.MINUTE;
             }
         });
 
@@ -188,8 +204,10 @@ public class AddEventActivity extends AppCompatActivity {
                     Log.e("Error", "EventType is none of the options");
                 }
                 String color = ((Spinner) findViewById(R.id.color_dropdown_add_event)).getSelectedItem().toString();
-                Calendar startTime = Calendar.getInstance();
-                Calendar endTime = Calendar.getInstance();
+                Calendar startTime = new CalendarDate(startYear, startMonth, startDay, startHour,
+                        startMinute, startDayOfWeek, startMonthString);
+                Calendar endTime = new CalendarDate(endYear, endMonth, endDay, endHour,
+                        endMinute, endDayOfWeek, endMonthString);
 
 
                 String notes = ((TextView) findViewById(R.id.notes_add_event)).getText().toString();
@@ -262,4 +280,151 @@ public class AddEventActivity extends AppCompatActivity {
         return true;
     }
 
+
+
+    /**
+     * This is the date picker pop up in the add event page
+     */
+    public class PickerDialogs extends DialogFragment {
+
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            DateSettings dateSettings = new DateSettings(getActivity());
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog dialog;
+            dialog = new DatePickerDialog(getActivity(), dateSettings, year, month, day);
+
+            return dialog;
+        }
+    }
+
+
+    public class DateSettings implements DatePickerDialog.OnDateSetListener {
+
+        Context context;
+
+        public DateSettings(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            monthOfYear++;
+            Toast.makeText(context, "Selected date :" + monthOfYear + " / " + dayOfMonth + " / " + year, Toast.LENGTH_LONG).show();
+            startYear = year;
+            startMonth = monthOfYear;
+            startDay = dayOfMonth;
+            startDayOfWeek = Calendar.DAY_OF_WEEK;
+
+            switch (monthOfYear) {
+                case 1:  startMonthString = "Jan";
+                    break;
+                case 2:  startMonthString = "Feb";
+                    break;
+                case 3:  startMonthString = "Mar";
+                    break;
+                case 4:  startMonthString = "Apr";
+                    break;
+                case 5:  startMonthString = "May";
+                    break;
+                case 6:  startMonthString = "Jun";
+                    break;
+                case 7:  startMonthString = "Jul";
+                    break;
+                case 8:  startMonthString = "Aug";
+                    break;
+                case 9:  startMonthString = "Sep";
+                    break;
+                case 10: startMonthString = "Oct";
+                    break;
+                case 11: startMonthString = "Nov";
+                    break;
+                case 12: startMonthString = "Dec";
+                    break;
+            }
+        }
+    }
+
+    /**
+     * This is the date picker pop up in the add event page
+     */
+    public class PickerDialogs2 extends DialogFragment {
+
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            DateSettings dateSettings = new DateSettings(getActivity());
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog dialog;
+            dialog = new DatePickerDialog(getActivity(), dateSettings, year, month, day);
+
+            return dialog;
+        }
+    }
+
+
+    public class DateSettings2 implements DatePickerDialog.OnDateSetListener {
+
+        Context context;
+
+        public DateSettings(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            monthOfYear++;
+            Toast.makeText(context, "Selected date :" + monthOfYear + " / " + dayOfMonth + " / " + year, Toast.LENGTH_LONG).show();
+            endYear = year;
+            endMonth = monthOfYear;
+            endDay = dayOfMonth;
+            endDayOfWeek = Calendar.DAY_OF_WEEK;
+
+            switch (monthOfYear) {
+                case 1:
+                    endMonthString = "Jan";
+                    break;
+                case 2:
+                    endMonthString = "Feb";
+                    break;
+                case 3:
+                    endMonthString = "Mar";
+                    break;
+                case 4:
+                    endMonthString = "Apr";
+                    break;
+                case 5:
+                    endMonthString = "May";
+                    break;
+                case 6:
+                    endMonthString = "Jun";
+                    break;
+                case 7:
+                    endMonthString = "Jul";
+                    break;
+                case 8:
+                    endMonthString = "Aug";
+                    break;
+                case 9:
+                    endMonthString = "Sep";
+                    break;
+                case 10:
+                    endMonthString = "Oct";
+                    break;
+                case 11:
+                    endMonthString = "Nov";
+                    break;
+                case 12:
+                    endMonthString = "Dec";
+                    break;
+            }
+        }
+    }
 }
