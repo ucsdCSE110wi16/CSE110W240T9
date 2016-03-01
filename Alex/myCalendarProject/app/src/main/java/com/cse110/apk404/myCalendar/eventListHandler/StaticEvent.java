@@ -1,5 +1,7 @@
 package com.cse110.apk404.myCalendar.eventListHandler;
 
+import android.system.StructStat;
+
 public class StaticEvent implements CalendarEvent {
 
 	private static final long serialVersionUID = 1L;
@@ -7,7 +9,6 @@ public class StaticEvent implements CalendarEvent {
 	private int Id; //Random Long Number
 	private String dateKey; //dateKey is the date of the event 12 Feb 2016
 	private String name;  //name of the event
-
 	private CalendarDate startTime; //startTime as a Calendar object
 	private CalendarDate endTime; //endTime as a Calendar object
 	private boolean isStatic; //if the event is static
@@ -17,7 +18,7 @@ public class StaticEvent implements CalendarEvent {
 	private String description = ""; //description of event
 	private String color = "";
 
-	
+
 	public StaticEvent(String dateKey, String name, String location, CalendarDate startTime, CalendarDate endTime,
 		boolean isStatic, boolean isPeriodic, boolean isFinished, String description, String color) throws CalendarError {
 

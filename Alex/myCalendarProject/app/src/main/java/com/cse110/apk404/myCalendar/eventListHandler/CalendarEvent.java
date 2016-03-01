@@ -16,6 +16,7 @@ public interface CalendarEvent extends CalendarObject {
 	public abstract void setFinished(boolean isFinished);
 	public abstract void setColor(String color);
 	public abstract String getColor();
+	public abstract String getLocation();
 	
 }
 

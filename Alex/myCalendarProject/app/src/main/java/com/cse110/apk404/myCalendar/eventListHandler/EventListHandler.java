@@ -6,9 +6,9 @@ import java.util.*;
 public class EventListHandler {
 
 
-    private static StaticEventList staticList;
-    private static DynamicEventList dynamicList;
-    private static ArrayList<CalendarEvent> events; //list to store all events in one given day
+    private static StaticEventList staticList = null;
+    private static DynamicEventList dynamicList = null;
+    private static ArrayList<CalendarEvent> events = null; //list to store all events in one given day
 
 
     public static ArrayList<CalendarEvent> getEvents() {
@@ -45,7 +45,8 @@ public class EventListHandler {
     }
 
     public static void initStaticList() {
-        staticList = new StaticEventList();
+        if (staticList == null)
+            staticList = new StaticEventList();
     }
 
     public static void initDynamicList() {
@@ -113,6 +114,28 @@ public class EventListHandler {
         }
         check = staticList.removeEventById(temp);
         return check;
+    }
+
+    public static CalendarEvent getEventById (long Id) {
+
+        ArrayList<StaticEvent> staticArrayList = staticList.getList();
+        if (staticArrayList != null) {
+            for (int i = 0; i < staticArrayList.size(); i++) {
+                if (staticArrayList.get(i).getId() == Id) {
+                    return staticArrayList.get(i);
+                }
+            }
+        }
+        ArrayList<DynamicEvent> dynamicArrayList = dynamicList.getList();
+        if (dynamicArrayList != null) {
+            for (int i = 0; i < dynamicArrayList.size(); i++) {
+                if (dynamicArrayList.get(i).getId() == Id) {
+                    return dynamicArrayList.get(i);
+                }
+            }
+        }
+
+        return null;
     }
 
 

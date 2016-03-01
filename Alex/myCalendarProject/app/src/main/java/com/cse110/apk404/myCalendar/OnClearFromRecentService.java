@@ -52,6 +52,7 @@ public class OnClearFromRecentService extends Service {
         // Save events from EventListHandler to database
         try {
             CalendarDB.updateListLocal(1, EventListHandler.getStaticList()); // Save lists from EventListHandler to database
+            Log.d("ListSize", EventListHandler.getStaticList().getList().size() + "");
         } catch (Exception e) {
             Log.e("Error05", e.getMessage());
         }
@@ -63,6 +64,7 @@ public class OnClearFromRecentService extends Service {
         // Save events from EventListHandler to database
         try {
             CalendarDB.updateListLocal(1, EventListHandler.getStaticList()); // Save lists from EventListHandler to database
+            Log.d("ListSize", EventListHandler.getStaticList().getList().size() + "");
         } catch (Exception e) {
             Log.e("Error05", e.getMessage());
         }

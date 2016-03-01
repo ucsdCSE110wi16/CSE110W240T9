@@ -20,6 +20,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.cse110.apk404.myCalendar.eventListHandler.CalendarEvent;
+import com.cse110.apk404.myCalendar.eventListHandler.EventListHandler;
+import com.cse110.apk404.myCalendar.eventListHandler.StaticEvent;
+
 
 /**
  * Event detailed description that contains a delete button to delete this event
@@ -28,18 +32,20 @@ import android.widget.TextView;
 public class DetailActivity extends AppCompatActivity {
 
     Toolbar toolbar = null;
+    FloatingActionButton fab = null;
 
     TextView eventNameText;
     TextView eventLocationText;
     TextView eventTimeText;
     TextView eventDescriptionText;
 
+    CalendarEvent event = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
 
         /* Toolbar */
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -49,48 +55,52 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        /* Floating action button */
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_finished_event);
-        /* Add Snackbar on click */
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Event is marked as finished and archived", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        // Get the id from intent then get the event detail from the intent
+        Intent mIntent = getIntent();
+        long id = mIntent.getLongExtra("id", 0);
 
-                fab.hide();
+        event = EventListHandler.getEventById(id);
+
+        // If event is finished, get rid of the editing button
+        if (!event.isFinished()) {
+        /* Floating action button */
+            fab = (FloatingActionButton) findViewById(R.id.fab_finished_event);
+        /* Add Snackbar on click */
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Snackbar.make(view, "Event is marked as finished and archived", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+
+                    fab.hide();
 //                fab.setRippleColor();
 
-                // TODO - set the event to be finished here then resume parent activity
+                    // TODO - set the event to be finished here then resume parent activity
 
 
-                // Wait 2 seconds, then finish and resume parent activity (calendar view)
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        finish();
-                    }
-                }, 1500);
-            }
-        });
+                    // Wait 2 seconds, then finish and resume parent activity (calendar view)
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            finish();
+                        }
+                    }, 1500);
+                }
+            });
+        }
 
         // Replace the home back button with delete button
         final Drawable closeIcon = getResources().getDrawable(R.drawable.ic_close_white_24dp);
         closeIcon.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setHomeAsUpIndicator(closeIcon);
 
-        // Get the id from intent then get the event detail from the intent
-        Intent mIntent = getIntent();
-        long id = mIntent.getLongExtra("id", 0);
 
-        // TODO - get event from event list use id
-
-
-        String event_Color = "#4CAF50";
-        String event_Name = id + " Event Name (ID): This is a really cool event name";
-        String event_location = "Center Hall UCSD";
-        String event_time = "10:30AM - 12:00PM";
-        String event_description = "Info about the event";
+        String event_Color = event.getColor();
+        String event_Name = event.getName();
+        String event_location = event.getLocation();
+        String event_time = "" + event.getStartTime().getHour() + ":" + event.getStartTime().getMinute()
+                + " - " + event.getEndTime().getHour() + ":" + event.getEndTime().getMinute();
+        String event_description = event.getDescription();
 
         eventNameText = (TextView) findViewById(R.id.event_details_title); // update name in nav bar
         eventLocationText = (TextView) findViewById(R.id.event_location);
@@ -127,6 +137,7 @@ public class DetailActivity extends AppCompatActivity {
             case R.id.action_delete_event:
                 return true;
             case R.id.action_finish_event:
+                if (event != null) event.setFinished(true);
                 return true;
             case R.id.action_unfinish_event:
                 return true;

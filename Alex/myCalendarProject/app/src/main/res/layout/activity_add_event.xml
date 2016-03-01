@@ -157,19 +157,10 @@
                 android:layout_marginRight="@dimen/padding_between_text_view_in_details"
                 android:layout_marginTop="@dimen/padding_between_text_view_in_details"
                 android:height="20dp"
-                android:onClick="setDate"
-                android:text="Set Start Date"/>
-
-            <Button
-                android:id="@+id/end_date_add_event"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
-                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
-                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
-                android:height="20dp"
-                android:onClick="setDate"
-                android:text="Set End Date"/>
+                android:background="?android:attr/selectableItemBackground"
+                android:onClick="setStartDate"
+                android:text="Set Start Date"
+                android:textColor="@color/colorPrimaryText"/>
 
             <Button
                 android:id="@+id/start_time_add_event"
@@ -179,7 +170,23 @@
                 android:layout_marginRight="@dimen/padding_between_text_view_in_details"
                 android:layout_marginTop="@dimen/padding_between_text_view_in_details"
                 android:height="20dp"
-                android:text="Set Start Time"/>
+                android:background="?android:attr/selectableItemBackground"
+                android:text="Set Start Time"
+                android:textColor="@color/colorPrimaryText"/>
+
+            <Button
+                android:id="@+id/end_date_add_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                android:height="20dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:onClick="setEndDate"
+                android:text="Set End Date"
+                android:textColor="@color/colorPrimaryText"/>
+
 
             <Button
                 android:id="@+id/end_time_add_event"
@@ -189,7 +196,9 @@
                 android:layout_marginRight="@dimen/padding_between_text_view_in_details"
                 android:layout_marginTop="@dimen/padding_between_text_view_in_details"
                 android:height="20dp"
-                android:text="Set End Time"/>
+                android:background="?android:attr/selectableItemBackground"
+                android:text="Set End Time"
+                android:textColor="@color/colorPrimaryText"/>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"

@@ -1,6 +1,10 @@
 package com.cse110.apk404.myCalendar;
 
+import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -9,6 +13,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -22,18 +28,31 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.cse110.apk404.myCalendar.eventListHandler.CalendarDB;
 import com.cse110.apk404.myCalendar.eventListHandler.CalendarDate;
-import com.cse110.apk404.myCalendar.eventListHandler.EventListHandler;
 
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+
+import com.cse110.apk404.myCalendar.eventListHandler.CalendarDB;
+import com.cse110.apk404.myCalendar.eventListHandler.CalendarDate;
+import com.cse110.apk404.myCalendar.eventListHandler.CalendarObject;
+import com.cse110.apk404.myCalendar.eventListHandler.CalendarObjectList;
+import com.cse110.apk404.myCalendar.eventListHandler.EventListHandler;
+import com.cse110.apk404.myCalendar.eventListHandler.StaticEvent;
+
+import java.text.DateFormat;
+import java.util.AbstractCollection;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -45,17 +64,21 @@ public class AddEventActivity extends AppCompatActivity {
     private Toolbar toolbar = null;
     private Button setStart = null;
     private Button setEnd = null;
-    DateFormat fmtTime = DateFormat.getDateTimeInstance();
-    TextView timeLabel;
-    Calendar time = Calendar.getInstance();
-    TimePickerDialog.OnTimeSetListener timePicker = null;
 
+    Calendar time = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener datePicker = null;
+    TimePickerDialog.OnTimeSetListener timePicker = null;
 
     HashMap<String, String> eventColorMap = new HashMap<>();
 
+    //For calculations
+    public static int startYear, startMonth, startDay, startHour, startMinute = 0;
+    public static int endYear, endMonth, endDay, endHour, endMinute = 0;
+
+
     public void populateColorMap() {
         eventColorMap.put("Red", "#F44336");
-        eventColorMap.put("Orange", "#FF5722");
+        eventColorMap.put("Orange", "#F44336");
         eventColorMap.put("Pink", "#E91E63");
         eventColorMap.put("Green", "#4CAF50");
         eventColorMap.put("LightGreen", "#F44336");
@@ -64,10 +87,17 @@ public class AddEventActivity extends AppCompatActivity {
         eventColorMap.put("Teal", "#009688");
     }
 
-    /*the setDate funtion*/
-    public void setDate(View view) {
+    /* it is called in OnClick function gets called when the setStartDate button is clicked */
+    public void setStartDate(View view) {
         PickerDialogs pickerDialogs = new PickerDialogs();
         pickerDialogs.show(getSupportFragmentManager(), "date_picker");
+    }
+
+    /* it is called in OnClick function gets called when the setStartDate button is clicked */
+    public void setEndDate(View view) {
+        PickerDialogs2 pickerDialogs2 = new PickerDialogs2();
+        pickerDialogs2.show(getSupportFragmentManager(), "date_picker");
+
     }
 
 
@@ -130,6 +160,10 @@ public class AddEventActivity extends AppCompatActivity {
                 new TimePickerDialog(AddEventActivity.this, timePicker,
                         time.get(Calendar.HOUR_OF_DAY),
                         time.get(Calendar.MINUTE), true).show();
+                Context context = getApplicationContext();
+                Toast.makeText(context, "Selected time- " + Calendar.HOUR_OF_DAY + " : " + Calendar.MINUTE, Toast.LENGTH_LONG).show();
+                startHour = Calendar.HOUR_OF_DAY;
+                startMinute = Calendar.MINUTE;
             }
         });
 
@@ -141,6 +175,10 @@ public class AddEventActivity extends AppCompatActivity {
                 new TimePickerDialog(AddEventActivity.this, timePicker,
                         time.get(Calendar.HOUR_OF_DAY),
                         time.get(Calendar.MINUTE), true).show();
+                Context context = getApplicationContext();
+                Toast.makeText(context, "Selected time- " + Calendar.HOUR_OF_DAY + ":" + Calendar.MINUTE, Toast.LENGTH_LONG).show();
+                endHour = Calendar.HOUR_OF_DAY;
+                endMinute = Calendar.MINUTE;
             }
         });
 
@@ -150,21 +188,7 @@ public class AddEventActivity extends AppCompatActivity {
             public void onClick(View view) {
 //                Snackbar.make(view, "Event is created", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
-                fab.hide();
-
-                // TODO - set the event to be finished here then resume parent activity
-
-
-                //public boolean createStaticEvent(
-                // String name,
-                // String location,
-                // CalendarDate startTime,
-                // CalendarDate endTime,
-                // boolean isStatic,
-                // boolean isPeriodic,
-                // boolean isFinished,
-                // String description,
-                // String color)
+                // set the event to be finished here then resume parent activity
 
                 String name = ((TextView) findViewById(R.id.event_name_add_event)).getText().toString();
                 String location = ((TextView) findViewById(R.id.event_location_add_event)).getText().toString();
@@ -185,40 +209,78 @@ public class AddEventActivity extends AppCompatActivity {
                     Log.e("Error01", "EventType is none of the options");
                 }
                 String color = ((Spinner) findViewById(R.id.color_dropdown_add_event)).getSelectedItem().toString();
-                Calendar startTime = Calendar.getInstance();
-                Calendar endTime = Calendar.getInstance();
-
-
                 String notes = ((TextView) findViewById(R.id.notes_add_event)).getText().toString();
+
+
+//                Calendar startTime = Calendar.getInstance();
+//                startTime.set(Calendar.HOUR_OF_DAY, startHour);
+//                startTime.set(Calendar.MINUTE, startMinute);
+//                startTime.set(Calendar.MONTH, startMonth);
+//                startTime.set(Calendar.YEAR, startYear);
+//                Calendar endTime = Calendar.getInstance();
+//                endTime.set(Calendar.HOUR_OF_DAY, endHour);
+//                endTime.set(Calendar.MINUTE, endMinute);
+//                endTime.set(Calendar.MONTH, endMonth);
+//                endTime.set(Calendar.YEAR, endYear);
 
                 Log.d("AddEvent", name + "\n" + location + "\n" + eventType + "\n" + color + "\n" + notes);
 
-                try {
-                    CalendarDate start_time = new CalendarDate(2016, 2, 28, 10, 20, 0, "Feb");
-                    CalendarDate end_time = new CalendarDate(2016, 2, 28, 11, 30, 0, "Feb");
+                // TODO - setting start and ending time does not work, so we have dummy variable here
+                startHour = 10;
+                startMinute = 30;
+                endHour = 12;
+                endMinute = 20;
 
-                    boolean check = EventListHandler.createStaticEvent(name, location, start_time, end_time,
-                            isStatic, isPeriodic, isFinished, notes, color);
+                String endDateText = "Start Date: " + startMonth + "/" + startDay + "/" + startYear + "\n" +
+                        " End Date" + endMonth + "/" + endDay + "/" + endYear;
 
-                    // Test
-                    CalendarDB.updateListLocal(1, EventListHandler.getStaticList()); // Save lists from EventListHandler to database
+                Toast.makeText(getApplicationContext(), endDateText, Toast.LENGTH_LONG).show();
 
-                } catch (Exception e) {
-                    Log.e("Error02", e.getMessage());
-                }
+                // To create an event, we need to at least specify, event name, starting time and ending time
+                if (!name.equals("") && startYear != 0 && startMonth != 0 && startDay != 0 && startHour != 0 && startMinute != 0
+                        && endYear != 0 && endMonth != 0 && endDay != 0 && endHour != 0 && endMinute != 0) {
+                    try {
 
-                // Wait 2 seconds, then resume parent activity (calendar view)
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+                        CalendarDate start_time = new CalendarDate(startYear, startMonth, startDay, startHour,
+                                startMinute, 0, "");
+                        CalendarDate end_time = new CalendarDate(endYear, endMonth, endDay, endHour,
+                                endMinute, 0, "");
+
+                        boolean check = EventListHandler.createStaticEvent(name, location, start_time, end_time,
+                                isStatic, isPeriodic, isFinished, notes, color);
+
+                        // Error: Attempt to read from null array
+                        CalendarDB.updateListLocal(1, (CalendarObjectList<? extends AbstractCollection<? extends CalendarObject>, ? extends CalendarObject>) EventListHandler.getStaticList().getList()); // Save lists from EventListHandler to database
+                        Log.d("Executed", EventListHandler.getStaticList().getList().size() + "");
+
+                    } catch (Exception e) {
+                        Log.e("Error02", e.getMessage());
+                    }
+
+                    // Reset those static date int to 0
+                    startYear = startMonth = startDay = startHour = startMinute = 0;
+                    endYear = endMonth = endDay = endHour = endMinute = 0;
+
+
+                    fab.hide(); // fab clicked animation
+
+                    // Wait 2 seconds, then resume parent activity (calendar view)
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
 //                        finish();
 
-                        // pass of the id of the clicked event to DetailActivity for loading event details
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
-                    }
-                }, 200);
+                            // pass of the id of the clicked event to DetailActivity for loading event details
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                        }
+                    }, 200);
+
+                } else {
+                    // If not having basic fields filled out, remaind the user
+                    Snackbar.make(view, "Please fill out event name and time period", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                }
             }
         });
     }
@@ -276,6 +338,101 @@ public class AddEventActivity extends AppCompatActivity {
         fab.setImageTintList(ColorStateList.valueOf(eventColor));
 
         return true;
+    }
+
+
+    /**
+     * This is the start date date picker pop up in the add event page
+     */
+    public static class PickerDialogs extends DialogFragment {
+
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            DateSettings dateSettings = new DateSettings(getActivity());
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog dialog;
+            dialog = new DatePickerDialog(getActivity(), dateSettings, year, month, day);
+
+            return dialog;
+        }
+    }
+
+
+    /**
+     * Thi is for start date, called by PickerDialogs to set the date text on button and
+     */
+    public static class DateSettings implements DatePickerDialog.OnDateSetListener {
+
+        Context context;
+
+        public DateSettings(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            monthOfYear++;
+            startYear = year;
+            startMonth = monthOfYear;
+            startDay = dayOfMonth;
+
+            String startDateText = "Start Date: " + monthOfYear + "/" + dayOfMonth + "/" + year;
+//            Toast.makeText(context, startDateText, Toast.LENGTH_LONG).show();
+
+            // Reset the start date button text
+            Button setStartDateButton = (Button) ((Activity) this.context).getWindow().getDecorView().findViewById(R.id.start_date_add_event);
+            setStartDateButton.setText(startDateText);
+
+        }
+    }
+
+    /**
+     * This is the date picker pop up in the add event page
+     */
+    public static class PickerDialogs2 extends DialogFragment {
+
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            DateSettings2 dateSettings = new DateSettings2(getActivity());
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog dialog;
+            dialog = new DatePickerDialog(getActivity(), dateSettings, year, month, day);
+
+            return dialog;
+        }
+    }
+
+
+    public static class DateSettings2 implements DatePickerDialog.OnDateSetListener {
+
+        Context context;
+
+        public DateSettings2(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            monthOfYear++;
+            endYear = year;
+            endMonth = monthOfYear;
+            endDay = dayOfMonth;
+
+            String endDateText = "End Date: " + monthOfYear + "/" + dayOfMonth + "/" + year;
+//            Toast.makeText(context, endDateText, Toast.LENGTH_LONG).show();
+
+            // Reset the end date button text
+            Button setStartDateButton = (Button) ((Activity) this.context).getWindow().getDecorView().findViewById(R.id.end_date_add_event);
+            setStartDateButton.setText(endDateText);
+        }
     }
 
 }
