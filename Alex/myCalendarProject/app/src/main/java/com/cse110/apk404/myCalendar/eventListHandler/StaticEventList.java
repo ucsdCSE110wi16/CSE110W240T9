@@ -34,7 +34,7 @@ public class StaticEventList implements CalendarObjectList<ArrayList<StaticEvent
 	}
 
     
-    public boolean removeEventById(int temp) throws CalendarError {
+    public boolean removeEventById(long temp) throws CalendarError {
     	boolean check = false;
 		if (temp == 0)
 			throw new CalendarError("Null Event");

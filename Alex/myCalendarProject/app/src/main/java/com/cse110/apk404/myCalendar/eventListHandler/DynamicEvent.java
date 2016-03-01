@@ -88,7 +88,7 @@ public class DynamicEvent implements CalendarEvent {
 		this.isFinished = isFinished;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return Id;
 	}
 

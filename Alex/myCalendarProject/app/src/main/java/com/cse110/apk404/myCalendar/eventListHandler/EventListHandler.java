@@ -101,7 +101,7 @@ public class EventListHandler {
     }
 
 
-    public static boolean removeEventById(int temp) throws CalendarError {
+    public static boolean removeEventById(long temp) throws CalendarError {
         boolean check = true;
         if (staticList == null) {
             check = false;

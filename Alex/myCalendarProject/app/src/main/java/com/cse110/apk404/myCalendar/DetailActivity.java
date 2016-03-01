@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import android.support.design.widget.FloatingActionButton;
@@ -162,21 +163,18 @@ public class DetailActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_delete_event:
+                try {
+                    EventListHandler.removeEventById(event.getId());
+                } catch (Exception e) {
+                    Log.e("Error06", e.getMessage());
+                }
+                RestartMainActivity();
                 return true;
             case R.id.action_finish_event:
                 if (event != null) {
                     Snackbar.make(findViewById(android.R.id.content), "Event is marked as finished and archived", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     event.setFinished(true);
-                    // Restart parent activity to refresh calendar list UI
-                    fab.hide();
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                        }
-                    }, 1200);
+                    RestartMainActivity();
                 }
                 return true;
             case R.id.action_unfinish_event:
@@ -185,6 +183,19 @@ public class DetailActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    private void RestartMainActivity() {
+        // Restart parent activity to refresh calendar list UI
+        fab.hide();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        }, 1200);
     }
 
 
