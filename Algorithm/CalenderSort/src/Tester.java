@@ -49,12 +49,12 @@ public class Tester {
 			System.out.println(staticEvent.getName()+" "+staticEvent.getColor()+" "+ staticEvent.getId());
 		}
 		System.out.println();
-		/*
-		CalendarObjectListOutputStream out = new CalendarObjectListOutputStream("/home/Desktop/Data");
+		
+		CalendarObjectListOutputStream out = new CalendarObjectListOutputStream("/Desktop/Data");
 		System.out.println(out.writeList(staticEventList));
 		out.close();
 		
-		CalendarObjectListInputStream in = new CalendarObjectListInputStream("/home/Desktop/Data");
+		CalendarObjectListInputStream in = new CalendarObjectListInputStream("/Desktop/Data");
 		StaticEventList t1 = null;
 		try {
 			t1 = (StaticEventList) in.readList();
@@ -69,7 +69,7 @@ public class Tester {
 		for (int i=0; i<staticArrayList1.size(); i++){
 			System.out.println("the " + i + "th object:");
 			staticEvent1 = staticArrayList1.get(i);
-			System.out.println(staticEvent1.getName()+" "+staticEvent1.getColor()+" "+staticEvent1.getDateKey() + " " 
+			System.out.println(staticEvent1.getName()+" "+staticEvent1.getColor() + " " 
 					+ staticEvent1.getId());
 		}
 		System.out.println();
@@ -77,11 +77,11 @@ public class Tester {
 		handler.createStaticEvent("shit", "at shitty", startTime, endTime, true, false, false, "meow", "white");
 		StaticEventList a = handler.getStaticList();
 		in.close();
-		out = new CalendarObjectListOutputStream("/home/Desktop/Data");
+		out = new CalendarObjectListOutputStream("$HOME/Desktop/Data");
 		out.writeList(a);
 		out.close();
 		
-		in = new CalendarObjectListInputStream("/home/Desktop/Data");
+		in = new CalendarObjectListInputStream("$HOME/Desktop/Data");
 		
 		
 		
@@ -99,7 +99,7 @@ public class Tester {
 		for (int i=0; i<b.size(); i++){
 			System.out.println("the " + i + "th object:");
 			c = b.get(i);
-			System.out.println(c.getName()+" "+c.getColor()+" "+c.getDateKey());
+			System.out.println(c.getName()+" "+c.getColor());
 		}
 		System.out.println();
 		

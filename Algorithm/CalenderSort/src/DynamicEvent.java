@@ -5,7 +5,7 @@ public class DynamicEvent implements CalendarEvent {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String Id; 
+	private Long Id; 
 	private String dateKey; //dateKey is the date of the event 12 Feb 2016
 	private String name;  //name of the event
 	private Calendar startTime; //startTime as a Calendar object
@@ -20,7 +20,7 @@ public class DynamicEvent implements CalendarEvent {
 
 
 	
-	public DynamicEvent(String Id, String name, boolean isStatic, String location, String description, String color,
+	public DynamicEvent(Long Id, String name, boolean isStatic, String location, String description, String color,
 			Calendar deadline) throws CalendarError{
 		
 		setId(Id);
@@ -86,11 +86,11 @@ public class DynamicEvent implements CalendarEvent {
 		this.isFinished = isFinished;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return Id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.Id = id;
 	}
 

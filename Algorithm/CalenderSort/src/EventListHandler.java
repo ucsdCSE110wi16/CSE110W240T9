@@ -22,30 +22,29 @@ public class EventListHandler{
 	public void setEvents(ArrayList<CalendarEvent> events) {
 		this.events = events;
 	}
-/*
-	public ArrayList<CalendarEvent> getEventsByDate (String dateKey) throws CalendarError {
-		if (dateKey == null)
-			throw new CalendarError("Null Event");
 
-		events = new ArrayList<CalendarEvent>();
-		ArrayList<StaticEvent> staticArrayList = staticList.getList();
-		if (staticArrayList != null){
-			for(int i=0; i<staticArrayList.size(); i++){
-				if(staticArrayList.get(i).getDateKey().contains(dateKey)){
-					events.add(staticArrayList.get(i));
-				}
-			}}
-		ArrayList<DynamicEvent> dynamicArrayList = dynamicList.getList();
-		if (dynamicArrayList != null){
-			for(int i=0; i<dynamicArrayList.size(); i++){
-				if(dynamicArrayList.get(i).getDateKey().contains(dateKey)){
-					events.add(dynamicArrayList.get(i));
-				}
-			}}
+	public CalendarEvent getEventById (long Id) throws CalendarError {
 
-		return events;
+        ArrayList<StaticEvent> staticArrayList = staticList.getList();
+        if (staticArrayList != null) {
+            for (int i = 0; i < staticArrayList.size(); i++) {
+                if (staticArrayList.get(i).getId() == Id) {
+                    return staticArrayList.get(i);
+                }
+            }
+        }
+        ArrayList<DynamicEvent> dynamicArrayList = dynamicList.getList();
+        if (dynamicArrayList != null) {
+            for (int i = 0; i < dynamicArrayList.size(); i++) {
+                if (dynamicArrayList.get(i).getId() == Id) {
+                    return dynamicArrayList.get(i);
+                }
+            }
+        }
+        
+        return null;
 	}
-*/
+	
 	public void initStaticList(){
 		staticList = new StaticEventList();
 	}
