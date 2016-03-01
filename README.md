@@ -56,28 +56,31 @@ __Week 4- 5__
 __Week 6__
 * ~~Iterate over user stories to eliminate assumption (everyone)~~
 * ~~Finished working the ability to show month view of calendar and testing the main view (Kristine, Fang, Alex, William)~~
-* ~~Finished creating app icon (Alex)~~
 * ~~Keep working on Database (Zhiwei)~~
-* ~~Creating new Event: Static Event (can be periodic)~~ 
+*~~Creating new Event: Static Event (can be periodic)~~
 * ~~Creating new Event: Dynamic Event (Nonperiodic, can locate a time for itself)~~
-* Updating new Event in database. (Kristine, Fang, Alex, William, Zhiwei)
-* ~~Prototyping and testing event self allocation algorithm. (Scarlet, Steve)~~
+* ~~Updating in database. (Kristine, Fang, Alex, William, Zhiwei)~~
+* ~~Prototyping and testing event self-allocation algorithm. (Scarlet, Steve)~~
 
 
 __Week 7__
-* Keep working on as well as testing Creating new event mechanism. (Kristine, Fang, Alex, William, Zhiwei)
+* ~~Keep working on as well as testing Creating new event mechanism. (Kristine, Fang, Alex, William, Zhiwei)~~
 * ~~Integrate show month view with create new event view and create smooth transitions in between. (Kristine, Fang, Alex, William)~~
-* Finishing event self allocation algorithm. (Scarlet, Steve)
+* ~~Finishing event self-allocation algorithm. (Scarlet, Steve)~~
 * ~~Deleting event and updating deleted events in database. (Zhiwei)~~
 * ~~Updating UI using Material Design. (Kristine, Fang, Alex, William)~~
 
 __Week 8__
-* ~~Add finished event to finished List (Kristine, Fang, Alex, William, Zhiwei)~~
-* Testing on basic features such as adding and deleting events. (everyone)
+* ~~add finished event to finished List (Kristine, Fang, Alex, William, Zhiwei)~~
+* ~~Testing on basic features such as adding and deleting events. (everyone)~~
 
 __Week 9__  
 * Add notification
-* Testing on basic features such as adding and deleting events
+* merge the Dynamic event algorithm with the front end
+* ~~merge the self allocation algorithm with the front end~~
+* merge the event delete algorithm with the front end
+* ~~Testing on basic adding events feature~~
+* Testing on basic delecting event feature
 * Finish product
 
 __Week 10__ 
