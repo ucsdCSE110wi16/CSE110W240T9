@@ -1,9 +1,13 @@
 package com.cse110.apk404.myCalendar;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import java.util.*;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,7 +32,6 @@ import com.alamkanak.weekview.MonthLoader;
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
 import com.cse110.apk404.myCalendar.R;
-import com.cse110.apk404.myCalendar.eventListHandler.CalendarDate;
 import com.cse110.apk404.myCalendar.eventListHandler.CalendarEvent;
 import com.cse110.apk404.myCalendar.eventListHandler.EventListHandler;
 import com.cse110.apk404.myCalendar.eventListHandler.StaticEvent;
@@ -66,22 +69,12 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
         for (int i = 0; i < static_event_list.size(); i++) {
             StaticEvent event_temp = (StaticEvent) static_event_list.get(i);
 
-            if (event_temp.getStartTime().getMonth() == newMonth) {
+            DateFormat time = new SimpleDateFormat("MM");
+            int event_month = Integer.parseInt(time.format(event_temp.getStartTime().getTime()));
+            Log.d("loglog", "event month: "+ event_month + "   new month" + newMonth);
 
-                Calendar startTime = Calendar.getInstance();
-                startTime.set(Calendar.HOUR_OF_DAY, event_temp.getStartTime().getHour());
-                startTime.set(Calendar.MINUTE, event_temp.getStartTime().getMinute());
-                startTime.set(Calendar.MONTH, event_temp.getStartTime().getMonth() - 1);
-                startTime.set(Calendar.YEAR, event_temp.getStartTime().getYear());
-                Calendar endTime = (Calendar) startTime.clone();
-                endTime.set(Calendar.HOUR_OF_DAY, event_temp.getEndTime().getHour());
-                endTime.set(Calendar.MINUTE, event_temp.getEndTime().getMinute());
-                endTime.set(Calendar.MONTH, event_temp.getEndTime().getMonth() - 1);
-                endTime.set(Calendar.YEAR, event_temp.getEndTime().getYear());
-
-                Log.d("Event", event_temp.getName() + " starts at " + getEventTitle(startTime));
-
-                WeekViewEvent event = new WeekViewEvent(event_temp.getId(), event_temp.getName(), startTime, endTime);
+            if (event_month == newMonth) {
+                WeekViewEvent event = new WeekViewEvent(event_temp.getId(), event_temp.getName(), event_temp.getStartTime(), event_temp.getEndTime());
                 event.setColor(Color.parseColor(event_temp.getColor()));
                 event_list_UI.add(event);
             }

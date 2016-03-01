@@ -1,5 +1,6 @@
 package com.cse110.apk404.myCalendar;
 
+import java.text.SimpleDateFormat;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -23,6 +24,9 @@ import android.widget.TextView;
 import com.cse110.apk404.myCalendar.eventListHandler.CalendarEvent;
 import com.cse110.apk404.myCalendar.eventListHandler.EventListHandler;
 import com.cse110.apk404.myCalendar.eventListHandler.StaticEvent;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 
 /**
@@ -98,8 +102,11 @@ public class DetailActivity extends AppCompatActivity {
         String event_Color = event.getColor();
         String event_Name = event.getName();
         String event_location = event.getLocation();
-        String event_time = "" + event.getStartTime().getHour() + ":" + event.getStartTime().getMinute()
-                + " - " + event.getEndTime().getHour() + ":" + event.getEndTime().getMinute();
+
+        // Use a date formatter to get the correct date format
+        DateFormat time = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        String event_time = time.format(event.getStartTime().getTime()) + "\n" +
+                time.format(event.getEndTime().getTime());
         String event_description = event.getDescription();
 
         eventNameText = (TextView) findViewById(R.id.event_details_title); // update name in nav bar

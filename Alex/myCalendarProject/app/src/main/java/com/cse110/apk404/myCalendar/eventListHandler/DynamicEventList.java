@@ -26,8 +26,10 @@ public class DynamicEventList implements CalendarObjectList<ArrayList<DynamicEve
 		return true;
 	}
 
-    public boolean removeEventById(long id) throws CalendarError {
+    public boolean removeEventById(Long id) throws CalendarError {
     	boolean check = false;
+		if (id == null)
+			throw new CalendarError("Null Event");
 		DynamicEvent eventToRemove;
 		if(dynamicList == null) return check;
 		for (int i = 0; i< dynamicList.size(); i++){
