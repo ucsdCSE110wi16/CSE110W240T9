@@ -63,8 +63,9 @@ public class AddEventActivity extends AppCompatActivity {
     private Button setEnd = null;
 
     Calendar time = Calendar.getInstance();
-    DatePickerDialog.OnDateSetListener datePicker = null;
-    TimePickerDialog.OnTimeSetListener timePicker = null;
+
+    TimePickerDialog.OnTimeSetListener startTimePicker = null;
+    TimePickerDialog.OnTimeSetListener endTimePicker = null;
 
     HashMap<String, String> eventColorMap = new HashMap<>();
 
@@ -138,48 +139,65 @@ public class AddEventActivity extends AppCompatActivity {
         colorPicker.setAdapter(adapter2);
 
 
-        // Used to pick date and time
-        timePicker = new TimePickerDialog.OnTimeSetListener() {
+        /*========= Time picker listeners and picker used to pick time =========*/
+
+        setStart = (Button) findViewById(R.id.start_time_add_event);
+        setEnd = (Button) findViewById(R.id.end_time_add_event);
+
+
+        startTimePicker = new TimePickerDialog.OnTimeSetListener() {
             public void onTimeSet(TimePicker view, int hourOfDay,
                                   int minute) {
-                time.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                time.set(Calendar.MINUTE, minute);
-//            timeLabel.setText(fmtTime.format(time.getTime()));
-
+//                Log.d("Log1", hourOfDay + "  " + minute);
+                setStart.setText("START TIME: " + hourOfDay + ":" + minute);
+                startHour = hourOfDay;
+                startMinute = minute;
             }
         };
 
-        setStart = (Button) findViewById(R.id.start_time_add_event);
+        endTimePicker = new TimePickerDialog.OnTimeSetListener() {
+            public void onTimeSet(TimePicker view, int hourOfDay,
+                                  int minute) {
+//                Log.d("Log2", hourOfDay + "  " + minute);
+                setEnd.setText("END TIME: " + hourOfDay + ":" + minute);
+                endHour = hourOfDay;
+                endMinute = minute;
+            }
+        };
 
+        /* Click on set start time button to make time picker pop up show up */
         setStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                new TimePickerDialog(AddEventActivity.this, timePicker,
-//                        time.get(Calendar.HOUR_OF_DAY),
-//                        time.get(Calendar.MINUTE), true).show();
-//                Context context = getApplicationContext();
-//                Toast.makeText(context, "Selected time- " + Calendar.HOUR_OF_DAY + " : " + Calendar.MINUTE, Toast.LENGTH_LONG).show();
+                new TimePickerDialog(AddEventActivity.this, startTimePicker,
+                        time.get(Calendar.HOUR_OF_DAY),
+                        time.get(Calendar.MINUTE), true).show();
+                Context context = getApplicationContext();
+                Toast.makeText(context, "Selected time- " + Calendar.HOUR_OF_DAY + " : " + Calendar.MINUTE, Toast.LENGTH_LONG).show();
 //                startHour = Calendar.HOUR_OF_DAY;
 //                startMinute = Calendar.MINUTE;
             }
         });
 
-        setEnd = (Button) findViewById(R.id.end_time_add_event);
 
+        /* Click on set end time button to make time picker pop up show up */
         setEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                new TimePickerDialog(AddEventActivity.this, timePicker,
-//                        time.get(Calendar.HOUR_OF_DAY),
-//                        time.get(Calendar.MINUTE), true).show();
-//                Context context = getApplicationContext();
-//                Toast.makeText(context, "Selected time- " + Calendar.HOUR_OF_DAY + ":" + Calendar.MINUTE, Toast.LENGTH_LONG).show();
+                new TimePickerDialog(AddEventActivity.this, endTimePicker,
+                        time.get(Calendar.HOUR_OF_DAY),
+                        time.get(Calendar.MINUTE), true).show();
+                Context context = getApplicationContext();
+                Toast.makeText(context, "Selected time- " + Calendar.HOUR_OF_DAY + ":" + Calendar.MINUTE, Toast.LENGTH_LONG).show();
 //                endHour = Calendar.HOUR_OF_DAY;
 //                endMinute = Calendar.MINUTE;
             }
         });
 
+        /*========= Time picker listeners and picker used to pick time =========*/
 
+
+        // Add listener to floating action button
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -211,11 +229,7 @@ public class AddEventActivity extends AppCompatActivity {
 
                 Log.d("AddEvent", name + "\n" + location + "\n" + eventType + "\n" + color + "\n" + notes);
 
-                // TODO - setting start and ending time does not work, so we have dummy variable here
-                startHour = 10;
-                startMinute = 30;
-                endHour = 12;
-                endMinute = 20;
+                //setting start and ending time does not work, so we have dummy variable here
 
                 String endDateText = "Start Date: " + ((startMonth == 0) ? 0 : (startMonth + 1)) + "/" + startDay + "/" + startYear +
                         " time: " + startHour + ":" + startMinute + "\n" +

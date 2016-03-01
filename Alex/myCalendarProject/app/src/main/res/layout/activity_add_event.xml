@@ -171,6 +171,7 @@
                 android:layout_marginTop="@dimen/padding_between_text_view_in_details"
                 android:height="20dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:onClick="setStartTime"
                 android:text="Set Start Time"
                 android:textColor="@color/colorPrimaryText"/>
 
@@ -197,6 +198,7 @@
                 android:layout_marginTop="@dimen/padding_between_text_view_in_details"
                 android:height="20dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:onClick="setEndTime"
                 android:text="Set End Time"
                 android:textColor="@color/colorPrimaryText"/>
 
