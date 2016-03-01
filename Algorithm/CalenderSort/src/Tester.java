@@ -40,7 +40,7 @@ public class Tester {
 		// handler.dynamicSort();
 		
 		
-		StaticEventList staticEventList = handler.getStaticList();
+		/*StaticEventList staticEventList = handler.getStaticList();
 		ArrayList<StaticEvent> staticArrayList = staticEventList.getList();
 		StaticEvent staticEvent;
 		for (int i=0; i<staticArrayList.size(); i++){
@@ -101,7 +101,7 @@ public class Tester {
 			c = b.get(i);
 			System.out.println(c.getName()+" "+c.getColor());
 		}
-		System.out.println();
+		System.out.println();*/
 		
 		//handler.removeEventById(temp);
 		//System.out.println(staticArrayList.size());  */

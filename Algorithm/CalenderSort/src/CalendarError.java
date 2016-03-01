@@ -1,3 +1,4 @@
+package com.cse110.apk404.myCalendar.eventListHandler;
 
 public class CalendarError extends Exception {
 

@@ -8,22 +8,21 @@ import java.util.*;
 public class EventListHandler{
 
 
-	private StaticEventList staticList;
-	private DynamicEventList dynamicList;
-	private ArrayList<CalendarEvent> events; //list to store all events in one given day
+	private static StaticEventList staticList = null;
+	private static DynamicEventList dynamicList = null;
+	private static ArrayList<CalendarEvent> events = null; //list to store all events in one given day
 
 
-	public EventListHandler() {}
 
-	public ArrayList<CalendarEvent> getEvents() {
+	public static ArrayList<CalendarEvent> getEvents() {
 		return events;
 	}
 
-	public void setEvents(ArrayList<CalendarEvent> events) {
-		this.events = events;
+	public static void setEvents(ArrayList<CalendarEvent> events) {
+		EventListHandler.events = events;
 	}
 
-	public CalendarEvent getEventById (long Id) throws CalendarError {
+	public static CalendarEvent getEventById (long Id) throws CalendarError {
 
         ArrayList<StaticEvent> staticArrayList = staticList.getList();
         if (staticArrayList != null) {
@@ -45,32 +44,32 @@ public class EventListHandler{
         return null;
 	}
 	
-	public void initStaticList(){
+	public static void initStaticList(){
 		staticList = new StaticEventList();
 	}
 
-	public void initDynamicList(){
+	public static void initDynamicList(){
 		dynamicList = new DynamicEventList();
 	}
 
-	public StaticEventList getStaticList() {
+	public static StaticEventList getStaticList() {
 		return staticList;
 	}
 
-	public void setStaticList(StaticEventList staticList) {
-		this.staticList = staticList;
+	public static void setStaticList(StaticEventList staticList) {
+		EventListHandler.staticList = staticList;
 	}
 
-	public DynamicEventList getDynamicList() {
+	public static DynamicEventList getDynamicList() {
 		return dynamicList;
 	}
 
-	public void setDynamicList(DynamicEventList dynamicList) {
-		this.dynamicList = dynamicList;
+	public static void setDynamicList(DynamicEventList dynamicList) {
+		EventListHandler.dynamicList = dynamicList;
 	}
 
 
-	public boolean checkValidTime(Calendar startTime, Calendar endTime){
+	public static boolean checkValidTime(Calendar startTime, Calendar endTime){
 		if (startTime.compareTo(endTime) >=0){
 			return false;
 		}
@@ -78,7 +77,7 @@ public class EventListHandler{
 	}
 
 	//Create a static event to add to the static event list
-	public boolean createStaticEvent(String name, String location, Calendar startTime, Calendar endTime,
+	public static boolean createStaticEvent(String name, String location, Calendar startTime, Calendar endTime,
 			boolean isStatic, boolean isPeriodic, boolean isFinished, String description, String color) throws CalendarError{
 		//check if start and end times are valid
 		boolean check = false;
@@ -101,7 +100,7 @@ public class EventListHandler{
 
 
 
-	public boolean removeEventById(int temp) throws CalendarError{
+	public static boolean removeEventById(int temp) throws CalendarError{
 		boolean check = true;
 		if (staticList == null){
 			check = false;
@@ -112,7 +111,7 @@ public class EventListHandler{
 	};
 
 	//Create a dynamic event to add to the dynamic event list
-	public void createDynamicEvent(String name, int estimatedLength, boolean isStatic,
+	public static void createDynamicEvent(String name, int estimatedLength, boolean isStatic,
 			Calendar deadline, boolean isFinished, String description){
 		return;
 	}
@@ -120,7 +119,7 @@ public class EventListHandler{
 
 
 	//Dynamic sort algorithm
-	public boolean dynamicSort(){
+	public static boolean dynamicSort(){
 
 		Comparator<StaticEvent> staticcomparator = new Comparator<StaticEvent>(){
 
@@ -182,7 +181,7 @@ public class EventListHandler{
 
 	/*checks if there are conflicts in the static time table, if there are conflicts, return the two conflicted
 	events as a single event*/
-	private void checkConflict(PriorityQueue<StaticEvent> currStaticEList, PriorityQueue<StaticEvent> sortedStaticEList) 
+	private static void checkConflict(PriorityQueue<StaticEvent> currStaticEList, PriorityQueue<StaticEvent> sortedStaticEList) 
 			throws CalendarError{
 		while(!currStaticEList.isEmpty()){
 			StaticEvent firstCheck = currStaticEList.poll();
@@ -202,7 +201,7 @@ public class EventListHandler{
 	
 	//#1 on the order list
 	//remove static time that are before and after 9a/p
-	public void purgeStaticList(PriorityQueue<StaticEvent> sortedStaticEList){
+	public static void purgeStaticList(PriorityQueue<StaticEvent> sortedStaticEList){
 		StaticEvent time;
 		//create a calendar object with hour set to 9a/p
 		Calendar endSet9 = Calendar.getInstance();
@@ -227,13 +226,13 @@ public class EventListHandler{
 		}
 	}
 	
-	private int daysBetween(Calendar d1, Calendar d2) {
+	private static int daysBetween(Calendar d1, Calendar d2) {
         return (int) (Math.abs(d2.getTime().getTime() - d1.getTime().getTime()) / (1000 * 60 * 60 * 24));
     }
 
 	//#2 on the purge list
 	//returns false if no free time, true will write freetime to freeList
-	private boolean updateFreeTime(PriorityQueue<StaticEvent> sortedStaticEList,
+	private static boolean updateFreeTime(PriorityQueue<StaticEvent> sortedStaticEList,
 			PriorityQueue<DynamicEvent> reverseDynamicEvent, PriorityQueue<StaticEvent> freeList) throws CalendarError{
 		
 		//get deadline from last of currDynamicEvent
@@ -247,7 +246,7 @@ public class EventListHandler{
 		Calendar startTime = null;
 		Calendar endTime = null;
 		StaticEvent freeBlock = null;
-		int days = this.daysBetween(lastDynamicTime, currTime);
+		int days = EventListHandler.daysBetween(lastDynamicTime, currTime);
 		for (int i=0; i<=days; i++){
 			if (i==0){
 				startTime = currTime;
@@ -331,7 +330,7 @@ public class EventListHandler{
 	
 	//#3 on the order list
 	//function to strip freetime of blocks less than 30min, do not remove 10 min for now
-	public void purgefreeTime(PriorityQueue<StaticEvent> freeList, PriorityQueue<StaticEvent> sortedfreeList){
+	public static void purgefreeTime(PriorityQueue<StaticEvent> freeList, PriorityQueue<StaticEvent> sortedfreeList){
 		StaticEvent freetime;
 		while(!freeList.isEmpty()){
 			freetime = freeList.peek();
