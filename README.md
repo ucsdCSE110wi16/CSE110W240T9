@@ -66,21 +66,33 @@ __Week 6__
 __Week 7__
 * ~~Keep working on as well as testing Creating new event mechanism. (Kristine, Fang, Alex, William, Zhiwei)~~
 * ~~Integrate show month view with create new event view and create smooth transitions in between. (Kristine, Fang, Alex, William)~~
+* ~~add datepicker function~~
 * ~~Finishing event self-allocation algorithm. (Scarlet, Steve)~~
 * ~~Deleting event and updating deleted events in database. (Zhiwei)~~
 * ~~Updating UI using Material Design. (Kristine, Fang, Alex, William)~~
 
 __Week 8__
 * ~~add finished event to finished List (Kristine, Fang, Alex, William, Zhiwei)~~
+* ~~renamed folder and added finished for events list fragment~~
+* ~~changed calendar class and improved naming and functionality~~
 * ~~Testing on basic features such as adding and deleting events. (everyone)~~
+* ~~added color field~~
+*  ~~merge conflict~~
 
-__Week 9__  
+__Week 9__ 
 * Add notification
-* merge the Dynamic event algorithm with the front end
+* ~~merge the Dynamic event algorithm with the front end~~
 * ~~merge the self allocation algorithm with the front end~~
-* merge the event delete algorithm with the front end
-* ~~Testing on basic adding events feature~~
-* Testing on basic delecting event feature
+* ~~merge the event delete algorithm with the front end~~
+* ~~added freetimesort~~
+* ~~Testing on basic features~~
+* ~~back end algorithm update~~
+* ~~add Priorityqueue~~
+* ~~edit event handler~~
+* ~~fixed date picker and time picker in add event activity~~
+* ~~fix date formatting error~~
+* ~~merge conflict~~
+* ~~set event active after archiving it~~
 * Finish product
 
 __Week 10__ 
@@ -110,3 +122,16 @@ Iteration 3
 <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_3.png" align="center" height=auto width="256" >
 
 <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_4.png" align="center" height=auto width="256" >
+ 
+
+Iteration 4
+--------------
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_addEvent.png" align="center" height=auto width="256" >
+
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_addEventPage.png" align="center" height=auto width="256" >
+
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_eventDescription.png" align="center" height=auto width="256" >
+
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_eventDetailMenu.png" align="center" height=auto width="256" >
+
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_setEventFinishedAsGray.png" align="center" height=auto width="256" >
