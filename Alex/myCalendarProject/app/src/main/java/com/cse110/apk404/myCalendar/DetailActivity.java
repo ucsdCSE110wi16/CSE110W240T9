@@ -1,6 +1,7 @@
 package com.cse110.apk404.myCalendar;
 
 import java.text.SimpleDateFormat;
+
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -61,36 +62,33 @@ public class DetailActivity extends AppCompatActivity {
 
         // Get the id from intent then get the event detail from the intent
         Intent mIntent = getIntent();
-        long id = mIntent.getLongExtra("id", 0);
+        final long id = mIntent.getLongExtra("id", 0);
 
         event = EventListHandler.getEventById(id);
 
-        // If event is finished, get rid of the editing button
-        if (!event.isFinished()) {
         /* Floating action button */
-            fab = (FloatingActionButton) findViewById(R.id.fab_finished_event);
+        fab = (FloatingActionButton) findViewById(R.id.fab_finished_event);
         /* Add Snackbar on click */
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(view, "Event is marked as finished and archived", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                    Snackbar.make(view, "Event is being edited", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
-                    fab.hide();
-//                fab.setRippleColor();
-
-                    // TODO - set the event to be finished here then resume parent activity
+                // TODO - set the event to be finished here then resume parent activity
 
 
-                    // Wait 2 seconds, then finish and resume parent activity (calendar view)
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            finish();
-                        }
-                    }, 1500);
-                }
-            });
+                fab.hide();
+
+                // If the edit button is clicked, then go to add event activity
+                Intent intent = new Intent(getApplicationContext(), AddEventActivity.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
+            }
+        });
+
+        // If event is finished, get rid of the editing button
+        if (event.isFinished()) {
+            fab.hide();
         }
 
         // Replace the home back button with delete button
@@ -104,9 +102,9 @@ public class DetailActivity extends AppCompatActivity {
         String event_location = event.getLocation();
 
         // Use a date formatter to get the correct date format
-        DateFormat time = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-        String event_time = time.format(event.getStartTime().getTime()) + "\n" +
-                time.format(event.getEndTime().getTime());
+        DateFormat time = new SimpleDateFormat("MM/dd/yyyy  HH:mm");
+        String event_time = "From: " + time.format(event.getStartTime().getTime()) + "\n" +
+                "     To: " + time.format(event.getEndTime().getTime());
         String event_description = event.getDescription();
 
         eventNameText = (TextView) findViewById(R.id.event_details_title); // update name in nav bar
@@ -121,7 +119,20 @@ public class DetailActivity extends AppCompatActivity {
 
         // If the android version supports, we can also change the tool bar color and fab color to
         // match the color of the event
-        setToolbarStyle(event_Color, fab, toolbar);
+        int eventColor = Color.parseColor(event_Color);
+        int darkerEventColor = Utils.darker(eventColor, 0.8f);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(darkerEventColor);
+            toolbar.setBackgroundColor(eventColor);
+        }
+
+        if (!event.isFinished()) {
+            fab.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+            fab.setImageTintList(ColorStateList.valueOf(eventColor));
+        }
     }
 
 
@@ -129,6 +140,8 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to tool bar if it is present.
         getMenuInflater().inflate(R.menu.activity_detail, menu);
+
+                menu.findItem(R.id.action_edit_event).setVisible(false);
 
         return true;
     }
@@ -144,40 +157,27 @@ public class DetailActivity extends AppCompatActivity {
             case R.id.action_delete_event:
                 return true;
             case R.id.action_finish_event:
-                if (event != null) event.setFinished(true);
+                if (event != null) {
+                    Snackbar.make(findViewById(android.R.id.content), "Event is marked as finished and archived", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    event.setFinished(true);
+                    // Restart parent activity to refresh calendar list UI
+                    fab.hide();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                        }
+                    }, 1200);
+                }
                 return true;
             case R.id.action_unfinish_event:
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
 
-    /**
-     * Change navigabtion bar background to event_color and tint the navigation bar text event_color
-     *
-     * @param event_Color the color to tint
-     * @param fab         floating action button
-     * @param toolbar     the tool bar to change
-     * @return true if color changed successfully
-     */
-    public boolean setToolbarStyle(String event_Color, FloatingActionButton fab, Toolbar toolbar) {
-        if (fab == null) return false;
-
-        int eventColor = Color.parseColor(event_Color);
-        int darkerEventColor = Utils.darker(eventColor, 0.8f);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(darkerEventColor);
-            toolbar.setBackgroundColor(eventColor);
-        }
-//        fab.setBackgroundTintList(ColorStateList.valueOf(eventColor));
-        fab.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
-        fab.setImageTintList(ColorStateList.valueOf(eventColor));
-
-        return true;
     }
 
 

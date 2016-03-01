@@ -36,6 +36,7 @@ import android.widget.Toast;
 
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -104,6 +105,10 @@ public class AddEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
 
+        // Reset those static date int to 0 on start
+        startYear = startMonth = startDay = startHour = startMinute = 0;
+        endYear = endMonth = endDay = endHour = endMinute = 0;
+
         populateColorMap();
 
         /* Toolbar */
@@ -128,7 +133,7 @@ public class AddEventActivity extends AppCompatActivity {
 
          /* Creates dropdown for type of event */
         Spinner dropdown = (Spinner) findViewById(R.id.type_of_event_add_event);
-        final String[] items = new String[]{"Static-NonPeriodic", "Static-Periodic", "Dynamic"};
+        final String[] items = new String[]{"Static", "Dynamic"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 
@@ -173,9 +178,6 @@ public class AddEventActivity extends AppCompatActivity {
                         time.get(Calendar.HOUR_OF_DAY),
                         time.get(Calendar.MINUTE), true).show();
                 Context context = getApplicationContext();
-                Toast.makeText(context, "Selected time- " + Calendar.HOUR_OF_DAY + " : " + Calendar.MINUTE, Toast.LENGTH_LONG).show();
-//                startHour = Calendar.HOUR_OF_DAY;
-//                startMinute = Calendar.MINUTE;
             }
         });
 
@@ -188,9 +190,6 @@ public class AddEventActivity extends AppCompatActivity {
                         time.get(Calendar.HOUR_OF_DAY),
                         time.get(Calendar.MINUTE), true).show();
                 Context context = getApplicationContext();
-                Toast.makeText(context, "Selected time- " + Calendar.HOUR_OF_DAY + ":" + Calendar.MINUTE, Toast.LENGTH_LONG).show();
-//                endHour = Calendar.HOUR_OF_DAY;
-//                endMinute = Calendar.MINUTE;
             }
         });
 
@@ -212,22 +211,19 @@ public class AddEventActivity extends AppCompatActivity {
                 boolean isFinished = false; // always set is Finished to False on Start
                 String eventType = ((Spinner) findViewById(R.id.type_of_event_add_event)).getSelectedItem().toString();
                 if (eventType.equals(items[0])) {
-                    // This is static non periodic
+                    // This is static
                     isStatic = true;
                 } else if (eventType.equals(items[1])) {
-                    // This is static periodic
-                    isStatic = true;
-                    isPeriodic = true;
-                } else if (eventType.equals(items[2])) {
                     // This is dynamic
+                    isStatic = false;
                 } else {
                     Log.e("Error01", "EventType is none of the options");
                 }
-                String color = ((Spinner) findViewById(R.id.color_dropdown_add_event)).getSelectedItem().toString();
+                String color = eventColorMap.get(((Spinner) findViewById(R.id.color_dropdown_add_event)).getSelectedItem().toString().trim());
                 String notes = ((TextView) findViewById(R.id.notes_add_event)).getText().toString();
 
 
-                Log.d("AddEvent", name + "\n" + location + "\n" + eventType + "\n" + color + "\n" + notes);
+                Log.d("AddEventToList", name + "\n" + location + "\n" + eventType + "\n" + color + "\n" + notes);
 
                 //setting start and ending time does not work, so we have dummy variable here
 
@@ -247,14 +243,24 @@ public class AddEventActivity extends AppCompatActivity {
                 boolean checkEventCreatedSuccessfully = false;
 
                 // To create an event, we need to at least specify, event name, starting time and ending time
-                if (!name.equals("") && startYear != 0 && startMonth != 0 && startDay != 0 && startHour != 0 && startMinute != 0
-                        && endYear != 0 && endMonth != 0 && endDay != 0 && endHour != 0 && endMinute != 0) {
+                // except hour and minute can be 0
+                if (!name.equals("") && startYear != 0 && startMonth != 0 && startDay != 0
+                        && endYear != 0 && endMonth != 0 && endDay != 0) {
                     try {
+//                        DateFormat time = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+//                        String event_time = time.format(startTime.getTime()) + "\n" +
+//                                time.format(endTime.getTime());
+//                        Log.d("eventTime", event_time);
 
-                        checkEventCreatedSuccessfully = EventListHandler.createStaticEvent(name, location, startTime, endTime,
-                                isStatic, isPeriodic, isFinished, notes, color);
+                        if (isStatic) {
+                            checkEventCreatedSuccessfully = EventListHandler.createStaticEvent(name, location, startTime, endTime,
+                                    isStatic, isPeriodic, isFinished, notes, color);
+                        } else {
+                            // TODO - Create dyanmic event here
 
+                        }
 
+                        // TODO - ask Sean to help debugging saving list to database
                         // Error: Attempt to read from null array
 //                        CalendarDB.updateListLocal(1, (CalendarObjectList<? extends AbstractCollection<? extends CalendarObject>, ? extends CalendarObject>) EventListHandler.getStaticList().getList()); // Save lists from EventListHandler to database
 //                        Log.d("Executed", EventListHandler.getStaticList().getList().size() + "");
@@ -263,14 +269,14 @@ public class AddEventActivity extends AppCompatActivity {
                         Log.e("Error02", e.getMessage());
                     }
 
-                    // Reset those static date int to 0
-                    startYear = startMonth = startDay = startHour = startMinute = 0;
-                    endYear = endMonth = endDay = endHour = endMinute = 0;
 
-                    // If event is created successfully
+                    // If event is not created successfully
                     if (!checkEventCreatedSuccessfully) {
                         Snackbar.make(view, "Invalid time period. Start time must be earlier than end time.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     } else {
+//                        // If event is created successfully, reset those static date int to 0
+//                        startYear = startMonth = startDay = startHour = startMinute = 0;
+//                        endYear = endMonth = endDay = endHour = endMinute = 0;
 
                         fab.hide(); // fab clicked animation
 

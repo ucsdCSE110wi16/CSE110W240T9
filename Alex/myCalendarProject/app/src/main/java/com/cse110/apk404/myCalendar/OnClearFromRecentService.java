@@ -49,26 +49,27 @@ public class OnClearFromRecentService extends Service {
         super.onDestroy();
         Log.d("ClearFromRecentService", "Service Destroyed");
 
-        // Save events from EventListHandler to database
-        try {
-            CalendarDB.updateListLocal(1, EventListHandler.getStaticList()); // Save lists from EventListHandler to database
-            Log.d("ListSize", EventListHandler.getStaticList().getList().size() + "");
-        } catch (Exception e) {
-            Log.e("Error05", e.getMessage());
-        }
+        saveEventsToDatabase();
+
     }
 
     public void onTaskRemoved(Intent rootIntent) {
         Log.e("ClearFromRecentService", "END");
 
+        saveEventsToDatabase();
+
+        stopSelf();
+    }
+
+    private void saveEventsToDatabase() {
         // Save events from EventListHandler to database
         try {
+            Log.d("ListSize1", EventListHandler.getStaticList().getList().size() + "");
             CalendarDB.updateListLocal(1, EventListHandler.getStaticList()); // Save lists from EventListHandler to database
-            Log.d("ListSize", EventListHandler.getStaticList().getList().size() + "");
+            Log.d("ListSize2", EventListHandler.getStaticList().getList().size() + "");
         } catch (Exception e) {
             Log.e("Error05", e.getMessage());
         }
 
-        stopSelf();
     }
 }

@@ -51,6 +51,9 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
 
     @Override
     public List<? extends WeekViewEvent> onMonthChange(int newYear, int newMonth) {
+
+        String finisehdEventColor = "#DCDCDC";
+
         // Populate the week view with some events.
         List<WeekViewEvent> event_list_UI = new ArrayList<WeekViewEvent>();
 
@@ -71,11 +74,14 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
 
             DateFormat time = new SimpleDateFormat("MM");
             int event_month = Integer.parseInt(time.format(event_temp.getStartTime().getTime()));
-            Log.d("loglog", "event month: "+ event_month + "   new month" + newMonth);
 
             if (event_month == newMonth) {
                 WeekViewEvent event = new WeekViewEvent(event_temp.getId(), event_temp.getName(), event_temp.getStartTime(), event_temp.getEndTime());
-                event.setColor(Color.parseColor(event_temp.getColor()));
+                if (event_temp.isFinished()) {
+                    event.setColor(Color.parseColor(finisehdEventColor));
+                } else {
+                    event.setColor(Color.parseColor(event_temp.getColor()));
+                }
                 event_list_UI.add(event);
             }
         }

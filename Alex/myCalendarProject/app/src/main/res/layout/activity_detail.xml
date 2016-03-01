@@ -89,6 +89,18 @@
             <!--android:textSize="@dimen/text_size_XL"-->
             <!--android:textStyle="bold"/>-->
 
+            <TextView
+                android:id="@+id/event_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                android:gravity="center"
+                android:text="Event Time"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/event_location"
@@ -103,19 +115,6 @@
                 android:textSize="@dimen/text_size_large"
                 android:textStyle="italic"/>
 
-
-            <TextView
-                android:id="@+id/event_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
-                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
-                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
-                android:gravity="center"
-                android:text="Event Time"
-                android:textSize="@dimen/text_size_large"
-                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/event_description"

@@ -180,14 +180,12 @@ public abstract class CalendarViewBaseFragment extends Fragment implements WeekV
     @Override
     public void onEventClick(WeekViewEvent event, RectF eventRect) {
 //        Toast.makeText(getActivity(), "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
-        Snackbar.make(rootView, "Clicked " + event.getName(), Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+//        Snackbar.make(rootView, "Clicked " + event.getName(), Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
         // pass of the id of the clicked event to DetailActivity for loading event details
         Intent intent = new Intent(getActivity(), DetailActivity.class);
         long id = event.getId(); // cast the id to int because getId() returns a long
         intent.putExtra("id", id);
-        Log.d("id", id + "");
         startActivity(intent);
     }
 
