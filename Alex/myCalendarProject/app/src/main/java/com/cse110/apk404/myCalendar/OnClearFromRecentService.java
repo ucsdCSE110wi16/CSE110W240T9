@@ -28,21 +28,14 @@ public class OnClearFromRecentService extends Service {
         return null;
     }
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d("ClearFromRecentService", "Service Started");
-
-        // Load events to EventListHandler from database
-//        try {
-//            CalendarDB.initDBLocal(this);
-//            EventListHandler.initStaticList(); // Intialize list once at the begining
-//            EventListHandler.getStaticList().setList((ArrayList<StaticEvent>) CalendarDB.retriveListLocal(1).getList()); // Load lists from database to EventListHandler
-//        } catch (Exception e) {
-//            Log.e("Error04", e.getMessage());
-//        }
-
-        return START_NOT_STICKY;
-    }
+//    @Override
+//    public int onStartCommand(Intent intent, int flags, int startId) {
+//        Log.d("ClearFromRecentService", "Service Started");
+//
+//        // Load events to EventListHandler from database
+//
+//        return START_NOT_STICKY;
+//    }
 
     @Override
     public void onDestroy() {
@@ -63,6 +56,10 @@ public class OnClearFromRecentService extends Service {
 
     private void saveEventsToDatabase() {
         // Save events from EventListHandler to database
+
+        // TODO - Save lists from memory to database in here, it gets called when the app is killed
+
+        // Doesn't work getting error saying trying to access null array
         try {
             Log.d("ListSize1", EventListHandler.getStaticList().getList().size() + "");
             CalendarDB.updateListLocal(1, EventListHandler.getStaticList()); // Save lists from EventListHandler to database

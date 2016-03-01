@@ -168,16 +168,23 @@ public class DetailActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     Log.e("Error06", e.getMessage());
                 }
-                RestartMainActivity();
+                RestartMainActivity(0, "");
                 return true;
             case R.id.action_finish_event:
+                // Archive event
                 if (event != null) {
-                    Snackbar.make(findViewById(android.R.id.content), "Event is marked as finished and archived", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     event.setFinished(true);
-                    RestartMainActivity();
+                    RestartMainActivity(1200, "Event is marked as finished and archived");
                 }
                 return true;
             case R.id.action_unfinish_event:
+                // Set event as active again and reload current activity
+                if (event != null) {
+                    event.setFinished(false);
+//                    finish();
+//                    startActivity(getIntent());
+                    RestartMainActivity(1200, "Event is set to active again");
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -185,8 +192,10 @@ public class DetailActivity extends AppCompatActivity {
 
     }
 
-    private void RestartMainActivity() {
+    private void RestartMainActivity(int timeToRestartInMilliseconds, String snackbarMessgae) {
         // Restart parent activity to refresh calendar list UI
+        if (!snackbarMessgae.isEmpty())
+            Snackbar.make(findViewById(android.R.id.content), snackbarMessgae, Snackbar.LENGTH_LONG).setAction("Action", null).show();
         fab.hide();
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -195,7 +204,7 @@ public class DetailActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
-        }, 1200);
+        }, timeToRestartInMilliseconds);
     }
 
 

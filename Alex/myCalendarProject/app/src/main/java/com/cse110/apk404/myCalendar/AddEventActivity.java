@@ -260,11 +260,6 @@ public class AddEventActivity extends AppCompatActivity {
 
                         }
 
-                        // TODO - ask Sean to help debugging saving list to database
-                        // Error: Attempt to read from null array
-//                        CalendarDB.updateListLocal(1, (CalendarObjectList<? extends AbstractCollection<? extends CalendarObject>, ? extends CalendarObject>) EventListHandler.getStaticList().getList()); // Save lists from EventListHandler to database
-//                        Log.d("Executed", EventListHandler.getStaticList().getList().size() + "");
-
                     } catch (Exception e) {
                         Log.e("Error02", e.getMessage());
                     }

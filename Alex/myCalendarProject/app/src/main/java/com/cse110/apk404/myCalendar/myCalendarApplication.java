@@ -38,6 +38,9 @@ public class myCalendarApplication extends Application {
         myCalendarApp = this;
         Log.d("ApplicationStatus", "App started");
 
+        // TODO - This function gets called when app is created, initialize database here to load lists to memory
+
+        // doesn't work cuz I am getting error saying null array
         try {
 //            CalendarDB.initDBLocal(this);
             EventListHandler.initStaticList(); // Intialize list once at the begining
