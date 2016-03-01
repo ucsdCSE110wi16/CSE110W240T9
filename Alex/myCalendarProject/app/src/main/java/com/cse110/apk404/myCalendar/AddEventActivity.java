@@ -247,8 +247,8 @@ public class AddEventActivity extends AppCompatActivity {
                 boolean checkEventCreatedSuccessfully = false;
 
                 // To create an event, we need to at least specify, event name, starting time and ending time
-                if (!name.equals("") && startYear != 0 && startMonth != 0 && startDay != 0 && startHour != 0 && startMinute != 0
-                        && endYear != 0 && endMonth != 0 && endDay != 0 && endHour != 0 && endMinute != 0) {
+                if (!name.equals("") && startYear != 0 && startMonth != 0 && startDay != 0
+                        && endYear != 0 && endMonth != 0 && endDay != 0) {
                     try {
 
                         checkEventCreatedSuccessfully = EventListHandler.createStaticEvent(name, location, startTime, endTime,
