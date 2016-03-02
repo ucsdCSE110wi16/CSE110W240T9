@@ -45,7 +45,7 @@
                     android:id="@+id/event_name_add_event"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Event Name"
+                    android:hint="Enter event name"
                     android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
                     android:textColor="@color/colorWhite"/>
 
@@ -94,23 +94,6 @@
             android:orientation="vertical">
 
 
-            <!--<android.support.design.widget.TextInputLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="8dp"-->
-            <!--android:layout_marginTop="8dp"-->
-            <!--android:textColor="@color/colorPrimaryText">-->
-
-            <!--<EditText-->
-            <!--android:id="@+id/nameOfEvent"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_margin="5dp"-->
-            <!--android:hint="Event Name"-->
-            <!--android:textColor="@color/colorPrimaryText"/>-->
-
-            <!--</android.support.design.widget.TextInputLayout>-->
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,82 +108,112 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1.63"
+                    android:drawableLeft="@drawable/ic_location_on_black_24dp"
                     android:hint="Location of Event"
                     android:textColor="@color/colorPrimaryText"/>
             </android.support.design.widget.TextInputLayout>
 
-            <Spinner
-                android:id="@+id/type_of_event_add_event"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
-                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
-                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown"/>
-
-            <Spinner
-                android:id="@+id/color_dropdown_add_event"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
-                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
-                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown"/>
-
-            <Button
-                android:id="@+id/start_date_add_event"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
-                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
-                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
-                android:height="20dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:onClick="setStartDate"
-                android:text="Set Start Date"
-                android:textColor="@color/colorPrimaryText"/>
-
-            <Button
-                android:id="@+id/start_time_add_event"
+            <LinearLayout
+                android:id="@+id/LinearLayout02"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
-                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
-                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
-                android:height="20dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:onClick="setStartTime"
-                android:text="Set Start Time"
-                android:textColor="@color/colorPrimaryText"/>
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-            <Button
-                android:id="@+id/end_date_add_event"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
-                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
-                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
-                android:height="20dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:onClick="setEndDate"
-                android:text="Set End Date"
-                android:textColor="@color/colorPrimaryText"/>
+                <Spinner
+                    android:id="@+id/type_of_event_add_event"
+                    android:layout_width="@dimen/add_event_button_width"
+                    android:layout_height="@dimen/add_event_button_height"
+                    android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                    android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                    android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                    android:drawableLeft="@drawable/ic_access_time_black_24dp"
+                    android:spinnerMode="dropdown"/>
 
+                <Spinner
+                    android:id="@+id/color_dropdown_add_event"
+                    android:layout_width="@dimen/add_event_button_width"
+                    android:layout_height="@dimen/add_event_button_height"
+                    android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                    android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                    android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                    android:layout_weight="1.44"
+                    android:drawableLeft="@drawable/ic_access_time_black_24dp"
+                    android:spinnerMode="dropdown"/>
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/end_time_add_event"
+            <LinearLayout
+                android:id="@+id/LinearLayout03"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
-                android:layout_marginRight="@dimen/padding_between_text_view_in_details"
-                android:layout_marginTop="@dimen/padding_between_text_view_in_details"
-                android:height="20dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:onClick="setEndTime"
-                android:text="Set End Time"
-                android:textColor="@color/colorPrimaryText"/>
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <Button
+                    android:id="@+id/start_date_add_event"
+                    android:layout_width="@dimen/add_event_button_width"
+                    android:layout_height="@dimen/add_event_button_height"
+                    android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                    android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                    android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="left|center_vertical"
+                    android:onClick="setStartDate"
+                    android:text="Set Start Date"
+                    android:textColor="@color/colorPrimaryText"/>
+
+                <Button
+                    android:id="@+id/start_time_add_event"
+                    android:layout_width="@dimen/add_event_button_width"
+                    android:layout_height="@dimen/add_event_button_height"
+                    android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                    android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                    android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="left|center_vertical"
+                    android:onClick="setStartTime"
+                    android:text="Set Start Time"
+                    android:textColor="@color/colorPrimaryText"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/LinearLayout04"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <Button
+                    android:id="@+id/end_date_add_event"
+                    android:layout_width="@dimen/add_event_button_width"
+                    android:layout_height="@dimen/add_event_button_height"
+                    android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                    android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                    android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="left|center_vertical"
+                    android:onClick="setEndDate"
+                    android:text="Set End Date"
+                    android:textColor="@color/colorPrimaryText"/>
+
+
+                <Button
+                    android:id="@+id/end_time_add_event"
+                    android:layout_width="@dimen/add_event_button_width"
+                    android:layout_height="@dimen/add_event_button_height"
+                    android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                    android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                    android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="left|center_vertical"
+                    android:onClick="setEndTime"
+                    android:text="Set End Time"
+                    android:textColor="@color/colorPrimaryText"/>
+            </LinearLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -214,6 +227,7 @@
                     android:id="@+id/notes_add_event"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_short_text_black_24dp"
                     android:hint="Notes"
                     android:textColor="@color/colorPrimaryText"/>
             </android.support.design.widget.TextInputLayout>
