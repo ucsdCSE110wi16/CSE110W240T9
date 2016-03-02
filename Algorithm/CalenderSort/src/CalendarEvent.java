@@ -1,3 +1,5 @@
+//package com.cse110.apk404.myCalendar.eventListHandler;
+
 import java.util.Calendar;
 
 
@@ -18,7 +20,8 @@ public interface CalendarEvent extends CalendarObject {
 	public abstract void setColor(String color);
 	public abstract String getColor();
 	public abstract String getLocation();
-	
+	public abstract long getId();
+
 }
 
 

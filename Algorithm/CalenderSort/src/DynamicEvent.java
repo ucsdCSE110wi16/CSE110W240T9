@@ -1,3 +1,5 @@
+//package com.cse110.apk404.myCalendar.eventListHandler;
+
 import java.util.Calendar;
 
 
@@ -21,7 +23,7 @@ public class DynamicEvent implements CalendarEvent {
 
 	
 	public DynamicEvent(Long Id, String name, boolean isStatic, String location, String description, String color,
-			Calendar deadline) throws CalendarError{
+						Calendar deadline) throws CalendarError{
 		
 		setId(Id);
 		setName(name);
@@ -86,7 +88,7 @@ public class DynamicEvent implements CalendarEvent {
 		this.isFinished = isFinished;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return Id;
 	}
 

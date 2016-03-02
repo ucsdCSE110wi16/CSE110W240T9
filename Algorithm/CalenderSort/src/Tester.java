@@ -1,3 +1,5 @@
+//package com.cse110.apk404.myCalendar.eventListHandler;
+
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -16,7 +18,7 @@ public class Tester {
 		Calendar startTime = Calendar.getInstance();
 		Date startDate = startTime.getTime();
 		Calendar endTime = Calendar.getInstance();
-		endTime.set(2016,1,29,18,01);
+		endTime.set(2016,2,29,18,01);
 		endTime.add(Calendar.DAY_OF_MONTH, 1);
 		DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date date = endTime.getTime();
