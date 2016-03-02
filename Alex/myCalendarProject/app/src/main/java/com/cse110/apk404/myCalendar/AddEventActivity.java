@@ -65,27 +65,27 @@ public class AddEventActivity extends AppCompatActivity {
     private Button setEnd = null;
 
     Calendar time = Calendar.getInstance();
+    DateFormat timeFormatter = new SimpleDateFormat("HH:mm");
 
     TimePickerDialog.OnTimeSetListener startTimePicker = null;
     TimePickerDialog.OnTimeSetListener endTimePicker = null;
 
-    final String[] colors = new String[]{"Teal", "Orange", "Pink", "Green", "LightGreen", "Blue", "Purple", "Red"};
+    final String[] colors = new String[]{"TEAL", "ORANGE", "PINK", "GREEN", "LIGHTGREEN", "BLUE", "PURPLE", "RED"};
     HashMap<String, String> eventColorMap = new HashMap<>();
 
-    //For calculations
     public static int startYear, startMonth, startDay, startHour, startMinute = 0;
     public static int endYear, endMonth, endDay, endHour, endMinute = 0;
 
 
     public void populateColorMap() {
-        eventColorMap.put("Red", "#F44336");
-        eventColorMap.put("Orange", "#FF5722");
-        eventColorMap.put("Pink", "#E91E63");
-        eventColorMap.put("Green", "#4CAF50");
-        eventColorMap.put("LightGreen", "#8BC34A");
-        eventColorMap.put("Blue", "#2196F3");
-        eventColorMap.put("Purple", "#9C27B0");
-        eventColorMap.put("Teal", "#009688");
+        eventColorMap.put("RED", "#F44336");
+        eventColorMap.put("ORANGE", "#FF5722");
+        eventColorMap.put("PINK", "#E91E63");
+        eventColorMap.put("GREEN", "#4CAF50");
+        eventColorMap.put("LIGHTGREEN", "#8BC34A");
+        eventColorMap.put("BLUE", "#2196F3");
+        eventColorMap.put("PURPLE", "#9C27B0");
+        eventColorMap.put("TEAL", "#009688");
     }
 
     /* it is called in OnClick function gets called when the setStartDate button is clicked */
@@ -146,7 +146,7 @@ public class AddEventActivity extends AppCompatActivity {
 
          /* Creates dropdown for type of event */
         Spinner dropdown = (Spinner) findViewById(R.id.type_of_event_add_event);
-        final String[] items = new String[]{"Static", "Dynamic"};
+        final String[] items = new String[]{"STATIC", "DYNAMIC"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 
@@ -176,8 +176,8 @@ public class AddEventActivity extends AppCompatActivity {
         startTimePicker = new TimePickerDialog.OnTimeSetListener() {
             public void onTimeSet(TimePicker view, int hourOfDay,
                                   int minute) {
-//                Log.d("Log1", hourOfDay + "  " + minute);
-                setStart.setText("START TIME: " + hourOfDay + ":" + minute);
+
+                setStart.setText("Start time: " + String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
                 startHour = hourOfDay;
                 startMinute = minute;
             }
@@ -187,7 +187,7 @@ public class AddEventActivity extends AppCompatActivity {
             public void onTimeSet(TimePicker view, int hourOfDay,
                                   int minute) {
 //                Log.d("Log2", hourOfDay + "  " + minute);
-                setEnd.setText("END TIME: " + hourOfDay + ":" + minute);
+                setEnd.setText("End time: " + String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
                 endHour = hourOfDay;
                 endMinute = minute;
             }
