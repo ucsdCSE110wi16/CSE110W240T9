@@ -135,3 +135,20 @@ Iteration 4
 <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_eventDetailMenu.png" align="center" height=auto width="256" >
 
 <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_setEventFinishedAsGray.png" align="center" height=auto width="256" >
+
+
+Iteration 5
+--------------
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_1.png" align="center" height=auto width="256" >
+
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_2.png" align="center" height=auto width="256" >
+
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_3.png" align="center" height=auto width="256" >
+
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_4.png" align="center" height=auto width="256" >
+
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_5.png" align="center" height=auto width="256" >
+
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_6.png" align="center" height=auto width="256" >
+
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_7.png" align="center" height=auto width="256" >
