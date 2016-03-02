@@ -148,6 +148,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
@@ -184,6 +185,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
                 android:orientation="horizontal"
                 android:weightSum="1">
 

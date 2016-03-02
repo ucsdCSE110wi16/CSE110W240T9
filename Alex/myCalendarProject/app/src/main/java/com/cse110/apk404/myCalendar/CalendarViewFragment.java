@@ -76,7 +76,7 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
             int event_month = Integer.parseInt(time.format(event_temp.getStartTime().getTime()));
 
             if (event_month == newMonth) {
-                WeekViewEvent event = new WeekViewEvent(event_temp.getId(), event_temp.getName(), event_temp.getStartTime(), event_temp.getEndTime());
+                WeekViewEvent event = new WeekViewEvent(event_temp.getId(), event_temp.getName() + " - " + event_temp.getLocation(), event_temp.getStartTime(), event_temp.getEndTime());
                 if (event_temp.isFinished()) {
                     event.setColor(Color.parseColor(finisehdEventColor));
                 } else {

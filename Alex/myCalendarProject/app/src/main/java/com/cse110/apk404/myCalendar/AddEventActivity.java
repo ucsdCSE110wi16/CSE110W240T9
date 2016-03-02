@@ -30,6 +30,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -42,6 +43,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 import com.cse110.apk404.myCalendar.eventListHandler.CalendarDB;
+import com.cse110.apk404.myCalendar.eventListHandler.CalendarEvent;
 import com.cse110.apk404.myCalendar.eventListHandler.CalendarObject;
 import com.cse110.apk404.myCalendar.eventListHandler.CalendarObjectList;
 import com.cse110.apk404.myCalendar.eventListHandler.EventListHandler;
@@ -60,21 +62,24 @@ import java.util.List;
  */
 public class AddEventActivity extends AppCompatActivity {
 
-    private Toolbar toolbar = null;
-    private Button setStart = null;
-    private Button setEnd = null;
+    CalendarEvent event = null;
+    Toolbar toolbar = null;
+    Button setStart = null;
+    Button setEnd = null;
 
     Calendar time = Calendar.getInstance();
     DateFormat timeFormatter = new SimpleDateFormat("HH:mm");
+    DateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
 
     TimePickerDialog.OnTimeSetListener startTimePicker = null;
     TimePickerDialog.OnTimeSetListener endTimePicker = null;
 
+    final String defaultThemeColor = "#009688";
     final String[] colors = new String[]{"TEAL", "ORANGE", "PINK", "GREEN", "LIGHTGREEN", "BLUE", "PURPLE", "RED"};
     HashMap<String, String> eventColorMap = new HashMap<>();
 
-    public static int startYear, startMonth, startDay, startHour, startMinute = 0;
-    public static int endYear, endMonth, endDay, endHour, endMinute = 0;
+    public static int START_YEAR, START_MONTH, START_DAY, START_HOUR, START_MINUTE = 0;
+    public static int END_YEAR, END_MONTH, END_DAY, END_HOUR, END_MINUTE = 0;
 
 
     public void populateColorMap() {
@@ -98,7 +103,6 @@ public class AddEventActivity extends AppCompatActivity {
     public void setEndDate(View view) {
         PickerDialogs2 pickerDialogs2 = new PickerDialogs2();
         pickerDialogs2.show(getSupportFragmentManager(), "date_picker");
-
     }
 
 
@@ -119,8 +123,8 @@ public class AddEventActivity extends AppCompatActivity {
 
 
         // Reset those static date int to 0 on start
-        startYear = startMonth = startDay = startHour = startMinute = 0;
-        endYear = endMonth = endDay = endHour = endMinute = 0;
+        START_YEAR = START_MONTH = START_DAY = START_HOUR = START_MINUTE = 0;
+        END_YEAR = END_MONTH = END_DAY = END_HOUR = END_MINUTE = 0;
 
         populateColorMap();
 
@@ -141,8 +145,8 @@ public class AddEventActivity extends AppCompatActivity {
         closeIcon.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setHomeAsUpIndicator(closeIcon);
 
-        // Change toolbar style at the beginning
-        setToolbarStyle("#009688", fab, toolbar);
+        // Set default theme color
+        setToolbarStyle(defaultThemeColor, fab, toolbar);
 
          /* Creates dropdown for type of event */
         Spinner dropdown = (Spinner) findViewById(R.id.type_of_event_add_event);
@@ -172,24 +176,19 @@ public class AddEventActivity extends AppCompatActivity {
         setStart = (Button) findViewById(R.id.start_time_add_event);
         setEnd = (Button) findViewById(R.id.end_time_add_event);
 
-
         startTimePicker = new TimePickerDialog.OnTimeSetListener() {
-            public void onTimeSet(TimePicker view, int hourOfDay,
-                                  int minute) {
-
-                setStart.setText("Start time: " + String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
-                startHour = hourOfDay;
-                startMinute = minute;
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                setStart.setText(String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
+                START_HOUR = hourOfDay;
+                START_MINUTE = minute;
             }
         };
 
         endTimePicker = new TimePickerDialog.OnTimeSetListener() {
-            public void onTimeSet(TimePicker view, int hourOfDay,
-                                  int minute) {
-//                Log.d("Log2", hourOfDay + "  " + minute);
-                setEnd.setText("End time: " + String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
-                endHour = hourOfDay;
-                endMinute = minute;
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                setEnd.setText(String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
+                END_HOUR = hourOfDay;
+                END_MINUTE = minute;
             }
         };
 
@@ -197,36 +196,62 @@ public class AddEventActivity extends AppCompatActivity {
         setStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new TimePickerDialog(AddEventActivity.this, startTimePicker,
-                        time.get(Calendar.HOUR_OF_DAY),
-                        time.get(Calendar.MINUTE), true).show();
-                Context context = getApplicationContext();
+                new TimePickerDialog(AddEventActivity.this, startTimePicker, time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE), true).show();
             }
         });
-
 
         /* Click on set end time button to make time picker pop up show up */
         setEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new TimePickerDialog(AddEventActivity.this, endTimePicker,
-                        time.get(Calendar.HOUR_OF_DAY),
-                        time.get(Calendar.MINUTE), true).show();
-                Context context = getApplicationContext();
+                new TimePickerDialog(AddEventActivity.this, endTimePicker, time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE), true).show();
             }
         });
 
-        /*========= Time picker listeners and picker used to pick time =========*/
+        /*==========================================================================*/
 
 
-        /*=========== Save event button listener ===========*/
+
+        /*========= If edit event, poulate fields with existing event info =========*/
+        if (IS_EDIT_EVENT) {
+            event = EventListHandler.getEventById(ID);
+            if (event == null)
+                Log.e("Error07", "Can't find event when editing event in add event page");
+
+            setToolbarStyle(event.getColor(), fab, toolbar);
+            
+            ((TextView) findViewById(R.id.event_name_add_event)).setText(event.getName());
+            ((EditText) findViewById(R.id.event_location_add_event)).setText(event.getLocation());
+            ((EditText) findViewById(R.id.notes_add_event)).setText(event.getDescription());
+
+            Calendar startTme = event.getStartTime();
+            Calendar endTime = event.getEndTime();
+
+            ((Button)findViewById(R.id.start_date_add_event)).setText(dateFormatter.format(startTme.getTime()));
+            ((Button)findViewById(R.id.start_time_add_event)).setText(timeFormatter.format(startTme.getTime()));
+            ((Button)findViewById(R.id.end_date_add_event)).setText(dateFormatter.format(endTime.getTime()));
+            ((Button)findViewById(R.id.end_time_add_event)).setText(timeFormatter.format(endTime.getTime()));
+
+            START_HOUR = startTme.get(Calendar.HOUR_OF_DAY);
+            START_MINUTE = startTme.get(Calendar.MINUTE);
+            START_YEAR = startTme.get(Calendar.YEAR);
+            START_MONTH = startTme.get(Calendar.MONTH);
+            START_DAY = startTme.get(Calendar.DATE);
+            END_HOUR = endTime.get(Calendar.HOUR_OF_DAY);
+            END_MINUTE = endTime.get(Calendar.MINUTE);
+            END_YEAR = endTime.get(Calendar.YEAR);
+            END_MONTH = endTime.get(Calendar.MONTH);
+            END_DAY = endTime.get(Calendar.DATE);
+        }
+        /*==========================================================================*/
+
+
+        /*=============== Save event button listener ===============*/
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Event is created", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                 // set the event to be finished here then resume parent activity
-
                 String name = ((TextView) findViewById(R.id.event_name_add_event)).getText().toString();
                 String location = ((TextView) findViewById(R.id.event_location_add_event)).getText().toString();
                 boolean isStatic = false;
@@ -250,25 +275,25 @@ public class AddEventActivity extends AppCompatActivity {
 
                 //setting start and ending time does not work, so we have dummy variable here
 
-                String endDateText = "Start Date: " + ((startMonth == 0) ? 0 : (startMonth + 1)) + "/" + startDay + "/" + startYear +
-                        " time: " + startHour + ":" + startMinute + "\n" +
-                        " End Date" + ((endMonth == 0) ? 0 : (endMonth + 1)) + "/" + endDay + "/" + endYear +
-                        " time: " + endHour + ":" + endMinute;
+                String endDateText = "Start Date: " + ((START_MONTH == 0) ? 0 : (START_MONTH + 1)) + "/" + START_DAY + "/" + START_YEAR +
+                        " time: " + START_HOUR + ":" + START_MINUTE + "\n" +
+                        " End Date" + ((END_MONTH == 0) ? 0 : (END_MONTH + 1)) + "/" + END_DAY + "/" + END_YEAR +
+                        " time: " + END_HOUR + ":" + END_MINUTE;
 
-//                Toast.makeText(getApplicationContext(), endDateText, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), endDateText, Toast.LENGTH_LONG).show();
 
                 // Create Calendar start and end time
                 Calendar startTime = Calendar.getInstance();
-                startTime.set(startYear, startMonth, startDay, startHour, startMinute);
+                startTime.set(START_YEAR, START_MONTH, START_DAY, START_HOUR, START_MINUTE);
                 Calendar endTime = Calendar.getInstance();
-                endTime.set(endYear, endMonth, endDay, endHour, endMinute);
+                endTime.set(END_YEAR, END_MONTH, END_DAY, END_HOUR, END_MINUTE);
 
                 boolean checkEventCreatedSuccessfully = false;
 
                 // To create an event, we need to at least specify, event name, starting time and ending time
                 // except hour and minute can be 0
-                if (!name.equals("") && startYear != 0 && startMonth != 0 && startDay != 0
-                        && endYear != 0 && endMonth != 0 && endDay != 0) {
+                if (!name.equals("") && START_YEAR != 0 && START_MONTH != 0 && START_DAY != 0
+                        && END_YEAR != 0 && END_MONTH != 0 && END_DAY != 0) {
                     try {
 //                        DateFormat time = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 //                        String event_time = time.format(startTime.getTime()) + "\n" +
@@ -282,6 +307,9 @@ public class AddEventActivity extends AppCompatActivity {
                             // TODO - Create dyanmic event here
 
                         }
+
+                        // If we are editing the event we create a new one and delete the old one
+                        if (IS_EDIT_EVENT) EventListHandler.removeEventById(ID);
 
                     } catch (Exception e) {
                         Log.e("Error02", e.getMessage());
@@ -311,8 +339,7 @@ public class AddEventActivity extends AppCompatActivity {
                 }
             }
         });
-
-        /*=========== Save event button listener ===========*/
+        /*==========================================================================*/
 
     }
 
@@ -406,11 +433,11 @@ public class AddEventActivity extends AppCompatActivity {
 
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            startYear = year;
-            startMonth = monthOfYear;
-            startDay = dayOfMonth;
+            START_YEAR = year;
+            START_MONTH = monthOfYear;
+            START_DAY = dayOfMonth;
 
-            String startDateText = "Start Date: " + ((startMonth == 0) ? 0 : (startMonth + 1)) + "/" + dayOfMonth + "/" + year;
+            String startDateText = ((START_MONTH == 0) ? 0 : (START_MONTH + 1)) + "/" + dayOfMonth + "/" + year;
 //            Toast.makeText(context, startDateText, Toast.LENGTH_LONG).show();
 
             // Reset the start date button text
@@ -451,11 +478,11 @@ public class AddEventActivity extends AppCompatActivity {
 
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            endYear = year;
-            endMonth = monthOfYear;
-            endDay = dayOfMonth;
+            END_YEAR = year;
+            END_MONTH = monthOfYear;
+            END_DAY = dayOfMonth;
 
-            String endDateText = "End Date: " + ((endMonth == 0) ? 0 : (endMonth + 1)) + "/" + dayOfMonth + "/" + year;
+            String endDateText = ((END_MONTH == 0) ? 0 : (END_MONTH + 1)) + "/" + dayOfMonth + "/" + year;
 //            Toast.makeText(context, endDateText, Toast.LENGTH_LONG).show();
 
             // Reset the end date button text
