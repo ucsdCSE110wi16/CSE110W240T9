@@ -26,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -68,6 +69,7 @@ public class AddEventActivity extends AppCompatActivity {
     TimePickerDialog.OnTimeSetListener startTimePicker = null;
     TimePickerDialog.OnTimeSetListener endTimePicker = null;
 
+    final String[] colors = new String[]{"Teal", "Orange", "Pink", "Green", "LightGreen", "Blue", "Purple", "Red"};
     HashMap<String, String> eventColorMap = new HashMap<>();
 
     //For calculations
@@ -105,6 +107,17 @@ public class AddEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
 
+
+        // Get Intent Info
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        final Long ID = extras.getLong("ID"); // Return 0 if doesn't exist
+        final Boolean IS_EDIT_EVENT = extras.getBoolean("IS_EDIT_EVENT");
+
+        Log.d("AddEventIntentInfo", ID + "");
+        Log.d("AddEventIntentInfo", IS_EDIT_EVENT + "");
+
+
         // Reset those static date int to 0 on start
         startYear = startMonth = startDay = startHour = startMinute = 0;
         endYear = endMonth = endDay = endHour = endMinute = 0;
@@ -139,9 +152,19 @@ public class AddEventActivity extends AppCompatActivity {
 
         /* Dropdown for color */
         Spinner colorPicker = (Spinner) findViewById(R.id.color_dropdown_add_event);
-        final String[] colors = new String[]{"Red", "Orange", "Pink", "Green", "LightGreen", "Blue", "Purple", "Teal"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, colors);
         colorPicker.setAdapter(adapter2);
+        colorPicker.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                String color = eventColorMap.get(((Spinner) findViewById(R.id.color_dropdown_add_event)).getSelectedItem().toString().trim());
+                setToolbarStyle(color, fab, toolbar);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
 
 
         /*========= Time picker listeners and picker used to pick time =========*/
@@ -196,7 +219,7 @@ public class AddEventActivity extends AppCompatActivity {
         /*========= Time picker listeners and picker used to pick time =========*/
 
 
-        // Add listener to floating action button
+        /*=========== Save event button listener ===========*/
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -232,7 +255,7 @@ public class AddEventActivity extends AppCompatActivity {
                         " End Date" + ((endMonth == 0) ? 0 : (endMonth + 1)) + "/" + endDay + "/" + endYear +
                         " time: " + endHour + ":" + endMinute;
 
-                Toast.makeText(getApplicationContext(), endDateText, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), endDateText, Toast.LENGTH_LONG).show();
 
                 // Create Calendar start and end time
                 Calendar startTime = Calendar.getInstance();
@@ -269,19 +292,12 @@ public class AddEventActivity extends AppCompatActivity {
                     if (!checkEventCreatedSuccessfully) {
                         Snackbar.make(view, "Invalid time period. Start time must be earlier than end time.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     } else {
-//                        // If event is created successfully, reset those static date int to 0
-//                        startYear = startMonth = startDay = startHour = startMinute = 0;
-//                        endYear = endMonth = endDay = endHour = endMinute = 0;
-
-                        fab.hide(); // fab clicked animation
-
+                        fab.hide();
                         // Wait 2 seconds, then resume parent activity (calendar view)
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-//                        finish();
-
                                 // pass of the id of the clicked event to DetailActivity for loading event details
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
@@ -295,6 +311,9 @@ public class AddEventActivity extends AppCompatActivity {
                 }
             }
         });
+
+        /*=========== Save event button listener ===========*/
+
     }
 
 
@@ -387,7 +406,6 @@ public class AddEventActivity extends AppCompatActivity {
 
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-//            monthOfYear++;
             startYear = year;
             startMonth = monthOfYear;
             startDay = dayOfMonth;
@@ -433,7 +451,6 @@ public class AddEventActivity extends AppCompatActivity {
 
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-//            monthOfYear++;
             endYear = year;
             endMonth = monthOfYear;
             endDay = dayOfMonth;

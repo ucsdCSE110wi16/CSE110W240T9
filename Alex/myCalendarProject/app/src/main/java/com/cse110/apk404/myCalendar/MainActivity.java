@@ -75,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                Snackbar.make(view, "Add Event", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                 Intent intent = new Intent(MainActivity.this, AddEventActivity.class);
+                Bundle extras = new Bundle();
+                extras.putBoolean("IS_EDIT_EVENT",false);
+                intent.putExtras(extras);
                 startActivity(intent);
             }
         });

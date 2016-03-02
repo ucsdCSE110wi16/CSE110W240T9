@@ -37,6 +37,11 @@ import java.text.SimpleDateFormat;
  */
 public class DetailActivity extends AppCompatActivity {
 
+    // Intent keys
+    static final String IS_EDIT_EVENT = "IS_EDIT_EVENT";
+    static final String ID = "ID";
+
+
     Toolbar toolbar = null;
     FloatingActionButton fab = null;
 
@@ -63,7 +68,7 @@ public class DetailActivity extends AppCompatActivity {
 
         // Get the id from intent then get the event detail from the intent
         Intent mIntent = getIntent();
-        final long id = mIntent.getLongExtra("id", 0);
+        final long id = mIntent.getLongExtra("ID", 0);
 
         event = EventListHandler.getEventById(id);
 
@@ -82,7 +87,13 @@ public class DetailActivity extends AppCompatActivity {
 
                 // If the edit button is clicked, then go to add event activity
                 Intent intent = new Intent(getApplicationContext(), AddEventActivity.class);
-                intent.putExtra("id", id);
+                Bundle extras = new Bundle();
+                extras.putBoolean(IS_EDIT_EVENT,true);
+                extras.putLong(ID,id);
+                intent.putExtras(extras);
+
+//                intent.putExtras("isEditEvent", true);
+//                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
