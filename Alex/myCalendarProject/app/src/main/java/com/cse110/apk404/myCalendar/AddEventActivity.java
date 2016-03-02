@@ -54,6 +54,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -118,6 +119,8 @@ public class AddEventActivity extends AppCompatActivity {
         final Long ID = extras.getLong("ID"); // Return 0 if doesn't exist
         final Boolean IS_EDIT_EVENT = extras.getBoolean("IS_EDIT_EVENT");
 
+        if (IS_EDIT_EVENT) event = EventListHandler.getEventById(ID);
+
         Log.d("AddEventIntentInfo", ID + "");
         Log.d("AddEventIntentInfo", IS_EDIT_EVENT + "");
 
@@ -146,7 +149,9 @@ public class AddEventActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(closeIcon);
 
         // Set default theme color
-        setToolbarStyle(defaultThemeColor, fab, toolbar);
+        if (!IS_EDIT_EVENT) setToolbarStyle(defaultThemeColor, fab, toolbar);
+        else setToolbarStyle(event.getColor(), fab, toolbar);
+
 
          /* Creates dropdown for type of event */
         Spinner dropdown = (Spinner) findViewById(R.id.type_of_event_add_event);
@@ -158,6 +163,20 @@ public class AddEventActivity extends AppCompatActivity {
         Spinner colorPicker = (Spinner) findViewById(R.id.color_dropdown_add_event);
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, colors);
         colorPicker.setAdapter(adapter2);
+        // Set the color selection if is edit event
+        if (IS_EDIT_EVENT) {
+            String colorKey = "";
+            for (Map.Entry<String, String> entry : eventColorMap.entrySet()) {
+                if (entry.getValue().equals(event.getColor())) {
+                    colorKey = entry.getKey();
+                }
+            }
+            for (int i = 0; i < colors.length; i++) {
+                if (colors[i].equals(colorKey)) {
+                    colorPicker.setSelection(i);
+                }
+            }
+        }
         colorPicker.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -219,7 +238,7 @@ public class AddEventActivity extends AppCompatActivity {
                 Log.e("Error07", "Can't find event when editing event in add event page");
 
             setToolbarStyle(event.getColor(), fab, toolbar);
-            
+
             ((TextView) findViewById(R.id.event_name_add_event)).setText(event.getName());
             ((EditText) findViewById(R.id.event_location_add_event)).setText(event.getLocation());
             ((EditText) findViewById(R.id.notes_add_event)).setText(event.getDescription());
@@ -227,10 +246,10 @@ public class AddEventActivity extends AppCompatActivity {
             Calendar startTme = event.getStartTime();
             Calendar endTime = event.getEndTime();
 
-            ((Button)findViewById(R.id.start_date_add_event)).setText(dateFormatter.format(startTme.getTime()));
-            ((Button)findViewById(R.id.start_time_add_event)).setText(timeFormatter.format(startTme.getTime()));
-            ((Button)findViewById(R.id.end_date_add_event)).setText(dateFormatter.format(endTime.getTime()));
-            ((Button)findViewById(R.id.end_time_add_event)).setText(timeFormatter.format(endTime.getTime()));
+            ((Button) findViewById(R.id.start_date_add_event)).setText(dateFormatter.format(startTme.getTime()));
+            ((Button) findViewById(R.id.start_time_add_event)).setText(timeFormatter.format(startTme.getTime()));
+            ((Button) findViewById(R.id.end_date_add_event)).setText(dateFormatter.format(endTime.getTime()));
+            ((Button) findViewById(R.id.end_time_add_event)).setText(timeFormatter.format(endTime.getTime()));
 
             START_HOUR = startTme.get(Calendar.HOUR_OF_DAY);
             START_MINUTE = startTme.get(Calendar.MINUTE);
