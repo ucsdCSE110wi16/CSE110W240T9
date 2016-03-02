@@ -185,7 +185,7 @@ public class DetailActivity extends AppCompatActivity {
                 // Archive event
                 if (event != null) {
                     event.setFinished(true);
-                    RestartMainActivity(1200, "Event is marked as finished and archived");
+                    RestartMainActivity(0, "Event is marked as finished and archived");
                 }
                 return true;
             case R.id.action_unfinish_event:
@@ -194,7 +194,7 @@ public class DetailActivity extends AppCompatActivity {
                     event.setFinished(false);
 //                    finish();
 //                    startActivity(getIntent());
-                    RestartMainActivity(1200, "Event is set to active again");
+                    RestartMainActivity(0, "Event is set to active again");
                 }
                 return true;
             default:
@@ -206,7 +206,7 @@ public class DetailActivity extends AppCompatActivity {
     private void RestartMainActivity(int timeToRestartInMilliseconds, String snackbarMessgae) {
         // Restart parent activity to refresh calendar list UI
         if (!snackbarMessgae.isEmpty())
-            Snackbar.make(findViewById(android.R.id.content), snackbarMessgae, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+//            Snackbar.make(findViewById(android.R.id.content), snackbarMessgae, Snackbar.LENGTH_LONG).setAction("Action", null).show();
         fab.hide();
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

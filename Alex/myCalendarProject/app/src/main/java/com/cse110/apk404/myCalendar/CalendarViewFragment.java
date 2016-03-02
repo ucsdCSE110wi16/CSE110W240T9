@@ -75,6 +75,10 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
             DateFormat time = new SimpleDateFormat("MM");
             int event_month = Integer.parseInt(time.format(event_temp.getStartTime().getTime()));
 
+            // Set past event as finished
+            if(event_temp.getEndTime().before(Calendar.getInstance()) && !event_temp.isFinished()) {
+                event_temp.setFinished(true);
+            }
             if (event_month == newMonth) {
                 WeekViewEvent event = new WeekViewEvent(event_temp.getId(), event_temp.getName() + " - " + event_temp.getLocation(), event_temp.getStartTime(), event_temp.getEndTime());
                 if (event_temp.isFinished()) {
