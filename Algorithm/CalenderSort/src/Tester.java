@@ -16,30 +16,44 @@ public class Tester {
 	public static void main(String[] args)  throws CalendarError, IOException {
 		//int temp = 0;
 		Calendar startTime = Calendar.getInstance();
-		Date startDate = startTime.getTime();
+	
+//		startTime.set(2016,1,29,17,01);
 		Calendar endTime = Calendar.getInstance();
-		endTime.set(2016,2,29,18,01);
-		endTime.add(Calendar.DAY_OF_MONTH, 1);
+		endTime.set(2016, Calendar.MONTH, Calendar.DAY_OF_MONTH, 16, 0);
+		Date startDate = endTime.getTime();
+//		endTime.add(Calendar.DAY_OF_MONTH, 1);
+//		DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//		Date date = endTime.getTime();
+//		System.out.println(time.format(startDate));
+//		System.out.println(time.format(date));
+//		
+		
+//		System.out.println((endTime.getTime().getTime() - startTime.getTime().getTime()) / (1000 * 60 * 60 * 24));
+		Calendar startTime2 = Calendar.getInstance();
+		startTime2.set(2016, Calendar.MONTH, 3, 13, 0);
+		Calendar endTime2 = Calendar.getInstance();
+		endTime2.set(2016, Calendar.MONTH, 3, 15, 0);
+		
+//		endTime.add(Calendar.DAY_OF_MONTH, 1);
 		DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		Date date = endTime.getTime();
+		Date date = endTime2.getTime();
 		System.out.println(time.format(startDate));
 		System.out.println(time.format(date));
 		
-		
-		System.out.println((endTime.getTime().getTime() - startTime.getTime().getTime()) / (1000 * 60 * 60 * 24));
-		
-		//Calendar startTime2 = new CalendarDate(2016, 01, 31, 21, 59, 6);
-		//Calendar endTime2 = new CalendarDate(2016, 01, 31, 23, 59, 6);
-		EventListHandler handler = new EventListHandler();
-		handler.initStaticList();
-		boolean check = handler.createStaticEvent("do homework", "basement", startTime, endTime,
+		EventListHandler.initStaticList();
+		boolean check = EventListHandler.createStaticEvent("do homework", "basement", startTime, endTime,
 				true, false, false, "scarlet", "red");
-		//handler.createStaticEvent("basementsd", startTime2, endTime2,
-				//true, false, false, "scar", "blue");
 		if(check)
-		    System.out.println("success\n");
+		    System.out.println("1success\n");
 		
-		// handler.dynamicSort();
+		check = EventListHandler.createStaticEvent("sleep","basement sd", startTime2, endTime2,
+				true, false, false, "scar", "blue");
+		
+		if(check)
+		    System.out.println("2success\n");
+		
+	EventListHandler.dynamicSort();
+	
 		
 		
 		/*StaticEventList staticEventList = handler.getStaticList();

@@ -84,7 +84,7 @@ public class EventListHandler {
         //check if start and end times are valid
         boolean check = false;
         if (!checkValidTime(startTime, endTime)) {
-            System.out.println("Fail");
+//            System.out.println("Fail");
             return false;
         }
         //check if event is static
@@ -95,8 +95,7 @@ public class EventListHandler {
                 isPeriodic, isFinished, description, color);
         staticEvent.setId(System.currentTimeMillis());
         check = staticList.addEvent(staticEvent);
-        if (!check)
-            System.out.println("Fail");
+
         return (check);
     }
 
@@ -121,7 +120,7 @@ public class EventListHandler {
 
 
     //Dynamic sort algorithm
-    public static boolean dynamicSort() {
+    public static boolean dynamicSort() throws CalendarError {
 
         Comparator<StaticEvent> staticcomparator = new Comparator<StaticEvent>() {
 
@@ -148,14 +147,15 @@ public class EventListHandler {
         };
 
 
-        PriorityQueue<DynamicEvent> currDynamicEList = new PriorityQueue<DynamicEvent>(0, comparator);
-        PriorityQueue<DynamicEvent> reverseDynamicEList = new PriorityQueue<DynamicEvent>(0, reversecomparator);
-        PriorityQueue<StaticEvent> currStaticEList = new PriorityQueue<StaticEvent>(0, staticcomparator);
-        PriorityQueue<StaticEvent> sortedStaticEList = new PriorityQueue<StaticEvent>(0, staticcomparator);
+        PriorityQueue<DynamicEvent> currDynamicEList = new PriorityQueue<DynamicEvent>(1,comparator);
+        PriorityQueue<DynamicEvent> reverseDynamicEList = new PriorityQueue<DynamicEvent>(1,reversecomparator);
+        PriorityQueue<StaticEvent> currStaticEList = new PriorityQueue<StaticEvent>(1,staticcomparator);
+        PriorityQueue<StaticEvent> sortedStaticEList = new PriorityQueue<StaticEvent>(1,staticcomparator);
         PriorityQueue<StaticEvent> freeList = new PriorityQueue<StaticEvent>();
         PriorityQueue<StaticEvent> sortedfreeList = new PriorityQueue<StaticEvent>();
         ArrayList<StaticEvent> staticArrayList = staticList.getList();
         ArrayList<DynamicEvent> dynamicArrayList = null;
+        
         if (dynamicList != null) {
             dynamicArrayList = dynamicList.getList();
         }
@@ -174,12 +174,32 @@ public class EventListHandler {
                 }
             }
         }
-        while (!currStaticEList.isEmpty()) {
-            DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date date = currStaticEList.poll().getStartTime().getTime();
-            System.out.println(time.format(date));
 
-        }
+        StaticEvent event;
+//        for (int i = 0; i < currStaticEList.size();i++) {
+//            DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//           event = currStaticEList.poll();
+//             Date date = event.getEndTime().getTime();
+//            System.out.println("currStaticEList: ");
+//            System.out.println(time.format(date));
+//            currStaticEList.add(event);
+//
+//        }
+        
+        EventListHandler.checkConflict(currStaticEList, sortedStaticEList);
+        int size = sortedStaticEList.size();
+           for(int i=0; i< size; i++) {
+        	   System.out.println(sortedStaticEList.size());
+                DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+               
+                Date date = sortedStaticEList.poll().getEndTime().getTime();
+                System.out.println(time.format(date));
+//                sortedStaticEList.add(event);
+            }
+        
+        
+        
+
         return false;
     }
 
@@ -187,20 +207,29 @@ public class EventListHandler {
     events as a single event*/
     private static void checkConflict(PriorityQueue<StaticEvent> currStaticEList, PriorityQueue<StaticEvent> sortedStaticEList)
             throws CalendarError {
+        System.out.println("checkConflict");
         while (!currStaticEList.isEmpty()) {
             StaticEvent firstCheck = currStaticEList.poll();
             StaticEvent secondCheck = null;
+ 
             if (!currStaticEList.isEmpty()) {
                 secondCheck = currStaticEList.peek();
             }
-            if (firstCheck.getEndTime().compareTo(secondCheck.getStartTime()) >= 0) {  //////////CONFIRM THIS or is it <=0
+            
+            
+            if (currStaticEList.size() >=2 && firstCheck.getEndTime().compareTo(secondCheck.getStartTime()) >= 0) {  //////////CONFIRM THIS or is it <=0
                 StaticEvent newevent = new StaticEvent(firstCheck.getName(),
                         firstCheck.getLocation(), firstCheck.getStartTime(), secondCheck.getEndTime(),
                         firstCheck.isStatic(), firstCheck.isPeriodic(), firstCheck.isFinished(),
                         firstCheck.getDescription(), firstCheck.getColor());
                 sortedStaticEList.add(newevent);
+            
+            }
+            else{
+            	sortedStaticEList.add(firstCheck);
             }
         }
+     
     }
 
     //#1 on the order list
