@@ -14,8 +14,6 @@ public class EventListHandler {
     private static StaticEventList staticList = null;
     private static DynamicEventList dynamicList = null;
     private static ArrayList<CalendarEvent> events = null; //list to store all events in one given day
-    private static Calendar startTimeOfDay;
-    private static Calendar endTimeOfDay;
 
 
     public static ArrayList<CalendarEvent> getEvents() {
@@ -120,7 +118,7 @@ public class EventListHandler {
         return;
     }
 
-    
+
     //Dynamic sort algorithm
     public static boolean dynamicSort() throws CalendarError {
 
@@ -276,20 +274,24 @@ public class EventListHandler {
     //remove static time that are before and after 9a/p
     public static void purgeStaticList(PriorityQueue<StaticEvent> sortedStaticEList) {
         StaticEvent time;
-        
+        //create a calendar object with hour set to 9a/p
+        Calendar endSet9 = Calendar.getInstance();
+        endSet9.set(Calendar.HOUR_OF_DAY, 9);
+        Calendar endSet21 = Calendar.getInstance();
+        endSet21.set(Calendar.HOUR_OF_DAY, 21);
 
         while (!sortedStaticEList.isEmpty()) {
 
             //if earlier than 9am set to 9am
             time = sortedStaticEList.peek();
-            if (time.getEndTime().compareTo(startTimeOfDay) < 0) {
-                time.setEndTime(startTimeOfDay);
+            if (time.getEndTime().compareTo(endSet9) < 0) {
+                time.setEndTime(endSet9);
                 continue;
             }
 
             //if later than 9pm set to 9pm
-            else if (time.getEndTime().compareTo(endTimeOfDay) < 0) {
-                time.setEndTime(endTimeOfDay);
+            else if (time.getEndTime().compareTo(endSet21) < 0) {
+                time.setEndTime(endSet21);
                 continue;
             }
         }
@@ -410,22 +412,6 @@ public class EventListHandler {
             }
         }
     }
-
-	public static Calendar getStartTimeOfDay() {
-		return startTimeOfDay;
-	}
-
-	public static void setStartTimeOfDay(Calendar startTimeOfDay) {
-		EventListHandler.startTimeOfDay = startTimeOfDay;
-	}
-
-	public static Calendar getEndTimeOfDay() {
-		return endTimeOfDay;
-	}
-
-	public static void setEndTimeOfDay(Calendar endTimeOfDay) {
-		EventListHandler.endTimeOfDay = endTimeOfDay;
-	}
 
 
 }
