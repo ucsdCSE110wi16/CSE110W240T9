@@ -16,17 +16,12 @@ public class Tester {
 	public static void main(String[] args)  throws CalendarError, IOException {
 		//int temp = 0;
 		Calendar startTime = Calendar.getInstance();
-	
+		startTime.set(2016, Calendar.MONTH, 1, 21, 0);
 //		startTime.set(2016,1,29,17,01);
 		Calendar endTime = Calendar.getInstance();
-		endTime.set(2016, Calendar.MONTH, Calendar.DAY_OF_MONTH, 16, 0);
+		endTime.set(2016, Calendar.MONTH, 1, 23, 0);
 		Date startDate = endTime.getTime();
-//		endTime.add(Calendar.DAY_OF_MONTH, 1);
-//		DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-//		Date date = endTime.getTime();
-//		System.out.println(time.format(startDate));
-//		System.out.println(time.format(date));
-//		
+
 		
 //		System.out.println((endTime.getTime().getTime() - startTime.getTime().getTime()) / (1000 * 60 * 60 * 24));
 		Calendar startTime2 = Calendar.getInstance();
@@ -34,7 +29,12 @@ public class Tester {
 		Calendar endTime2 = Calendar.getInstance();
 		endTime2.set(2016, Calendar.MONTH, 3, 15, 0);
 		
-//		endTime.add(Calendar.DAY_OF_MONTH, 1);
+		Calendar startTime3 = Calendar.getInstance();
+		startTime3.set(2016, Calendar.MONTH, 3, 13, 0);
+		Calendar endTime3 = Calendar.getInstance();
+		endTime3.set(2016, Calendar.MONTH, 3, 16, 0);
+		
+		endTime.add(Calendar.DAY_OF_MONTH, 1);
 		DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date date = endTime2.getTime();
 		System.out.println(time.format(startDate));
@@ -51,6 +51,12 @@ public class Tester {
 		
 		if(check)
 		    System.out.println("2success\n");
+		
+		check = EventListHandler.createStaticEvent("sleep","basement sd", startTime3, endTime3,
+				true, false, false, "scar", "blue");
+		
+		if(check)
+		    System.out.println("3success\n");
 		
 	EventListHandler.dynamicSort();
 	

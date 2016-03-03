@@ -175,14 +175,14 @@ public class EventListHandler {
             }
         }
 
-        StaticEvent event;
-//        for (int i = 0; i < currStaticEList.size();i++) {
+//        StaticEvent event;
+//        while(!currStaticEList.isEmpty()) {
 //            DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 //           event = currStaticEList.poll();
 //             Date date = event.getEndTime().getTime();
 //            System.out.println("currStaticEList: ");
 //            System.out.println(time.format(date));
-//            currStaticEList.add(event);
+//
 //
 //        }
         
@@ -207,23 +207,62 @@ public class EventListHandler {
     events as a single event*/
     private static void checkConflict(PriorityQueue<StaticEvent> currStaticEList, PriorityQueue<StaticEvent> sortedStaticEList)
             throws CalendarError {
-        System.out.println("checkConflict");
+        
+        StaticEvent firstCheck = null;
+        StaticEvent secondCheck = null;
+        Calendar newStartTime = null;
+        Calendar newEndTime = null;
         while (!currStaticEList.isEmpty()) {
-            StaticEvent firstCheck = currStaticEList.poll();
-            StaticEvent secondCheck = null;
+            firstCheck = currStaticEList.poll();
+            secondCheck = null;
  
+            System.out.println("first");
+            
+            DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            
+            Date date = firstCheck.getEndTime().getTime();
+            
+            System.out.println(time.format(date));
+            
+
+            
             if (!currStaticEList.isEmpty()) {
+            	
+            	System.out.println("second");
                 secondCheck = currStaticEList.peek();
-            }
             
+                date = secondCheck.getStartTime().getTime();
+                
+                System.out.println(time.format(date));
             
-            if (currStaticEList.size() >=2 && firstCheck.getEndTime().compareTo(secondCheck.getStartTime()) >= 0) {  //////////CONFIRM THIS or is it <=0
-                StaticEvent newevent = new StaticEvent(firstCheck.getName(),
-                        firstCheck.getLocation(), firstCheck.getStartTime(), secondCheck.getEndTime(),
+            if (firstCheck.getEndTime().compareTo(secondCheck.getStartTime()) >= 0) {  //////////CONFIRM THIS or is it <=0
+            	System.out.println("Conflict");
+            	if (firstCheck.getStartTime().compareTo(secondCheck.getStartTime()) <= 0){
+            		newStartTime = firstCheck.getStartTime();
+            	}
+            	else {
+            		newStartTime = secondCheck.getStartTime();
+            	}
+            	if (firstCheck.getEndTime().compareTo(secondCheck.getEndTime()) >= 0){
+            		newEndTime = firstCheck.getEndTime();
+            	}
+            	else {
+            		newEndTime = secondCheck.getEndTime();
+            	}
+            	StaticEvent newevent = new StaticEvent(firstCheck.getName(),
+                        firstCheck.getLocation(), newStartTime, newEndTime,
                         firstCheck.isStatic(), firstCheck.isPeriodic(), firstCheck.isFinished(),
                         firstCheck.getDescription(), firstCheck.getColor());
-                sortedStaticEList.add(newevent);
+
+                currStaticEList.poll();
+                currStaticEList.add(newevent);
             
+            }
+            else{
+            	sortedStaticEList.add(firstCheck);
+            	firstCheck = null;
+            	secondCheck = null;
+            }
             }
             else{
             	sortedStaticEList.add(firstCheck);
