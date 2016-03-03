@@ -63,10 +63,14 @@ import java.util.Map;
  */
 public class AddEventActivity extends AppCompatActivity {
 
+    FloatingActionButton fab = null;
     CalendarEvent event = null;
     Toolbar toolbar = null;
-    Button setStart = null;
-    Button setEnd = null;
+    Button setStartTime = null;
+    Button setEndTime = null;
+    Button setStartDate = null;
+    Button setEndDate = null;
+    EditText dynamicEventDurationEditText = null;
 
     Calendar time = Calendar.getInstance();
     DateFormat timeFormatter = new SimpleDateFormat("HH:mm");
@@ -75,10 +79,15 @@ public class AddEventActivity extends AppCompatActivity {
     TimePickerDialog.OnTimeSetListener startTimePicker = null;
     TimePickerDialog.OnTimeSetListener endTimePicker = null;
 
+    boolean isStatic = true;
+    boolean isPeriodic = false;
+    String eventType;
+
     final String defaultThemeColor = "#009688";
     final String[] colors = new String[]{"TEAL", "ORANGE", "PINK", "GREEN", "LIGHTGREEN", "BLUE", "PURPLE", "RED"};
     HashMap<String, String> eventColorMap = new HashMap<>();
 
+    int dynamicEventDuration = 0;
     public static int START_YEAR, START_MONTH, START_DAY, START_HOUR, START_MINUTE = 0;
     public static int END_YEAR, END_MONTH, END_DAY, END_HOUR, END_MINUTE = 0;
 
@@ -140,7 +149,7 @@ public class AddEventActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         /* Floating action button */
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_finished_event);
+        fab = (FloatingActionButton) findViewById(R.id.fab_finished_event);
 
 
         // Replace the home back button with delete button
@@ -148,16 +157,92 @@ public class AddEventActivity extends AppCompatActivity {
         closeIcon.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setHomeAsUpIndicator(closeIcon);
 
+
+        /*========= Time picker listeners and picker used to pick time =========*/
+
+        setStartTime = (Button) findViewById(R.id.start_time_add_event);
+        setEndTime = (Button) findViewById(R.id.end_time_add_event);
+
+        startTimePicker = new TimePickerDialog.OnTimeSetListener() {
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                setStartTime.setText(String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
+                START_HOUR = hourOfDay;
+                START_MINUTE = minute;
+            }
+        };
+
+        endTimePicker = new TimePickerDialog.OnTimeSetListener() {
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                setEndTime.setText(String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
+                END_HOUR = hourOfDay;
+                END_MINUTE = minute;
+            }
+        };
+
+        /* Click on set start time button to make time picker pop up show up */
+        setStartTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new TimePickerDialog(AddEventActivity.this, startTimePicker, time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE), true).show();
+            }
+        });
+
+        /* Click on set end time button to make time picker pop up show up */
+        setEndTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new TimePickerDialog(AddEventActivity.this, endTimePicker, time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE), true).show();
+            }
+        });
+
+        /*==========================================================================*/
+
+
+        setStartDate = (Button) findViewById(R.id.start_date_add_event);
+        setEndDate = (Button) findViewById(R.id.end_date_add_event);
+
+
+
         // Set default theme color
         if (!IS_EDIT_EVENT) setToolbarStyle(defaultThemeColor, fab, toolbar);
         else setToolbarStyle(event.getColor(), fab, toolbar);
 
+        dynamicEventDurationEditText = (EditText) findViewById(R.id.event_duration_add_event);
 
          /* Creates dropdown for type of event */
         Spinner dropdown = (Spinner) findViewById(R.id.type_of_event_add_event);
         final String[] items = new String[]{"STATIC", "DYNAMIC"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                eventType = ((Spinner) findViewById(R.id.type_of_event_add_event)).getSelectedItem().toString();
+                if (eventType.equals(items[0])) {
+                    isStatic = true;
+                    setStartTime.setEnabled(true);
+                    setStartTime.setVisibility(View.VISIBLE);
+                    setStartDate.setEnabled(true);
+                    setStartDate.setVisibility(View.VISIBLE);
+                    dynamicEventDurationEditText.setEnabled(false);
+                    dynamicEventDurationEditText.setVisibility(View.GONE);
+                } else if (eventType.equals(items[1])) {
+                    isStatic = false;
+                    setStartTime.setEnabled(false);
+                    setStartTime.setVisibility(View.GONE);
+                    setStartDate.setEnabled(false);
+                    setStartDate.setVisibility(View.GONE);
+                    dynamicEventDurationEditText.setEnabled(true);
+                    dynamicEventDurationEditText.setVisibility(View.VISIBLE);
+                } else {
+                    Log.e("Error01", "EventType is none of the options");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
 
         /* Dropdown for color */
         Spinner colorPicker = (Spinner) findViewById(R.id.color_dropdown_add_event);
@@ -188,46 +273,6 @@ public class AddEventActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
-
-
-        /*========= Time picker listeners and picker used to pick time =========*/
-
-        setStart = (Button) findViewById(R.id.start_time_add_event);
-        setEnd = (Button) findViewById(R.id.end_time_add_event);
-
-        startTimePicker = new TimePickerDialog.OnTimeSetListener() {
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                setStart.setText(String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
-                START_HOUR = hourOfDay;
-                START_MINUTE = minute;
-            }
-        };
-
-        endTimePicker = new TimePickerDialog.OnTimeSetListener() {
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                setEnd.setText(String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
-                END_HOUR = hourOfDay;
-                END_MINUTE = minute;
-            }
-        };
-
-        /* Click on set start time button to make time picker pop up show up */
-        setStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new TimePickerDialog(AddEventActivity.this, startTimePicker, time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE), true).show();
-            }
-        });
-
-        /* Click on set end time button to make time picker pop up show up */
-        setEnd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new TimePickerDialog(AddEventActivity.this, endTimePicker, time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE), true).show();
-            }
-        });
-
-        /*==========================================================================*/
 
 
 
@@ -271,21 +316,13 @@ public class AddEventActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 // set the event to be finished here then resume parent activity
-                String name = ((TextView) findViewById(R.id.event_name_add_event)).getText().toString();
-                String location = ((TextView) findViewById(R.id.event_location_add_event)).getText().toString();
-                boolean isStatic = false;
-                boolean isPeriodic = false;
-                boolean isFinished = false; // always set is Finished to False on Start
-                String eventType = ((Spinner) findViewById(R.id.type_of_event_add_event)).getSelectedItem().toString();
-                if (eventType.equals(items[0])) {
-                    // This is static
-                    isStatic = true;
-                } else if (eventType.equals(items[1])) {
-                    // This is dynamic
-                    isStatic = false;
-                } else {
-                    Log.e("Error01", "EventType is none of the options");
-                }
+                String name = ((EditText) findViewById(R.id.event_name_add_event)).getText().toString();
+                dynamicEventDuration = Integer.parseInt(((EditText) findViewById(R.id.event_duration_add_event)).getText().toString());
+                String location = ((EditText) findViewById(R.id.event_location_add_event)).getText().toString();
+                eventType = ((Spinner) findViewById(R.id.type_of_event_add_event)).getSelectedItem().toString();
+                if (eventType.equals(items[0])) isStatic = true;
+                else if (eventType.equals(items[1])) isStatic = false;
+                else Log.e("Error01", "EventType is none of the options");
                 String color = eventColorMap.get(((Spinner) findViewById(R.id.color_dropdown_add_event)).getSelectedItem().toString().trim());
                 String notes = ((TextView) findViewById(R.id.notes_add_event)).getText().toString();
 
@@ -311,8 +348,8 @@ public class AddEventActivity extends AppCompatActivity {
 
                 // To create an event, we need to at least specify, event name, starting time and ending time
                 // except hour and minute can be 0
-                if (!name.equals("") && START_YEAR != 0 && START_MONTH != 0 && START_DAY != 0
-                        && END_YEAR != 0 && END_MONTH != 0 && END_DAY != 0) {
+                if (!name.equals("") && ((START_YEAR != 0 && START_MONTH != 0 && START_DAY != 0) || dynamicEventDuration != 0)
+                        && (END_YEAR != 0 && END_MONTH != 0 && END_DAY != 0)) {
                     try {
 //                        DateFormat time = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 //                        String event_time = time.format(startTime.getTime()) + "\n" +
@@ -321,10 +358,11 @@ public class AddEventActivity extends AppCompatActivity {
 
                         if (isStatic) {
                             checkEventCreatedSuccessfully = EventListHandler.createStaticEvent(name, location, startTime, endTime,
-                                    isStatic, isPeriodic, isFinished, notes, color);
+                                    isStatic, isPeriodic, false, notes, color);
                         } else {
                             // TODO - Create dyanmic event here
-
+                            Log.d("Dynamic", "dynamic event is created with duration " + dynamicEventDuration);
+                            checkEventCreatedSuccessfully = true;
                         }
 
                         // If we are editing the event we create a new one and delete the old one
