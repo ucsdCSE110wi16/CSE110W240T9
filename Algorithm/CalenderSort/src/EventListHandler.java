@@ -14,6 +14,8 @@ public class EventListHandler {
     private static StaticEventList staticList = null;
     private static DynamicEventList dynamicList = null;
     private static ArrayList<CalendarEvent> events = null; //list to store all events in one given day
+    private static Calendar startTimeOfDay;
+    private static Calendar endTimeOfDay;
 
 
     public static ArrayList<CalendarEvent> getEvents() {
@@ -84,7 +86,7 @@ public class EventListHandler {
         //check if start and end times are valid
         boolean check = false;
         if (!checkValidTime(startTime, endTime)) {
-            System.out.println("Fail");
+//            System.out.println("Fail");
             return false;
         }
         //check if event is static
@@ -95,8 +97,7 @@ public class EventListHandler {
                 isPeriodic, isFinished, description, color);
         staticEvent.setId(System.currentTimeMillis());
         check = staticList.addEvent(staticEvent);
-        if (!check)
-            System.out.println("Fail");
+
         return (check);
     }
 
@@ -119,9 +120,9 @@ public class EventListHandler {
         return;
     }
 
-
+    
     //Dynamic sort algorithm
-    public static boolean dynamicSort() {
+    public static boolean dynamicSort() throws CalendarError {
 
         Comparator<StaticEvent> staticcomparator = new Comparator<StaticEvent>() {
 
@@ -148,14 +149,15 @@ public class EventListHandler {
         };
 
 
-        PriorityQueue<DynamicEvent> currDynamicEList = new PriorityQueue<DynamicEvent>(0, comparator);
-        PriorityQueue<DynamicEvent> reverseDynamicEList = new PriorityQueue<DynamicEvent>(0, reversecomparator);
-        PriorityQueue<StaticEvent> currStaticEList = new PriorityQueue<StaticEvent>(0, staticcomparator);
-        PriorityQueue<StaticEvent> sortedStaticEList = new PriorityQueue<StaticEvent>(0, staticcomparator);
+        PriorityQueue<DynamicEvent> currDynamicEList = new PriorityQueue<DynamicEvent>(1,comparator);
+        PriorityQueue<DynamicEvent> reverseDynamicEList = new PriorityQueue<DynamicEvent>(1,reversecomparator);
+        PriorityQueue<StaticEvent> currStaticEList = new PriorityQueue<StaticEvent>(1,staticcomparator);
+        PriorityQueue<StaticEvent> sortedStaticEList = new PriorityQueue<StaticEvent>(1,staticcomparator);
         PriorityQueue<StaticEvent> freeList = new PriorityQueue<StaticEvent>();
         PriorityQueue<StaticEvent> sortedfreeList = new PriorityQueue<StaticEvent>();
         ArrayList<StaticEvent> staticArrayList = staticList.getList();
         ArrayList<DynamicEvent> dynamicArrayList = null;
+        
         if (dynamicList != null) {
             dynamicArrayList = dynamicList.getList();
         }
@@ -174,12 +176,32 @@ public class EventListHandler {
                 }
             }
         }
-        while (!currStaticEList.isEmpty()) {
-            DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date date = currStaticEList.poll().getStartTime().getTime();
-            System.out.println(time.format(date));
 
-        }
+//        StaticEvent event;
+//        while(!currStaticEList.isEmpty()) {
+//            DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//           event = currStaticEList.poll();
+//             Date date = event.getEndTime().getTime();
+//            System.out.println("currStaticEList: ");
+//            System.out.println(time.format(date));
+//
+//
+//        }
+        
+        EventListHandler.checkConflict(currStaticEList, sortedStaticEList);
+        int size = sortedStaticEList.size();
+           for(int i=0; i< size; i++) {
+        	   System.out.println(sortedStaticEList.size());
+                DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+               
+                Date date = sortedStaticEList.poll().getEndTime().getTime();
+                System.out.println(time.format(date));
+//                sortedStaticEList.add(event);
+            }
+        
+        
+        
+
         return false;
     }
 
@@ -187,57 +209,111 @@ public class EventListHandler {
     events as a single event*/
     private static void checkConflict(PriorityQueue<StaticEvent> currStaticEList, PriorityQueue<StaticEvent> sortedStaticEList)
             throws CalendarError {
+        
+        StaticEvent firstCheck = null;
+        StaticEvent secondCheck = null;
+        Calendar newStartTime = null;
+        Calendar newEndTime = null;
         while (!currStaticEList.isEmpty()) {
-            StaticEvent firstCheck = currStaticEList.poll();
-            StaticEvent secondCheck = null;
+          
+        	firstCheck = currStaticEList.poll();
+
+ 
+//            System.out.println("first");
+//            
+//            DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//            
+//            Date date = firstCheck.getEndTime().getTime();
+//            
+//            System.out.println(time.format(date));
+//            
+
+            
             if (!currStaticEList.isEmpty()) {
+            	
                 secondCheck = currStaticEList.peek();
-            }
-            if (firstCheck.getEndTime().compareTo(secondCheck.getStartTime()) >= 0) {  //////////CONFIRM THIS or is it <=0
-                StaticEvent newevent = new StaticEvent(firstCheck.getName(),
-                        firstCheck.getLocation(), firstCheck.getStartTime(), secondCheck.getEndTime(),
+            
+            
+            if (firstCheck.getEndTime().compareTo(secondCheck.getStartTime()) >= 0) {
+            	System.out.println("Conflict");
+            	
+            	if (firstCheck.getStartTime().compareTo(secondCheck.getStartTime()) <= 0){
+            		newStartTime = firstCheck.getStartTime();
+            	}
+            	else {
+            		newStartTime = secondCheck.getStartTime();
+            	}
+            	if (firstCheck.getEndTime().compareTo(secondCheck.getEndTime()) >= 0){
+            		newEndTime = firstCheck.getEndTime();
+            	}
+            	else {
+            		newEndTime = secondCheck.getEndTime();
+            	}
+            	StaticEvent newevent = new StaticEvent(firstCheck.getName(),
+                        firstCheck.getLocation(), newStartTime, newEndTime,
                         firstCheck.isStatic(), firstCheck.isPeriodic(), firstCheck.isFinished(),
                         firstCheck.getDescription(), firstCheck.getColor());
-                sortedStaticEList.add(newevent);
+            	//remove secondCheck
+                currStaticEList.poll();
+                //add newEvent back to current list to check for next conflict
+                currStaticEList.add(newevent);
+            
+            }
+            else{
+            	sortedStaticEList.add(firstCheck);
+            	firstCheck = null;
+            	secondCheck = null;
+            }
+            }
+            else{
+            	sortedStaticEList.add(firstCheck);
             }
         }
+     
     }
 
     //#1 on the order list
     //remove static time that are before and after 9a/p
     public static void purgeStaticList(PriorityQueue<StaticEvent> sortedStaticEList) {
-        StaticEvent time;
-        //create a calendar object with hour set to 9a/p
-        Calendar endSet9 = Calendar.getInstance();
-        endSet9.set(Calendar.HOUR_OF_DAY, 9);
-        Calendar endSet21 = Calendar.getInstance();
-        endSet21.set(Calendar.HOUR_OF_DAY, 21);
+    	StaticEvent time;
 
         while (!sortedStaticEList.isEmpty()) {
 
             //if earlier than 9am set to 9am
             time = sortedStaticEList.peek();
-            if (time.getEndTime().compareTo(endSet9) < 0) {
-                time.setEndTime(endSet9);
+            //if the start and end time are both earlier than 9am
+            if (time.getEndTime().compareTo(startTimeOfDay) < 0) {
+                sortedStaticEList.poll();
+                continue;
+            }
+            //if start is earlier than 9am but end time is later than 9 am
+            if (time.getStartTime().compareTo(startTimeOfDay) < 0 && time.getEndTime().compareTo(startTimeOfDay) > 0) {
+                time.setStartTime(startTimeOfDay);
                 continue;
             }
 
-            //if later than 9pm set to 9pm
-            else if (time.getEndTime().compareTo(endSet21) < 0) {
-                time.setEndTime(endSet21);
+            //if the start and end time are both later than 9pm
+            if (time.getStartTime().compareTo(endTimeOfDay) > 0) {
+                sortedStaticEList.poll();
+                continue;
+            }
+            //if start is earlier than 9pm but end time is later than 9pm
+            if (time.getStartTime().compareTo(endTimeOfDay) < 0 && time.getEndTime().compareTo(endTimeOfDay) > 0) {
+                time.setEndTime(endTimeOfDay);
                 continue;
             }
         }
     }
 
+    
     private static int daysBetween(Calendar d1, Calendar d2) {
         return (int) (Math.abs(d2.getTime().getTime() - d1.getTime().getTime()) / (1000 * 60 * 60 * 24));
     }
 
     //#2 on the purge list
     //returns false if no free time, true will write freetime to freeList
-    private static boolean updateFreeTime(PriorityQueue<StaticEvent> sortedStaticEList,
-                                          PriorityQueue<DynamicEvent> reverseDynamicEvent, PriorityQueue<StaticEvent> freeList) throws CalendarError {
+    private static boolean updateFreeTime(PriorityQueue<StaticEvent> sortedStaticEList, PriorityQueue<DynamicEvent> 
+    reverseDynamicEvent, PriorityQueue<StaticEvent> freeList) throws CalendarError {
 
         //get deadline from last of currDynamicEvent
         DynamicEvent lastdynamicevent = reverseDynamicEvent.peek();
@@ -257,17 +333,14 @@ public class EventListHandler {
             } else if (i == days) {
                 endTime = lastDynamicTime;
             } else {
-                startTime = Calendar.getInstance();
-                startTime.set(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH, 9, 0);
-                endTime = Calendar.getInstance();
-                endTime.set(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH, 21, 0);
+                startTime = startTimeOfDay;
+                endTime = endTimeOfDay;
             }
 
             freeBlock = new StaticEvent("free time", "null", startTime, endTime,
                     true, false, false, "null", "null");
             freeList.add(freeBlock);
             startTime.add(Calendar.DAY_OF_MONTH, 1);
-
         }
 
         //init freetime for the peek operation
@@ -345,6 +418,22 @@ public class EventListHandler {
             }
         }
     }
+
+	public static Calendar getStartTimeOfDay() {
+		return startTimeOfDay;
+	}
+
+	public static void setStartTimeOfDay(Calendar startTimeOfDay) {
+		EventListHandler.startTimeOfDay = startTimeOfDay;
+	}
+
+	public static Calendar getEndTimeOfDay() {
+		return endTimeOfDay;
+	}
+
+	public static void setEndTimeOfDay(Calendar endTimeOfDay) {
+		EventListHandler.endTimeOfDay = endTimeOfDay;
+	}
 
 
 }
