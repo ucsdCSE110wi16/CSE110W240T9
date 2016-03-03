@@ -218,5 +218,11 @@ public class DetailActivity extends AppCompatActivity {
         }, timeToRestartInMilliseconds);
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        // Comment this super call to avoid calling finish() in the physical back button
+        // super.onBackPressed();
+    }
 
 }

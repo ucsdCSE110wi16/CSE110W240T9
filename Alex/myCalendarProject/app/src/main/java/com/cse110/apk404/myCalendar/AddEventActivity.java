@@ -202,7 +202,6 @@ public class AddEventActivity extends AppCompatActivity {
         setEndDate = (Button) findViewById(R.id.end_date_add_event);
 
 
-
         // Set default theme color
         if (!IS_EDIT_EVENT) setToolbarStyle(defaultThemeColor, fab, toolbar);
         else setToolbarStyle(event.getColor(), fab, toolbar);
@@ -317,7 +316,6 @@ public class AddEventActivity extends AppCompatActivity {
 
                 // set the event to be finished here then resume parent activity
                 String name = ((EditText) findViewById(R.id.event_name_add_event)).getText().toString();
-                dynamicEventDuration = Integer.parseInt(((EditText) findViewById(R.id.event_duration_add_event)).getText().toString());
                 String location = ((EditText) findViewById(R.id.event_location_add_event)).getText().toString();
                 eventType = ((Spinner) findViewById(R.id.type_of_event_add_event)).getSelectedItem().toString();
                 if (eventType.equals(items[0])) isStatic = true;
@@ -326,6 +324,8 @@ public class AddEventActivity extends AppCompatActivity {
                 String color = eventColorMap.get(((Spinner) findViewById(R.id.color_dropdown_add_event)).getSelectedItem().toString().trim());
                 String notes = ((TextView) findViewById(R.id.notes_add_event)).getText().toString();
 
+                if (!isStatic)
+                    dynamicEventDuration = Integer.parseInt(((EditText) findViewById(R.id.event_duration_add_event)).getText().toString());
 
                 Log.d("AddEventToList", name + "\n" + location + "\n" + eventType + "\n" + color + "\n" + notes);
 
@@ -348,7 +348,7 @@ public class AddEventActivity extends AppCompatActivity {
 
                 // To create an event, we need to at least specify, event name, starting time and ending time
                 // except hour and minute can be 0
-                if (!name.equals("") && ((START_YEAR != 0 && START_MONTH != 0 && START_DAY != 0) || dynamicEventDuration != 0)
+                if (!name.equals("") && ((START_YEAR != 0 && START_MONTH != 0 && START_DAY != 0 && isStatic) || (dynamicEventDuration != 0 && !isStatic))
                         && (END_YEAR != 0 && END_MONTH != 0 && END_DAY != 0)) {
                     try {
 //                        DateFormat time = new SimpleDateFormat("MM/dd/yyyy HH:mm");
@@ -546,6 +546,13 @@ public class AddEventActivity extends AppCompatActivity {
             Button setStartDateButton = (Button) ((Activity) this.context).getWindow().getDecorView().findViewById(R.id.end_date_add_event);
             setStartDateButton.setText(endDateText);
         }
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        // Comment this super call to avoid calling finish() in the physical back button
+        // super.onBackPressed();
     }
 
 }
