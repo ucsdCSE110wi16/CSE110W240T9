@@ -234,7 +234,7 @@ public class EventListHandler {
                 secondCheck = currStaticEList.peek();
             
             
-            if (firstCheck.getEndTime().compareTo(secondCheck.getStartTime()) >= 0) {  //////////CONFIRM THIS or is it <=0
+            if (firstCheck.getEndTime().compareTo(secondCheck.getStartTime()) >= 0) {
             	System.out.println("Conflict");
             	
             	if (firstCheck.getStartTime().compareTo(secondCheck.getStartTime()) <= 0){
@@ -297,7 +297,7 @@ public class EventListHandler {
                 sortedStaticEList.poll();
                 continue;
             }
-            //if start is earlier than 9pm but end time is later than 9 pm
+            //if start is earlier than 9pm but end time is later than 9pm
             if (time.getStartTime().compareTo(endTimeOfDay) < 0 && time.getEndTime().compareTo(endTimeOfDay) > 0) {
                 time.setEndTime(endTimeOfDay);
                 continue;
@@ -312,8 +312,8 @@ public class EventListHandler {
 
     //#2 on the purge list
     //returns false if no free time, true will write freetime to freeList
-    private static boolean updateFreeTime(PriorityQueue<StaticEvent> sortedStaticEList,
-                                          PriorityQueue<DynamicEvent> reverseDynamicEvent, PriorityQueue<StaticEvent> freeList) throws CalendarError {
+    private static boolean updateFreeTime(PriorityQueue<StaticEvent> sortedStaticEList, PriorityQueue<DynamicEvent> 
+    reverseDynamicEvent, PriorityQueue<StaticEvent> freeList) throws CalendarError {
 
         //get deadline from last of currDynamicEvent
         DynamicEvent lastdynamicevent = reverseDynamicEvent.peek();
@@ -333,17 +333,14 @@ public class EventListHandler {
             } else if (i == days) {
                 endTime = lastDynamicTime;
             } else {
-                startTime = Calendar.getInstance();
-                startTime.set(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH, 9, 0);
-                endTime = Calendar.getInstance();
-                endTime.set(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH, 21, 0);
+                startTime = startTimeOfDay;
+                endTime = endTimeOfDay;
             }
 
             freeBlock = new StaticEvent("free time", "null", startTime, endTime,
                     true, false, false, "null", "null");
             freeList.add(freeBlock);
             startTime.add(Calendar.DAY_OF_MONTH, 1);
-
         }
 
         //init freetime for the peek operation
