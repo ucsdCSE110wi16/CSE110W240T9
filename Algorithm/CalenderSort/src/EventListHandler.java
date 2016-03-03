@@ -275,26 +275,37 @@ public class EventListHandler {
     //#1 on the order list
     //remove static time that are before and after 9a/p
     public static void purgeStaticList(PriorityQueue<StaticEvent> sortedStaticEList) {
-        StaticEvent time;
-        
+    	StaticEvent time;
 
         while (!sortedStaticEList.isEmpty()) {
 
             //if earlier than 9am set to 9am
             time = sortedStaticEList.peek();
+            //if the start and end time are both earlier than 9am
             if (time.getEndTime().compareTo(startTimeOfDay) < 0) {
-                time.setEndTime(startTimeOfDay);
+                sortedStaticEList.poll();
+                continue;
+            }
+            //if start is earlier than 9am but end time is later than 9 am
+            if (time.getStartTime().compareTo(startTimeOfDay) < 0 && time.getEndTime().compareTo(startTimeOfDay) > 0) {
+                time.setStartTime(startTimeOfDay);
                 continue;
             }
 
-            //if later than 9pm set to 9pm
-            else if (time.getEndTime().compareTo(endTimeOfDay) < 0) {
+            //if the start and end time are both later than 9pm
+            if (time.getStartTime().compareTo(endTimeOfDay) > 0) {
+                sortedStaticEList.poll();
+                continue;
+            }
+            //if start is earlier than 9pm but end time is later than 9 pm
+            if (time.getStartTime().compareTo(endTimeOfDay) < 0 && time.getEndTime().compareTo(endTimeOfDay) > 0) {
                 time.setEndTime(endTimeOfDay);
                 continue;
             }
         }
     }
 
+    
     private static int daysBetween(Calendar d1, Calendar d2) {
         return (int) (Math.abs(d2.getTime().getTime() - d1.getTime().getTime()) / (1000 * 60 * 60 * 24));
     }
