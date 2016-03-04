@@ -18,9 +18,11 @@ public class DynamicEventList implements CalendarObjectList<ArrayList<DynamicEve
 	}
 
 	public boolean addEvent(DynamicEvent event) throws CalendarError {
-
-		if (event == null)
+		boolean check = true;
+		if (event == null){
+			check = false;
 			throw new CalendarError("Null Event");
+		}
 
 		this.dynamicList.add(event);
 		return true;

@@ -34,6 +34,9 @@ public class Tester {
 		Calendar endTime3 = Calendar.getInstance();
 		endTime3.set(2016, Calendar.MONTH, 3, 16, 0);
 		
+		//test for getting hour
+		System.out.println("Time test: " + (endTime2.get(Calendar.HOUR_OF_DAY) - startTime2.get(Calendar.HOUR_OF_DAY)));
+		
 		endTime.add(Calendar.DAY_OF_MONTH, 1);
 		DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date date = endTime2.getTime();
