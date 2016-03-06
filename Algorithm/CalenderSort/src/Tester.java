@@ -36,12 +36,12 @@ public class Tester {
 		endTime2.set(2016, Calendar.MONTH, 6, 10, 20);
 		
 		Calendar startTime3 = Calendar.getInstance();
-		startTime3.set(2016, Calendar.MONTH, 7, 13, 0);
+		startTime3.set(2016, Calendar.MONTH, 6, 10, 40);
 		Calendar endTime3 = Calendar.getInstance();
-		endTime3.set(2016, Calendar.MONTH, 7, 16, 0);
+		endTime3.set(2016, Calendar.MONTH, 6, 11, 00);
 		
 		//test for getting hour
-		System.out.println("Time test: " + (endTime2.get(Calendar.HOUR_OF_DAY) - startTime2.get(Calendar.HOUR_OF_DAY)));
+		//System.out.println("Time test: " + (endTime2.get(Calendar.HOUR_OF_DAY) - startTime2.get(Calendar.HOUR_OF_DAY)));
 		
 
 		DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -61,7 +61,7 @@ public class Tester {
 		if(check)
 		    System.out.println("2success\n");
 		
-		check = EventListHandler.createStaticEvent("sleep","basement sd", startTime3, endTime3,
+		check = EventListHandler.createStaticEvent("sleepx","basement sdx", startTime3, endTime3,
 				true, false, false, "scar", "blue");
 		
 		if(check)
@@ -78,7 +78,7 @@ public class Tester {
 		
 		EventListHandler.initDeadlineList();
 		
-		EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "ggwp", "red", dyndeadline, 60,false);
+		EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "ggwp", "red", dyndeadline, 60, false);
 		
 		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwpgg", "red", dyndeadline2, 120,false);
 	
