@@ -454,7 +454,6 @@ public class EventListHandler {
 
 
 		//init freetime for the peek operation
-		StaticEvent freetime;
 		Calendar originalEndTime = null;
 		StaticEvent freetime2;
 		Calendar freeEndTime = null;
@@ -470,12 +469,12 @@ public class EventListHandler {
 		//			System.out.println(time.format(end));
 		//		}
 
-		Iterator<StaticEvent> it = freeList.iterator();
+		//Iterator<StaticEvent> it = freeList.iterator();
+
 		//this while loop will get all the free time blocks from available times and store
 		//the free times in freeList, loop condition is while the sorted static event list is not empty keep going
-		while (it.hasNext()) {
-
-			freetime = it.next();
+		while (!freeList.isEmpty()) {
+			StaticEvent freetime = freeList.poll();
 
 			if(sortedStaticEList.isEmpty()){
 				sortedfreeList.add(freetime);
@@ -483,7 +482,10 @@ public class EventListHandler {
 			else{
 				//get temp as a staticEvent from the top of the sorted Q
 				StaticEvent temp = sortedStaticEList.peek();
-				//System.out.println("get starttime: " + temp.getStartTime().get(Calendar.HOUR_OF_DAY));
+				//System.out.println("Temp starttime is: "+temp.getStartTime().get(Calendar.DAY_OF_MONTH)+" " +temp.getStartTime().get(Calendar.HOUR_OF_DAY) + " " + temp.getStartTime().get(Calendar.MINUTE));
+				//System.out.println("Temp endtime is: "+temp.getEndTime().get(Calendar.DAY_OF_MONTH)+" " +temp.getEndTime().get(Calendar.HOUR_OF_DAY) + " " + temp.getEndTime().get(Calendar.MINUTE));
+				//System.out.println("Free starttime is: " + freetime.getStartTime().get(Calendar.DAY_OF_MONTH)+" " +freetime.getStartTime().get(Calendar.HOUR_OF_DAY) + " "+freetime.getStartTime().get(Calendar.MINUTE));
+				//System.out.println("Free endtime is: " + freetime.getEndTime().get(Calendar.DAY_OF_MONTH)+" " +freetime.getEndTime().get(Calendar.HOUR_OF_DAY) + " "+freetime.getEndTime().get(Calendar.MINUTE) );
 				//get freetime a staticEvent from the top of the freetime Q
 
 
@@ -494,59 +496,83 @@ public class EventListHandler {
 					//if the staticEvent's time is earlier the freeBlock's start, remove staticEvent from Q
 					if (freetime.getStartTime().compareTo(temp.getEndTime()) >= 0) {
 						sortedStaticEList.poll();
-						//System.out.println("ran");
 					}
 
 					//if the static events starts before the freetime block but ends after
 					else if (freetime.getStartTime().compareTo(temp.getStartTime()) > 0 &&
 							(freetime.getStartTime()).compareTo(temp.getEndTime()) < 0) {
 						//set the start of the freeTime block to be the end of the static event
-						//System.out.println("ran");
+						//System.out.println("polled");
 						freetime.setStartTime(temp.getEndTime());
+						freeList.add(freetime);
 						//remove the static event
 						sortedStaticEList.poll();
 					}
 
 					//when we can actually start planning the freetime. when the static event start after the free time starts
 					else if (freetime.getStartTime().compareTo(temp.getStartTime()) < 0) {
-						System.out.println("ran");
+						//System.out.println("ran");
 						//this case we don't want because the event ends later than our freetime
 						if (temp.getEndTime().compareTo(freetime.getEndTime()) > 0) {
 							freetime.setEndTime(temp.getStartTime());
-							System.out.println("ran2");
+							//System.out.println("ran2");
 							sortedfreeList.add(freetime);
 							sortedStaticEList.poll();
 						}
 						else{
-							//TODO Bugs to solve: when adding 9:20 to 10:20 and 10:40 to 11:00, won't print correct time
-							System.out.println("ran3");
+							
+							//System.out.println("ran3");
 							//set start and end for the freetime to add to the Q
 							originalEndTime = freetime.getEndTime();
 							freeEndTime = temp.getEndTime();
-							System.out.println("originalEndTime " + originalEndTime.get(Calendar.HOUR_OF_DAY));
+//							System.out.println("originalEndTime " + originalEndTime.get(Calendar.HOUR_OF_DAY));
 							freetime.setEndTime(temp.getStartTime());
-							System.out.println("free time end " + freetime.getEndTime().get(Calendar.HOUR_OF_DAY));
+							sortedfreeList.add(freetime);
+//							freetime.getStartTime().add(Calendar.MONTH, 1);
+//							System.out.println("free time start " + freetime.getStartTime().get(Calendar.YEAR) + " "
+//									+freetime.getStartTime().get(Calendar.MONTH) + " "
+//									+freetime.getStartTime().get(Calendar.DAY_OF_MONTH) + " "
+//									+freetime.getStartTime().get(Calendar.HOUR_OF_DAY) + " "
+//									+freetime.getStartTime().get(Calendar.MINUTE) + " ");
+//							freetime.getEndTime().add(Calendar.MONTH, 1);
+//							System.out.println("free time end " + freetime.getEndTime().get(Calendar.YEAR) + " "
+//									+freetime.getEndTime().get(Calendar.MONTH) + " "
+//									+freetime.getEndTime().get(Calendar.DAY_OF_MONTH) + " "
+//									+freetime.getEndTime().get(Calendar.HOUR_OF_DAY) + " "
+//									+freetime.getEndTime().get(Calendar.MINUTE) + " ");
 
 							freetime2 =  new StaticEvent("free time", "null", Calendar.getInstance(), Calendar.getInstance(),
 									true, false, false, "null", "null");
-							freetime2.setStartTime(freeEndTime);
-							System.out.println("freetime2 start " + freetime2.getEndTime().get(Calendar.HOUR_OF_DAY));
+							freetime2.setStartTime(temp.getEndTime());
+//							System.out.println("MONTH: "+freetime2.getStartTime().get(Calendar.MONTH));
+							//System.out.println("freetime2 start " + freetime2.getEndTime().get(Calendar.HOUR_OF_DAY));
 							freetime2.setEndTime(originalEndTime);
-							System.out.println("freetime2 end " + freetime2.getEndTime().get(Calendar.HOUR_OF_DAY));
+							//System.out.println("freetime2 end " + freetime2.getEndTime().get(Calendar.HOUR_OF_DAY));
 
-							sortedfreeList.add(freetime2);
+							freeList.add(freetime2);
+							
+				
 							//remove the static event to check from the Q
 							sortedStaticEList.poll();
+							
+//							if (freeList.size() > 1)
+//							{
+//							    // holds the current size, as during this process the size will
+//							    // be vary
+//							    int tmpSize = freeList.size();
+//							    for (int i = 1; i < tmpSize; i++)
+//							    {
+//							        freeList.add(freeList.poll());
+//							    }
+//							}
+							
 						}
 					}
 
 					//if the start time of then static event if after the end of the free time block, remove static
 					else if (freetime.getEndTime().compareTo(temp.getStartTime()) < 0) {
-						//System.out.println("ran");
 						sortedStaticEList.poll();
 					}
-
-					sortedfreeList.add(freetime);
 
 				}
 

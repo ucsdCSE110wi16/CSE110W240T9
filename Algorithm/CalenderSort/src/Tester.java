@@ -31,14 +31,14 @@ public class Tester {
 		
 //		System.out.println((endTime.getTime().getTime() - startTime.getTime().getTime()) / (1000 * 60 * 60 * 24));
 		Calendar startTime2 = Calendar.getInstance();
-		startTime2.set(2016, Calendar.MONTH, 6, 9, 20);
+		startTime2.set(2016, Calendar.MONTH, 6, 12, 40);
 		Calendar endTime2 = Calendar.getInstance();
-		endTime2.set(2016, Calendar.MONTH, 6, 10, 20);
+		endTime2.set(2016, Calendar.MONTH, 6, 15, 00);
 		
 		Calendar startTime3 = Calendar.getInstance();
-		startTime3.set(2016, Calendar.MONTH, 6, 10, 40);
+		startTime3.set(2016, Calendar.MONTH, 6, 16, 40);
 		Calendar endTime3 = Calendar.getInstance();
-		endTime3.set(2016, Calendar.MONTH, 6, 11, 00);
+		endTime3.set(2016, Calendar.MONTH, 6, 20, 20);
 		
 		//test for getting hour
 		//System.out.println("Time test: " + (endTime2.get(Calendar.HOUR_OF_DAY) - startTime2.get(Calendar.HOUR_OF_DAY)));
@@ -69,7 +69,7 @@ public class Tester {
 		
 		
 		Calendar dyndeadline = Calendar.getInstance();
-		dyndeadline.set(2016, Calendar.MONTH, 10, 12, 30);
+		dyndeadline.set(2016, Calendar.MONTH, 8, 12, 30);
 		
 		Calendar dyndeadline2 = Calendar.getInstance();
 		dyndeadline2.set(2016, Calendar.MONTH, 12, 21, 0);
