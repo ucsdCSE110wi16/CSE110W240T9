@@ -22,28 +22,28 @@ public class Tester {
 		EventListHandler.setEndTimeOfDay(21);
 		//int temp = 0;
 		Calendar startTime = Calendar.getInstance();
-		startTime.set(2016, Calendar.MONTH, 1, 23, 30);
+		startTime.set(2016, Calendar.MONTH, 5, 21, 30);
 //		startTime.set(2016,1,29,17,01);
 		Calendar endTime = Calendar.getInstance();
-		endTime.set(2016, Calendar.MONTH, 1, 24, 20);
+		endTime.set(2016, Calendar.MONTH, 5, 23, 20);
 		Date startDate = endTime.getTime();
 
 		
 //		System.out.println((endTime.getTime().getTime() - startTime.getTime().getTime()) / (1000 * 60 * 60 * 24));
 		Calendar startTime2 = Calendar.getInstance();
-		startTime2.set(2016, Calendar.MONTH, 3, 13, 0);
+		startTime2.set(2016, Calendar.MONTH, 6, 9, 20);
 		Calendar endTime2 = Calendar.getInstance();
-		endTime2.set(2016, Calendar.MONTH, 3, 15, 0);
+		endTime2.set(2016, Calendar.MONTH, 6, 10, 20);
 		
 		Calendar startTime3 = Calendar.getInstance();
-		startTime3.set(2016, Calendar.MONTH, 3, 13, 0);
+		startTime3.set(2016, Calendar.MONTH, 7, 13, 0);
 		Calendar endTime3 = Calendar.getInstance();
-		endTime3.set(2016, Calendar.MONTH, 3, 16, 0);
+		endTime3.set(2016, Calendar.MONTH, 7, 16, 0);
 		
 		//test for getting hour
 		System.out.println("Time test: " + (endTime2.get(Calendar.HOUR_OF_DAY) - startTime2.get(Calendar.HOUR_OF_DAY)));
 		
-		endTime.add(Calendar.DAY_OF_MONTH, 1);
+
 		DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date date = endTime2.getTime();
 		System.out.println(time.format(startDate));
@@ -71,9 +71,21 @@ public class Tester {
 		Calendar dyndeadline = Calendar.getInstance();
 		dyndeadline.set(2016, Calendar.MONTH, 10, 12, 30);
 		
-		EventListHandler.createDynamicEvent("scarletSB", false, "CSEB", "ggwp", "red", dyndeadline);
+		Calendar dyndeadline2 = Calendar.getInstance();
+		dyndeadline2.set(2016, Calendar.MONTH, 12, 21, 0);
+		
+		EventListHandler.initDynamicList();
+		
+		EventListHandler.initDeadlineList();
+		
+		EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "ggwp", "red", dyndeadline, 60,false);
+		
+		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwpgg", "red", dyndeadline2, 120,false);
 	
 		
+		DynamicEventList dynamicList = EventListHandler.getDynamicList();
+		
+		dynamicList.print();
 		
 		/*StaticEventList staticEventList = handler.getStaticList();
 		ArrayList<StaticEvent> staticArrayList = staticEventList.getList();

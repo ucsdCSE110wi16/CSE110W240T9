@@ -1,6 +1,9 @@
 //package com.cse110.apk404.myCalendar.eventListHandler;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DynamicEventList implements CalendarObjectList<ArrayList<DynamicEvent>, DynamicEvent> {
 
@@ -8,6 +11,9 @@ public class DynamicEventList implements CalendarObjectList<ArrayList<DynamicEve
 	
 	private ArrayList<DynamicEvent> dynamicList; // an ArrayList to store the dynamic events after they are sorted
 
+	public DynamicEventList(){
+		dynamicList = new ArrayList<DynamicEvent>();
+	}
 	
 	public ArrayList<DynamicEvent> getList() {
 		return dynamicList;
@@ -43,5 +49,22 @@ public class DynamicEventList implements CalendarObjectList<ArrayList<DynamicEve
 		}
 		return check;
 	}
+    
+    public void print(){
+    	DynamicEvent de;
+    	Date start;
+    	Date end;
+    	DateFormat date;
+    	System.out.println("Size: "+dynamicList.size());
+    	for(int i=0; i<dynamicList.size(); i++){
+    		de = dynamicList.get(i);
+    		start = de.getStartTime().getTime();
+    		end = de.getEndTime().getTime();
+    		date = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+    		System.out.println("The start date is: "+ date.format(start));
+    		System.out.println("The end date is: "+ date.format(end));
+    	}
+    }
+    
     
 }
