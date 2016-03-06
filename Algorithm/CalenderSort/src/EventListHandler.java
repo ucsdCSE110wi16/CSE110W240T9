@@ -69,7 +69,7 @@ public class EventListHandler {
 	public static void initDynamicList() {
 		dynamicList = new DynamicEventList();
 	}
-	
+
 	public static void initDeadlineList() {
 		deadlineList = new DynamicEventList();
 	}
@@ -192,19 +192,19 @@ public class EventListHandler {
 		}
 
 		currDynamicEList.add(dynamicEvent);
-		
+
 		//TODO
-//		DynamicEvent test = null;
-//		Iterator<DynamicEvent> iter = currDynamicEList.iterator();
-//		while(iter.hasNext())
-//		{
-//			test = iter.next();
-//			Date start = test.getStartTime().getTime();
-//			Date end = test.getEndTime().getTime();
-//			DateFormat time = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-//			System.out.println(time.format(start));
-//			System.out.println(time.format(end));
-//		}
+		//		DynamicEvent test = null;
+		//		Iterator<DynamicEvent> iter = currDynamicEList.iterator();
+		//		while(iter.hasNext())
+		//		{
+		//			test = iter.next();
+		//			Date start = test.getStartTime().getTime();
+		//			Date end = test.getEndTime().getTime();
+		//			DateFormat time = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		//			System.out.println(time.format(start));
+		//			System.out.println(time.format(end));
+		//		}
 
 		reverseDynamicEList.add(dynamicEvent);
 
@@ -221,7 +221,7 @@ public class EventListHandler {
 		EventListHandler.updateFreeTime(sortedStaticEList, reverseDynamicEList,freeList,sortedfreeList);
 
 		PriorityQueue<StaticEvent> newsortedfreeList = new PriorityQueue<StaticEvent>(1,  staticcomparator);
-		
+
 		EventListHandler.purgefreeTime(sortedfreeList, newsortedfreeList);
 
 
@@ -399,11 +399,24 @@ public class EventListHandler {
 		StaticEvent freeBlock = null;
 		int days = EventListHandler.daysBetween(lastDynamicTime, currStartTime)+1;
 		//System.out.println(days);
+		boolean check = false;
 		for (int i = 0; i <= days; i++) {
 			//make freeTime block
 			Calendar startTime = Calendar.getInstance();
 			Calendar endTime = Calendar.getInstance();
+
 			if (i == 0) {
+				if(startTime.get(Calendar.HOUR_OF_DAY) - 21 >= 0 && check == false){
+					currStartTime.add(Calendar.DAY_OF_MONTH, 1);
+					currEndTime.add(Calendar.DAY_OF_MONTH, 1);
+					startTime.setTime(currStartTime.getTime());
+					startTime.set(Calendar.HOUR_OF_DAY, 9);
+					endTime.setTime(currEndTime.getTime());
+					endTime.set(Calendar.HOUR_OF_DAY, 21);
+					endTime.set(Calendar.MINUTE, 0);
+					check = true;
+					continue;
+				}
 				startTime.setTime(currStartTime.getTime());
 				endTime.setTime(currEndTime.getTime());
 				endTime.set(Calendar.HOUR_OF_DAY, endTimeOfDay);
@@ -563,7 +576,7 @@ public class EventListHandler {
 		//System.out.print("entering function");
 		int freehours = countHoursFreeTime(sortedfreeList);
 		int dynamichours = countHoursDynamicTime();
-		
+
 		System.out.println(freehours);
 		System.out.println(dynamichours);
 
