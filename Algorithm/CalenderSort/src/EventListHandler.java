@@ -1,12 +1,8 @@
 //package com.cse110.apk404.myCalendar.eventListHandler;
 
 import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.Comparator;
-import java.util.PriorityQueue;
 
 public class EventListHandler {
 
@@ -15,8 +11,8 @@ public class EventListHandler {
 	private static DynamicEventList dynamicList = null;
 	//private static DynamicEventList unsorteddynamicList = null; // list to store the unsorted dynamic events
 	private static ArrayList<CalendarEvent> events = null; //list to store all events in one given day
-	private static Calendar startTimeOfDay;
-	private static Calendar endTimeOfDay;
+	private static int startTimeOfDay;
+	private static int endTimeOfDay;
 
 
 	public static ArrayList<CalendarEvent> getEvents() {
@@ -27,19 +23,19 @@ public class EventListHandler {
 		EventListHandler.events = events;
 	}
 
-	public static Calendar getStartTimeOfDay() {
+	public static int getStartTimeOfDay() {
 		return startTimeOfDay;
 	}
 
-	public static void setStartTimeOfDay(Calendar startTimeOfDay) {
+	public static void setStartTimeOfDay(int startTimeOfDay) {
 		EventListHandler.startTimeOfDay = startTimeOfDay;
 	}
 
-	public static Calendar getEndTimeOfDay() {
+	public static int getEndTimeOfDay() {
 		return endTimeOfDay;
 	}
 
-	public static void setEndTimeOfDay(Calendar endTimeOfDay) {
+	public static void setEndTimeOfDay(int endTimeOfDay) {
 		EventListHandler.endTimeOfDay = endTimeOfDay;
 	}
 
@@ -132,7 +128,7 @@ public class EventListHandler {
 
 
 	//Dynamic sort algorithm
-	public static boolean dynamicSort() throws CalendarError {
+	public static boolean dynamicSort(DynamicEvent dynamicEvent) throws CalendarError {
 
 		Comparator<StaticEvent> staticcomparator = new Comparator<StaticEvent>() {
 
@@ -163,10 +159,11 @@ public class EventListHandler {
 		PriorityQueue<DynamicEvent> reverseDynamicEList = new PriorityQueue<DynamicEvent>(1,reversecomparator);
 		PriorityQueue<StaticEvent> currStaticEList = new PriorityQueue<StaticEvent>(1,staticcomparator);
 		PriorityQueue<StaticEvent> sortedStaticEList = new PriorityQueue<StaticEvent>(1,staticcomparator);
-		PriorityQueue<StaticEvent> freeList = new PriorityQueue<StaticEvent>();
-		PriorityQueue<StaticEvent> sortedfreeList = new PriorityQueue<StaticEvent>();
+		PriorityQueue<StaticEvent> freeList = new PriorityQueue<StaticEvent>(1,  staticcomparator);
+		PriorityQueue<StaticEvent> sortedfreeList = new PriorityQueue<StaticEvent>(1, staticcomparator);
 		ArrayList<StaticEvent> staticArrayList = staticList.getList();
 		ArrayList<DynamicEvent> dynamicArrayList = null;
+
 
 		if (dynamicList != null) {
 			dynamicArrayList = dynamicList.getList();
@@ -183,43 +180,46 @@ public class EventListHandler {
 			for (int i = 0; i < dynamicArrayList.size(); i++) {
 				if (!dynamicArrayList.get(i).isFinished()) {
 					currDynamicEList.add(dynamicArrayList.get(i));
+					reverseDynamicEList.add(dynamicArrayList.get(i));
 				}
 			}
 		}
 
-		//        StaticEvent event;
-		//        while(!currStaticEList.isEmpty()) {
-		//            DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		//           event = currStaticEList.poll();
-		//             Date date = event.getEndTime().getTime();
-		//            System.out.println("currStaticEList: ");
-		//            System.out.println(time.format(date));
-		//        }
+		currDynamicEList.add(dynamicEvent);
+		reverseDynamicEList.add(dynamicEvent);
+
 
 		EventListHandler.checkConflict(currStaticEList, sortedStaticEList);
-		int size = sortedStaticEList.size();
-		for(int i=0; i< size; i++) {
-			System.out.println(sortedStaticEList.size());
-			DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		EventListHandler.purgeStaticList(sortedStaticEList);
+		EventListHandler.updateFreeTime(sortedStaticEList, reverseDynamicEList,freeList);
 
-			Date date = sortedStaticEList.poll().getEndTime().getTime();
-			System.out.println(time.format(date));
-			//                sortedStaticEList.add(event);
-		}
+//        StaticEvent event;
+//        while(!freeList.isEmpty()) {
+//            DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//           event = freeList.poll();
+//             Date date = event.getEndTime().getTime();
+//            System.out.println("freeList: ");
+//            System.out.println(time.format(date));
+//        }
+
+
+
 		return false;
 	}
 
 	//front end passes in fields to create a dynamic event, and we put this event into the priority queue
-	public static boolean createDynamicEvent(Long Id, String name, boolean isStatic, String location, String description, String color,
-			Calendar deadline, PriorityQueue<DynamicEvent> currDynamicEList) throws CalendarError {
+	public static boolean createDynamicEvent(String name, boolean isStatic, String location, String description, String color,
+			Calendar deadline) throws CalendarError {
 
 		boolean check = false;
 		if (isStatic == true)
 			return false;
 
-		DynamicEvent dynamicEvent = new DynamicEvent(Id, name, isStatic, location, description, color, deadline);
+		DynamicEvent dynamicEvent = new DynamicEvent(name, isStatic, location, description, color, deadline);
 		dynamicEvent.setId(System.currentTimeMillis());
-		currDynamicEList.add(dynamicEvent);
+
+		EventListHandler.dynamicSort(dynamicEvent);
+		//		currDynamicEList.add(dynamicEvent);
 		return check;
 	}
 
@@ -295,29 +295,33 @@ public class EventListHandler {
 	public static void purgeStaticList(PriorityQueue<StaticEvent> sortedStaticEList) {
 		StaticEvent time;
 
-		while (!sortedStaticEList.isEmpty()) {
+		Iterator<StaticEvent> it = sortedStaticEList.iterator();
 
+		while(it.hasNext()){
 			//if earlier than 9am set to 9am
-			time = sortedStaticEList.peek();
+			time = it.next();
 			//if the start and end time are both earlier than 9am
-			if (time.getEndTime().compareTo(startTimeOfDay) < 0) {
-				sortedStaticEList.poll();
+			//System.out.println(time.getEndTime().get(Calendar.HOUR_OF_DAY) - startTimeOfDay);
+			if (time.getEndTime().get(Calendar.HOUR_OF_DAY) - startTimeOfDay < 0) {
+				it.remove();
 				continue;
 			}
 			//if start is earlier than 9am but end time is later than 9 am
-			if (time.getStartTime().compareTo(startTimeOfDay) < 0 && time.getEndTime().compareTo(startTimeOfDay) > 0) {
-				time.setStartTime(startTimeOfDay);
+			if (time.getStartTime().get(Calendar.HOUR_OF_DAY) - startTimeOfDay < 0 && time.getEndTime().get(Calendar.HOUR_OF_DAY)- startTimeOfDay >= 0) {
+				time.getStartTime().set(Calendar.HOUR_OF_DAY, startTimeOfDay);
+				time.getStartTime().set(Calendar.MINUTE,0);
 				continue;
 			}
 
 			//if the start and end time are both later than 9pm
-			if (time.getStartTime().compareTo(endTimeOfDay) > 0) {
-				sortedStaticEList.poll();
+			if (time.getStartTime().get(Calendar.HOUR_OF_DAY) - endTimeOfDay >= 0) {
+				it.remove();
 				continue;
 			}
 			//if start is earlier than 9pm but end time is later than 9pm
-			if (time.getStartTime().compareTo(endTimeOfDay) < 0 && time.getEndTime().compareTo(endTimeOfDay) > 0) {
-				time.setEndTime(endTimeOfDay);
+			if ((time.getStartTime().get(Calendar.HOUR_OF_DAY) - endTimeOfDay < 0) && (time.getEndTime().get(Calendar.HOUR_OF_DAY) - endTimeOfDay >= 0)) {
+				time.getEndTime().set(Calendar.HOUR_OF_DAY, endTimeOfDay);
+				time.getEndTime().set(Calendar.MINUTE,0);
 				continue;
 			}
 		}
@@ -332,90 +336,135 @@ public class EventListHandler {
 	//returns false if no free time, true will write freetime to freeList
 	private static boolean updateFreeTime(PriorityQueue<StaticEvent> sortedStaticEList, PriorityQueue<DynamicEvent> reverseDynamicEvent,
 			PriorityQueue<StaticEvent> freeList) throws CalendarError {
-
 		//get deadline from last of currDynamicEvent
 		DynamicEvent lastdynamicevent = reverseDynamicEvent.peek();
 
-		Calendar currTime = Calendar.getInstance();
-		Calendar lastDynamicTime = lastdynamicevent.getEndTime();
+		Calendar currStartTime = Calendar.getInstance();
+		Calendar currEndTime = Calendar.getInstance();
+
+		Calendar lastDynamicTime = lastdynamicevent.getDeadline();
 
 
-		//make freeTime block
-		Calendar startTime = null;
-		Calendar endTime = null;
+
 		StaticEvent freeBlock = null;
-		int days = EventListHandler.daysBetween(lastDynamicTime, currTime);
+		int days = EventListHandler.daysBetween(lastDynamicTime, currStartTime)+1;
+		//System.out.println(days);
 		for (int i = 0; i <= days; i++) {
+			//make freeTime block
+			Calendar startTime = Calendar.getInstance();
+			Calendar endTime = Calendar.getInstance();
 			if (i == 0) {
-				startTime = currTime;
+				startTime.setTime(currStartTime.getTime());
+				endTime.setTime(currEndTime.getTime());
+				endTime.set(Calendar.HOUR_OF_DAY, endTimeOfDay);
+				endTime.set(Calendar.MINUTE, 0);
 			} else if (i == days) {
-				endTime = lastDynamicTime;
+				startTime.setTime(currStartTime.getTime());
+				startTime.set(Calendar.HOUR_OF_DAY, startTimeOfDay);
+				startTime.set(Calendar.MINUTE, 0);
+				endTime.setTime(lastDynamicTime.getTime());
 			} else {
-				startTime = startTimeOfDay;
-				endTime = endTimeOfDay;
+				startTime.setTime(currStartTime.getTime());
+				endTime.setTime(currEndTime.getTime());
+				startTime.set(Calendar.HOUR_OF_DAY, startTimeOfDay);
+				startTime.set(Calendar.MINUTE, 0);
+				endTime.set(Calendar.MINUTE, 0);
+				endTime.set(Calendar.HOUR_OF_DAY, endTimeOfDay);
 			}
+			
+			
+			//			System.out.println(endTimeOfDay);
+			//			System.out.println("Print out i " + i);
+			//			System.out.println(startTime.get(Calendar.HOUR_OF_DAY));
+			//			System.out.println(endTime.get(Calendar.HOUR_OF_DAY));
+
 
 			freeBlock = new StaticEvent("free time", "null", startTime, endTime,
 					true, false, false, "null", "null");
+
+		DateFormat time = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+//			Date date = freeBlock.getStartTime().getTime();
+//			Date date2 = freeBlock.getEndTime().getTime();
+//			System.out.println("Start: " + time.format(date));
+//			System.out.println("End: " + time.format(date2));
+
 			freeList.add(freeBlock);
-			startTime.add(Calendar.DAY_OF_MONTH, 1);
+//			StaticEvent freeBlock1 = freeList.poll();
+//			Date date1 =freeBlock1.getEndTime().getTime();
+//			Date date21 =freeBlock1.getStartTime().getTime();
+//			System.out.println("StartTime: " + time.format(date21));
+//			System.out.println("EndTime: " + time.format(date1));
+			currStartTime.add(Calendar.DAY_OF_MONTH, 1);
+			currEndTime.add(Calendar.DAY_OF_MONTH, 1);
 		}
 
-		//init freetime for the peek operation
-		StaticEvent freetime;
 
-		//this while loop while get all the free time blocks from available times and store
-		//the free times in freeList, loop condition is while the sorted static event list is not empty keep going
-		while (!sortedStaticEList.isEmpty()) {
-			//get temp as a staticEvent from the top of the sorted Q
-			StaticEvent temp = sortedStaticEList.peek();
-			//get freetime a staticEvent from the top of the freetime Q
-			freetime = freeList.peek();
-
-			//not enough time
-			if (freetime == null)
-				return false;
-
-			//if the staticEvent's time is earlier the freeBlock's start, remove staticEvent from Q
-			if (freetime.getStartTime().compareTo(temp.getEndTime()) >= 0) {
-				sortedStaticEList.poll();
-				continue;
-			}
-
-			//if the static events starts before the freetime block but ends after
-			else if (freetime.getStartTime().compareTo(temp.getStartTime()) > 0 &&
-					(freetime.getStartTime()).compareTo(temp.getEndTime()) < 0) {
-				//set the start of the freeTime block to be the end of the static event
-				freetime.setStartTime(temp.getEndTime());
-				//remove the static event
-				sortedStaticEList.poll();
-				continue;
-			}
-
-			//when we can actually start planning the freetime
-			else if (freetime.getStartTime().compareTo(temp.getStartTime()) < 0) {
-				//this case we dont want because the event ends later than our freetime
-				if (temp.getEndTime().compareTo(freetime.getEndTime()) > 0) {
-					sortedStaticEList.poll();
-					continue;
-				}
-				//set start and end for the freetime to add to the Q
-				temp.setStartTime(freetime.getStartTime());
-				temp.setEndTime(temp.getStartTime());
-				freeList.add(temp);
-				//remove the static event to check from the Q
-				sortedStaticEList.poll();
-				//set starttime for next iteration
-				freetime.setStartTime(temp.getEndTime());
-				continue;
-			}
-
-			//if the start time of then static event if after the end of the free time block, remove static
-			else if (freetime.getEndTime().compareTo(temp.getStartTime()) < 0) {
-				sortedStaticEList.poll();
-				continue;
-			}
+		while(!freeList.isEmpty())
+		{
+			DateFormat time = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+			StaticEvent freeBlock1 = freeList.poll();
+			Date date1 =freeBlock1.getEndTime().getTime();
+			Date date2 =freeBlock1.getStartTime().getTime();
+			System.out.println("StartTime: " + time.format(date2));
+			System.out.println("EndTime: " + time.format(date1));
 		}
+		
+//		
+//		//init freetime for the peek operation
+//		StaticEvent freetime;
+//
+//		//this while loop while get all the free time blocks from available times and store
+//		//the free times in freeList, loop condition is while the sorted static event list is not empty keep going
+//		while (!sortedStaticEList.isEmpty()) {
+//			//get temp as a staticEvent from the top of the sorted Q
+//			StaticEvent temp = sortedStaticEList.peek();
+//			//get freetime a staticEvent from the top of the freetime Q
+//			freetime = freeList.peek();
+//
+//			//not enough time
+//			if (freetime == null)
+//				return false;
+//
+//			//if the staticEvent's time is earlier the freeBlock's start, remove staticEvent from Q
+//			if (freetime.getStartTime().compareTo(temp.getEndTime()) >= 0) {
+//				sortedStaticEList.poll();
+//				continue;
+//			}
+//
+//			//if the static events starts before the freetime block but ends after
+//			else if (freetime.getStartTime().compareTo(temp.getStartTime()) > 0 &&
+//					(freetime.getStartTime()).compareTo(temp.getEndTime()) < 0) {
+//				//set the start of the freeTime block to be the end of the static event
+//				freetime.setStartTime(temp.getEndTime());
+//				//remove the static event
+//				sortedStaticEList.poll();
+//				continue;
+//			}
+//
+//			//when we can actually start planning the freetime
+//			else if (freetime.getStartTime().compareTo(temp.getStartTime()) < 0) {
+//				//this case we dont want because the event ends later than our freetime
+//				if (temp.getEndTime().compareTo(freetime.getEndTime()) > 0) {
+//					sortedStaticEList.poll();
+//					continue;
+//				}
+//				//set start and end for the freetime to add to the Q
+//				temp.setStartTime(freetime.getStartTime());
+//				temp.setEndTime(temp.getStartTime());
+//				freeList.add(temp);
+//				//remove the static event to check from the Q
+//				sortedStaticEList.poll();
+//				//set starttime for next iteration
+//				freetime.setStartTime(temp.getEndTime());
+//				continue;
+//			}
+//
+//			//if the start time of then static event if after the end of the free time block, remove static
+//			else if (freetime.getEndTime().compareTo(temp.getStartTime()) < 0) {
+//				sortedStaticEList.poll();
+//				continue;
+//			}
+//		}
 		return true;
 	}
 
@@ -436,18 +485,18 @@ public class EventListHandler {
 			}
 		}
 	}
-	
+
 	//this function will dynamically allocate the freetime and dynamic time from the priority queue to put in the
 	//dynamicList. Will return true if the allocation time is enough, false if otherwise
 	public static boolean dynamicAllocation(PriorityQueue<StaticEvent> sortedfreeList, PriorityQueue<DynamicEvent> currDynamicEList){
 		boolean check = false;
-		
+
 		int freehours = countHoursFreeTime(sortedfreeList);
 		int dynamichours = countHoursDynamicTime(currDynamicEList);
-		
+
 		if(freehours < dynamichours)
 			return false;
-		
+
 		/*
 		 * This algorithm will allocate the freetime blocks with the dynamic events
 		 * Things to consider: 
@@ -475,15 +524,15 @@ public class EventListHandler {
 			//if the free is list is empty before the dynamicList is empty, return false
 			if(sortedfreeList.isEmpty())
 				return false;
-			
-		
-			
+
+
+
 		}
-		
+
 		return check;
 	}
 
-	
+
 	//method to count the number of hours in the free time
 	private static int countHoursFreeTime(PriorityQueue<StaticEvent> sortedfreeList){
 		int freehours = 0;
@@ -493,9 +542,9 @@ public class EventListHandler {
 			freehours += (temp.getEndTime().get(Calendar.HOUR) - temp.getStartTime().get(Calendar.HOUR));
 		}
 		return freehours;
-		
+
 	}
-	
+
 	//method to count the number of hours in dynamicEList
 	private static int countHoursDynamicTime(PriorityQueue<DynamicEvent> currDynamicEList){
 		int hours = 0;

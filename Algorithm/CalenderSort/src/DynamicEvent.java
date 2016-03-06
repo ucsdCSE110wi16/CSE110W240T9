@@ -22,10 +22,10 @@ public class DynamicEvent implements CalendarEvent {
 
 
 	
-	public DynamicEvent(Long Id, String name, boolean isStatic, String location, String description, String color,
+	public DynamicEvent(String name, boolean isStatic, String location, String description, String color,
 						Calendar deadline) throws CalendarError{
 		
-		setId(Id);
+		
 		setName(name);
 		setStatic(isStatic);
 		setStartTime(null);

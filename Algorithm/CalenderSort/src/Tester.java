@@ -14,12 +14,18 @@ import java.util.Date;
 public class Tester {
 
 	public static void main(String[] args)  throws CalendarError, IOException {
+		
+		
+	
+		
+		EventListHandler.setStartTimeOfDay(9);
+		EventListHandler.setEndTimeOfDay(21);
 		//int temp = 0;
 		Calendar startTime = Calendar.getInstance();
-		startTime.set(2016, Calendar.MONTH, 1, 21, 0);
+		startTime.set(2016, Calendar.MONTH, 1, 23, 30);
 //		startTime.set(2016,1,29,17,01);
 		Calendar endTime = Calendar.getInstance();
-		endTime.set(2016, Calendar.MONTH, 1, 23, 0);
+		endTime.set(2016, Calendar.MONTH, 1, 24, 20);
 		Date startDate = endTime.getTime();
 
 		
@@ -61,7 +67,11 @@ public class Tester {
 		if(check)
 		    System.out.println("3success\n");
 		
-	EventListHandler.dynamicSort();
+		
+		Calendar dyndeadline = Calendar.getInstance();
+		dyndeadline.set(2016, Calendar.MONTH, 10, 12, 30);
+		
+		EventListHandler.createDynamicEvent("scarletSB", false, "CSEB", "ggwp", "red", dyndeadline);
 	
 		
 		
