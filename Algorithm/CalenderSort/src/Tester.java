@@ -31,12 +31,12 @@ public class Tester {
 		
 //		System.out.println((endTime.getTime().getTime() - startTime.getTime().getTime()) / (1000 * 60 * 60 * 24));
 		Calendar startTime2 = Calendar.getInstance();
-		startTime2.set(2016, Calendar.MONTH, 6, 12, 40);
+		startTime2.set(2016, Calendar.MONTH, 6, 15, 00);
 		Calendar endTime2 = Calendar.getInstance();
-		endTime2.set(2016, Calendar.MONTH, 6, 15, 00);
+		endTime2.set(2016, Calendar.MONTH, 6, 15, 50);
 		
 		Calendar startTime3 = Calendar.getInstance();
-		startTime3.set(2016, Calendar.MONTH, 6, 16, 40);
+		startTime3.set(2016, Calendar.MONTH, 6, 17, 40);
 		Calendar endTime3 = Calendar.getInstance();
 		endTime3.set(2016, Calendar.MONTH, 6, 20, 20);
 		
@@ -78,9 +78,9 @@ public class Tester {
 		
 		EventListHandler.initDeadlineList();
 		
-		EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "ggwp", "red", dyndeadline, 60, false);
+		//EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "ggwp", "red", dyndeadline, 60, false);
 		
-		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwpgg", "red", dyndeadline2, 120,false);
+		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwpgg", "red", dyndeadline2, 180,false);
 	
 		
 		DynamicEventList dynamicList = EventListHandler.getDynamicList();
