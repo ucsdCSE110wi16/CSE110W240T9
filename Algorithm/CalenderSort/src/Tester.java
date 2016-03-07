@@ -31,7 +31,7 @@ public class Tester {
 
 		//		System.out.println((endTime.getTime().getTime() - startTime.getTime().getTime()) / (1000 * 60 * 60 * 24));
 		Calendar startTime2 = Calendar.getInstance();
-		startTime2.set(2016, Calendar.MONTH, 7, 12, 00);
+		startTime2.set(2016, Calendar.MONTH, 7, 10, 00);
 		Calendar endTime2 = Calendar.getInstance();
 		endTime2.set(2016, Calendar.MONTH, 7, 13, 00);
 
