@@ -232,7 +232,9 @@ public class EventListHandler {
 		}
 
 		//PriorityQueue<StaticEvent> newfree = new PriorityQueue<StaticEvent>(1, staticcomparator);
-		EventListHandler.dynamicAllocation(newsortedfreeList, currDynamicEList);
+		boolean retval = EventListHandler.dynamicAllocation(newsortedfreeList, currDynamicEList);
+		if(retval == false)
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Not enough time!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		
 
 		
