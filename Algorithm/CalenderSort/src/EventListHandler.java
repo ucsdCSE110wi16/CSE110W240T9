@@ -493,10 +493,10 @@ public class EventListHandler {
 			else{
 				//get temp as a staticEvent from the top of the sorted Q
 				StaticEvent temp = sortedStaticEList.peek();
-				//System.out.println("Temp starttime is: "+temp.getStartTime().get(Calendar.DAY_OF_MONTH)+" " +temp.getStartTime().get(Calendar.HOUR_OF_DAY) + " " + temp.getStartTime().get(Calendar.MINUTE));
-				//System.out.println("Temp endtime is: "+temp.getEndTime().get(Calendar.DAY_OF_MONTH)+" " +temp.getEndTime().get(Calendar.HOUR_OF_DAY) + " " + temp.getEndTime().get(Calendar.MINUTE));
-				//System.out.println("Free starttime is: " + freetime.getStartTime().get(Calendar.DAY_OF_MONTH)+" " +freetime.getStartTime().get(Calendar.HOUR_OF_DAY) + " "+freetime.getStartTime().get(Calendar.MINUTE));
-				//System.out.println("Free endtime is: " + freetime.getEndTime().get(Calendar.DAY_OF_MONTH)+" " +freetime.getEndTime().get(Calendar.HOUR_OF_DAY) + " "+freetime.getEndTime().get(Calendar.MINUTE) );
+				System.out.println("Temp starttime is: "+temp.getStartTime().get(Calendar.DAY_OF_MONTH)+" " +temp.getStartTime().get(Calendar.HOUR_OF_DAY) + " " + temp.getStartTime().get(Calendar.MINUTE));
+				System.out.println("Temp endtime is: "+temp.getEndTime().get(Calendar.DAY_OF_MONTH)+" " +temp.getEndTime().get(Calendar.HOUR_OF_DAY) + " " + temp.getEndTime().get(Calendar.MINUTE));
+				System.out.println("Free starttime is: " + freetime.getStartTime().get(Calendar.DAY_OF_MONTH)+" " +freetime.getStartTime().get(Calendar.HOUR_OF_DAY) + " "+freetime.getStartTime().get(Calendar.MINUTE));
+				System.out.println("Free endtime is: " + freetime.getEndTime().get(Calendar.DAY_OF_MONTH)+" " +freetime.getEndTime().get(Calendar.HOUR_OF_DAY) + " "+freetime.getEndTime().get(Calendar.MINUTE) );
 				//get freetime a staticEvent from the top of the freetime Q
 
 

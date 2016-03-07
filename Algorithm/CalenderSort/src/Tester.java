@@ -22,10 +22,10 @@ public class Tester {
 		EventListHandler.setEndTimeOfDay(21);
 		//int temp = 0;
 		Calendar startTime = Calendar.getInstance();
-		startTime.set(2016, Calendar.MONTH, 5, 21, 30);
+		startTime.set(2016, Calendar.MONTH, 8, 7, 30);
 		//		startTime.set(2016,1,29,17,01);
 		Calendar endTime = Calendar.getInstance();
-		endTime.set(2016, Calendar.MONTH, 5, 23, 20);
+		endTime.set(2016, Calendar.MONTH, 8, 10, 30);
 		Date startDate = endTime.getTime();
 
 
@@ -36,7 +36,7 @@ public class Tester {
 		endTime2.set(2016, Calendar.MONTH, 7, 13, 00);
 
 		Calendar startTime3 = Calendar.getInstance();
-		startTime3.set(2016, Calendar.MONTH,7, 13, 05);
+		startTime3.set(2016, Calendar.MONTH,7, 13, 20);
 		Calendar endTime3 = Calendar.getInstance();
 		endTime3.set(2016, Calendar.MONTH, 7, 17, 00);
 
@@ -44,10 +44,10 @@ public class Tester {
 		//System.out.println("Time test: " + (endTime2.get(Calendar.HOUR_OF_DAY) - startTime2.get(Calendar.HOUR_OF_DAY)));
 
 
-		DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		Date date = endTime2.getTime();
-		System.out.println(time.format(startDate));
-		System.out.println(time.format(date));
+		//DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		//Date date = endTime2.getTime();
+		//System.out.println(time.format(startDate));
+		//System.out.println(time.format(date));
 
 		EventListHandler.initStaticList();
 		boolean check = EventListHandler.createStaticEvent("do homework", "basement", startTime, endTime,
@@ -73,6 +73,15 @@ public class Tester {
 
 		Calendar dyndeadline2 = Calendar.getInstance();
 		dyndeadline2.set(2016, Calendar.MONTH, 10, 20, 0);
+		
+		StaticEventList staticEventList = EventListHandler.getStaticList();
+		ArrayList<StaticEvent> staticArrayList = staticEventList.getList();
+		StaticEvent staticEvent;
+		for (int i=0; i<staticArrayList.size(); i++){
+			System.out.println("The " + i + "th event:");
+			staticEvent = staticArrayList.get(i);
+			System.out.println(staticEvent.getName()+" "+staticEvent.getColor()+" "+ staticEvent.getId());
+		}
 
 		EventListHandler.initDynamicList();
 
@@ -86,16 +95,8 @@ public class Tester {
 		dynamicList.print();
 		
 
-		/*StaticEventList staticEventList = handler.getStaticList();
-		ArrayList<StaticEvent> staticArrayList = staticEventList.getList();
-		StaticEvent staticEvent;
-		for (int i=0; i<staticArrayList.size(); i++){
-			System.out.println("the " + i + "th object:");
-			staticEvent = staticArrayList.get(i);
-			System.out.println(staticEvent.getName()+" "+staticEvent.getColor()+" "+ staticEvent.getId());
-		}
-		System.out.println();
 
+		/*
 		CalendarObjectListOutputStream out = new CalendarObjectListOutputStream("/Desktop/Data");
 		System.out.println(out.writeList(staticEventList));
 		out.close();
