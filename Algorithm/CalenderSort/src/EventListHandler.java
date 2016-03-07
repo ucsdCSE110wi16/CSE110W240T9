@@ -178,9 +178,15 @@ public class EventListHandler {
 				}
 			}
 		}
+		
+		Calendar cal = Calendar.getInstance();
 		if (dynamicArrayList != null) {
 			for (int i = 0; i < dynamicArrayList.size(); i++) {
 				if (!dynamicArrayList.get(i).isFinished()) {
+					
+//					if(dynamicArrayList.get(i).getEndTime() != null && dynamicArrayList.get(i).getEndTime().compareTo(cal) <= 0)
+//						dynamicArrayList.get(i).setFinished(true);
+					
 					currDynamicEList.add(dynamicArrayList.get(i));
 				}
 				else{
