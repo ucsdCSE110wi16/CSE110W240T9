@@ -189,7 +189,6 @@ public class EventListHandler {
 			}
 		}
 
-		//currDynamicEList.add(dynamicEvent);
 
 		DynamicEvent test = null;
 		Iterator<DynamicEvent> iter = currDynamicEList.iterator();
@@ -201,7 +200,6 @@ public class EventListHandler {
 			System.out.println("DynamicEList deadline: "+time.format(start));
 		}
 
-		//reverseDynamicEList.add(dynamicEvent);
 
 		StaticEvent se;
 
@@ -242,19 +240,11 @@ public class EventListHandler {
 
 
 		dynamicList.getList().clear();
-		//PriorityQueue<StaticEvent> newfree = new PriorityQueue<StaticEvent>(1, staticcomparator);
 		boolean retval = EventListHandler.dynamicAllocation(newsortedfreeList, currDynamicEList);
 		if(retval == false)
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Not enough time!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
-
-
-
-
-
-
-
-		return false;
+		return retval;
 	}
 
 	//front end passes in fields to create a dynamic event, and we put this event into the priority queue
@@ -285,16 +275,6 @@ public class EventListHandler {
 		while (!currStaticEList.isEmpty()) {
 
 			firstCheck = currStaticEList.poll();
-
-
-			//            System.out.println("first");
-			//            
-			//            DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-			//            
-			//            Date date = firstCheck.getEndTime().getTime();
-			//            
-			//            System.out.println(time.format(date));
-			//            
 
 
 			if (!currStaticEList.isEmpty()) {
@@ -502,7 +482,6 @@ public class EventListHandler {
 
 		//this while loop will get all the free time blocks from available times and store
 		//the free times in freeList, loop condition is while the sorted static event list is not empty keep going
-
 		while (!freeList.isEmpty()) {
 			StaticEvent freetime = freeList.poll();
 			//backup for freetime
@@ -647,17 +626,6 @@ public class EventListHandler {
 
 	}
 
-	//	public static PriorityQueue<StaticEvent> secondpurge(PriorityQueue<StaticEvent> sortedfreeList){
-	//		StaticEvent freetime = null;
-	//		while(!sortedfreeList.isEmpty()){
-	//			freetime = sortedfreeList.peek();
-	//			if((int) (Math.abs(freetime.getEndTime().getTime().getTime() - freetime.getStartTime().getTime().getTime()) / (1000 * 60)) < 30){
-	//				sortedfreeList.poll();
-	//			}
-	//		}
-	//		return sortedfreeList;
-	//
-	//	}
 
 	//this function will dynamically allocate the freetime and dynamic time from the priority queue to put in the
 	//dynamicList. Will return true if the allocation time is enough, false if otherwise
@@ -739,7 +707,6 @@ public class EventListHandler {
 
 				//System.out.println("<:                                   "+newDE.getName() + " "+newDE.getId());
 				currDynamicEList.poll();
-				//				sortedfreeList = EventListHandler.secondpurge(sortedfreeList);
 			}
 
 			else if(dynamic.getUpdatedlength() == ((int)(Math.abs(freetime.getEndTime().getTime().getTime() - freetime.getStartTime().getTime().getTime()) / (1000 * 60)))){
