@@ -7,9 +7,15 @@ import java.util.*;
 public class EventListHandler {
 
 
+	//list to store all static events
 	private static StaticEventList staticList = null;
+	//list to store all sorted final dynamic events
 	private static DynamicEventList dynamicList = null;
+	//list to store all unsorted dynamic events
 	private static DynamicEventList deadlineList = null;
+	//list to store all finished dynamic events (grey)
+	private static DynamicEventList finishedDynamicList = null;
+	
 	private static ArrayList<CalendarEvent> events = null; //list to store all events in one given day
 	private static int startTimeOfDay;
 	private static int endTimeOfDay;
@@ -177,6 +183,9 @@ public class EventListHandler {
 				if (!dynamicArrayList.get(i).isFinished()) {
 					currDynamicEList.add(dynamicArrayList.get(i));
 				}
+				else{
+					finishedDynamicList.addEvent(dynamicArrayList.get(i));
+				}
 			}
 		}
 
@@ -231,6 +240,8 @@ public class EventListHandler {
 			System.out.println("End: " + time.format(end));
 		}
 
+		
+		dynamicList.getList().clear();
 		//PriorityQueue<StaticEvent> newfree = new PriorityQueue<StaticEvent>(1, staticcomparator);
 		boolean retval = EventListHandler.dynamicAllocation(newsortedfreeList, currDynamicEList);
 		if(retval == false)
@@ -491,7 +502,7 @@ public class EventListHandler {
 
 		//this while loop will get all the free time blocks from available times and store
 		//the free times in freeList, loop condition is while the sorted static event list is not empty keep going
-		Calendar cal = Calendar.getInstance();
+
 		while (!freeList.isEmpty()) {
 			StaticEvent freetime = freeList.poll();
 			//backup for freetime
@@ -588,7 +599,6 @@ public class EventListHandler {
 					}
 				}
 
-				//TODO Fix earlier date problem
 				else{
 					freeList.add(freetime);
 					sortedStaticEList.poll();
@@ -652,7 +662,6 @@ public class EventListHandler {
 	//this function will dynamically allocate the freetime and dynamic time from the priority queue to put in the
 	//dynamicList. Will return true if the allocation time is enough, false if otherwise
 	public static boolean dynamicAllocation(PriorityQueue<StaticEvent> sortedfreeList, PriorityQueue<DynamicEvent> currDynamicEList) throws CalendarError {
-		boolean check = false;
 
 		//System.out.print("entering function");
 		int freehours = countHoursFreeTime(sortedfreeList);
@@ -725,7 +734,6 @@ public class EventListHandler {
 				newDE.setEndTime(freetime.getStartTime());
 				sortedfreeList.add(freetimetemp);
 
-				//TODO fix duplicate insert problem
 				dynamicList.addEvent(newDE);
 
 				//System.out.println("<:                                   "+newDE.getName() + " "+newDE.getId());
@@ -795,7 +803,7 @@ public class EventListHandler {
 
 		}
 
-		return check;
+		return true;
 	}
 
 

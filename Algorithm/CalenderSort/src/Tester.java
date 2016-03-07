@@ -69,7 +69,7 @@ public class Tester {
 
 
 		Calendar dyndeadline = Calendar.getInstance();
-		dyndeadline.set(2016, Calendar.MONTH, 7, 8, 0);
+		dyndeadline.set(2016, Calendar.MONTH, 10, 8, 0);
 
 		Calendar dyndeadline2 = Calendar.getInstance();
 		dyndeadline2.set(2016, Calendar.MONTH, 10, 20, 0);
@@ -80,7 +80,7 @@ public class Tester {
 
 		EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "bgwp", "red", dyndeadline, 60, false);
 		
-		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwp", "red", dyndeadline2, 180,false);
+		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwp", "red", dyndeadline2, 120, false);
 		
 		DynamicEventList dynamicList = EventListHandler.getDynamicList();
 		dynamicList.print();
