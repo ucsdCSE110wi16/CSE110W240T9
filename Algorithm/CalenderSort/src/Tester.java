@@ -14,79 +14,79 @@ import java.util.Date;
 public class Tester {
 
 	public static void main(String[] args)  throws CalendarError, IOException {
-		
-		
-	
-		
+
+
+
+
 		EventListHandler.setStartTimeOfDay(9);
 		EventListHandler.setEndTimeOfDay(21);
 		//int temp = 0;
 		Calendar startTime = Calendar.getInstance();
 		startTime.set(2016, Calendar.MONTH, 5, 21, 30);
-//		startTime.set(2016,1,29,17,01);
+		//		startTime.set(2016,1,29,17,01);
 		Calendar endTime = Calendar.getInstance();
 		endTime.set(2016, Calendar.MONTH, 5, 23, 20);
 		Date startDate = endTime.getTime();
 
-		
-//		System.out.println((endTime.getTime().getTime() - startTime.getTime().getTime()) / (1000 * 60 * 60 * 24));
+
+		//		System.out.println((endTime.getTime().getTime() - startTime.getTime().getTime()) / (1000 * 60 * 60 * 24));
 		Calendar startTime2 = Calendar.getInstance();
-		startTime2.set(2016, Calendar.MONTH, 6, 15, 00);
+		startTime2.set(2016, Calendar.MONTH, 6, 11, 00);
 		Calendar endTime2 = Calendar.getInstance();
-		endTime2.set(2016, Calendar.MONTH, 6, 15, 50);
-		
+		endTime2.set(2016, Calendar.MONTH, 6, 13, 00);
+
 		Calendar startTime3 = Calendar.getInstance();
 		startTime3.set(2016, Calendar.MONTH, 6, 17, 40);
 		Calendar endTime3 = Calendar.getInstance();
 		endTime3.set(2016, Calendar.MONTH, 6, 20, 20);
-		
+
 		//test for getting hour
 		//System.out.println("Time test: " + (endTime2.get(Calendar.HOUR_OF_DAY) - startTime2.get(Calendar.HOUR_OF_DAY)));
-		
+
 
 		DateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date date = endTime2.getTime();
 		System.out.println(time.format(startDate));
 		System.out.println(time.format(date));
-		
+
 		EventListHandler.initStaticList();
 		boolean check = EventListHandler.createStaticEvent("do homework", "basement", startTime, endTime,
 				true, false, false, "scarlet", "red");
 		if(check)
-		    System.out.println("1success\n");
-		
+			System.out.println("1success\n");
+
 		check = EventListHandler.createStaticEvent("sleep","basement sd", startTime2, endTime2,
 				true, false, false, "scar", "blue");
-		
+
 		if(check)
-		    System.out.println("2success\n");
-		
+			System.out.println("2success\n");
+
 		check = EventListHandler.createStaticEvent("sleepx","basement sdx", startTime3, endTime3,
 				true, false, false, "scar", "blue");
-		
+
 		if(check)
-		    System.out.println("3success\n");
-		
-		
+			System.out.println("3success\n");
+
+
 		Calendar dyndeadline = Calendar.getInstance();
 		dyndeadline.set(2016, Calendar.MONTH, 8, 12, 30);
-		
+
 		Calendar dyndeadline2 = Calendar.getInstance();
-		dyndeadline2.set(2016, Calendar.MONTH, 12, 21, 0);
-		
+		dyndeadline2.set(2016, Calendar.MONTH, 11, 20, 0);
+
 		EventListHandler.initDynamicList();
-		
+
 		EventListHandler.initDeadlineList();
-		
+
 		//EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "ggwp", "red", dyndeadline, 60, false);
+
 		
-		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwpgg", "red", dyndeadline2, 180,false);
-	
 		
+		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwpgg", "red", dyndeadline2, 240,false);
+
 		DynamicEventList dynamicList = EventListHandler.getDynamicList();
-		
 		dynamicList.print();
-		
+
 		/*StaticEventList staticEventList = handler.getStaticList();
 		ArrayList<StaticEvent> staticArrayList = staticEventList.getList();
 		StaticEvent staticEvent;
@@ -96,11 +96,11 @@ public class Tester {
 			System.out.println(staticEvent.getName()+" "+staticEvent.getColor()+" "+ staticEvent.getId());
 		}
 		System.out.println();
-		
+
 		CalendarObjectListOutputStream out = new CalendarObjectListOutputStream("/Desktop/Data");
 		System.out.println(out.writeList(staticEventList));
 		out.close();
-		
+
 		CalendarObjectListInputStream in = new CalendarObjectListInputStream("/Desktop/Data");
 		StaticEventList t1 = null;
 		try {
@@ -108,8 +108,8 @@ public class Tester {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	 
-		
+
+
 		System.out.println("result of t1: ");
 		ArrayList<StaticEvent> staticArrayList1 = t1.getList();
 		StaticEvent staticEvent1;
@@ -120,18 +120,18 @@ public class Tester {
 					+ staticEvent1.getId());
 		}
 		System.out.println();
-		
+
 		handler.createStaticEvent("shit", "at shitty", startTime, endTime, true, false, false, "meow", "white");
 		StaticEventList a = handler.getStaticList();
 		in.close();
 		out = new CalendarObjectListOutputStream("$HOME/Desktop/Data");
 		out.writeList(a);
 		out.close();
-		
+
 		in = new CalendarObjectListInputStream("$HOME/Desktop/Data");
-		
-		
-		
+
+
+
 		StaticEventList t2 = null;
 		try {
 			t2 = (StaticEventList) in.readList();
@@ -149,7 +149,7 @@ public class Tester {
 			System.out.println(c.getName()+" "+c.getColor());
 		}
 		System.out.println();*/
-		
+
 		//handler.removeEventById(temp);
 		//System.out.println(staticArrayList.size());  */
 	}
