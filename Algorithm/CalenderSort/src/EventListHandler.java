@@ -578,8 +578,13 @@ public class EventListHandler {
 					}
 				}
 
+				else if(temp.getStartTime().get(Calendar.YEAR) == freetime.getStartTime().get(Calendar.YEAR)
+						&& temp.getStartTime().get(Calendar.MONTH) == freetime.getStartTime().get(Calendar.MONTH)
+						&& temp.getStartTime().get(Calendar.DAY_OF_MONTH) - freetime.getStartTime().get(Calendar.DAY_OF_MONTH) > 0){
+					sortedfreeList.add(freetime);
+				}
 				else{
-					freeList.add(freetime);
+					freeList.add(freetime);			
 					sortedStaticEList.poll();
 				}
 			}
