@@ -149,17 +149,9 @@ public class EventListHandler {
 			}
 		};
 
-		//		Comparator<DynamicEvent> reversecomparator = new Comparator<DynamicEvent>() {
-		//
-		//			@Override
-		//			public int compare(DynamicEvent o1, DynamicEvent o2) {
-		//				return -o1.getDeadline().compareTo(o2.getDeadline());
-		//			}
-		//		};
 
 
 		PriorityQueue<DynamicEvent> currDynamicEList = new PriorityQueue<DynamicEvent>(1,comparator);
-		//PriorityQueue<DynamicEvent> reverseDynamicEList = new PriorityQueue<DynamicEvent>(1,reversecomparator);
 		PriorityQueue<StaticEvent> currStaticEList = new PriorityQueue<StaticEvent>(1,staticcomparator);
 		PriorityQueue<StaticEvent> sortedStaticEList = new PriorityQueue<StaticEvent>(1,staticcomparator);
 		PriorityQueue<StaticEvent> freeList = new PriorityQueue<StaticEvent>(1,  staticcomparator);
@@ -184,14 +176,12 @@ public class EventListHandler {
 			for (int i = 0; i < dynamicArrayList.size(); i++) {
 				if (!dynamicArrayList.get(i).isFinished()) {
 					currDynamicEList.add(dynamicArrayList.get(i));
-					//reverseDynamicEList.add(dynamicArrayList.get(i));
 				}
 			}
 		}
 
 		//currDynamicEList.add(dynamicEvent);
 
-		//TODO Test using this
 		DynamicEvent test = null;
 		Iterator<DynamicEvent> iter = currDynamicEList.iterator();
 		while(iter.hasNext())
@@ -208,10 +198,8 @@ public class EventListHandler {
 
 
 		EventListHandler.checkConflict(currStaticEList, sortedStaticEList);
+
 		EventListHandler.purgeStaticList(sortedStaticEList);
-
-
-
 
 		EventListHandler.updateFreeTime(sortedStaticEList,currDynamicEList,freeList,sortedfreeList);
 
@@ -244,7 +232,7 @@ public class EventListHandler {
 		}
 
 		PriorityQueue<StaticEvent> newfree = new PriorityQueue<StaticEvent>(1, staticcomparator);
-		EventListHandler.dynamicAllocation(newsortedfreeList,newfree, currDynamicEList);
+		EventListHandler.dynamicAllocation(newsortedfreeList, currDynamicEList);
 
 
 
@@ -382,12 +370,12 @@ public class EventListHandler {
 	private static boolean updateFreeTime(PriorityQueue<StaticEvent> sortedStaticEList, PriorityQueue<DynamicEvent> currDynamicEList,
 			PriorityQueue<StaticEvent> freeList, PriorityQueue<StaticEvent> sortedfreeList) throws CalendarError {
 		//get deadline from last of currDynamicEvent
-//		DynamicEvent print = null;
-//		Iterator<DynamicEvent> itdyntest = currDynamicEList.iterator();
-//		while(itdyntest.hasNext()){
-//			print = itdyntest.next();
-//			System.out.println("Day: " +print.getDeadline().get(Calendar.DAY_OF_MONTH));
-//		}
+		//		DynamicEvent print = null;
+		//		Iterator<DynamicEvent> itdyntest = currDynamicEList.iterator();
+		//		while(itdyntest.hasNext()){
+		//			print = itdyntest.next();
+		//			System.out.println("Day: " +print.getDeadline().get(Calendar.DAY_OF_MONTH));
+		//		}
 
 		Iterator<DynamicEvent> itdyn = currDynamicEList.iterator();
 		boolean checker = false;
@@ -420,7 +408,7 @@ public class EventListHandler {
 		int days = EventListHandler.daysBetween(lastDynamicTime, currStartTime) ;
 		if(Math.abs(Math.abs(lastDynamicTime.get(Calendar.DAY_OF_MONTH) - currStartTime.get(Calendar.DAY_OF_MONTH))-days) == 1)
 			days++;
-		
+
 		System.out.println("Days between: " + days);
 		//System.out.println(days);
 		boolean check = false;
@@ -607,6 +595,7 @@ public class EventListHandler {
 				}
 			}
 		}
+
 		return true;
 	}
 
@@ -615,36 +604,55 @@ public class EventListHandler {
 	public static void purgefreeTime(PriorityQueue<StaticEvent> sortedfreeList, PriorityQueue<StaticEvent> newsortedfreeList) {
 		StaticEvent freetime;
 
-		StaticEvent temp;
+//		StaticEvent temp;
+//
+//		Iterator<StaticEvent> it = sortedfreeList.iterator();
+//		while(it.hasNext())
+//		{
+//			temp = it.next();
+//						System.out.println("Purge Loop Debug Srt: " + temp.getStartTime().get(Calendar.YEAR)+ " " +temp.getStartTime().get(Calendar.MONTH) + " "+ 
+//								temp.getStartTime().get(Calendar.DAY_OF_MONTH)+" "+temp.getStartTime().get(Calendar.HOUR_OF_DAY) + " " + temp.getStartTime().get(Calendar.MINUTE));
+//						System.out.println("Purge Loop Debug End: " + temp.getEndTime().get(Calendar.YEAR)+ " "+ temp.getEndTime().get(Calendar.MONTH) + " "+ 
+//								temp.getEndTime().get(Calendar.DAY_OF_MONTH)+" "+temp.getEndTime().get(Calendar.HOUR_OF_DAY) + " " + temp.getEndTime().get(Calendar.MINUTE));
+//		}
 
-		Iterator<StaticEvent> it = sortedfreeList.iterator();
-		while(it.hasNext())
-		{
-			temp = it.next();
-			System.out.println("Purge Loop Debug Srt: " + temp.getStartTime().get(Calendar.YEAR)+ " " +temp.getStartTime().get(Calendar.MONTH) + " "+ 
-					temp.getStartTime().get(Calendar.DAY_OF_MONTH)+" "+temp.getStartTime().get(Calendar.HOUR_OF_DAY) + " " + temp.getStartTime().get(Calendar.MINUTE));
-			System.out.println("Purge Loop Debug End: " + temp.getEndTime().get(Calendar.YEAR)+ " "+ temp.getEndTime().get(Calendar.MONTH) + " "+ 
-					temp.getEndTime().get(Calendar.DAY_OF_MONTH)+" "+temp.getEndTime().get(Calendar.HOUR_OF_DAY) + " " + temp.getEndTime().get(Calendar.MINUTE));
-		}
-		
+		//TODO
 		while(!sortedfreeList.isEmpty()){
 
 			//System.out.println("In purgefreeTime Loop");
-			freetime = sortedfreeList.poll();
+			freetime = sortedfreeList.peek();
 
 			//System.out.println((Math.abs(freetime.getEndTime().getTime().getTime() - freetime.getStartTime().getTime().getTime()) / (1000 * 60)));
-			if (  60*(freetime.getEndTime().get(Calendar.HOUR_OF_DAY) - freetime.getStartTime().get(Calendar.HOUR_OF_DAY)) + freetime.getEndTime().get(Calendar.MINUTE) - freetime.getStartTime().get(Calendar.MINUTE)  < 30) {
-				continue;
+			if ( 60*(freetime.getEndTime().get(Calendar.HOUR_OF_DAY) - freetime.getStartTime().get(Calendar.HOUR_OF_DAY)) + 
+					freetime.getEndTime().get(Calendar.MINUTE) - freetime.getStartTime().get(Calendar.MINUTE)  < 30)
+			{
+				sortedfreeList.poll();
 			}
-			else{
+			else
+			{
 				newsortedfreeList.add(freetime);
+				sortedfreeList.poll();
 			}
 		}
+
+
 	}
+
+//	public static PriorityQueue<StaticEvent> secondpurge(PriorityQueue<StaticEvent> sortedfreeList){
+//		StaticEvent freetime = null;
+//		while(!sortedfreeList.isEmpty()){
+//			freetime = sortedfreeList.peek();
+//			if((int) (Math.abs(freetime.getEndTime().getTime().getTime() - freetime.getStartTime().getTime().getTime()) / (1000 * 60)) < 30){
+//				sortedfreeList.poll();
+//			}
+//		}
+//		return sortedfreeList;
+//
+//	}
 
 	//this function will dynamically allocate the freetime and dynamic time from the priority queue to put in the
 	//dynamicList. Will return true if the allocation time is enough, false if otherwise
-	public static boolean dynamicAllocation(PriorityQueue<StaticEvent> sortedfreeList, PriorityQueue<StaticEvent> newsortedfreeList, PriorityQueue<DynamicEvent> currDynamicEList) throws CalendarError {
+	public static boolean dynamicAllocation(PriorityQueue<StaticEvent> sortedfreeList, PriorityQueue<DynamicEvent> currDynamicEList) throws CalendarError {
 		boolean check = false;
 
 		//System.out.print("entering function");
@@ -686,40 +694,43 @@ public class EventListHandler {
 		 * continue;
 		 *  
 		 */
-		//TODO
-		//System.out.print("entered function");
 		StaticEvent freetime = null;
 		DynamicEvent dynamic = null;
 		DynamicEvent newDE;
 		DynamicEvent remains;
+		StaticEvent freetimetemp = null;
 		while(!currDynamicEList.isEmpty()){
 			System.out.println("Size is equal to: "+ currDynamicEList.size());
-			System.out.println("in loop");
+			//			System.out.println("in loop");
 			//if the free is list is empty before the dynamicList is empty, return false
 			dynamic = currDynamicEList.peek();
 			freetime = sortedfreeList.peek();
+			
 			if(sortedfreeList.isEmpty()){
 				System.out.println("freelist is empty");
 				return false;}
-			if(dynamic.getUpdatedlength() < (60*(freetime.getEndTime().get(Calendar.HOUR_OF_DAY) - freetime.getStartTime().get(Calendar.HOUR_OF_DAY)) 
-					+ (freetime.getEndTime().get(Calendar.MINUTE) - freetime.getStartTime().get(Calendar.MINUTE)))){
+
+			/*if dynamic length is less than free time length*/
+			if(dynamic.getUpdatedlength() < ((int)(Math.abs(freetime.getEndTime().getTime().getTime() - freetime.getStartTime().getTime().getTime()) / (1000 * 60)))){
 				System.out.println("updated len < freetime");
 				newDE = new DynamicEvent(dynamic.getName(), false, dynamic.getLocation(), dynamic.getDescription(), dynamic.getColor(), 
 						dynamic.getDeadline(), dynamic.getEstimatedLength(),dynamic.isFinished());
 				newDE.setStartTime(freetime.getStartTime());
-				(freetime.getStartTime()).add(Calendar.MINUTE, dynamic.getUpdatedlength());
+				
+				freetimetemp = sortedfreeList.poll();
+				(freetimetemp.getStartTime()).add(Calendar.MINUTE, dynamic.getUpdatedlength());
+				System.out.println("freetimetemp: " +freetimetemp.getStartTime().get(Calendar.DAY_OF_MONTH)+" "+ freetimetemp.getStartTime().get(Calendar.HOUR_OF_DAY) + " "+freetimetemp.getStartTime().get(Calendar.MINUTE));
+				sortedfreeList.add(freetimetemp);
 				newDE.setEndTime(freetime.getStartTime());
-				//sortedfreeList.add(freetime);
 				dynamicList.addEvent(newDE);
-				//System.out.println(newDE.getStartTime().get(Calendar.HOUR_OF_DAY));
-				//System.out.println(newDE.getEndTime().get(Calendar.HOUR_OF_DAY));
+				//System.out.println("newDE str: "+newDE.getStartTime().get(Calendar.HOUR_OF_DAY));
+				//System.out.println("newDE end: "+newDE.getEndTime().get(Calendar.HOUR_OF_DAY));
 				currDynamicEList.poll();
-				EventListHandler.purgefreeTime(sortedfreeList, newsortedfreeList);
-				sortedfreeList.clear();
-				sortedfreeList = newsortedfreeList;
+
+//				sortedfreeList = EventListHandler.secondpurge(sortedfreeList);
 			}
-			else if(dynamic.getUpdatedlength() == (60*(freetime.getEndTime().get(Calendar.HOUR_OF_DAY) - freetime.getStartTime().get(Calendar.HOUR_OF_DAY)) 
-					+ (freetime.getEndTime().get(Calendar.MINUTE) - freetime.getStartTime().get(Calendar.MINUTE)))){
+
+			else if(dynamic.getUpdatedlength() == ((int)(Math.abs(freetime.getEndTime().getTime().getTime() - freetime.getStartTime().getTime().getTime()) / (1000 * 60)))){
 				System.out.println("updated len == freetime");
 				newDE = new DynamicEvent(dynamic.getName(), false, dynamic.getLocation(), dynamic.getDescription(), dynamic.getColor(), 
 						dynamic.getDeadline(), dynamic.getEstimatedLength(),dynamic.isFinished());
@@ -730,8 +741,7 @@ public class EventListHandler {
 				sortedfreeList.poll();
 			}
 
-			else if(dynamic.getUpdatedlength() > (60*(freetime.getEndTime().get(Calendar.HOUR_OF_DAY) - freetime.getStartTime().get(Calendar.HOUR_OF_DAY)) 
-					+ (freetime.getEndTime().get(Calendar.MINUTE) - freetime.getStartTime().get(Calendar.MINUTE)))){
+			else if(dynamic.getUpdatedlength() > ((int)(Math.abs(freetime.getEndTime().getTime().getTime() - freetime.getStartTime().getTime().getTime()) / (1000 * 60)))){
 				System.out.println("updated len > freetime");
 
 				newDE = new DynamicEvent(dynamic.getName(), false, dynamic.getLocation(), dynamic.getDescription(), dynamic.getColor(), 
@@ -748,7 +758,17 @@ public class EventListHandler {
 				dynamicList.addEvent(newDE);
 
 			}
-			System.out.println(dynamic.getName());
+
+			Iterator<StaticEvent> it = sortedfreeList.iterator();
+			StaticEvent se;
+			while(it.hasNext()){
+				se = it.next();
+				Date start = se.getStartTime().getTime();
+				Date end = se.getEndTime().getTime();
+				DateFormat time = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+				System.out.println("Allocate Srt: " + time.format(start));
+				System.out.println("Allocate End: " + time.format(end));
+			}
 
 		}
 
@@ -776,7 +796,7 @@ public class EventListHandler {
 		ArrayList<DynamicEvent> dl = deadlineList.getList();
 		for (int i =0; i< dl.size(); i++){
 			temp = dl.get(i);
-			mins += temp.getEstimatedLength();
+			mins += temp.getUpdatedlength();
 		}
 		return mins;
 	}

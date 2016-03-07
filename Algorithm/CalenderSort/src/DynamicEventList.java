@@ -61,8 +61,8 @@ public class DynamicEventList implements CalendarObjectList<ArrayList<DynamicEve
     		start = de.getStartTime().getTime();
     		end = de.getEndTime().getTime();
     		date = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-    		System.out.println("The start date is: "+ date.format(start));
-    		System.out.println("The end date is: "+ date.format(end));
+    		System.out.println("FINAL LIST The start date is: "+ date.format(start) + " " + dynamicList.get(i).getName());
+    		System.out.println("FINAL LIST The end date is: "+ date.format(end)+" "+dynamicList.get(i).getName());
     	}
     }
     

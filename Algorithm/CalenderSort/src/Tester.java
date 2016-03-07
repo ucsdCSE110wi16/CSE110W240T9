@@ -31,9 +31,9 @@ public class Tester {
 
 		//		System.out.println((endTime.getTime().getTime() - startTime.getTime().getTime()) / (1000 * 60 * 60 * 24));
 		Calendar startTime2 = Calendar.getInstance();
-		startTime2.set(2016, Calendar.MONTH, 6, 11, 00);
+		startTime2.set(2016, Calendar.MONTH, 7, 8, 00);
 		Calendar endTime2 = Calendar.getInstance();
-		endTime2.set(2016, Calendar.MONTH, 6, 13, 00);
+		endTime2.set(2016, Calendar.MONTH, 7, 10, 00);
 
 		Calendar startTime3 = Calendar.getInstance();
 		startTime3.set(2016, Calendar.MONTH, 6, 17, 40);
@@ -78,14 +78,13 @@ public class Tester {
 
 		EventListHandler.initDeadlineList();
 
-		//EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "ggwp", "red", dyndeadline, 60, false);
-
-		
+		EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "ggwp", "red", dyndeadline, 60, false);
 		
 		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwpgg", "red", dyndeadline2, 240,false);
-
+		
 		DynamicEventList dynamicList = EventListHandler.getDynamicList();
 		dynamicList.print();
+		
 
 		/*StaticEventList staticEventList = handler.getStaticList();
 		ArrayList<StaticEvent> staticArrayList = staticEventList.getList();
