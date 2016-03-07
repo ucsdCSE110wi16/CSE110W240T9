@@ -449,7 +449,7 @@ public class EventListHandler {
 					check = true;
 					continue;
 				}
-				if(startTime.get(Calendar.HOUR_OF_DAY) <= 9){
+				if(startTime.get(Calendar.HOUR_OF_DAY) < 9){
 					continue;
 				}
 				startTime.setTime(currStartTime.getTime());

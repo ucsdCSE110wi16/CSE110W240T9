@@ -78,9 +78,9 @@ public class Tester {
 
 		EventListHandler.initDeadlineList();
 
-		EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "bgwp", "red", dyndeadline, 60, false);
+		EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "bgwp", "red", dyndeadline, 360, false);
 		
-		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwp", "red", dyndeadline2, 120, false);
+		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwp", "red", dyndeadline2, 240, false);
 		
 		DynamicEventList dynamicList = EventListHandler.getDynamicList();
 		dynamicList.print();
