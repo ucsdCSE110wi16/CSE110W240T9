@@ -33,12 +33,12 @@ public class Tester {
 		Calendar startTime2 = Calendar.getInstance();
 		startTime2.set(2016, Calendar.MONTH, 7, 8, 00);
 		Calendar endTime2 = Calendar.getInstance();
-		endTime2.set(2016, Calendar.MONTH, 7, 10, 00);
+		endTime2.set(2016, Calendar.MONTH, 7, 20, 30);
 
 		Calendar startTime3 = Calendar.getInstance();
-		startTime3.set(2016, Calendar.MONTH, 6, 17, 40);
+		startTime3.set(2016, Calendar.MONTH, 6, 17, 00);
 		Calendar endTime3 = Calendar.getInstance();
-		endTime3.set(2016, Calendar.MONTH, 6, 20, 20);
+		endTime3.set(2016, Calendar.MONTH, 6, 20, 00);
 
 		//test for getting hour
 		//System.out.println("Time test: " + (endTime2.get(Calendar.HOUR_OF_DAY) - startTime2.get(Calendar.HOUR_OF_DAY)));
@@ -72,15 +72,15 @@ public class Tester {
 		dyndeadline.set(2016, Calendar.MONTH, 8, 12, 30);
 
 		Calendar dyndeadline2 = Calendar.getInstance();
-		dyndeadline2.set(2016, Calendar.MONTH, 11, 20, 0);
+		dyndeadline2.set(2016, Calendar.MONTH, 10, 20, 0);
 
 		EventListHandler.initDynamicList();
 
 		EventListHandler.initDeadlineList();
 
-		EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "ggwp", "red", dyndeadline, 60, false);
+		EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "bgwp", "red", dyndeadline, 60, false);
 		
-		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwpgg", "red", dyndeadline2, 240,false);
+		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwp", "red", dyndeadline2, 180,false);
 		
 		DynamicEventList dynamicList = EventListHandler.getDynamicList();
 		dynamicList.print();

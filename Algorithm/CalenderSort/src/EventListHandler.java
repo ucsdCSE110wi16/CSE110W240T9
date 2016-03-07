@@ -697,6 +697,7 @@ public class EventListHandler {
 		StaticEvent freetime = null;
 		DynamicEvent dynamic = null;
 		DynamicEvent newDE;
+		DynamicEvent newDE2;
 		DynamicEvent remains;
 		StaticEvent freetimetemp = null;
 		while(!currDynamicEList.isEmpty()){
@@ -715,18 +716,17 @@ public class EventListHandler {
 				System.out.println("updated len < freetime");
 				newDE = new DynamicEvent(dynamic.getName(), false, dynamic.getLocation(), dynamic.getDescription(), dynamic.getColor(), 
 						dynamic.getDeadline(), dynamic.getEstimatedLength(),dynamic.isFinished());
-				newDE.setStartTime(freetime.getStartTime());
 				
+				newDE.setStartTime(freetime.getStartTime());
 				freetimetemp = sortedfreeList.poll();
 				(freetimetemp.getStartTime()).add(Calendar.MINUTE, dynamic.getUpdatedlength());
-				System.out.println("freetimetemp: " +freetimetemp.getStartTime().get(Calendar.DAY_OF_MONTH)+" "+ freetimetemp.getStartTime().get(Calendar.HOUR_OF_DAY) + " "+freetimetemp.getStartTime().get(Calendar.MINUTE));
-				sortedfreeList.add(freetimetemp);
+				
+				//System.out.println("freetimetemp: " +freetimetemp.getStartTime().get(Calendar.DAY_OF_MONTH)+" "+ freetimetemp.getStartTime().get(Calendar.HOUR_OF_DAY) + " "+freetimetemp.getStartTime().get(Calendar.MINUTE));
 				newDE.setEndTime(freetime.getStartTime());
+				sortedfreeList.add(freetimetemp);
+				
 				dynamicList.addEvent(newDE);
-				//System.out.println("newDE str: "+newDE.getStartTime().get(Calendar.HOUR_OF_DAY));
-				//System.out.println("newDE end: "+newDE.getEndTime().get(Calendar.HOUR_OF_DAY));
 				currDynamicEList.poll();
-
 //				sortedfreeList = EventListHandler.secondpurge(sortedfreeList);
 			}
 
@@ -741,34 +741,39 @@ public class EventListHandler {
 				sortedfreeList.poll();
 			}
 
+			/*
+			 * if the dynamiclength is more than the freetime length.
+			 */
 			else if(dynamic.getUpdatedlength() > ((int)(Math.abs(freetime.getEndTime().getTime().getTime() - freetime.getStartTime().getTime().getTime()) / (1000 * 60)))){
 				System.out.println("updated len > freetime");
 
 				newDE = new DynamicEvent(dynamic.getName(), false, dynamic.getLocation(), dynamic.getDescription(), dynamic.getColor(), 
 						dynamic.getDeadline(), dynamic.getEstimatedLength(),dynamic.isFinished());
+				newDE2 = new DynamicEvent(dynamic.getName(), false, dynamic.getLocation(), dynamic.getDescription(), dynamic.getColor(), 
+						dynamic.getDeadline(), dynamic.getEstimatedLength(),dynamic.isFinished());
+				
 				newDE.setStartTime(freetime.getStartTime());
 				newDE.setEndTime(freetime.getEndTime());
-				newDE.setUpdatedlength(dynamic.getUpdatedlength() - (60*(freetime.getEndTime().get(Calendar.HOUR_OF_DAY) - freetime.getStartTime().get(Calendar.HOUR_OF_DAY)) 
-						+ (freetime.getEndTime().get(Calendar.MINUTE) - freetime.getStartTime().get(Calendar.MINUTE))));
-				remains = currDynamicEList.poll();
-				remains.setUpdatedlength(dynamic.getUpdatedlength() - (60*(freetime.getEndTime().get(Calendar.HOUR_OF_DAY) - freetime.getStartTime().get(Calendar.HOUR_OF_DAY)) 
-						+ (freetime.getEndTime().get(Calendar.MINUTE) - freetime.getStartTime().get(Calendar.MINUTE))));
-				sortedfreeList.poll();
-				currDynamicEList.add(remains);
 				dynamicList.addEvent(newDE);
+				sortedfreeList.poll();
+				currDynamicEList.poll();
+				
+				newDE2.setUpdatedlength(dynamic.getUpdatedlength() - (60*(freetime.getEndTime().get(Calendar.HOUR_OF_DAY) - freetime.getStartTime().get(Calendar.HOUR_OF_DAY)) 
+						+ (freetime.getEndTime().get(Calendar.MINUTE) - freetime.getStartTime().get(Calendar.MINUTE))));
+				
+				currDynamicEList.add(newDE2);
 
 			}
 
-			Iterator<StaticEvent> it = sortedfreeList.iterator();
-			StaticEvent se;
-			while(it.hasNext()){
-				se = it.next();
-				Date start = se.getStartTime().getTime();
-				Date end = se.getEndTime().getTime();
-				DateFormat time = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-				System.out.println("Allocate Srt: " + time.format(start));
-				System.out.println("Allocate End: " + time.format(end));
-			}
+//			StaticEvent se;
+//			while(!sortedfreeList.isEmpty()){
+//				se = sortedfreeList.poll();
+//				Date start = se.getStartTime().getTime();
+//				Date end = se.getEndTime().getTime();
+//				DateFormat time = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+//				System.out.println("Allocate Srt: " + time.format(start));
+//				System.out.println("Allocate End: " + time.format(end));
+//			}
 
 		}
 

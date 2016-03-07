@@ -55,8 +55,9 @@ public class DynamicEventList implements CalendarObjectList<ArrayList<DynamicEve
     	Date start;
     	Date end;
     	DateFormat date;
-    	System.out.println("Size: "+dynamicList.size());
-    	for(int i=0; i<dynamicList.size(); i++){
+    	int size = dynamicList.size();
+    	System.out.println("DynamicList Size: "+dynamicList.size());
+    	for(int i=0; i<size; i++){
     		de = dynamicList.get(i);
     		start = de.getStartTime().getTime();
     		end = de.getEndTime().getTime();
