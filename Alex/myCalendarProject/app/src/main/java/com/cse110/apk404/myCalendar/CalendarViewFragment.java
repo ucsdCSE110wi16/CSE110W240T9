@@ -33,6 +33,7 @@ import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
 import com.cse110.apk404.myCalendar.R;
 import com.cse110.apk404.myCalendar.eventListHandler.CalendarEvent;
+import com.cse110.apk404.myCalendar.eventListHandler.DynamicEvent;
 import com.cse110.apk404.myCalendar.eventListHandler.EventListHandler;
 import com.cse110.apk404.myCalendar.eventListHandler.StaticEvent;
 
@@ -58,9 +59,11 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
         List<WeekViewEvent> event_list_UI = new ArrayList<WeekViewEvent>();
 
         ArrayList<? extends CalendarEvent> static_event_list = new ArrayList<>();
+        ArrayList<? extends CalendarEvent> dynamic_event_list = new ArrayList<>();
 
         try {
             static_event_list = EventListHandler.getStaticList().getList();
+            dynamic_event_list = EventListHandler.getDynamicList().getList();
             Log.d("EventLength", static_event_list.size() + "");
 
         } catch (Exception e) {
@@ -77,6 +80,28 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
 
             // Set past event as finished
             if(event_temp.getEndTime().before(Calendar.getInstance()) && !event_temp.isFinished()) {
+                event_temp.setFinished(true);
+            }
+            if (event_month == newMonth) {
+                WeekViewEvent event = new WeekViewEvent(event_temp.getId(), event_temp.getName() + " - " + event_temp.getLocation(), event_temp.getStartTime(), event_temp.getEndTime());
+                if (event_temp.isFinished()) {
+                    event.setColor(Color.parseColor(finisehdEventColor));
+                } else {
+                    event.setColor(Color.parseColor(event_temp.getColor()));
+                }
+                event_list_UI.add(event);
+            }
+        }
+
+        // Loop through dynamic event list and load UI.
+        for (int i = 0; i < dynamic_event_list.size(); i++) {
+            DynamicEvent event_temp = (DynamicEvent) static_event_list.get(i);
+
+            DateFormat time = new SimpleDateFormat("MM");
+            int event_month = Integer.parseInt(time.format(event_temp.getStartTime().getTime()));
+
+            // Set past event as finished
+            if(event_temp.getDeadline().before(Calendar.getInstance()) && !event_temp.isFinished()) {
                 event_temp.setFinished(true);
             }
             if (event_month == newMonth) {
