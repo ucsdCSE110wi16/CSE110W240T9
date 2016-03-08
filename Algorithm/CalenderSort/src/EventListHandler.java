@@ -66,6 +66,7 @@ public class EventListHandler {
 
 		return null;
 	}
+	
 
 	public static void initStaticList() {
 		if (staticList == null) 
@@ -131,9 +132,14 @@ public class EventListHandler {
 		boolean check = true;
 		if (staticList == null) {
 			check = false;
-			return check;
 		}
+		if (dynamicList == null) {
+			check = false;
+		}
+		if(check == false)
+			return false;
 		check = staticList.removeEventById(temp);
+		check = dynamicList.removeEventById(temp);
 		return check;
 	}
 
