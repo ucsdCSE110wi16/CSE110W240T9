@@ -5,9 +5,9 @@ Week 6
 The calendar event of type assignment is more important than others when deciding their priorities, from which the auto-allocating algorithm works. (Confirmed)
 Self assigned priorities take precedence over deadlines. (Confirmed)
 
-Do we need to limit the amount of time spent on studying every day? In other words, balance between work and study? Assumption is that we limit the amount of time.
+Do we need to limit the amount of time spent on studying every day? In other words, balance between work and study? Assumption is that we limit the amount of time. (Right now we do not limit the time)
 
-Do we need the user to input sleep data? Assumption is sleep is set as a static event.
+Do we need the user to input sleep data? Assumption is sleep is set as a static event. (No sleep data, time is limited from 9am to 9pm)
 
 
 
