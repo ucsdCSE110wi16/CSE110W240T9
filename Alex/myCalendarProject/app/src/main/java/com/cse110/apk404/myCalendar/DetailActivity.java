@@ -115,8 +115,15 @@ public class DetailActivity extends AppCompatActivity {
 
         // Use a date formatter to get the correct date format
         DateFormat time = new SimpleDateFormat("MM/dd/yyyy  HH:mm");
-        String event_time = "From: " + time.format(event.getStartTime().getTime()) + "\n" +
-                "     To: " + time.format(event.getEndTime().getTime());
+        String event_time = "";
+        if (event.isStatic()) {
+            event_time = "From: " + time.format(event.getStartTime().getTime()) + "\n" +
+                    "     To: " + time.format(event.getEndTime().getTime());
+        } else {
+            event_time = "Time estimate length: " + event.getEstimatedLength() + "Minutes\n" +
+                    "     Deadline: " + time.format(event.getDeadline().getTime());
+        }
+
         String event_description = event.getDescription();
 
         eventNameText = (TextView) findViewById(R.id.event_details_title); // update name in nav bar

@@ -21,6 +21,10 @@ public interface CalendarEvent extends CalendarObject {
 	public abstract String getColor();
 	public abstract String getLocation();
 	public abstract long getId();
+	public abstract Calendar getDeadline();
+	public abstract void setEstimatedLength(int estimatedLength);
+	public abstract int getEstimatedLength();
+
 
 }
 

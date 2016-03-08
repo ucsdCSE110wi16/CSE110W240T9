@@ -6,7 +6,7 @@ import java.util.Calendar;
 public class DynamicEvent implements CalendarEvent {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long Id; 
 	private String dateKey; //dateKey is the date of the event 12 Feb 2016
 	private String name;  //name of the event
@@ -19,13 +19,22 @@ public class DynamicEvent implements CalendarEvent {
 	private String color = "";
 	private Calendar deadline;
 	private int estimatedLength; // estimated time to complete
+	private int updatedlength;
 
 
-	
+
+	public int getUpdatedlength() {
+		return updatedlength;
+	}
+
+	public void setUpdatedlength(int updatedlength) {
+		this.updatedlength = updatedlength;
+	}
+
 	public DynamicEvent(String name, boolean isStatic, String location, String description, String color,
-						Calendar deadline) throws CalendarError{
-		
-		
+			Calendar deadline, int estimatedLength, boolean isFinished) throws CalendarError{
+
+		setUpdatedlength(estimatedLength);
 		setName(name);
 		setStatic(isStatic);
 		setStartTime(null);
@@ -36,6 +45,7 @@ public class DynamicEvent implements CalendarEvent {
 		setDeadline(deadline);
 		setDescription(description);
 		setEstimatedLength(estimatedLength);
+		setFinished(false);
 	}
 
 	public Calendar getDeadline() {	
@@ -48,7 +58,10 @@ public class DynamicEvent implements CalendarEvent {
 	}
 
 	public void setDeadline(Calendar deadline) {
-		this.deadline = deadline;
+		Calendar temp = Calendar.getInstance();
+		if(deadline != null)
+			temp.setTime(deadline.getTime());
+		this.deadline = temp;
 	}
 
 	public void setEstimatedLength(int estimatedLength) {
@@ -109,7 +122,10 @@ public class DynamicEvent implements CalendarEvent {
 	}
 
 	public void setStartTime(Calendar startTime) {
-		this.startTime = startTime;
+		Calendar temp = Calendar.getInstance();
+		if(startTime != null)
+			temp.setTime(startTime.getTime());
+		this.startTime = temp;
 	}
 
 	public Calendar getEndTime() {
@@ -117,7 +133,10 @@ public class DynamicEvent implements CalendarEvent {
 	}
 
 	public void setEndTime(Calendar endTime) {
-		this.endTime = endTime;
+		Calendar temp = Calendar.getInstance();
+		if(endTime != null)
+			temp.setTime(endTime.getTime());
+		this.endTime = temp;
 	}
 
 

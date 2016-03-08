@@ -43,6 +43,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 import com.cse110.apk404.myCalendar.eventListHandler.CalendarDB;
+import com.cse110.apk404.myCalendar.eventListHandler.CalendarError;
 import com.cse110.apk404.myCalendar.eventListHandler.CalendarEvent;
 import com.cse110.apk404.myCalendar.eventListHandler.CalendarObject;
 import com.cse110.apk404.myCalendar.eventListHandler.CalendarObjectList;
@@ -324,25 +325,26 @@ public class AddEventActivity extends AppCompatActivity {
                 String color = eventColorMap.get(((Spinner) findViewById(R.id.color_dropdown_add_event)).getSelectedItem().toString().trim());
                 String notes = ((TextView) findViewById(R.id.notes_add_event)).getText().toString();
 
-                if (!isStatic)
-                    dynamicEventDuration = Integer.parseInt(((EditText) findViewById(R.id.event_duration_add_event)).getText().toString());
+                if (!isStatic) {
+                    String duration= ((EditText) findViewById(R.id.event_duration_add_event)).getText().toString().trim();
+                    if (duration.length() == 0) {
+                        dynamicEventDuration = 0;
+                    } else {
+                        dynamicEventDuration = Integer.parseInt(duration);
+                    }
+                }
 
                 Log.d("AddEventToList", name + "\n" + location + "\n" + eventType + "\n" + color + "\n" + notes);
 
                 //setting start and ending time does not work, so we have dummy variable here
 
-                String endDateText = "Start Date: " + ((START_MONTH == 0) ? 0 : (START_MONTH + 1)) + "/" + START_DAY + "/" + START_YEAR +
-                        " time: " + START_HOUR + ":" + START_MINUTE + "\n" +
-                        " End Date" + ((END_MONTH == 0) ? 0 : (END_MONTH + 1)) + "/" + END_DAY + "/" + END_YEAR +
-                        " time: " + END_HOUR + ":" + END_MINUTE;
+//                String endDateText = "Start Date: " + ((START_MONTH == 0) ? 0 : (START_MONTH + 1)) + "/" + START_DAY + "/" + START_YEAR +
+//                        " time: " + START_HOUR + ":" + START_MINUTE + "\n" +
+//                        " End Date" + ((END_MONTH == 0) ? 0 : (END_MONTH + 1)) + "/" + END_DAY + "/" + END_YEAR +
+//                        " time: " + END_HOUR + ":" + END_MINUTE;
+//
+//                Toast.makeText(getApplicationContext(), endDateText, Toast.LENGTH_LONG).show();
 
-                Toast.makeText(getApplicationContext(), endDateText, Toast.LENGTH_LONG).show();
-
-                // Create Calendar start and end time
-                Calendar startTime = Calendar.getInstance();
-                startTime.set(START_YEAR, START_MONTH, START_DAY, START_HOUR, START_MINUTE);
-                Calendar endTime = Calendar.getInstance();
-                endTime.set(END_YEAR, END_MONTH, END_DAY, END_HOUR, END_MINUTE);
 
                 boolean checkEventCreatedSuccessfully = false;
 
@@ -350,6 +352,13 @@ public class AddEventActivity extends AppCompatActivity {
                 // except hour and minute can be 0
                 if (!name.equals("") && ((START_YEAR != 0 && START_MONTH != 0 && START_DAY != 0 && isStatic) || (dynamicEventDuration != 0 && !isStatic))
                         && (END_YEAR != 0 && END_MONTH != 0 && END_DAY != 0)) {
+
+                    // Create Calendar start and end time
+                    Calendar startTime = Calendar.getInstance();
+                    startTime.set(START_YEAR, START_MONTH, START_DAY, START_HOUR, START_MINUTE);
+                    Calendar endTime = Calendar.getInstance();
+                    endTime.set(END_YEAR, END_MONTH, END_DAY, END_HOUR, END_MINUTE);
+
                     try {
 //                        DateFormat time = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 //                        String event_time = time.format(startTime.getTime()) + "\n" +
@@ -357,12 +366,11 @@ public class AddEventActivity extends AppCompatActivity {
 //                        Log.d("eventTime", event_time);
 
                         if (isStatic) {
-                            checkEventCreatedSuccessfully = EventListHandler.createStaticEvent(name, location, startTime, endTime,
-                                    isStatic, isPeriodic, false, notes, color);
+                            checkEventCreatedSuccessfully = EventListHandler.createStaticEvent(name, location, startTime, endTime,true, isPeriodic, false, notes, color);
                         } else {
-                            // TODO - Create dyanmic event here
                             Log.d("Dynamic", "dynamic event is created with duration " + dynamicEventDuration);
-                            checkEventCreatedSuccessfully = true;
+                            int estimatedLengthInMinutes = dynamicEventDuration * 60;
+                            checkEventCreatedSuccessfully = EventListHandler.createDynamicEvent(name, false, location,notes, color, endTime, estimatedLengthInMinutes, false);
                         }
 
                         // If we are editing the event we create a new one and delete the old one
