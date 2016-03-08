@@ -142,7 +142,11 @@ public class StaticEvent implements CalendarEvent {
 	}
 
 
+	public Calendar getDeadline() { return null; }
 
+	public void setEstimatedLength(int estimatedLength) { return; }
+
+	public int getEstimatedLength() { return -1; }
 
 
 
