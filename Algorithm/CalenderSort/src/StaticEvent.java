@@ -42,10 +42,8 @@ public class StaticEvent implements CalendarEvent {
 		this.setPeriodic(isPeriodic);
 		this.setStartTime(startTime);
 		this.setEndTime(endTime);
-
 		this.setLocation(location);
 		this.setColor(color);
-
 	}
 
 

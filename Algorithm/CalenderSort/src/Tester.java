@@ -22,21 +22,21 @@ public class Tester {
 		EventListHandler.setEndTimeOfDay(21);
 		//int temp = 0;
 		Calendar startTime = Calendar.getInstance();
-		startTime.set(2016, Calendar.MONTH, 8, 7, 30);
+		startTime.set(2016, Calendar.MONTH, 8, 8, 00);
 		//		startTime.set(2016,1,29,17,01);
 		Calendar endTime = Calendar.getInstance();
-		endTime.set(2016, Calendar.MONTH, 8, 10, 30);
+		endTime.set(2016, Calendar.MONTH, 8, 9, 20);
 		Date startDate = endTime.getTime();
 
 
 		//		System.out.println((endTime.getTime().getTime() - startTime.getTime().getTime()) / (1000 * 60 * 60 * 24));
 		Calendar startTime2 = Calendar.getInstance();
-		startTime2.set(2016, Calendar.MONTH, 7, 10, 00);
+		startTime2.set(2016, Calendar.MONTH, 7, 8, 00);
 		Calendar endTime2 = Calendar.getInstance();
-		endTime2.set(2016, Calendar.MONTH, 7, 13, 00);
+		endTime2.set(2016, Calendar.MONTH, 7, 20, 00);
 
 		Calendar startTime3 = Calendar.getInstance();
-		startTime3.set(2016, Calendar.MONTH,7, 13, 20);
+		startTime3.set(2016, Calendar.MONTH,7, 15, 00);
 		Calendar endTime3 = Calendar.getInstance();
 		endTime3.set(2016, Calendar.MONTH, 7, 17, 00);
 

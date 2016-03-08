@@ -68,15 +68,18 @@ public class EventListHandler {
 	}
 
 	public static void initStaticList() {
-		if (staticList == null) staticList = new StaticEventList();
+		if (staticList == null) 
+			staticList = new StaticEventList();
 	}
 
 	public static void initDynamicList() {
-		dynamicList = new DynamicEventList();
+		if (dynamicList == null)
+			dynamicList = new DynamicEventList();
 	}
 
 	public static void initDeadlineList() {
-		deadlineList = new DynamicEventList();
+		if (deadlineList == null)
+			deadlineList = new DynamicEventList();
 	}
 
 	public static StaticEventList getStaticList() {
@@ -179,7 +182,7 @@ public class EventListHandler {
 			}
 		}
 		
-		Calendar cal = Calendar.getInstance();
+		//Calendar cal = Calendar.getInstance();
 		if (dynamicArrayList != null) {
 			for (int i = 0; i < dynamicArrayList.size(); i++) {
 				if (!dynamicArrayList.get(i).isFinished()) {

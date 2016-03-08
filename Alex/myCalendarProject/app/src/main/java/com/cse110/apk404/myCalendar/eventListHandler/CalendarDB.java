@@ -18,7 +18,7 @@ public class CalendarDB {
 	static CalendarSQLiteDB sqlitedb = null;
 	static String[] filenames = null;
 	static Context context = null;
-	
+
 	public static void initDBLocal(Context context) throws IOException {
 		handler = new EventListHandler();
 		CalendarDB.filenames = new String[] {"staticData", "dynamicData"};
@@ -26,15 +26,15 @@ public class CalendarDB {
 		CalendarDB.initListLocal(1);
 		//CalendarDB.initListLocal(2);
 	}
-	
+
 	public static CalendarObjectList<? extends AbstractCollection<? extends CalendarObject>, ? extends CalendarObject> retriveListLocal(int listID) throws IOException, CalendarError {
 		in = new CalendarObjectListInputStream(filenames[listID], context);
 		CalendarObjectList<? extends AbstractCollection<? extends CalendarObject>, ? extends CalendarObject> result = in.readList();
 		in.close();
 		return result;
-		
+
 	}
-	
+
 	public static void updateListLocal(int listID, CalendarObjectList<? extends AbstractCollection<? extends CalendarObject>, ? extends CalendarObject> obj) throws IOException {
 
 		out = new CalendarObjectListOutputStream(filenames[listID], context);
@@ -46,9 +46,9 @@ public class CalendarDB {
 	}
 
 	public static CalendarUser createUser(String email, String password,
-								   CalendarObjectList<? extends AbstractCollection<? extends CalendarObject>, ? extends CalendarObject> obj1,
-								   CalendarObjectList<? extends AbstractCollection<? extends CalendarObject>, ? extends CalendarObject> obj2,
-								   CalendarObjectList<? extends AbstractCollection<? extends CalendarObject>, ? extends CalendarObject> obj3) {
+			CalendarObjectList<? extends AbstractCollection<? extends CalendarObject>, ? extends CalendarObject> obj1,
+			CalendarObjectList<? extends AbstractCollection<? extends CalendarObject>, ? extends CalendarObject> obj2,
+			CalendarObjectList<? extends AbstractCollection<? extends CalendarObject>, ? extends CalendarObject> obj3) {
 		ArrayList<CalendarObjectList<? extends AbstractCollection<? extends CalendarObject>, ? extends CalendarObject>> list = new ArrayList<>();
 		list.add(list1);
 		list.add(list2);
@@ -72,10 +72,10 @@ public class CalendarDB {
 		CalendarObjectList<? extends AbstractCollection<? extends CalendarObject>, ? extends CalendarObject> list = null;
 
 		switch (listID) {
-			case 1: handler.initStaticList(); list = handler.getStaticList(); break;
-			//case 2: handler.initDynamicList(); list = handler.getDynamicList();
+		case 1: handler.initStaticList(); list = handler.getStaticList(); break;
+		//case 2: handler.initDynamicList(); list = handler.getDynamicList();
 		}
-		
+
 		out = new CalendarObjectListOutputStream(filenames[listID], context);
 		out.writeList(list);
 		out.close();
