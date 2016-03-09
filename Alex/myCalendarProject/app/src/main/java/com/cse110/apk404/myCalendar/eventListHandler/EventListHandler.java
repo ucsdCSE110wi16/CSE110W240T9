@@ -85,6 +85,19 @@ public class EventListHandler {
 		finishedDynamicList = new DynamicEventList();
 	}
 
+	public static void initDynamicList() {
+		int start = 9;
+		int end = 21;
+		EventListHandler.setStartTimeOfDay(start);
+		EventListHandler.setEndTimeOfDay(end);
+		if (dynamicList == null)
+			dynamicList = new DynamicEventList();
+		if (deadlineList == null)
+			deadlineList = new DynamicEventList();
+		if (finishedDynamicList == null)
+			finishedDynamicList = new DynamicEventList();
+	}
+
 
 
 	public static StaticEventList getStaticList() {
@@ -291,6 +304,13 @@ public class EventListHandler {
 		boolean check = false;
 		if (isStatic == true)
 			return false;
+
+		// check if (current + estimated time length) < deadline time, return false
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.MINUTE, estimatedLength);
+		if (deadline.before(cal)) {
+			return false;
+		}
 
 		DynamicEvent dynamicEvent = new DynamicEvent(name, isStatic, location, description, color, deadline,estimatedLength, isFinished);
 		dynamicEvent.setId(System.currentTimeMillis());

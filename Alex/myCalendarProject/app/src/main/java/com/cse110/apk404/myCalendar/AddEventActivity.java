@@ -226,6 +226,8 @@ public class AddEventActivity extends AppCompatActivity {
                     setStartDate.setVisibility(View.VISIBLE);
                     dynamicEventDurationEditText.setEnabled(false);
                     dynamicEventDurationEditText.setVisibility(View.GONE);
+                    setEndTime.setText("Set End Time");
+                    setEndDate.setText("Set End Date");
                 } else if (eventType.equals(items[1])) {
                     isStatic = false;
                     setStartTime.setEnabled(false);
@@ -234,6 +236,8 @@ public class AddEventActivity extends AppCompatActivity {
                     setStartDate.setVisibility(View.GONE);
                     dynamicEventDurationEditText.setEnabled(true);
                     dynamicEventDurationEditText.setVisibility(View.VISIBLE);
+                    setEndTime.setText("Set Deadline Time");
+                    setEndDate.setText("Set Deadline Date");
                 } else {
                     Log.e("Error01", "EventType is none of the options");
                 }
@@ -288,24 +292,50 @@ public class AddEventActivity extends AppCompatActivity {
             ((EditText) findViewById(R.id.event_location_add_event)).setText(event.getLocation());
             ((EditText) findViewById(R.id.notes_add_event)).setText(event.getDescription());
 
-            Calendar startTme = event.getStartTime();
-            Calendar endTime = event.getEndTime();
+            boolean eventIsStatic = event.isStatic();
+            if (eventIsStatic) {
+                Calendar startTme = event.getStartTime();
+                Calendar endTime = event.getEndTime();
 
-            ((Button) findViewById(R.id.start_date_add_event)).setText(dateFormatter.format(startTme.getTime()));
-            ((Button) findViewById(R.id.start_time_add_event)).setText(timeFormatter.format(startTme.getTime()));
-            ((Button) findViewById(R.id.end_date_add_event)).setText(dateFormatter.format(endTime.getTime()));
-            ((Button) findViewById(R.id.end_time_add_event)).setText(timeFormatter.format(endTime.getTime()));
+                ((Button) findViewById(R.id.start_date_add_event)).setText(dateFormatter.format(startTme.getTime()));
+                ((Button) findViewById(R.id.start_time_add_event)).setText(timeFormatter.format(startTme.getTime()));
+                ((Button) findViewById(R.id.end_date_add_event)).setText(dateFormatter.format(endTime.getTime()));
+                ((Button) findViewById(R.id.end_time_add_event)).setText(timeFormatter.format(endTime.getTime()));
 
-            START_HOUR = startTme.get(Calendar.HOUR_OF_DAY);
-            START_MINUTE = startTme.get(Calendar.MINUTE);
-            START_YEAR = startTme.get(Calendar.YEAR);
-            START_MONTH = startTme.get(Calendar.MONTH);
-            START_DAY = startTme.get(Calendar.DATE);
-            END_HOUR = endTime.get(Calendar.HOUR_OF_DAY);
-            END_MINUTE = endTime.get(Calendar.MINUTE);
-            END_YEAR = endTime.get(Calendar.YEAR);
-            END_MONTH = endTime.get(Calendar.MONTH);
-            END_DAY = endTime.get(Calendar.DATE);
+                START_HOUR = startTme.get(Calendar.HOUR_OF_DAY);
+                START_MINUTE = startTme.get(Calendar.MINUTE);
+                START_YEAR = startTme.get(Calendar.YEAR);
+                START_MONTH = startTme.get(Calendar.MONTH);
+                START_DAY = startTme.get(Calendar.DATE);
+                END_HOUR = endTime.get(Calendar.HOUR_OF_DAY);
+                END_MINUTE = endTime.get(Calendar.MINUTE);
+                END_YEAR = endTime.get(Calendar.YEAR);
+                END_MONTH = endTime.get(Calendar.MONTH);
+                END_DAY = endTime.get(Calendar.DATE);
+            } else {
+                Log.d("editEvent", "this is dynamic.");
+                int spinnerPosition = adapter.getPosition("DYNAMIC");
+                dropdown.setSelection(spinnerPosition);
+
+                setStartTime.setEnabled(false);
+                setStartTime.setVisibility(View.GONE);
+                setStartDate.setEnabled(false);
+                setStartDate.setVisibility(View.GONE);
+                dynamicEventDurationEditText.setEnabled(true);
+                dynamicEventDurationEditText.setVisibility(View.VISIBLE);
+                dynamicEventDurationEditText.setText("" + (event.getEstimatedLength() / 60));
+
+                Calendar deadLineTime = event.getDeadline();
+
+                ((Button) findViewById(R.id.end_date_add_event)).setText(dateFormatter.format(deadLineTime.getTime()));
+                ((Button) findViewById(R.id.end_time_add_event)).setText(timeFormatter.format(deadLineTime.getTime()));
+
+                END_HOUR = deadLineTime.get(Calendar.HOUR_OF_DAY);
+                END_MINUTE = deadLineTime.get(Calendar.MINUTE);
+                END_YEAR = deadLineTime.get(Calendar.YEAR);
+                END_MONTH = deadLineTime.get(Calendar.MONTH);
+                END_DAY = deadLineTime.get(Calendar.DATE);
+            }
         }
         /*==========================================================================*/
 
@@ -368,9 +398,8 @@ public class AddEventActivity extends AppCompatActivity {
                         if (isStatic) {
                             checkEventCreatedSuccessfully = EventListHandler.createStaticEvent(name, location, startTime, endTime,true, isPeriodic, false, notes, color);
                         } else {
-                            Log.d("Dynamic", "dynamic event is created with duration " + dynamicEventDuration);
                             int estimatedLengthInMinutes = dynamicEventDuration * 60;
-                            checkEventCreatedSuccessfully = EventListHandler.createDynamicEvent(name, false, location,notes, color, endTime, estimatedLengthInMinutes, false);
+                            checkEventCreatedSuccessfully = EventListHandler.createDynamicEvent("[Dynamic] "+name, false, location,notes, color, endTime, estimatedLengthInMinutes, false);
                         }
 
                         // If we are editing the event we create a new one and delete the old one
@@ -400,7 +429,7 @@ public class AddEventActivity extends AppCompatActivity {
 
                 } else {
                     // If not having basic fields filled out, remaind the user
-                    Snackbar.make(view, "Please fill out event name and time period.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    Snackbar.make(view, "Please have valid times, event name and time period.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }
             }
         });

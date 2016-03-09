@@ -83,7 +83,12 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
                 event_temp.setFinished(true);
             }
             if (event_month == newMonth) {
-                WeekViewEvent event = new WeekViewEvent(event_temp.getId(), event_temp.getName() + " - " + event_temp.getLocation(), event_temp.getStartTime(), event_temp.getEndTime());
+                String description = "";
+                description += event_temp.getName();
+                if (!event_temp.getLocation().equals("")) {
+                    description += " - " + event_temp.getLocation();
+                }
+                WeekViewEvent event = new WeekViewEvent(event_temp.getId(), description, event_temp.getStartTime(), event_temp.getEndTime());
                 if (event_temp.isFinished()) {
                     event.setColor(Color.parseColor(finisehdEventColor));
                 } else {
@@ -105,7 +110,13 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
                 event_temp.setFinished(true);
             }
             if (event_month == newMonth) {
-                WeekViewEvent event = new WeekViewEvent(event_temp.getId(), event_temp.getName() + " - " + event_temp.getLocation(), event_temp.getStartTime(), event_temp.getEndTime());
+                String description = "";
+                description += event_temp.getName();
+                if (!event_temp.getLocation().equals("")) {
+                    description += " - " + event_temp.getLocation();
+                }
+                WeekViewEvent event = new WeekViewEvent(event_temp.getId(), description, event_temp.getStartTime(), event_temp.getEndTime());
+
                 if (event_temp.isFinished()) {
                     event.setColor(Color.parseColor(finisehdEventColor));
                 } else {
