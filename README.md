@@ -47,6 +47,8 @@ Test Scenarios
 * Existing events are available for editing.
 * Existing events are available for deleting
 * we have the user login system existing calendar can be upload to cloud.
+* Android client side can send HTTP POST request to the server for user information. 
+* Users can able to register or login. After login, data is automatically backed up in cloud, and user can download data from cloud by clicking "sync from cloud".
 
 GUI Testing
 --------------
@@ -158,6 +160,9 @@ __Week 9__
 * ~~Finish product~~
 
 __Week 10__ 
+* ~~Completed new login system and online database.~~
+* ~~Databackup in cloud and server system from scratch is completed.~~
+* ~~User data are automatically uploaded to the cloud and users are able to download data form cloud via sync button in the navigation drawer~~
 * ~~Final testing and maintenance.~~
 * ~~User scenario testing.~~
 * ~~Tested extreme scenarios.~~
