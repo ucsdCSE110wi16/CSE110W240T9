@@ -79,7 +79,7 @@ __Test Machine Name: Siyu Yang__
 
 __Test Report, GUI Test:__
 
-<h3>Main view:</h3>
+<h4>Main view:</h4>
 * The app launches without crashing.....PASS
 * The menu button is clickable.....PASS
 * The top right button shows 3 different views.....PASS
@@ -95,12 +95,12 @@ __Test Report, GUI Test:__
 * If events are conflicted, the events will show up side by side.....PASS
 * Black lines shows the current time.....PASS
 
-<h3>Event summary page:</h3>
+<h4>Event summary page:</h4>
 * Clicking on a dynamic event will take you to another page showing the estimated length, and deadline.....PASS
 * Clicking on a static event will take you to another page showing the static event's start time and end time.....PASS
 * Clicking on the edit button in this view will open the event view.....PASS
 
-<h3>Add event view:</h3>
+<h4>Add event view:</h4>
 * Clicking on the X button on the top left corner in the add event page returns the calendar to the main view.....PASS
 * Clicking on enter event name will open keyboard.....PASS
 * Clicking on location will open keyboard.....PASS
