@@ -158,14 +158,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // Handle the camera action
 
         } else if (id == R.id.nav_add_event) {
-//            Intent intent = new Intent(this, AddEventActivity.class);
-//            this.startActivity(intent);
+            Intent intent = new Intent(MainActivity.this, AddEventActivity.class);
+            Bundle extras = new Bundle();
+            extras.putBoolean("IS_EDIT_EVENT",false);
+            intent.putExtras(extras);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_settings) {
+//        } else if (id == R.id.nav_settings) {
 
-        } else if (id == R.id.nav_help) {
+//        } else if (id == R.id.nav_help) {
+
+        } else if (id == R.id.nav_sync) {
+            // TODO-syncing go here
+
 
         } else if (id == R.id.nav_start_new) {
+            // TODO-start new database go here
+
             Log.d("Restart", "Restart DB");
 
             EventListHandler.initStaticList(); // Intialize list once at the begining

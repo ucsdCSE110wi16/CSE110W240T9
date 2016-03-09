@@ -25,19 +25,19 @@
     </group>
 
 
-    <item
-        android:checkableBehavior="single"
-        android:title="Tools">
-        <menu>
-            <item
-                android:id="@+id/nav_settings"
-                android:icon="@android:drawable/ic_menu_manage"
-                android:title="Settings" />
-            <item
-                android:id="@+id/nav_help"
-                android:icon="@android:drawable/ic_menu_help"
-                android:title="Help" />
-        </menu>
-    </item>
+    <!--<item-->
+        <!--android:checkableBehavior="single"-->
+        <!--android:title="Tools">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_settings"-->
+                <!--android:icon="@android:drawable/ic_menu_manage"-->
+                <!--android:title="Settings" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_help"-->
+                <!--android:icon="@android:drawable/ic_menu_help"-->
+                <!--android:title="Help" />-->
+        <!--</menu>-->
+    <!--</item>-->
 
 </menu>
