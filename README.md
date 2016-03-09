@@ -22,8 +22,12 @@ ______________
   <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_4.jpg" width="256" />
   <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_5.jpg" width="256" />
   <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_6.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_7.jpg" width="256" />
   <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_eventDetailMenu.png" width="256" /> 
   <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_2.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_8.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_9.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_10.png" width="256" />
 </div>
 
 
