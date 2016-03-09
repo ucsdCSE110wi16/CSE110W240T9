@@ -1,1 +1,45 @@
 These are the unit tests for the GUI.
+
+For our app, the functionality needs continuous testing and improvement. That's why we feel human testing is appropriate. There are many cases that we need to consider, and many different times we need to test for our algorithm.
+
+Test Machine Name: Siyu Yang
+
+Test Report, GUI Test:
+
+Main view:
+The app launches without crashing.....PASS
+The menu button is clickable.....PASS
+The top right button shows 3 different views.....PASS
+Clicking on the day view generates the day view.....PASS
+Clicking on the 3 day view generates the 3 day view.....PASS
+CLicking on the week view generates the week view.....PASS
+Scrolling left makes the calendar show previous days.....PASS
+Scrolling right makes the calendar show upcoming days.....PASS
+Scrolling up makes the calendar show previous times of the day.....PASS
+Scrolling down makes the calendar show upcoming times of the day.....PASS
+Clicking on today makes the calendar jump to the current day.....PASS
+Clicking on the + button on the bottom right corner makes the calendar open the add event page.....PASS
+If events are conflicted, the events will show up side by side.....PASS
+
+Event summary page:
+Clicking on a dynamic event will take you to another page showing the estimated length, and deadline.....PASS
+Clicking on a static event will take you to another page showing the static event's start time and end time.....PASS
+Clicking on the edit button in this view will open the event view.....PASS
+
+Add event view:
+Clicking on the X button on the top left corner in the add event page returns the calendar to the main view.....PASS
+Clicking on enter event name will open keyboard.....PASS
+Clicking on location will open keyboard.....PASS
+Clicking on Static will let you choose between static and dynamic.....PASS
+Clicking on TEAL will let you select the color, the color will change instantly.....PASS
+Clicking on Notes will open keyboard.....PASS
+Clicking on set Start Date/End Date will open Date picker.....PASS
+Clicking on set Start Time/End Time will open Time picker.....PASS
+The date picker can pick dates and display correctly.....PASS
+The time picker can pick times and display correctly.....PASS
+If any fields are not edited, notification that not all fields are inputted.....PASS
+Selecting dynamic will change the view to have deadline dates, and estimated hours instead of the static event input fields.....PASS
+If dynamic deadline is before current time,notify user that field is invalid.....PASS
+Event duration can only be a number.....PASS
+The calendar can correctly add a dynamic event.....PASS
+The calendar can correctly add a static event.....PASS
