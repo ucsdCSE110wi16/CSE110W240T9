@@ -12,6 +12,21 @@ myCalendar is an Android calendar app used for students to keep track of classes
 
 <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/ic_calender_finished.png" align="center" height="256" width="256" >
 
+
+Final Product Screen Shots
+______________
+
+<div id="images_hz">
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_2.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_3.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_4.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_5.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_6.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_1.jpg" width="256" /> 
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_2.jpg" width="256" />
+</div>
+
+
 Features w/User Stories
 --------------
 * __Creating new Event: Static Event__ (can be periodic) - As a student, I want the app to statically schedule my events/activites so that I know when the events will be occur each week.
@@ -40,9 +55,9 @@ Test Scenarios
 * Both date and time should be Scrollable
 * Main calendar should have all events listed
 * Event detail should be accessible when clicking on it  
-* __Adding static event and having it allocated on the main calendar correctly__
-* __Add in dynamic event, having it fill in the free time zone only before deadline__
-* __Dynamic events should not overlapped with the static events__
+* Adding static event and having it allocated on the main calendar correctly
+* Add in dynamic event, having it fill in the free time zone only before deadline
+* Dynamic events should not overlapped with the static events
 * Events should turn grey when user archived them
 * Existing events are available for editing.
 * Existing events are available for deleting
@@ -180,46 +195,38 @@ Iteration 1
 
 Iteration 2
 --------------
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/material_1.png" align="center" height="auto" width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/material_2.png" align="center" height= auto width="256" >
+<div id="images_hz">
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/material_1.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/material_2.png" width="256" />
+</div>
 
 Iteration 3
 --------------
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_1.png" align="center" height=auto width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_2.png" align="center" height=auto width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_3.png" align="center" height=auto width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_4.png" align="center" height=auto width="256" >
- 
+<div id="images_hz">
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_1.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_2.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_3.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_4.png" width="256" />
+</div>
 
 Iteration 4
 --------------
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_addEvent.png" align="center" height=auto width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_addEventPage.png" align="center" height=auto width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_eventDescription.png" align="center" height=auto width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_eventDetailMenu.png" align="center" height=auto width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_setEventFinishedAsGray.png" align="center" height=auto width="256" >
-
+<div id="images_hz">
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_addEventPage.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_eventDescription.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_eventDetailMenu.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_setEventFinishedAsGray.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_addEvent.png" width="256" /> 
+</div>
 
 Iteration 5
 --------------
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_1.jpg" align="center" height=auto width="256" >
+<div id="images_hz">
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_3.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_4.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_5.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_6.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_1.jpg" width="256" /> 
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_2.jpg" width="256" />
+</div>
 
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_2.jpg" align="center" height=auto width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_3.jpg" align="center" height=auto width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_4.jpg" align="center" height=auto width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_5.jpg" align="center" height=auto width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_6.jpg" align="center" height=auto width="256" >
-
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_7.jpg" align="center" height=auto width="256" >
