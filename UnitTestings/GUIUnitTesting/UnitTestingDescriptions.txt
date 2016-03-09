@@ -20,6 +20,7 @@ Scrolling down makes the calendar show upcoming times of the day.....PASS
 Clicking on today makes the calendar jump to the current day.....PASS
 Clicking on the + button on the bottom right corner makes the calendar open the add event page.....PASS
 If events are conflicted, the events will show up side by side.....PASS
+Black lines shows the current time.....PASS
 
 Event summary page:
 Clicking on a dynamic event will take you to another page showing the estimated length, and deadline.....PASS
