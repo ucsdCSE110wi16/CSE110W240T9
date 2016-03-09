@@ -18,8 +18,6 @@ Features w/User Stories
 
 * __Creating new Event: Dynamic Event__ (Non periodic, can locate a time for itself) - As a student, I want the app to dynamically schedule my events/activities so that the events can change to fit my needs
 
-* __Notification__: As a student, I want my app to have notification to notify me so that I can be reminded of when events occur to avoid missing or forgetting them.
-
 * __Add finished event to finished List__ - As a student, I want the app to be keep a list of finished events so that I can look back on my finished list events to see what I have finished or so that I can reference what I have doe before.
 
 * __Show month view of calendar (Main View)__ - As a student, I want the app to show a month view so that I can see upcoming events in the month.
@@ -32,7 +30,71 @@ Features w/User Stories
 
 * __Deleting Event__ - As a student, I want the app to be able to delete an event so that I can edit my upcoming schedules in case I can no longer do/attend that event or no longer need/want to do/attend that event.
 
+Test Scenarios
+--------------
+* All fields on page (e.g. text box, radio options, dropdown lists) should be aligned properly
+* Numeric values should be right justified unless specified otherwise
+* Enough space should be provided between field labels, columns, rows, error messages etc.
+* All buttons on page should be able to perform correctly
+* Each calendar view should be Scrollable
+* Both date and time should be Scrollable
+* Main calendar should have all events listed
+* Event detail should be accessible when clicking on it  
+* __Adding static event and having it allocated on the main calendar correctly__
+* __Add in dynamic event, having it fill in the free time zone only before deadline__
+* __Dynamic events should not overlapped with the static events__
+* Events should turn grey when user archived them
+* Existing events are available for editing.
+* Existing events are available for deleting
+* we have the user login system existing calendar can be upload to cloud.
 
+GUI Testing
+--------------
+
+__For our app, the functionality needs continuous testing and improvement. That's why we feel human testing is appropriate. There are many cases that we need to consider, and many different times we need to test for our algorithm.__
+
+__Test Machine Name: Siyu Yang__
+
+__Test Report, GUI Test:__
+
+<h3>Main view:</h3>
+* The app launches without crashing.....PASS
+* The menu button is clickable.....PASS
+* The top right button shows 3 different views.....PASS
+* Clicking on the day view generates the day view.....PASS
+* Clicking on the 3 day view generates the 3 day view.....PASS
+* CLicking on the week view generates the week view.....PASS
+* Scrolling left makes the calendar show previous days.....PASS
+* Scrolling right makes the calendar show upcoming days.....PASS
+* Scrolling up makes the calendar show previous times of the day.....PASS
+* Scrolling down makes the calendar show upcoming times of the day.....PASS
+* Clicking on today makes the calendar jump to the current day.....PASS
+* Clicking on the + button on the bottom right corner makes the calendar open the add event page.....PASS
+* If events are conflicted, the events will show up side by side.....PASS
+* Black lines shows the current time.....PASS
+
+<h3>Event summary page:</h3>
+* Clicking on a dynamic event will take you to another page showing the estimated length, and deadline.....PASS
+* Clicking on a static event will take you to another page showing the static event's start time and end time.....PASS
+* Clicking on the edit button in this view will open the event view.....PASS
+
+<h3>Add event view:</h3>
+* Clicking on the X button on the top left corner in the add event page returns the calendar to the main view.....PASS
+* Clicking on enter event name will open keyboard.....PASS
+* Clicking on location will open keyboard.....PASS
+* Clicking on Static will let you choose between static and dynamic.....PASS
+* Clicking on TEAL will let you select the color, the color will change instantly.....PASS
+* Clicking on Notes will open keyboard.....PASS
+* Clicking on set Start Date/End Date will open Date picker.....PASS
+* Clicking on set Start Time/End Time will open Time picker.....PASS
+* The date picker can pick dates and display correctly.....PASS
+* The time picker can pick times and display correctly.....PASS
+* If any fields are not edited, notification that not all fields are inputted.....PASS
+* Selecting dynamic will change the view to have deadline dates, and estimated hours instead of the static event input fields.....PASS
+* If dynamic deadline is before current time,notify user that field is invalid.....PASS
+* Event duration can only be a number.....PASS
+* The calendar can correctly add a dynamic event.....PASS
+* The calendar can correctly add a static event.....PASS
 
 Weekly Project Schedule
 --------------
@@ -80,7 +142,7 @@ __Week 8__
 *  ~~merge conflict~~
 
 __Week 9__ 
-* Add notification
+* ~~Add notification(Dropped)~~
 * ~~merge the Dynamic event algorithm with the front end~~
 * ~~merge the self allocation algorithm with the front end~~
 * ~~merge the event delete algorithm with the front end~~
@@ -93,11 +155,15 @@ __Week 9__
 * ~~fix date formatting error~~
 * ~~merge conflict~~
 * ~~set event active after archiving it~~
-* Finish product
+* ~~Finish product~~
 
 __Week 10__ 
-* Final testing and maintenance.
-* User testing
+* ~~Final testing and maintenance.~~
+* ~~User scenario testing.~~
+* ~~Tested extreme scenarios.~~
+* ~~Finished GUI, Controller and Model unit testing.~~
+* ~~Product passed exhaustive testing.~~
+* ~~Updated README for final presentation~~
 
 __Week 11__
 * Presentation

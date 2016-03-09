@@ -500,6 +500,7 @@ public class EventListHandler {
 			StaticEvent temp2 = freetime;
 
 			if(sortedStaticEList.isEmpty()){
+				System.out.println(sortedStaticEList.isEmpty());
 				sortedfreeList.add(freetime);
 			}
 			else{

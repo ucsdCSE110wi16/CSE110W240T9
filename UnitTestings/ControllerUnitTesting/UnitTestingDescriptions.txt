@@ -1,1 +1,3 @@
-Those are our unit testings wrote for Controller part.
+These are our unit tests for the Controller part.
+
+We didn't write Junit tests, instead we had most of out functionality tested by writing a file called Tester.java by inputting different events, and printing out all the static and dynamic events. Every function in our code had System.out.println() statements so we knew exactly what was happening in each function, and it was easier to debug.
