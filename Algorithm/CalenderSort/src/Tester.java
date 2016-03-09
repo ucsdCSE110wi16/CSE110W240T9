@@ -50,16 +50,16 @@ public class Tester {
 		//System.out.println(time.format(date));
 
 		EventListHandler.initStaticList();
-		boolean check = EventListHandler.createStaticEvent("do homework", "basement", startTime, endTime,
-				true, false, false, "scarlet", "red");
-		if(check)
-			System.out.println("1success\n");
-
-		check = EventListHandler.createStaticEvent("sleep","basement sd", startTime2, endTime2,
-				true, false, false, "scar", "blue");
-
-		if(check)
-			System.out.println("2success\n");
+//		boolean check = EventListHandler.createStaticEvent("do homework", "basement", startTime, endTime,
+//				true, false, false, "scarlet", "red");
+//		if(check)
+//			System.out.println("1success\n");
+//
+//		check = EventListHandler.createStaticEvent("sleep","basement sd", startTime2, endTime2,
+//				true, false, false, "scar", "blue");
+//
+//		if(check)
+//			System.out.println("2success\n");
 //
 //		check = EventListHandler.createStaticEvent("sleepx","basement sdx", startTime3, endTime3,
 //				true, false, false, "scar", "blue");
@@ -69,10 +69,10 @@ public class Tester {
 
 
 		Calendar dyndeadline = Calendar.getInstance();
-		dyndeadline.set(2016, Calendar.MONTH, 7, 8, 0);
+		dyndeadline.set(2016, Calendar.MONTH, 10, 20, 0);
 
 		Calendar dyndeadline2 = Calendar.getInstance();
-		dyndeadline2.set(2016, Calendar.MONTH, 8, 20, 0);
+		dyndeadline2.set(2016, Calendar.MONTH, 10, 20, 0);
 		
 		StaticEventList staticEventList = EventListHandler.getStaticList();
 		ArrayList<StaticEvent> staticArrayList = staticEventList.getList();
@@ -89,7 +89,7 @@ public class Tester {
 
 		EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "bgwp", "red", dyndeadline, 360, false);
 		
-		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwp", "red", dyndeadline2, 240, false);
+		//EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwp", "red", dyndeadline2, 240, false);
 		
 		DynamicEventList dynamicList = EventListHandler.getDynamicList();
 		dynamicList.print();

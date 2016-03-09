@@ -10,15 +10,15 @@ import java.util.Calendar;
 //import java.util.Date;
 import java.util.Date;
 
-
+/* This is our tester file for our controller, EventListHandler.java*/
 public class Tester {
 
 	public static void main(String[] args)  throws CalendarError, IOException {
 
 
-
-
+		//init start time to be 9am
 		EventListHandler.setStartTimeOfDay(9);
+		//init end time to be 9pm
 		EventListHandler.setEndTimeOfDay(21);
 		//int temp = 0;
 		Calendar startTime = Calendar.getInstance();

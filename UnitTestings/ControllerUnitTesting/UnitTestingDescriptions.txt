@@ -1,1 +1,1 @@
-Those are our unit testings wrote for Controller part.
+These are our unit tests for the Controller part.
