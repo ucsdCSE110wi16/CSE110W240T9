@@ -10,7 +10,7 @@ Summary
 --------------
 myCalendar is an Android calendar app used for students to keep track of classes and events.
 
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/ic_calender_finished.png" align="center" height="256" width="256" >
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/ic_calender_finished.png" align="center" height="256" width="256" >
 
 
 <h3>Final Product Screen Shots</h3>
