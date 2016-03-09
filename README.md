@@ -18,8 +18,6 @@ Features w/User Stories
 
 * __Creating new Event: Dynamic Event__ (Non periodic, can locate a time for itself) - As a student, I want the app to dynamically schedule my events/activities so that the events can change to fit my needs
 
-* __Notification__: As a student, I want my app to have notification to notify me so that I can be reminded of when events occur to avoid missing or forgetting them.
-
 * __Add finished event to finished List__ - As a student, I want the app to be keep a list of finished events so that I can look back on my finished list events to see what I have finished or so that I can reference what I have doe before.
 
 * __Show month view of calendar (Main View)__ - As a student, I want the app to show a month view so that I can see upcoming events in the month.
@@ -32,7 +30,23 @@ Features w/User Stories
 
 * __Deleting Event__ - As a student, I want the app to be able to delete an event so that I can edit my upcoming schedules in case I can no longer do/attend that event or no longer need/want to do/attend that event.
 
-
+Test Scenarios
+--------------
+* All fields on page (e.g. text box, radio options, dropdown lists) should be aligned properly
+* Numeric values should be right justified unless specified otherwise
+* Enough space should be provided between field labels, columns, rows, error messages etc.
+* All buttons on page should be able to perform correctly
+* Each calendar view should be Scrollable
+* Both date and time should be Scrollable
+* Main calendar should have all events listed
+* Event detail should be accessible when clicking on it  
+* __Adding static event and having it allocated on the main calendar correctly__
+* __Add in dynamic event, having it fill in the free time zone only before deadline__
+* __Dynamic events should not overlapped with the static events__
+* Events should turn grey when user archived them
+* Existing events are available for editing.
+* Existing events are available for deleting
+* we have the user login system existing calendar can be upload to cloud.
 
 Weekly Project Schedule
 --------------
