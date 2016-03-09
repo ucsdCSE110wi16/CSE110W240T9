@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/Sean/Desktop/myCalendarProject/app/build/intermediates/res/merged/debug/drawable-tvdpi-v4/background_sky_dark.jpg",
+        "source": "/Users/Sean/Desktop/myCalendarProject/app/src/main/res/drawable-tvdpi/background_sky_dark.jpg"
+    },
+    {
+        "merged": "/Users/Sean/Desktop/myCalendarProject/app/build/intermediates/res/merged/debug/drawable-tvdpi-v4/background_1.png",
+        "source": "/Users/Sean/Desktop/myCalendarProject/app/src/main/res/drawable-tvdpi/background_1.png"
+    },
+    {
+        "merged": "/Users/Sean/Desktop/myCalendarProject/app/build/intermediates/res/merged/debug/drawable-tvdpi-v4/profile.png",
+        "source": "/Users/Sean/Desktop/myCalendarProject/app/src/main/res/drawable-tvdpi/profile.png"
+    },
+    {
+        "merged": "/Users/Sean/Desktop/myCalendarProject/app/build/intermediates/res/merged/debug/drawable-tvdpi-v4/background_material_red.png",
+        "source": "/Users/Sean/Desktop/myCalendarProject/app/src/main/res/drawable-tvdpi/background_material_red.png"
+    }
+]

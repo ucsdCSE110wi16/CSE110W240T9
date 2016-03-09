@@ -188,14 +188,10 @@ public class EventListHandler {
 			}
 		}
 		
-		//Calendar cal = Calendar.getInstance();
+		Calendar cal = Calendar.getInstance();
 		if (dynamicArrayList != null) {
 			for (int i = 0; i < dynamicArrayList.size(); i++) {
 				if (!dynamicArrayList.get(i).isFinished()) {
-					
-//					if(dynamicArrayList.get(i).getEndTime() != null && dynamicArrayList.get(i).getEndTime().compareTo(cal) <= 0)
-//						dynamicArrayList.get(i).setFinished(true);
-					
 					currDynamicEList.add(dynamicArrayList.get(i));
 				}
 				else{
@@ -203,6 +199,7 @@ public class EventListHandler {
 				}
 			}
 		}
+		
 
 
 		DynamicEvent test = null;
@@ -274,7 +271,7 @@ public class EventListHandler {
 		dynamicEvent.setId(System.currentTimeMillis());
 
 		deadlineList.addEvent(dynamicEvent);
-		EventListHandler.dynamicSort(dynamicEvent);
+		check = EventListHandler.dynamicSort(dynamicEvent);
 		return check;
 	}
 

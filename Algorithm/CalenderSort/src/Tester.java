@@ -22,10 +22,10 @@ public class Tester {
 		EventListHandler.setEndTimeOfDay(21);
 		//int temp = 0;
 		Calendar startTime = Calendar.getInstance();
-		startTime.set(2016, Calendar.MONTH, 8, 8, 00);
+		startTime.set(2016, Calendar.MONTH, 8, 17, 00);
 		//		startTime.set(2016,1,29,17,01);
 		Calendar endTime = Calendar.getInstance();
-		endTime.set(2016, Calendar.MONTH, 8, 9, 20);
+		endTime.set(2016, Calendar.MONTH, 8, 18, 00);
 		Date startDate = endTime.getTime();
 
 
@@ -60,19 +60,19 @@ public class Tester {
 
 		if(check)
 			System.out.println("2success\n");
-
-		check = EventListHandler.createStaticEvent("sleepx","basement sdx", startTime3, endTime3,
-				true, false, false, "scar", "blue");
-
-		if(check)
-			System.out.println("3success\n");
+//
+//		check = EventListHandler.createStaticEvent("sleepx","basement sdx", startTime3, endTime3,
+//				true, false, false, "scar", "blue");
+//
+//		if(check)
+//			System.out.println("3success\n");
 
 
 		Calendar dyndeadline = Calendar.getInstance();
-		dyndeadline.set(2016, Calendar.MONTH, 10, 8, 0);
+		dyndeadline.set(2016, Calendar.MONTH, 7, 8, 0);
 
 		Calendar dyndeadline2 = Calendar.getInstance();
-		dyndeadline2.set(2016, Calendar.MONTH, 10, 20, 0);
+		dyndeadline2.set(2016, Calendar.MONTH, 8, 20, 0);
 		
 		StaticEventList staticEventList = EventListHandler.getStaticList();
 		ArrayList<StaticEvent> staticArrayList = staticEventList.getList();
