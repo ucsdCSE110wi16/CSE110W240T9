@@ -142,7 +142,7 @@ __Week 8__
 *  ~~merge conflict~~
 
 __Week 9__ 
-* Add notification
+* ~~Add notification(Dropped)~~
 * ~~merge the Dynamic event algorithm with the front end~~
 * ~~merge the self allocation algorithm with the front end~~
 * ~~merge the event delete algorithm with the front end~~
