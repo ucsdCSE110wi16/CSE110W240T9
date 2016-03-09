@@ -169,8 +169,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Log.d("Restart", "Restart DB");
 
             EventListHandler.initStaticList(); // Intialize list once at the begining
-            EventListHandler.initDynamicList();
-            EventListHandler.initDeadlineList();
+            EventListHandler.initDynamicList(9,21);
+
             try {
                 CalendarDB.initDBLocal(this);
             } catch (IOException e) {

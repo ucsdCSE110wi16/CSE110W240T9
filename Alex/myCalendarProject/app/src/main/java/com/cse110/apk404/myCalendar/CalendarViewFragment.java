@@ -95,7 +95,7 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
 
         // Loop through dynamic event list and load UI.
         for (int i = 0; i < dynamic_event_list.size(); i++) {
-            DynamicEvent event_temp = (DynamicEvent) static_event_list.get(i);
+            DynamicEvent event_temp = (DynamicEvent) dynamic_event_list.get(i);
 
             DateFormat time = new SimpleDateFormat("MM");
             int event_month = Integer.parseInt(time.format(event_temp.getStartTime().getTime()));

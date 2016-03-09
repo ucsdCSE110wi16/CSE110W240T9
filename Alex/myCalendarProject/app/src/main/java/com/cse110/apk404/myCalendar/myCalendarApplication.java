@@ -44,8 +44,7 @@ public class myCalendarApplication extends Application {
         try {
 //            CalendarDB.initDBLocal(this);
             EventListHandler.initStaticList(); // Intialize list once at the begining
-            EventListHandler.initDynamicList();
-            EventListHandler.initDeadlineList();
+            EventListHandler.initDynamicList(9,21);
 //            EventListHandler.getStaticList().setList((ArrayList<StaticEvent>) CalendarDB.retriveListLocal(1).getList()); // Load lists from database to EventListHandler
         } catch (Exception e) {
             Log.e("Error04", e.getMessage());

@@ -83,9 +83,8 @@ public class Tester {
 			System.out.println(staticEvent.getName()+" "+staticEvent.getColor()+" "+ staticEvent.getId());
 		}
 
-		EventListHandler.initDynamicList();
+		EventListHandler.initDynamicList(9,21);
 
-		EventListHandler.initDeadlineList();
 
 		EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "bgwp", "red", dyndeadline, 360, false);
 		
