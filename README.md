@@ -57,7 +57,7 @@ __Test Machine Name: Siyu Yang__
 
 __Test Report, GUI Test:__
 
-Main view:
+<h3>Main view:</h3>
 * The app launches without crashing.....PASS
 * The menu button is clickable.....PASS
 * The top right button shows 3 different views.....PASS
@@ -73,12 +73,12 @@ Main view:
 * If events are conflicted, the events will show up side by side.....PASS
 * Black lines shows the current time.....PASS
 
-Event summary page:
+<h3>Event summary page:</h3>
 * Clicking on a dynamic event will take you to another page showing the estimated length, and deadline.....PASS
 * Clicking on a static event will take you to another page showing the static event's start time and end time.....PASS
 * Clicking on the edit button in this view will open the event view.....PASS
 
-Add event view:
+<h3>Add event view:</h3>
 * Clicking on the X button on the top left corner in the add event page returns the calendar to the main view.....PASS
 * Clicking on enter event name will open keyboard.....PASS
 * Clicking on location will open keyboard.....PASS
@@ -155,11 +155,15 @@ __Week 9__
 * ~~fix date formatting error~~
 * ~~merge conflict~~
 * ~~set event active after archiving it~~
-* Finish product
+* ~~Finish product~~
 
 __Week 10__ 
-* Final testing and maintenance.
-* User testing
+* ~~Final testing and maintenance.~~
+* ~~User scenario testing.~~
+* ~~Tested extreme scenarios.~~
+* ~~Finished GUI, Controller and Model unit testing.~~
+* ~~Product passed exhaustive testing.~~
+* ~~Updated README for final presentation~~
 
 __Week 11__
 * Presentation
