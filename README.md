@@ -10,25 +10,25 @@ Summary
 --------------
 myCalendar is an Android calendar app used for students to keep track of classes and events.
 
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/ic_calender_finished.png" align="center" height="256" width="256" >
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/ic_calender_finished.png" align="center" height="256" width="256" >
 
 
 <h3>Final Product Screen Shots</h3>
 ______________
 
 <div id="images_hz">
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_2.png" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_3.jpg" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_4.jpg" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_5.jpg" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_6.jpg" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_7.jpg" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_eventDetailMenu.png" width="256" /> 
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_2.jpg" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_8.png" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_9.png" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_10.png" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_11.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/official_2.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_3.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_4.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_5.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_6.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_7.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration4_eventDetailMenu.png" width="256" /> 
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_2.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_8.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_9.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_10.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_11.png" width="256" />
 </div>
 
 
@@ -79,7 +79,7 @@ __Test Machine Name: Siyu Yang__
 
 __Test Report, GUI Test:__
 
-<h3>Main view:</h3>
+<h4>Main view:</h4>
 * The app launches without crashing.....PASS
 * The menu button is clickable.....PASS
 * The top right button shows 3 different views.....PASS
@@ -95,12 +95,12 @@ __Test Report, GUI Test:__
 * If events are conflicted, the events will show up side by side.....PASS
 * Black lines shows the current time.....PASS
 
-<h3>Event summary page:</h3>
+<h4>Event summary page:</h4>
 * Clicking on a dynamic event will take you to another page showing the estimated length, and deadline.....PASS
 * Clicking on a static event will take you to another page showing the static event's start time and end time.....PASS
 * Clicking on the edit button in this view will open the event view.....PASS
 
-<h3>Add event view:</h3>
+<h4>Add event view:</h4>
 * Clicking on the X button on the top left corner in the add event page returns the calendar to the main view.....PASS
 * Clicking on enter event name will open keyboard.....PASS
 * Clicking on location will open keyboard.....PASS
@@ -196,42 +196,42 @@ __Week 11__
 
 Iteration 1
 --------------
-<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/screenShot1.png" align="center" height="256" width="256" >
+<img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/screenShot1.png" align="center" height="256" width="256" >
 
 Iteration 2
 --------------
 <div id="images_hz">
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/material_1.png" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/material_2.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/material_1.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/material_2.png" width="256" />
 </div>
 
 Iteration 3
 --------------
 <div id="images_hz">
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_1.png" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_2.png" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_3.png" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/official_4.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/official_1.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/official_2.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/official_3.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/official_4.png" width="256" />
 </div>
 
 Iteration 4
 --------------
 <div id="images_hz">
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_addEventPage.png" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_eventDescription.png" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_eventDetailMenu.png" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_setEventFinishedAsGray.png" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration4_addEvent.png" width="256" /> 
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration4_addEventPage.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration4_eventDescription.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration4_eventDetailMenu.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration4_setEventFinishedAsGray.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration4_addEvent.png" width="256" /> 
 </div>
 
 Iteration 5
 --------------
 <div id="images_hz">
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_3.jpg" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_4.jpg" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_5.jpg" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_6.jpg" width="256" />
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_1.jpg" width="256" /> 
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/images/iteration5_2.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_3.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_4.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_5.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_6.jpg" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_1.jpg" width="256" /> 
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_2.jpg" width="256" />
 </div>
 
