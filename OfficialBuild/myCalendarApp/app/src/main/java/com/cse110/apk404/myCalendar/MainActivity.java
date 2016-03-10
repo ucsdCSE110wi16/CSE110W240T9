@@ -35,10 +35,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -52,15 +54,12 @@ import java.util.ArrayList;
  */
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    HttpURLConnection connection = null;
-    DataOutputStream outputStream = null;
-    DataInputStream inputStream = null;
-    String urlServer = "https://calendarserver.herokuapp.com/CalendarS";
-    private String mEmail;
-    private String mPassword;
+    private HttpURLConnection connection = null;
+    private static String urlServer = "https://calendarplusproject.herokuapp.com/CalendarS";
+    private static String mEmail = "";
+    private static boolean isLoggedIn = false;
     NavigationView navigationView = null;
     Toolbar toolbar = null;
-    boolean isLoggedIn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -205,8 +204,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onPause() {
         super.onPause();
-        try {
 
+        String s1 = getIntent().getStringExtra("isLoggedIn");
+        if ((s1 != null) && (s1.equals("true"))) {
+            isLoggedIn = true;
+        }
+
+        String s2 = getIntent().getStringExtra("email");
+        if (s2 != null) {
+            mEmail = s2;
+        }
+
+        try {
             Log.e("onPause", "yes");
             // Save lists from EventListHandler to database
             CalendarDB.updateListLocal(0, EventListHandler.getStaticList(), this);
@@ -214,6 +223,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             CalendarDB.updateListLocal(2, EventListHandler.getDeadlineList(), this);
             CalendarDB.updateListLocal(3, EventListHandler.getFinishedDynamicList(), this);
 
+            Log.e("is log in ?", "" + isLoggedIn);
+            Log.e("user ?", "it is: " + mEmail);
             if (isLoggedIn) {
                 UploadDataTask uploadTask = new UploadDataTask(mEmail);
                 uploadTask.execute((Void) null);
@@ -242,8 +253,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             list.add(EventListHandler.getFinishedDynamicList());
 
             try {
-                Log.e("HERE2~!!!!!!", "" + list.size() + ": " + (EventListHandler.getFinishedDynamicList() instanceof DynamicEventList));
-
                 byte[] bytes = Serializer.serialize(list);
                 Log.e("byte size: ", "" + bytes.length);
                 String uploadString = ByteArrayViaString.byteArrayToString(bytes);
@@ -266,8 +275,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 writer.flush();
                 writer.close();
 
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String result = in.readLine();
+                connection.disconnect();
+
+                Log.e("upload result", result);
+
             } catch (Exception e) {
-                Log.e("bug here", e.toString());
+                Log.e("bug hereeee", e.toString());
             }
 
             return true;

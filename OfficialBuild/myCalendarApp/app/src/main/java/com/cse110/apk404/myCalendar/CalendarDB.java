@@ -51,6 +51,8 @@ public class CalendarDB {
 			EventListHandler.setDeadlineList((DynamicEventList) (list.get(2)));
 			EventListHandler.setFinishedDynamicList((DynamicEventList) (list.get(3)));
 
+			Log.e("download correct size? ", ""+EventListHandler.getStaticList().getList().size());
+
 		} catch (Exception e) {
 			Log.e("shit", e.toString());
 		}

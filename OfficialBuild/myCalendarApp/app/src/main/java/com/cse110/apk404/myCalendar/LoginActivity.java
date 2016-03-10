@@ -469,6 +469,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         result = in.readLine();
 
                         byte[] data = ByteArrayViaString.stringToByteArray(result);
+
+                        Log.e("after passwordCheck", "" + mEmail + " " + data.length);
                         Object o = null;
                         try {
                             o = Serializer.deserialize(data);
@@ -500,8 +502,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+                Log.e("is logged in", "pass info to main");
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                intent.putExtra("isLoggedIn", true);
+                intent.putExtra("isLoggedIn", "true");
                 intent.putExtra("email", mEmail);
                 startActivity(intent);
                 finish();
