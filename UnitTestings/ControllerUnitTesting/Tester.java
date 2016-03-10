@@ -1,4 +1,4 @@
-package com.cse110.apk404.myCalendar.eventListHandler;
+//package com.cse110.apk404.myCalendar.eventListHandler;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -12,6 +12,7 @@ import java.util.Date;
 
 /* This is our tester file for our controller, EventListHandler.java*/
 public class Tester {
+		
 
 	public static void main(String[] args)  throws CalendarError, IOException {
 
@@ -94,13 +95,17 @@ public class Tester {
 		//create two dynamicevents
 
 		EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "bgwp", "red", dyndeadline, 360, false);
-		
+
 		EventListHandler.createDynamicEvent("steven", false, "CSEA", "ggwp", "red", dyndeadline2, 240, false);
-		
+
 		//get the dynamic list and call the print function in dynamicEventList to print out every dynamic event
 		DynamicEventList dynamicList = EventListHandler.getDynamicList();
 		dynamicList.print();
-		
+
+
+
+
+
 		//use our brains to check if the dynamic events are in the right place
 
 
@@ -162,4 +167,47 @@ public class Tester {
 		//System.out.println(staticArrayList.size());  */
 	}
 
+	
+	//test function for static event
+	testAddStatic(){
+		EventListHandler evh= new EventListHandler();
+		evh.initStaticList();
+		Calendar startTime = Calendar.getInstance();
+		//set start time for first static event
+		startTime.set(2016, Calendar.MONTH, 8, 8, 00);
+		//		startTime.set(2016,1,29,17,01);
+		//set end time for first static event
+		Calendar endTime = Calendar.getInstance();
+		endTime.set(2016, Calendar.MONTH, 8, 9, 20);
+		Date startDate = endTime.getTime();
+		boolean check = EventListHandler.createStaticEvent("do homework", "basement", startTime, endTime,
+				true, false, false, "scarlet", "red");
+		Assert.AreEqual(check, true);
+	}
+	
+	//test function for dynamicevent
+	testAddDynamic(){
+		EventListHandler evh= new EventListHandler();
+		evh.initDynamicList();
+		Calendar dyndeadline = Calendar.getInstance();
+		dyndeadline.set(2016, Calendar.MONTH, 10, 8, 0);
+		boolean check = EventListHandler.createDynamicEvent("scarlet", false, "CSEB", "bgwp", "red", dyndeadline, 360, false);
+		Assert.AreEqual(check, true);
+	}
+	
+	//test func for remove
+	testRemove(long id){
+		EventListHandler evh= new EventListHandler();
+		boolean check = evh.removeEventById(id);
+		Assert.AreEqual(check, true);
+	}	
+	
+	test func for dynamicsort
+	testDynamicSort(DynamicEvent de){
+		testAddDynamic();
+		boolean check = evh.DynamicSort(id);
+		Assert.AreEqual(check, true);
+	}	
+	
+	
 }
