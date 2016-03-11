@@ -70,14 +70,4 @@ public class AddEventActivityTest
         assertNotNull(nextAction);
         nextAction.finish();
     }
-
-    @Test
-    public void AddEventTest5()
-    {
-        ActivityMonitor activityMonitor = getInstrumentation().addMonitor(AddEventActivity.class.getName(), null, false);
-        onView(withId(R.id.button5)).perform(click());
-        AddEventActivity nextAction = (AddEventActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 3000);
-        assertNotNull(nextAction);
-        nextAction.finish();
-    }
 }
