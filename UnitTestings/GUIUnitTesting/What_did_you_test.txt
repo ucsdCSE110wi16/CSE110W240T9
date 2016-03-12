@@ -1,5 +1,2 @@
 + Espresso Test Functionality:
 Kristine: Click/Press, Gesture (ScrollTo(),swipedUp(),swipeDown()), Text (clearText(),typeText(String),typeTextIntoFocusedView(String),replaceText(String))
-Fang:
-William:
-Alex:
