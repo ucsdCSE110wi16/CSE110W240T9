@@ -419,6 +419,7 @@ public class AddEventActivity extends AppCompatActivity {
                         if (IS_EDIT_EVENT) EventListHandler.removeEventById(ID);
 
                     } catch (Exception e) {
+                        e.printStackTrace();
                         Log.e("Error02", e.getMessage());
                     }
 

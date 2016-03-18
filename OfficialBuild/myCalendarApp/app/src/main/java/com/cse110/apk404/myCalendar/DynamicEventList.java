@@ -1,8 +1,11 @@
 package com.cse110.apk404.myCalendar;
 
+import android.util.Log;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DynamicEventList implements CalendarObjectList<ArrayList<DynamicEvent>, DynamicEvent> {
@@ -43,11 +46,69 @@ public class DynamicEventList implements CalendarObjectList<ArrayList<DynamicEve
 		for (int i = 0; i< dynamicList.size(); i++){
 			eventToRemove = dynamicList.get(i);
 			  if (eventToRemove.getId() == id){
+				  System.out.println(id);
 			    dynamicList.remove(eventToRemove);
 			    check = true;
 			  }
 		}
 		return check;
+	}
+
+	public DynamicEvent findLastEventById(Long id) throws CalendarError {
+		if (id == null)
+			throw new CalendarError("Null Event");
+		DynamicEvent eventToFind;
+		if(dynamicList == null) return null;
+		for (int i = 0; i< dynamicList.size(); i++){
+			eventToFind = dynamicList.get(i);
+			if (eventToFind.getId() == id){
+				return dynamicList.get(i);
+			}
+		}
+		return null;
+	}
+
+//	public DynamicEvent findFirstEventById(Long id) throws CalendarError {
+//		if (id == null)
+//			throw new CalendarError("Null Event");
+//		DynamicEvent eventToFind;
+//		if(dynamicList == null) return null;
+//			eventToFind = dynamicList.get(0);
+//			if (eventToFind.getId() == id){
+//				return dynamicList.get(0);
+//			}
+//		return null;
+//	}
+
+	public boolean checkEndtimeDeadline() throws CalendarError{
+
+		Log.e("shit", "" + dynamicList.size());
+		for(int i = 0;i < dynamicList.size(); i++){
+			Log.e("shit", "one check");
+			System.out.println("Endtime: "+ dynamicList.get(i).getEndTime().get(Calendar.HOUR_OF_DAY) + ":" + dynamicList.get(i).getEndTime().get(Calendar.MINUTE)
+					+ " Deadline: " + dynamicList.get(i).getDeadline().get(Calendar.HOUR_OF_DAY) + ":" +  dynamicList.get(i).getDeadline().get(Calendar.MINUTE));
+			if(!dynamicList.get(i).getEndTime().before(dynamicList.get(i).getDeadline())){
+				Log.e("shit", "wow, true here");
+
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public DynamicEvent findLastEvent() throws CalendarError {
+		Date end;
+		DateFormat date;
+		date = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		int lastElement = dynamicList.size();
+		if(lastElement != 0) {
+			end = dynamicList.get(lastElement-1).getEndTime().getTime();
+			System.out.println("LAST ELEMENT The start date is: " + date.format(end)  + " " + dynamicList.get(lastElement - 1).getName() );
+			return dynamicList.get(lastElement - 1);
+		}
+
+		else
+			return null;
 	}
     
     public void print(){
