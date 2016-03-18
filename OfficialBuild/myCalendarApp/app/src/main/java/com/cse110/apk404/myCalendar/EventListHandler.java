@@ -245,30 +245,29 @@ public class EventListHandler {
 			}
 		}
 
-		//Calendar cal = Calendar.getInstance();
+//		Calendar cal = Calendar.getInstance();
 		if (dynamicArrayList != null) {
 			for (int i = 0; i < dynamicArrayList.size(); i++) {
 				if (!dynamicArrayList.get(i).isFinished()) {
-
-//					if(dynamicArrayList.get(i).getEndTime() != null && dynamicArrayList.get(i).getEndTime().compareTo(cal) <= 0)
+//					if(dynamicArrayList.get(i).getStartTime() != null && dynamicArrayList.get(i).getStartTime().compareTo(cal) <= 0)
 //						dynamicArrayList.get(i).setFinished(true);
-
 					currDynamicEList.add(dynamicArrayList.get(i));
 				}
 
 			}
 		}
 
-		//Calendar cal = Calendar.getInstance();
+		Calendar cal2 = Calendar.getInstance();
 		if (finishedDynamicEvents != null) {
 			for (int i = 0; i < finishedDynamicEvents.size(); i++) {
-				if (finishedDynamicEvents.get(i).isFinished()) {
 
-//					if(dynamicArrayList.get(i).getEndTime() != null && dynamicArrayList.get(i).getEndTime().compareTo(cal) <= 0)
-//						dynamicArrayList.get(i).setFinished(true);
+					if(finishedDynamicEvents.get(i).getStartTime() != null && finishedDynamicEvents.get(i).getStartTime().compareTo(cal2) <= 0) {
+						System.out.println("Set Finished!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + finishedDynamicEvents.get(i).getStartTime().get(Calendar.HOUR_OF_DAY) + ":" +
+								finishedDynamicEvents.get(i).getStartTime().get(Calendar.MINUTE) );
+						finishedDynamicEvents.get(i).setFinished(true);
+					}
 
 					finishedDynamicList.addEvent(finishedDynamicEvents.get(i));
-				}
 
 			}
 		}

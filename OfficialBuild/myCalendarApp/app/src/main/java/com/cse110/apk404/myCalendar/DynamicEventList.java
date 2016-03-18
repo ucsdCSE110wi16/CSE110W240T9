@@ -96,20 +96,20 @@ public class DynamicEventList implements CalendarObjectList<ArrayList<DynamicEve
 		return true;
 	}
 
-	public DynamicEvent findLastEvent() throws CalendarError {
-		Date end;
-		DateFormat date;
-		date = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-		int lastElement = dynamicList.size();
-		if(lastElement != 0) {
-			end = dynamicList.get(lastElement-1).getEndTime().getTime();
-			System.out.println("LAST ELEMENT The start date is: " + date.format(end)  + " " + dynamicList.get(lastElement - 1).getName() );
-			return dynamicList.get(lastElement - 1);
-		}
-
-		else
-			return null;
-	}
+//	public DynamicEvent findLastEvent() throws CalendarError {
+//		Date end;
+//		DateFormat date;
+//		date = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+//		int lastElement = dynamicList.size();
+//		if(lastElement != 0) {
+//			end = dynamicList.get(lastElement-1).getEndTime().getTime();
+//			System.out.println("LAST ELEMENT The start date is: " + date.format(end)  + " " + dynamicList.get(lastElement - 1).getName() );
+//			return dynamicList.get(lastElement - 1);
+//		}
+//
+//		else
+//			return null;
+//	}
     
     public void print(){
     	DynamicEvent de;
