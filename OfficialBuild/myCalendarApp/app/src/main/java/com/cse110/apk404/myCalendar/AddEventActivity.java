@@ -301,12 +301,13 @@ public class AddEventActivity extends AppCompatActivity {
 
             setToolbarStyle(event.getColor(), fab, toolbar);
 
-            ((TextView) findViewById(R.id.event_name_add_event)).setText(event.getName());
             ((EditText) findViewById(R.id.event_location_add_event)).setText(event.getLocation());
             ((EditText) findViewById(R.id.notes_add_event)).setText(event.getDescription());
 
             boolean eventIsStatic = event.isStatic();
             if (eventIsStatic) {
+                ((TextView) findViewById(R.id.event_name_add_event)).setText(event.getName());
+
                 Calendar startTme = event.getStartTime();
                 Calendar endTime = event.getEndTime();
 
@@ -327,6 +328,10 @@ public class AddEventActivity extends AppCompatActivity {
                 END_DAY = endTime.get(Calendar.DATE);
             } else {
                 Log.d("editEvent", "this is dynamic.");
+
+                // load the event name from saved event, cut of the dynamic prefix
+                ((TextView) findViewById(R.id.event_name_add_event)).setText(event.getName().substring(10));
+
                 int spinnerPosition = adapter.getPosition("DYNAMIC");
                 dropdown.setSelection(spinnerPosition);
 
@@ -408,6 +413,9 @@ public class AddEventActivity extends AppCompatActivity {
 //                                time.format(endTime.getTime());
 //                        Log.d("eventTime", event_time);
 
+                        // If we are editing the event we create a new one and delete the old one
+                        if (IS_EDIT_EVENT) EventListHandler.removeEventById(ID);
+
                         if (isStatic) {
                             checkEventCreatedSuccessfully = EventListHandler.createStaticEvent(name, location, startTime, endTime,true, isPeriodic, false, notes, color);
                         } else {
@@ -415,8 +423,7 @@ public class AddEventActivity extends AppCompatActivity {
                             checkEventCreatedSuccessfully = EventListHandler.createDynamicEvent("[Dynamic] "+name, false, location,notes, color, endTime, estimatedLengthInMinutes, false);
                         }
 
-                        // If we are editing the event we create a new one and delete the old one
-                        if (IS_EDIT_EVENT) EventListHandler.removeEventById(ID);
+
 
                     } catch (Exception e) {
                         e.printStackTrace();

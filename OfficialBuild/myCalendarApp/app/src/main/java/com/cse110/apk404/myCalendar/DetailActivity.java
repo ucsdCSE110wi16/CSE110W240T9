@@ -120,7 +120,7 @@ public class DetailActivity extends AppCompatActivity {
             event_time = "From: " + time.format(event.getStartTime().getTime()) + "\n" +
                     "     To: " + time.format(event.getEndTime().getTime());
         } else {
-            event_time = "Time estimate length: " + ((DynamicEvent)event).getEstimatedLength() + "Minutes\n" +
+            event_time = "Time Estimate Length: " + ((DynamicEvent)event).getEstimatedLength() / 60 + " Hours\n" +
                     "     Deadline: " + time.format(((DynamicEvent)event).getDeadline().getTime());
         }
 
