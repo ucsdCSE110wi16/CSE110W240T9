@@ -191,7 +191,6 @@ public class EventListHandler {
 		check = staticList.removeEventById(temp);
 		check = dynamicList.removeEventById(temp);
 		check = deadlineList.removeEventById(temp);
-        dynamicSort(null);
 		return check;
 	}
 

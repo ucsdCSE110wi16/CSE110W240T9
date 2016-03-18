@@ -51,6 +51,7 @@
 
                 <EditText
                     android:id="@+id/password"
+                    android:maxLength="20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"

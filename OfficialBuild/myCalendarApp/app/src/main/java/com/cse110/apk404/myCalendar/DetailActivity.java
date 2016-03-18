@@ -159,14 +159,13 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to tool bar if it is present.
         getMenuInflater().inflate(R.menu.activity_detail, menu);
+        menu.findItem(R.id.action_finish_event).setVisible(false);
+        menu.findItem(R.id.action_unfinish_event).setVisible(false);
+        menu.findItem(R.id.action_edit_event).setVisible(false);
 
         // Limie menu items
         if (event.isFinished()) {
-            menu.findItem(R.id.action_edit_event).setVisible(false);
-            menu.findItem(R.id.action_finish_event).setVisible(false);
         } else {
-            menu.findItem(R.id.action_edit_event).setVisible(false);
-            menu.findItem(R.id.action_unfinish_event).setVisible(false);
         }
 
         return true;
