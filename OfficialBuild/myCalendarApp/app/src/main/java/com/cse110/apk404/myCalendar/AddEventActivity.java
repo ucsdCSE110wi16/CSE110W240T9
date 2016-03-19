@@ -14,16 +14,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -34,27 +33,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
-
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
-
-import com.cse110.apk404.myCalendar.CalendarDB;
-import com.cse110.apk404.myCalendar.CalendarError;
-import com.cse110.apk404.myCalendar.CalendarEvent;
-import com.cse110.apk404.myCalendar.CalendarObject;
-import com.cse110.apk404.myCalendar.CalendarObjectList;
-import com.cse110.apk404.myCalendar.EventListHandler;
-
-import java.text.DateFormat;
-import java.util.AbstractCollection;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -126,8 +109,16 @@ public class AddEventActivity extends AppCompatActivity {
         // Get Intent Info
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        final Long ID = extras.getLong("ID"); // Return 0 if doesn't exist
-        final Boolean IS_EDIT_EVENT = extras.getBoolean("IS_EDIT_EVENT");
+
+        long temp_ID = 0;
+        boolean temp_IS_EDIT_EVENT = false;
+        if (extras != null){
+            temp_ID = extras.getLong("ID"); // Return 0 if doesn't exist
+            temp_IS_EDIT_EVENT = extras.getBoolean("IS_EDIT_EVENT");
+        }
+
+        final Long ID = temp_ID;
+        final boolean IS_EDIT_EVENT = temp_IS_EDIT_EVENT;
 
         if (IS_EDIT_EVENT) event = EventListHandler.getEventById(ID);
 
