@@ -89,7 +89,12 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
                 if (!event_temp.getLocation().equals("")) {
                     description += " - " + event_temp.getLocation();
                 }
-                WeekViewEvent event = new WeekViewEvent(event_temp.getId(), description, event_temp.getStartTime(), event_temp.getEndTime());
+
+                Calendar startTime = (Calendar)event_temp.getStartTime().clone();
+                startTime.add(Calendar.MINUTE, 1);
+                Calendar endTime = (Calendar)event_temp.getEndTime().clone();
+                endTime.add(Calendar.MINUTE, -1);
+                WeekViewEvent event = new WeekViewEvent(event_temp.getId(), description, startTime, endTime);
                 if (event_temp.isFinished()) {
                     event.setColor(Color.parseColor(finisehdEventColor));
                 } else {
@@ -107,7 +112,7 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
             int event_month = Integer.parseInt(time.format(event_temp.getStartTime().getTime()));
 
             // Set past event as finished
-            if(event_temp.getDeadline().before(Calendar.getInstance()) && !event_temp.isFinished()) {
+            if(event_temp.getEndTime().before(Calendar.getInstance()) && !event_temp.isFinished()) {
 //                event_temp.setFinished(true);
 
                 // if dynamic event is passed simply delete it
@@ -124,7 +129,12 @@ public class CalendarViewFragment extends CalendarViewBaseFragment {
                 if (!event_temp.getLocation().equals("")) {
                     description += " - " + event_temp.getLocation();
                 }
-                WeekViewEvent event = new WeekViewEvent(event_temp.getId(), description, event_temp.getStartTime(), event_temp.getEndTime());
+
+                Calendar startTime = (Calendar)event_temp.getStartTime().clone();
+                startTime.add(Calendar.MINUTE, 1);
+                Calendar endTime = (Calendar)event_temp.getEndTime().clone();
+                endTime.add(Calendar.MINUTE, -1);
+                WeekViewEvent event = new WeekViewEvent(event_temp.getId(), description, startTime, endTime);
 
                 if (event_temp.isFinished()) {
                     event.setColor(Color.parseColor(finisehdEventColor));

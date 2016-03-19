@@ -155,6 +155,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
+    public void refreshCalendar() {
+        CalendarViewFragment fragment = new CalendarViewFragment();
+        android.support.v4.app.FragmentTransaction fragmentTransaction =
+                getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.commit();
+    }
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -162,11 +169,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.nav_calender_view) {
             //Set the fragment initially
-            CalendarViewFragment fragment = new CalendarViewFragment();
-            android.support.v4.app.FragmentTransaction fragmentTransaction =
-                    getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-            fragmentTransaction.commit();
+            refreshCalendar();
 
         } else if (id == R.id.nav_add_event) {
             Intent intent = new Intent(MainActivity.this, AddEventActivity.class);
@@ -202,8 +205,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+
+        Log.d("onResume", "resumed!");
+        // refresh calendar on resume, gotta refresh multiple times for bug fix
+        refreshCalendar();
+
+    }
+
+
+
+    @Override
     public void onPause() {
         super.onPause();
+
+        // refresh calendar on resume
+        refreshCalendar();
 
         String s1 = getIntent().getStringExtra("isLoggedIn");
         if ((s1 != null) && (s1.equals("true"))) {

@@ -169,6 +169,10 @@ public class EventListHandler {
 		if (isStatic == false)
 			return false;
 
+		// Set time seconds to 0 to avoid bugs
+		startTime.set(Calendar.SECOND, 0);
+		endTime.set(Calendar.SECOND, 0);
+
 		StaticEvent staticEvent = new StaticEvent(name, location, startTime, endTime, isStatic,
 				isPeriodic, isFinished, description, color);
 		staticEvent.setId(System.currentTimeMillis());
@@ -191,6 +195,7 @@ public class EventListHandler {
 		check = staticList.removeEventById(temp);
 		check = dynamicList.removeEventById(temp);
 		check = deadlineList.removeEventById(temp);
+
 		return check;
 	}
 
@@ -866,8 +871,9 @@ public class EventListHandler {
 				newDE = new DynamicEvent(dynamic.getName(), false, dynamic.getLocation(), dynamic.getDescription(), dynamic.getColor(),
 						dynamic.getDeadline(), dynamic.getEstimatedLength(),dynamic.isFinished());
 				newDE.setId(dynamic.getId());
-
 				newDE.setStartTime(freetime.getStartTime());
+				newDE.getEndTime().set(Calendar.SECOND, 0);
+				newDE.getStartTime().set(Calendar.SECOND,0);
 				freetimetemp = sortedfreeList.poll();
 				(freetimetemp.getStartTime()).add(Calendar.MINUTE, dynamic.getUpdatedlength());
 
@@ -889,6 +895,8 @@ public class EventListHandler {
 				newDE.setId(dynamic.getId());
 				newDE.setStartTime(freetime.getStartTime());
 				newDE.setEndTime(freetime.getEndTime());
+				newDE.getEndTime().set(Calendar.SECOND, 0);
+				newDE.getStartTime().set(Calendar.SECOND, 0);
 				if(((int)(Math.abs(newDE.getEndTime().getTime().getTime() - newDE.getStartTime().getTime().getTime()) / (1000 * 60))) >= 30)
 					dynamicList.addEvent(newDE);
 				currDynamicEList.poll();
@@ -910,6 +918,8 @@ public class EventListHandler {
 
                 newDE.setStartTime(freetime.getStartTime());
                 newDE.setEndTime(freetime.getEndTime());
+				newDE.getEndTime().set(Calendar.SECOND, 0);
+				newDE.getStartTime().set(Calendar.SECOND, 0);
 
                 if (((int) (Math.abs(newDE.getEndTime().getTime().getTime() - newDE.getStartTime().getTime().getTime()) / (1000 * 60))) >= 30)
                     dynamicList.addEvent(newDE);

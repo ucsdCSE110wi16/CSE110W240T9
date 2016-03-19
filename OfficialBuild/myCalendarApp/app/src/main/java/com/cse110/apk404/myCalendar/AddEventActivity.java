@@ -222,8 +222,8 @@ public class AddEventActivity extends AppCompatActivity {
                     isStatic = true;
                     setStartTime.setEnabled(true);
                     setStartTime.setVisibility(View.VISIBLE);
-                    setStartDate.setEnabled(true);
-                    setStartDate.setVisibility(View.VISIBLE);
+                    setStartDate.setEnabled(false);
+                    setStartDate.setVisibility(View.GONE);
                     dynamicEventDurationEditText.setEnabled(false);
                     dynamicEventDurationEditText.setVisibility(View.GONE);
                     if (IS_EDIT_EVENT) {
@@ -232,7 +232,7 @@ public class AddEventActivity extends AppCompatActivity {
                     } else {
                         // If not editing event then reset the text
                         setEndTime.setText("Set End Time");
-                        setEndDate.setText("Set End Date");
+                        setEndDate.setText("Set Date");
                     }
 
                 } else if (eventType.equals(items[1])) {
@@ -596,6 +596,10 @@ public class AddEventActivity extends AppCompatActivity {
             END_YEAR = year;
             END_MONTH = monthOfYear;
             END_DAY = dayOfMonth;
+
+            START_YEAR = year;
+            START_MONTH = monthOfYear;
+            START_DAY = dayOfMonth;
 
             String endDateText = ((END_MONTH == 0) ? 0 : (END_MONTH + 1)) + "/" + dayOfMonth + "/" + year;
 //            Toast.makeText(context, endDateText, Toast.LENGTH_LONG).show();

@@ -161,10 +161,10 @@
                     android:layout_margin="5dp"
                     android:layout_weight="1.63"
                     android:background="@null"
+                    android:digits="0123456789"
                     android:drawableLeft="@drawable/ic_edit_black_24dp"
                     android:fontFamily="sans-serif"
                     android:hint="Enter event duration in hours"
-                    android:digits="0123456789"
                     android:textColor="@color/colorPrimaryText"/>
             </android.support.design.widget.TextInputLayout>
 
@@ -190,6 +190,17 @@
                     android:onClick="setStartDate"
                     android:text="Set Start Date"
                     android:textColor="@color/colorPrimaryText"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/LinearLayout06"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
                 <Button
                     android:id="@+id/start_time_add_event"
@@ -202,6 +213,30 @@
                     android:gravity="left|center_vertical"
                     android:onClick="setStartTime"
                     android:text="Set Start Time"
+                    android:textColor="@color/colorPrimaryText"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout05"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+                <Button
+                    android:id="@+id/end_time_add_event"
+                    android:layout_width="@dimen/add_event_button_width"
+                    android:layout_height="@dimen/add_event_button_height"
+                    android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
+                    android:layout_marginRight="@dimen/padding_between_text_view_in_details"
+                    android:layout_marginTop="@dimen/padding_between_text_view_in_details"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="left|center_vertical"
+                    android:onClick="setEndTime"
+                    android:text="Set End Time"
                     android:textColor="@color/colorPrimaryText"/>
             </LinearLayout>
 
@@ -225,23 +260,11 @@
                     android:background="?android:attr/selectableItemBackground"
                     android:gravity="left|center_vertical"
                     android:onClick="setEndDate"
-                    android:text="Set End Date"
+                    android:text="Set Date"
                     android:textColor="@color/colorPrimaryText"/>
 
-
-                <Button
-                    android:id="@+id/end_time_add_event"
-                    android:layout_width="@dimen/add_event_button_width"
-                    android:layout_height="@dimen/add_event_button_height"
-                    android:layout_marginLeft="@dimen/padding_between_text_view_in_details"
-                    android:layout_marginRight="@dimen/padding_between_text_view_in_details"
-                    android:layout_marginTop="@dimen/padding_between_text_view_in_details"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:gravity="left|center_vertical"
-                    android:onClick="setEndTime"
-                    android:text="Set End Time"
-                    android:textColor="@color/colorPrimaryText"/>
             </LinearLayout>
+
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
