@@ -118,6 +118,38 @@ __Test Report, GUI Test:__
 * The calendar can correctly add a dynamic event.....PASS
 * The calendar can correctly add a static event.....PASS
 
+# Bugs need to be fixed
+
+* ~~Delete both events at same time: only deletes first one~~
+
+* ~~Events should not be added in invalid time~~
+
+* ~~Archive usage for users (delete)~~
+
+* ~~allocate dynamic events according to the due date~~
+
+* ~~extra dynamic events after being edited~~
+
+* ~~add dynamic event even if it is conflicted with the static ones~~
+
+* ~~static events to be locked down in one day~~
+
+* ~~[Dynamic] tag shows twice after editing~~
+
+* ~~Not able to edit events after deleting all those events~~
+
+* ~~Need to remove static other day choices~~
+
+* ~~< 9am error no display  >9am display~~
+
+* ~~If event has already happened, do not push to later on~~
+
+* ~~If cur > dynamic start, move on to next dynamic~~
+
+* ~~fix null password~~
+
+*  __new feature: after hours if need to finish before deadline, else finish the next day__ 
+
 Weekly Project Schedule
 --------------
 __Week 1 & Week 2__
