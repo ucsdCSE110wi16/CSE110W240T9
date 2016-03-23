@@ -1,4 +1,4 @@
-# myCalendar
+# Calendar+
 An android calendar app designed for students!
 
 Library:
