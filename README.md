@@ -17,7 +17,7 @@ myCalendar is an Android calendar app used for students to keep track of classes
 ______________
 
 <div id="images_hz">
-  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/official_2.png" width="256" />
+  <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/notification-added.png" width="256" />
   <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_3.jpg" width="256" />
   <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_4.jpg" width="256" />
   <img src="https://raw.githubusercontent.com/ucsdCSE110wi16/CSE110W240T9/master/ScreenShots/iteration5_5.jpg" width="256" />
