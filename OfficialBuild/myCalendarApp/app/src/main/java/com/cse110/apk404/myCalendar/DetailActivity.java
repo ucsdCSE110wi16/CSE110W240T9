@@ -29,6 +29,7 @@ import com.cse110.apk404.myCalendar.StaticEvent;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 
 /**
@@ -81,7 +82,6 @@ public class DetailActivity extends AppCompatActivity {
 //                    Snackbar.make(view, "Event is being edited", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                 // TODO - set the event to be finished here then resume parent activity
-
 
                 fab.hide();
 
@@ -157,16 +157,12 @@ public class DetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         // Inflate the menu; this adds items to tool bar if it is present.
         getMenuInflater().inflate(R.menu.activity_detail, menu);
         menu.findItem(R.id.action_finish_event).setVisible(false);
         menu.findItem(R.id.action_unfinish_event).setVisible(false);
         menu.findItem(R.id.action_edit_event).setVisible(false);
-
-        // Limie menu items
-        if (event.isFinished()) {
-        } else {
-        }
 
         return true;
     }
@@ -182,6 +178,8 @@ public class DetailActivity extends AppCompatActivity {
             case R.id.action_delete_event:
                 try {
                     EventListHandler.removeEventById(event.getId());
+                    updateDynamicLayout();
+                    RestartMainActivity(0, "Event is set to active again");
                 } catch (Exception e) {
                     Log.e("Error06", e.getMessage());
                 }
@@ -198,8 +196,6 @@ public class DetailActivity extends AppCompatActivity {
                 // Set event as active again and reload current activity
                 if (event != null) {
                     event.setFinished(false);
-//                    finish();
-//                    startActivity(getIntent());
                     RestartMainActivity(0, "Event is set to active again");
                 }
                 return true;
@@ -231,4 +227,15 @@ public class DetailActivity extends AppCompatActivity {
         // super.onBackPressed();
     }
 
+    private void updateDynamicLayout() throws CalendarError {
+        Calendar deadline = EventListHandler.getLastDeadline();
+        long time = deadline.getTimeInMillis() + 10000;
+        deadline.setTimeInMillis(time);
+        DynamicEvent dynamicEvent = new DynamicEvent("empty", false, null, null, null, deadline, 60, false);
+        dynamicEvent.setId(1234567l);
+        EventListHandler.getDeadlineList().addEvent(dynamicEvent);
+        EventListHandler.dynamicSort(dynamicEvent);
+        EventListHandler.removeEventById(1234567l);
+    }
 }
+

@@ -1,2 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-8.4.0_034806919b59c366c0342b47e806e261ef15acda.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1_c568b4447e702fde956bc2db859badaacc32689f.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/gson-2.3.1_55151b158db1cb993ae2f39ba2c56bca5075d5e7.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="9cad249cf62751a323d9af568caf12284b7d6062">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-nearby-8.4.0_f404e527885d469aa1e5a2e7e5cf3e7e3f1cd1a1.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b36f30ac5ee5d5214f4b1e2ac49f11889d58e71a">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-drive-8.4.0_9bfab1b827a1a3ce4cd4ee60b54736c4be2f3a18.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/de.hdodenhof-circleimageview-1.3.0_5c50a5b87e53d96b2f7412559310650c1ddb2dc4.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d358b3dd49a7c67844622dcbc9cf4339e13952ce">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.android.support-mediarouter-v7-23.0.0_d0ecd4d62a6a1f872002f704e5273b7faa949e85.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="04de44f90606c77f3b28cf44861f306290505aac">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-maps-8.4.0_def70403f0ee1ea3b3b86d04ec1ced0eebce301e.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="9fe026fb4c7fce21bc5142f6e1bdf844f28061ac">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-appinvite-8.4.0_eb1b51e8f5554ab2769e94097ac1b8e021db1a4b.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a8412b654dab86d57bf90683367488211c8a81f1">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-location-8.4.0_b8ccd1611f174acfee6c2b0986078c3a436e1fff.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-appindexing-8.4.0_180b919ec4d010c5abc4652abe7f3a8c838e23bc.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.1.1_8c299ab26ea63d3e00efaac1fe60b41e43f5621f.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3a364cc6b698d1b3b2d284f64618daaa7fe77ddf">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-games-8.4.0_5d13cbdc9de957df5751fcb8b19c9816bea640e6.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="08d34b2d135c1cc96ab506fd8bf6916d1e2f391a">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-panorama-8.4.0_201e7491b804de5e7b6fdd60d10f6812e5e21375.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="613298b7aa012f121ce542881c0a599ebd8078f2">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-measurement-8.4.0_1ad3b414c6f727376d779cee3e1b45033282cb80.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1c9f35e952b212c843f7bd2c7eec8e82ad95602e">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-analytics-8.4.0_77039e904fb31f18679e9e9ada436314f4bad3ab.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1a78298e7724d5440d210bcb946b3493250d354d">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-plus-8.4.0_04be8d54cd34ed14e2de0a6141e3e3afec746ba9.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2d7fe76982677315c4dc4edfb459c8ca718a9d4c">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-gcm-8.4.0_7afbf6845b0989574a6050b5625b68bfd0ccfcce.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.1.1_9fef1259504f76f34200a20bdbf5c91bd0efac27.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0194a7409c40de94fb539d4ad9928ec5d47afeb7">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-safetynet-8.4.0_80902f71745b9946a6befa8b85980a4afe51e392.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.1.1_b18c15a1e014e139833a9854b32b45083b4b1e51.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f2df436a8f02ce7e4d7d209671fc45f97c470f0e">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-wallet-8.4.0_2ac9298113859b2eb344239e72f5ad8d83f44746.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e167a34eaca0b31704212f43f9576ea84e05046f">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-wearable-8.4.0_25b81e3bd710676c52939e4d19aeaf73bcff188d.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/a681c044244d9fc375198588297a39ba78028423/retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/retrofit-1.9.0_86aff3da6e91bb45d945bf0cf87714058c563ce6.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="dfecc4d835cdabcdecf7e95f0d20a3ef1e9d8ef4">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-vision-8.4.0_f7c2dded7ef9ca94eeebb96c1fafd288e4558056.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.1.1_3f65f3734c20ebbb942fad225b7ea6e8cd205ca9.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/butterknife-7.0.1_fa8f054b0da8f41caba116fbfda5951ee8d0fc78.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.github.alamkanak/library/1.2.6/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="47967ee2a5c5ecd78dbec6549e6d3fd40f24acea">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.github.alamkanak-library-1.2.6_decd349c74ff99c706ed47be2e7509926e9d4ae1.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="551e78f21acf69ebfb489c0e79647824c838013e">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-cast-8.4.0_d5423491e26b69ea8d33d717abd5a740c7ef27f2.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="966e5771a5a2ebfb31bf00d7cd6cd2546d245517">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-auth-8.4.0_1d74271bf76feae739d891be347243bf10e8763e.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c54246475c1bb64ac6857d1320364bfbfeda2c46">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-fitness-8.4.0_6d3a2381c6162468270dedab067c1e1602e34f31.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-8.4.0_a45fb27e0b075ef19278a14475c5e40acd376c77.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="03d38bb042efe3e5ce27ba66b729a9523c36d8fe">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.0_627b83f2e4cf6c0f2d93c1d242948a568eeb462a.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1_4d8b5259a72d3415b9649d548c7a137be2c9142e.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b5e7892fb0708e792e0e933c4c0a0ca0ac7831fb">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-ads-8.4.0_6215a56d0dbe490af29ef8e4a6524c0b9a3ee541.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b82b8e847173c28efffcd291b2a0b1ae9ad17fa4">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-identity-8.4.0_a0e233e41b50086ad0a6e91e31131ec4d07a3828.jar" />
+    </item>
+    <item
+        jar="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/postgresql-9.4.1208.jre6/postgresql-9.4.1208.jre6.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2e9f827db68777864b0c6b1df34383d813a9c80a">
+        <dex dex="/Users/Sean/Desktop/CalendarProject/CalendarPlus/OfficialBuild/myCalendarApp/app/build/intermediates/pre-dexed/debug/postgresql-9.4.1208.jre6_3d4e2d18f16b3b3a03b680e2f9f677580684c2c2.jar" />
+    </item>
+
+</items>

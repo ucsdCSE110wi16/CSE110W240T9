@@ -77,9 +77,4 @@ public class myCalendarApplication extends Application {
         super.onLowMemory();
     }
 
-    @Override
-    public void onTerminate() {
-        super.onTerminate();
-        Log.d("ApplicationStatus", "App terminated");
-    }
 }

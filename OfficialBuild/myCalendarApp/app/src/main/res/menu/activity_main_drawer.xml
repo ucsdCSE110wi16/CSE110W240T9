@@ -10,14 +10,10 @@
             android:id="@+id/nav_add_event"
             android:icon="@drawable/ic_add_black_24dp"
             android:title="Add Event" />
-        <!--<item-->
-            <!--android:id="@+id/nav_finished_event"-->
-            <!--android:icon="@drawable/ic_event_black_24dp"-->
-            <!--android:title="Finished Events" />-->
         <item
             android:id="@+id/nav_sync"
             android:icon="@drawable/ic_backup_black_24dp"
-            android:title="Sync Calender" />
+            android:title="Log in for Sync" />
         <item
             android:id="@+id/nav_start_new"
             android:icon="@drawable/ic_mode_edit_black_18dp"
