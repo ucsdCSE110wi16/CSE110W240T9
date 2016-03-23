@@ -32,7 +32,7 @@ ______________
 </div>
 
 
-Features w/User Stories
+Features w/ User Stories (baseline)
 --------------
 * __Creating new Event: Static Event__ (can be periodic) - As a student, I want the app to statically schedule my events/activites so that I know when the events will be occur each week.
 
@@ -223,7 +223,11 @@ __Week 10__
 * ~~Updated README for final presentation~~
 
 __Week 11__
-* Presentation
+* ~~Presentation~~
+
+__Post-Final Works__
+* ~~Added notification system.~~
+* ~~Modified login system for showing current user.~~ 
 
 
 Iteration 1
